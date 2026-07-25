@@ -18,14 +18,14 @@ Transport protocols and port numbers provide that next level of identification.
 
 ## IP Addresses and Ports Do Different Jobs
 
-Imagine the Windows 11 virtual machine named WINCLIENT opening a Secure Shell (SSH) connection to the Debian virtual machine named LINUXBOX.
+Imagine the Windows 11 virtual machine named WINCLIENT opening a Secure Shell (SSH) connection to the Linux Mint virtual machine named LINUXBOX.
 
 | Connection field | Example value | What it identifies |
 | --- | --- | --- |
 | Transport protocol | TCP | The transport rules used for the connection |
 | Source Internet Protocol version 4 (IPv4) address | `10.0.20.15` | The Windows 11 virtual machine named WINCLIENT |
 | Source TCP port | `51514` | A temporary port selected by WINCLIENT |
-| Destination IPv4 address | `10.0.20.25` | The Debian virtual machine named LINUXBOX |
+| Destination IPv4 address | `10.0.20.25` | The Linux virtual machine named LINUXBOX |
 | Destination TCP port | `22` | The SSH service running on LINUXBOX |
 
 The connection can be written in a shortened form:
@@ -219,7 +219,7 @@ Identify:
 Do not stop or reconfigure an unfamiliar process merely because it has a listening socket. First identify what owns it and why it is running.
 
 :::tip[Optional Lab: Capture a TCP Handshake]
-This exercise uses the SSH server already installed on the Debian virtual machine named LINUXBOX and stays entirely within NETLAB.
+This exercise uses the SSH server already installed on the Linux Mint virtual machine named LINUXBOX and stays entirely within NETLAB.
 
 1. On LINUXBOX, record its NETLAB IPv4 address and confirm that SSH is listening on TCP port 22:
 
@@ -231,8 +231,7 @@ This exercise uses the SSH server already installed on the Debian virtual machin
 2. On LINUXBOX, start a packet capture:
 
    ```text
-   su -
-   tcpdump -n -i any 'tcp port 22'
+   sudo tcpdump -n -i any 'tcp port 22'
    ```
 
 3. On the Windows 11 virtual machine named WINCLIENT, open PowerShell and replace `<LINUXBOX-IP>` with the address from step 1:

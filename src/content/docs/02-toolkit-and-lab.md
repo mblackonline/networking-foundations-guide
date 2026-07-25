@@ -34,7 +34,7 @@ A few notes before you start.
 
 `dig` is not included with Windows. Use `nslookup`, or `Resolve-DnsName` in PowerShell, which produces more readable output. Module 9 shows both.
 
-`traceroute` is not always installed on Linux. On Debian and Ubuntu, install it with `sudo apt install traceroute`.
+`traceroute` is not always installed on Linux. On Linux Mint and Ubuntu, install it with `sudo apt install traceroute`.
 
 `ss` has replaced `netstat` on most Linux distributions. If `ss` is missing, `netstat` usually still works.
 
@@ -95,11 +95,11 @@ It is two virtual machines.
 
 **WINCLIENT** is a Windows 11 Enterprise evaluation. It is the machine you configure through the familiar graphical settings, and it plays the client in every exercise.
 
-**LINUXBOX** is a minimal Debian install with no desktop. It plays the other end, acting as server, router, network address translation (NAT) gateway, and reverse proxy in later modules. Every command for it is given as copy and paste, so no prior Linux experience is assumed.
+**LINUXBOX** runs Linux Mint with the Xfce desktop. It plays the other end, acting as a server, router, network address translation (NAT) gateway, and reverse proxy in later modules. The graphical desktop makes the system approachable for someone new to Linux, while the exercises introduce the terminal commands needed for networking work.
 
-The footprint is roughly 5 gigabytes (GB) of memory while both run, and about 75 GB of disk. A machine with 16 GB of random-access memory (RAM) is comfortable. With 8 GB it works, but close other applications and expect it to be slow.
+The two VMs are assigned a total of 6 gigabytes (GB) of memory and 89 GB of virtual disk capacity. With VirtualBox's default dynamically allocated disks, the VM files grow as data is stored rather than immediately using all 89 GB. A machine with 16 GB of random-access memory (RAM) is recommended. An 8 GB machine may run the lab slowly and leave little memory for the host operating system.
 
-Both operating systems are free to obtain. Debian is free software. Windows 11 Enterprise is a 90 day evaluation, so note the date you install it.
+Both operating systems are free to obtain. Linux Mint is free to download and use. Windows 11 Enterprise is a 90-day evaluation, so note the date you install it.
 
 ## Build the Lab Network
 
@@ -137,33 +137,45 @@ An ISO image is a file containing the contents of an installation disc. Windows 
    - **Hard Disk:** 64 GB
 3. Before starting it, open **Settings > System** and confirm **TPM Version** is 2.0 and **Enable Secure Boot** is checked. Windows 11 setup refuses to run without both.
 4. Open **Settings > Network** and set Adapter 1 to **NAT Network**, name **NETLAB**.
-5. Start the VM and install Windows. When setup asks you to sign in, choose **Sign-in options**, then the option to create a local account, and name it `labuser`.
-6. After reaching the desktop, install Guest Additions from **Devices > Insert Guest Additions CD image**, run the installer from the CD drive, and restart.
+5. Open **Settings > Display > Screen** and move the **Video Memory** slider to the maximum. This provides enough video memory for higher resolutions and full-screen mode.
+6. Start the VM and install Windows. When setup asks you to sign in, choose **Sign-in options**, then the option to create a local account, and name it `labuser`.
+7. After reaching the desktop, install Guest Additions from **Devices > Insert Guest Additions CD image**, run the installer from the CD drive, and restart.
 
 ## Build LINUXBOX
 
-1. Download the Debian netinst ISO from [debian.org](https://www.debian.org/distrib/netinst). Choose the 64-bit amd64 image.
+1. Open the official [Linux Mint download page](https://linuxmint.com/download.php), find the **Xfce Edition**, and download its 64-bit ISO image.
 2. In VirtualBox Manager, click **New** and set:
    - **Name:** `LINUXBOX`
-   - **ISO Image:** the Debian ISO
+   - **ISO Image:** the Linux Mint Xfce ISO
    - Choose a manual installation
-   - **Base Memory:** 1024 MB
-   - **Processors:** 1
-   - **Hard Disk:** 10 GB
+   - **Base Memory:** 2048 MB
+   - **Processors:** 2
+   - **Hard Disk:** 25 GB
 3. Open **Settings > Network** and set Adapter 1 to **NAT Network**, name **NETLAB**.
-4. Start the VM and run the installer. Accept the defaults for language, location, and disk partitioning.
-5. Set a root password and create a normal user named `labuser`.
-6. At the software selection screen, clear every desktop environment and leave only **Secure Shell (SSH) server** and **standard system utilities** checked. This keeps the VM small and fast.
-7. When the install finishes and the VM reboots, log in as `labuser`.
+4. Open **Settings > Display > Screen** and move the **Video Memory** slider to the maximum. This provides enough video memory for higher resolutions and full-screen mode.
+5. Start the VM. At the boot menu, start Linux Mint, then double-click **Install Linux Mint** on the desktop.
+6. Select your language and keyboard layout.
+7. If the installer offers to install multimedia codecs, leave that option unchecked. They are not needed for this lab.
+8. At **Installation type**, select **Erase disk and install Linux Mint**. This erases only the empty virtual disk created for LINUXBOX; it does not erase the host computer's disk.
+9. Select your time zone.
+10. Create the account with:
+   - **Your name:** `Lab User`
+   - **Your computer's name:** `linuxbox`
+   - **Username:** `labuser`
+   - Choose a password you will remember
+   - Select **Require my password to log in**
+11. Complete the installation and choose **Restart Now**. If prompted to remove the installation medium, use **Devices > Optical Drives > Remove disk from virtual drive** in the VirtualBox window, then press Enter.
+12. Log in as `labuser`, then open the Terminal application from the desktop menu.
 
 Install the handful of tools the later modules use:
 
 ```text
-su -
-apt update
-apt install traceroute dnsutils tcpdump curl
-exit
+sudo apt update
+sudo apt install openssh-server traceroute dnsutils tcpdump curl
+sudo systemctl enable --now ssh
 ```
+
+The `sudo` command runs an administrative command after you enter the `labuser` password. Linux does not display dots or other characters while you type the password; that is normal.
 
 ## Confirm the Two VMs Can See Each Other
 
@@ -183,13 +195,13 @@ ip addr
 
 Both should have an address in the `10.0.20.0/24` range. Then ping each one from the other, substituting the addresses you just found.
 
-If the ping from WINCLIENT to LINUXBOX fails, that is expected on a fresh Windows install in one direction only. Windows Firewall blocks incoming ping by default, so LINUXBOX pinging WINCLIENT may fail while the reverse works. Leave that alone for now. Module 11 covers exactly why, and it is a better example than anything written in advance.
+WINCLIENT should normally be able to ping LINUXBOX. A ping from LINUXBOX to WINCLIENT may fail because Windows Firewall blocks incoming ping by default. Leave that alone for now. Module 11 covers exactly why, and it is a better example than anything written in advance.
 
 ## Further Learning
 
 - [Windows Commands reference](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands) documents every built-in command in the table above, including the options this guide does not use.
 - [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/) covers capture options, display filters, and interface selection in far more depth than this guide needs.
-- [Debian Installation Guide](https://www.debian.org/releases/stable/installmanual) walks the installer screen by screen if any step above is unclear.
+- [Linux Mint Installation Guide](https://linuxmint-installation-guide.readthedocs.io/en/latest/) provides additional installation and troubleshooting details.
 - [Oracle VirtualBox User Guide](https://docs.oracle.com/en/virtualization/virtualbox/7.2/user/) documents virtual machine settings, networking modes, and Guest Additions.
 
 ## Checklist Before Moving On

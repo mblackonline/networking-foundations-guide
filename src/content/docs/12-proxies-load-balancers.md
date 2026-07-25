@@ -186,12 +186,14 @@ This exercise installs NGINX on LINUXBOX. The proxy listens only inside the isol
 1. On LINUXBOX, install NGINX and create a small backend page:
 
    ```text
-   su -
+   sudo -i
    apt update
    apt install nginx
    mkdir /var/www/netguide-backend
    echo "Response from the backend service" > /var/www/netguide-backend/index.html
    ```
+
+   The `sudo -i` command opens an administrative shell. Leave this terminal open for the rest of the exercise. The final `exit` command closes the administrative shell.
 
 2. Open a new configuration file:
 

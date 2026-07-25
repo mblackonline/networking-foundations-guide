@@ -279,15 +279,14 @@ This exercise temporarily stops Secure Shell (SSH) on LINUXBOX. Use the VirtualB
 3. From the LINUXBOX VirtualBox console, stop SSH:
 
    ```text
-   su -
-   systemctl stop ssh
+   sudo systemctl stop ssh
    ```
 
 4. Repeat the same `Test-NetConnection` command on WINCLIENT. The TCP test should now fail.
 5. On LINUXBOX, check whether any process is listening on TCP port 22:
 
    ```text
-   ss -lntp
+   sudo ss -lntp
    ```
 
    Port 22 should be absent. This is evidence that the service is not listening locally.
@@ -295,9 +294,8 @@ This exercise temporarily stops Secure Shell (SSH) on LINUXBOX. Use the VirtualB
 6. Restore the service:
 
    ```text
-   systemctl start ssh
-   systemctl status ssh --no-pager
-   exit
+   sudo systemctl start ssh
+   sudo systemctl status ssh --no-pager
    ```
 
 7. Repeat `Test-NetConnection` on WINCLIENT. It should succeed again.

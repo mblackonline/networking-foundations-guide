@@ -47,7 +47,7 @@ DHCP is a service or role, not one particular type of physical device. Many diff
 | Virtualization platform | Supplies settings to virtual machines on a virtual network |
 | Cloud provider's network service | Supplies settings to virtual machines and other cloud resources |
 
-In this guide's lab, Oracle VirtualBox provides DHCP for the VirtualBox network address translation (NAT) Network named NETLAB. The Windows 11 virtual machine named WINCLIENT and the Debian virtual machine named LINUXBOX are both DHCP clients.
+In this guide's lab, Oracle VirtualBox provides DHCP for the VirtualBox network address translation (NAT) Network named NETLAB. The Windows 11 virtual machine named WINCLIENT and the Linux Mint virtual machine named LINUXBOX are both DHCP clients.
 
 :::note[DHCP and Active Directory]
 Active Directory Domain Services (AD DS) does not assign IP addresses by itself. A Windows Server can provide addresses after the separate **DHCP Server** role is installed and configured.

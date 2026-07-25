@@ -202,7 +202,7 @@ On the Windows 11 virtual machine named WINCLIENT, run:
 curl.exe --verbose --output NUL https://example.com
 ```
 
-On the Debian virtual machine named LINUXBOX, run:
+On the Linux Mint virtual machine named LINUXBOX, run:
 
 ```text
 curl --verbose --output /dev/null https://example.com

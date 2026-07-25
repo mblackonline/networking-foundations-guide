@@ -265,10 +265,10 @@ This exercise makes no configuration changes.
    ```
 
 2. Record WINCLIENT's configured DNS server and identify the A and NS records returned.
-3. On the Debian virtual machine named LINUXBOX, run:
+3. On the Linux Mint virtual machine named LINUXBOX, run:
 
    ```text
-   cat /etc/resolv.conf
+   nmcli device show | grep IP4.DNS
    dig example.com A
    dig example.com NS
    ```

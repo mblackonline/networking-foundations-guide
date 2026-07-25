@@ -45,7 +45,7 @@ Destination port: 22
 Action:           Allow
 ```
 
-The rule allows systems in the `10.0.20.0/24` network to start SSH connections to TCP port 22 on the Debian virtual machine named LINUXBOX.
+The rule allows systems in the `10.0.20.0/24` network to start SSH connections to TCP port 22 on the Linux Mint virtual machine named LINUXBOX.
 
 The rule does not allow every protocol or every destination port. It also does not make SSH listen on port 22. The service must be running separately.
 
