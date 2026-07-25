@@ -96,7 +96,7 @@ Destination IP address: 10.0.20.25
 Destination TCP port:   22
 ```
 
-These values are commonly called the TCP **four-tuple**. When the transport protocol is included, network tools and firewall rules often refer to a **five-tuple**.
+These values are commonly called the TCP **4-tuple**. When the transport protocol is included, network tools and firewall rules often refer to a **5-tuple**.
 
 A server can support many clients on one listening port because every connection has a different four-tuple. Two clients may both connect to `10.0.20.25:22`, but their source addresses, source ports, or both will differ.
 
