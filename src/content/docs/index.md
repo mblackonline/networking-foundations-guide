@@ -9,6 +9,9 @@ hero:
       link: /01-layers/
       icon: right-arrow
       variant: primary
+    - text: View Source on GitHub
+      link: https://github.com/mblackonline/networking-foundations-guide
+      variant: secondary
 ---
 
 :::note[Artificial Intelligence-Assisted Development]
@@ -37,4 +40,4 @@ Some concepts only make sense when you can break them on purpose. Those exercise
 
 ## Source and Reuse
 
-This guide is published under the MIT License. You are welcome to fork it and adapt or expand it for your own use.
+The source files for this guide are available on [GitHub](https://github.com/mblackonline/networking-foundations-guide) under the [MIT License](https://github.com/mblackonline/networking-foundations-guide/blob/main/LICENSE). You are welcome to fork the repository and adapt or expand it for your own use.
