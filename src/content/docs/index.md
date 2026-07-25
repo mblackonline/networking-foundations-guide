@@ -36,7 +36,7 @@ This guide is not tied to a particular vendor, product, or certification track. 
 
 Most of this guide can be followed on the computer you already own. Commands are generally shown for Windows, with efforts made to include Linux or macOS equivalents when practical.
 
-Some concepts only make sense when you can break them on purpose. Those exercises use a small optional lab of two virtual machines, one Windows and one Linux. You can still follow the conceptual material without completing the lab. Module 2 covers the setup.
+Some concepts only make sense when you can break them on purpose. Those exercises use a small optional lab of two virtual machines, one Windows and one Linux. You can follow the conceptual material without building the lab. However, building it and completing the exercises are strongly encouraged because they let you observe networking behavior, practice using the tools, and troubleshoot problems safely. Module 2 covers the setup.
 
 ## Source and Reuse
 
