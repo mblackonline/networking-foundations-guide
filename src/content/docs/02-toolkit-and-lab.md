@@ -117,7 +117,7 @@ The lab uses VirtualBox, which is free, open source under the GNU General Public
 VirtualBox calls this a NAT Network. Network address translation (NAT) is covered in Module 6. Both VMs attach to this network. They can reach each other and the internet, and your home devices cannot reach into the lab.
 
 :::note
-The Dynamic Host Configuration Protocol (DHCP) is what hands out addresses automatically. It stays enabled for now so the VMs get addresses without any work. In Module 8 you turn it off and run your own DHCP server on LINUXBOX, which is a more useful exercise than reading about it. If you also built the lab from an Active Directory guide, note that this network uses a different name and address range so the two labs do not collide.
+The Dynamic Host Configuration Protocol (DHCP) is what supplies addresses automatically. It stays enabled so the VMs receive their network settings without running another server. Module 8 explains what VirtualBox supplies and includes an optional lease-renewal exercise on WINCLIENT. If you also built the lab from an Active Directory guide, note that this network uses a different name and address range so the two labs do not collide.
 :::
 
 ## Build WINCLIENT
