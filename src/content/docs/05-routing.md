@@ -5,7 +5,7 @@ description: Reading a routing table, longest prefix match, next hop, and the de
 
 Module 4 explained how a host decides whether a destination is local. Routing begins when the destination is not.
 
-Every host and router has a routing table. It is a list of instructions that answers one question: where should this packet go next?
+Every host and router has a [routing table](/appendix/glossary/#routing-table). It is a list of instructions that answers one question: where should this packet go next?
 
 ## In This Module
 
@@ -36,9 +36,9 @@ Consider this simplified table:
 | `10.20.0.0/16` | `192.168.10.1` | Ethernet | 10 |
 | `0.0.0.0/0` | `192.168.10.1` | Ethernet | 25 |
 
-**On-link** means the destination is directly reachable on the local network. The host uses ARP to find the destination's MAC address and sends the frame directly.
+**[On-link](/appendix/glossary/#on-link)** means the destination is directly reachable on the local network. The host uses ARP to find the destination's MAC address and sends the frame directly.
 
-When a next hop is listed, the host keeps the packet's final destination IP address but sends the local frame to that router's MAC address.
+When a [next hop](/appendix/glossary/#next-hop) is listed, the host keeps the packet's final destination IP address but sends the local frame to that router's MAC address.
 
 ## Longest Prefix Match
 
@@ -63,7 +63,7 @@ This is the same idea as choosing a street address over a city name. Both descri
 
 ## The Default Route
 
-The route `0.0.0.0/0` is the default route.
+The route `0.0.0.0/0` is the [default route](/appendix/glossary/#default-route).
 
 A `/0` fixes none of the address bits, so it matches every IPv4 destination. Because every more specific route has a longer prefix, the default is used only when nothing better matches.
 
@@ -129,7 +129,7 @@ A **dynamic route** is learned from another router through a routing protocol. D
 Two names are worth recognizing:
 
 - Open Shortest Path First (OSPF) commonly shares routes inside an organization.
-- Border Gateway Protocol (BGP) exchanges reachability information between large networks and forms the routing foundation of the internet.
+- [Border Gateway Protocol (BGP)](/appendix/glossary/#border-gateway-protocol-bgp) exchanges reachability information between large networks and forms the routing foundation of the internet.
 
 You do not need to configure either protocol for this guide. They still produce routing-table entries that are selected using the same longest-prefix rule.
 
@@ -137,7 +137,7 @@ You do not need to configure either protocol for this guide. They still produce 
 
 Traceroute shows the routers that respond along a path.
 
-Each IP packet contains a Time to Live (TTL) value. Every router reduces it by at least one. When it reaches zero, the router discards the packet and normally returns an Internet Control Message Protocol (ICMP) Time Exceeded message.
+Each IP packet contains a [Time to Live (TTL)](/appendix/glossary/#time-to-live-ttl) value. Every router reduces it by at least one. When it reaches zero, the router discards the packet and normally returns an [Internet Control Message Protocol (ICMP)](/appendix/glossary/#internet-control-message-protocol-icmp) Time Exceeded message.
 
 Traceroute uses that behavior deliberately:
 

@@ -3,7 +3,7 @@ title: "Module 11: Firewalls and Filtering"
 description: Understand firewall rules, stateful filtering, traffic direction, and common failure symptoms.
 ---
 
-A firewall controls which network traffic may enter, leave, or pass through a system.
+A [firewall](/appendix/glossary/#firewall) controls which network traffic may enter, leave, or pass through a system.
 
 For example, a server may accept Secure Shell (SSH) connections from an administrator's network while blocking SSH connections from everywhere else. The firewall makes that decision before the SSH service can authenticate the user.
 
@@ -21,7 +21,7 @@ For the Transmission Control Protocol (TCP) and User Datagram Protocol (UDP), a 
 | Destination IP address | `10.0.20.25` | The system receiving the packet |
 | Destination port | `22` | The receiving service's port |
 
-Together, these values are called the **5-tuple**.
+Together, these values are called the **[5-tuple](/appendix/glossary/#5-tuple)**.
 
 A rule may also examine:
 
@@ -55,8 +55,8 @@ Traffic direction is measured from the system or boundary where the rule is appl
 
 | Direction | Meaning |
 | --- | --- |
-| Inbound, also called ingress | Traffic entering the protected system or network |
-| Outbound, also called egress | Traffic leaving the protected system or network |
+| Inbound, also called [ingress](/appendix/glossary/#ingress) | Traffic entering the protected system or network |
+| Outbound, also called [egress](/appendix/glossary/#egress) | Traffic leaving the protected system or network |
 
 Suppose the Windows 11 virtual machine named WINCLIENT starts an SSH connection to LINUXBOX:
 
@@ -73,7 +73,7 @@ The reply travels in the opposite direction. Always identify the device or bound
 
 ## Stateful Filtering
 
-A **stateful firewall** remembers active network flows.
+A **[stateful firewall](/appendix/glossary/#stateful-firewall)** remembers active network flows.
 
 Suppose WINCLIENT opens a Hypertext Transfer Protocol Secure (HTTPS) connection:
 
@@ -95,7 +95,7 @@ An outbound rule permits the new connection. When the web server replies, a stat
 
 You do not need an inbound rule allowing destination port 51514 merely to receive those replies. You would need an inbound rule if an outside system were starting a new connection to a service on WINCLIENT.
 
-A **stateless filter** evaluates each packet without remembering the connection. Its rules must separately allow the request and the return traffic.
+A **[stateless filter](/appendix/glossary/#stateless-filter)** evaluates each packet without remembering the connection. Its rules must separately allow the request and the return traffic.
 
 Stateful filtering simplifies rules, but it does not determine whether the application data is safe. It only recognizes the flow as permitted traffic.
 
@@ -118,7 +118,7 @@ Many firewalls process rules in order and stop at the first match. Others combin
 
 Do not assume that moving a rule higher will change every firewall. Check how that product evaluates rules.
 
-A **default-deny** policy blocks traffic that no rule explicitly permits. A common starting point is:
+A **[default-deny](/appendix/glossary/#default-deny)** policy blocks traffic that no rule explicitly permits. A common starting point is:
 
 - Block new inbound connections unless a required service has a specific allow rule.
 - Permit or restrict outbound connections according to the organization's policy.
@@ -146,7 +146,7 @@ Cloud platforms apply the same basic ideas, but their rule behavior differs:
 | Cloud control | Scope and behavior |
 | --- | --- |
 | Amazon Web Services (AWS) security group | Resource-level, stateful allow rules |
-| AWS network access control list (network ACL) | Subnet-level, ordered allow and deny rules; stateless |
+| AWS network [access control list (network ACL)](/appendix/glossary/#access-control-list-acl) | Subnet-level, ordered allow and deny rules; stateless |
 | Microsoft Azure network security group (NSG) | Network-interface or subnet-level, stateful allow and deny rules evaluated by priority |
 
 Do not copy a rule set between platforms without checking direction, statefulness, default rules, and evaluation order.

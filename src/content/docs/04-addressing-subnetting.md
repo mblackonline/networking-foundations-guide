@@ -3,7 +3,7 @@ title: "Module 4: IPv4 Addressing and Subnetting"
 description: CIDR, subnet masks, network and broadcast addresses, private ranges, and the default gateway.
 ---
 
-An IPv4 address identifies a device, but the address alone is not enough. A subnet mask tells the device which addresses are nearby and which ones must be reached through a router.
+An [Internet Protocol version 4 (IPv4) address](/appendix/glossary/#internet-protocol-version-4-ipv4) identifies a device, but the address alone is not enough. A [subnet mask](/appendix/glossary/#subnet-mask) tells the device which addresses are nearby and which ones must be reached through a router.
 
 That local-or-remote decision is the main idea in this module. The calculations help you describe the boundary.
 
@@ -23,7 +23,7 @@ An IPv4 address is 32 bits long and is written as four decimal numbers:
 192.168.10.77
 ```
 
-The prefix length after the slash tells you how many of those 32 bits identify the network.
+The [prefix length](/appendix/glossary/#prefix-length) after the slash tells you how many of those 32 bits identify the network.
 
 ```text
 192.168.10.77/24
@@ -72,8 +72,8 @@ There are two useful exceptions. A `/31` can use both addresses on a point-to-po
 
 An ordinary IPv4 subnet contains:
 
-- A **network address**, which names the subnet
-- A **broadcast address**, which reaches every IPv4 host on that subnet
+- A **[network address](/appendix/glossary/#network-address)**, which names the subnet
+- A **[broadcast address](/appendix/glossary/#broadcast-address)**, which reaches every IPv4 host on that subnet
 - The **usable host addresses** between them
 
 For `192.168.10.0/24`:
@@ -119,7 +119,7 @@ Before sending a packet, a host compares the destination with its own network.
 Suppose the host is `192.168.10.77/24`.
 
 - `192.168.10.100` is in the same `/24`, so the host uses ARP to find that destination's MAC address.
-- `192.168.11.20` is outside the `/24`, so the host sends the frame to its default gateway.
+- `192.168.11.20` is outside the `/24`, so the host sends the frame to its [default gateway](/appendix/glossary/#default-gateway).
 
 The destination IP address remains `192.168.11.20`. Only the local frame is addressed to the gateway's MAC address.
 
@@ -130,7 +130,7 @@ Remote destination -> ARP for the default gateway
 
 This is why the subnet mask matters. It tells the host which of those two actions to take.
 
-## Private IPv4 Addresses
+## [Private IPv4 Addresses](/appendix/glossary/#private-ipv4-address)
 
 Three address blocks are reserved for private networks:
 

@@ -9,7 +9,7 @@ A client normally connects directly to a server:
 Client -> Server
 ```
 
-A proxy stands between them:
+A [proxy](/appendix/glossary/#proxy) stands between them:
 
 ```text
 Client -> Proxy -> Server
@@ -28,7 +28,7 @@ The names describe which side the proxy represents.
 
 ### Forward Proxy
 
-A forward proxy makes requests on behalf of clients:
+A [forward proxy](/appendix/glossary/#forward-proxy) makes requests on behalf of clients:
 
 ```text
 Employee laptop -> Forward proxy -> Public website
@@ -40,7 +40,7 @@ Organizations may use forward proxies to apply access policies, record requests,
 
 ### Reverse Proxy
 
-A reverse proxy accepts requests on behalf of servers:
+A [reverse proxy](/appendix/glossary/#reverse-proxy) accepts requests on behalf of servers:
 
 ```text
 Internet client -> Reverse proxy -> Internal application server
@@ -56,7 +56,7 @@ A reverse proxy can provide:
 - Caching, compression, or request limits
 - Load balancing across multiple servers
 
-An internal destination behind a proxy is commonly called a **backend** or **upstream** server.
+An internal destination behind a proxy is commonly called a **[backend](/appendix/glossary/#backend)** or **[upstream server](/appendix/glossary/#upstream-server)**.
 
 ## One Public Service with Two Backends
 
@@ -87,7 +87,7 @@ The public IP addresses in this module are from documentation ranges and do not 
 
 ## What a Load Balancer Does
 
-A load balancer selects a backend from a group of available servers.
+A [load balancer](/appendix/glossary/#load-balancer) selects a backend from a group of available servers.
 
 Common selection methods include:
 
@@ -125,7 +125,7 @@ A certificate error seen by the public client usually concerns the certificate p
 
 ## Health Checks
 
-A load balancer should send traffic only to backends that can handle it. It tests them with a **health check**.
+A load balancer should send traffic only to backends that can handle it. It tests them with a **[health check](/appendix/glossary/#health-check)**.
 
 A health check might:
 
@@ -139,7 +139,7 @@ Health-check configuration can also cause failures. A wrong port, path, expected
 
 ## Session Persistence
 
-Some applications store a user's session on one backend. A load balancer may use **session persistence**, also called a **sticky session**, to keep that user on the same backend.
+Some applications store a user's session on one backend. A load balancer may use **[session persistence](/appendix/glossary/#session-persistence)**, also called a **sticky session**, to keep that user on the same backend.
 
 Persistence can be based on a cookie or another client characteristic. It may be necessary for older applications, but it can distribute traffic unevenly and complicate recovery when a backend fails. Applications that share session state do not depend as heavily on persistence.
 

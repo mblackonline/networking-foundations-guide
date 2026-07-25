@@ -17,7 +17,7 @@ This is also where a common misunderstanding gets cleared up. People often think
 
 ## Frames and MAC Addresses
 
-At layer 2, the unit of data is a frame, and the addresses are media access control (MAC) addresses.
+At layer 2, the unit of data is a [frame](/appendix/glossary/#frame), and the addresses are [media access control (MAC) addresses](/appendix/glossary/#media-access-control-address-mac-address).
 
 A MAC address is 48 bits, usually written as six pairs of hex digits like `00:1A:2B:3C:4D:5E`. It is assigned to the network interface itself rather than to the machine, so a laptop with Wi-Fi and Ethernet has two of them.
 
@@ -52,7 +52,7 @@ The older device this replaced was a hub, which repeated every frame to every po
 
 Here is the gap. Your machine wants to reach `10.0.20.15`. It has an IP address for the destination, but the frame it is about to build needs a MAC address. It does not have one.
 
-The Address Resolution Protocol (ARP) fills that gap.
+The [Address Resolution Protocol (ARP)](/appendix/glossary/#address-resolution-protocol-arp) fills that gap.
 
 1. Your machine broadcasts an ARP request to every device on the segment, asking who has `10.0.20.15`.
 2. Every machine receives it. The one holding that address replies directly with its MAC address.
@@ -73,7 +73,7 @@ This is worth internalizing because ARP failures do not look like ARP failures. 
 
 ## Broadcast Domains
 
-ARP works by broadcasting, and broadcasts have a limit. The set of devices that receive each other's broadcasts is a broadcast domain.
+ARP works by broadcasting, and broadcasts have a limit. The set of devices that receive each other's broadcasts is a [broadcast domain](/appendix/glossary/#broadcast-domain).
 
 Switches forward broadcasts. Routers do not. That single difference defines the boundary.
 
@@ -83,7 +83,7 @@ Broadcast domains also explain why networks get divided up at all. Every device 
 
 ## VLANs, Briefly
 
-A virtual local area network (VLAN) lets one physical switch carry several separate networks. Ports are assigned to a VLAN, and frames in one VLAN are never forwarded to ports in another.
+A [virtual local area network (VLAN)](/appendix/glossary/#virtual-local-area-network-vlan) lets one physical switch carry several separate networks. Ports are assigned to a VLAN, and frames in one VLAN are never forwarded to ports in another.
 
 The effect is that each VLAN is its own broadcast domain, with its own ARP traffic, isolated from the others even though they share hardware. Moving traffic between VLANs requires a router, exactly as if they were on separate switches.
 

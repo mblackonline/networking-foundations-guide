@@ -5,7 +5,7 @@ description: How devices receive IPv4 settings automatically, what can provide D
 
 A device needs several settings before it can communicate on an IPv4 network. You could enter those settings by hand, but doing that for every laptop, phone, printer, and virtual machine would be slow and easy to get wrong.
 
-The Dynamic Host Configuration Protocol (DHCP) supplies those settings automatically.
+The [Dynamic Host Configuration Protocol (DHCP)](/appendix/glossary/#dynamic-host-configuration-protocol-dhcp) supplies those settings automatically.
 
 ## In This Module
 
@@ -32,7 +32,7 @@ The server commonly supplies:
 
 These settings must work together. A client can have a valid-looking address but still fail to reach other networks because it received the wrong mask or gateway. It may also reach IP addresses successfully while names fail because it received the wrong DNS settings.
 
-The DHCP server keeps a range of addresses available for clients. This range is often called a **pool** or **scope**. When the server assigns one of those addresses, it records a **lease** so it does not give the same address to another client.
+The DHCP server keeps a range of addresses available for clients. This range is often called a **pool** or **scope**. When the server assigns one of those addresses, it records a **[lease](/appendix/glossary/#dhcp-lease)** so it does not give the same address to another client.
 
 ## What Can Provide DHCP?
 
@@ -83,7 +83,7 @@ The DHCP server replies from UDP port 67 to the client's UDP port 68.
 
 ## The DORA Exchange
 
-A client obtaining a new DHCPv4 lease normally completes four steps. Their first letters form **DORA**.
+A client obtaining a new DHCPv4 lease normally completes four steps. Their first letters form **[DORA](/appendix/glossary/#dora)**.
 
 | Step | Message | Sent by | Meaning |
 | ---: | --- | --- | --- |
@@ -125,7 +125,7 @@ A static address does not come from DHCP. Manually assigned addresses should be 
 
 The client's initial broadcast stays on its local subnet. Routers do not normally forward broadcasts, so a DHCP server on another subnet would not receive it directly.
 
-A **DHCP relay** listens for the local broadcast and forwards it to the real DHCP server:
+A **[DHCP relay](/appendix/glossary/#dhcp-relay)** listens for the local broadcast and forwards it to the real DHCP server:
 
 ```text
 Client broadcast -> DHCP relay -> DHCP server on another subnet
@@ -145,7 +145,7 @@ When a Windows client is configured to obtain an IPv4 address automatically but 
 169.254.36.8
 ```
 
-Windows calls this Automatic Private IP Addressing (APIPA). The standards term is an **IPv4 link-local address**.
+Windows calls this [Automatic Private IP Addressing (APIPA)](/appendix/glossary/#automatic-private-ip-addressing-apipa). The standards term is an **IPv4 link-local address**.
 
 An IPv4 link-local address can communicate only with compatible devices on the same local link. Routers do not forward it to other networks or the internet.
 

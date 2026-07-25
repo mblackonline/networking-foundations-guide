@@ -5,7 +5,7 @@ description: Network address translation, port forwarding, and why inbound is th
 
 The private IPv4 address on your computer cannot be routed across the public internet. On a typical IPv4 network, a gateway replaces that address with one that can be routed publicly before sending the packet onward.
 
-That replacement is network address translation (NAT).
+That replacement is [network address translation (NAT)](/appendix/glossary/#network-address-translation-nat).
 
 ## In This Module
 
@@ -89,7 +89,7 @@ The gateway can give another client a different public port:
 
 Both clients share one public address, but the different public ports keep their replies separate.
 
-This address-and-port translation is formally called Network Address Port Translation (NAPT), and is also commonly called Port Address Translation (PAT). In everyday conversation, people usually call the entire process NAT.
+This address-and-port translation is formally called Network Address Port Translation (NAPT), and is also commonly called [Port Address Translation (PAT)](/appendix/glossary/#port-address-translation-pat). In everyday conversation, people usually call the entire process NAT.
 
 Translation entries are temporary. The gateway removes an entry after its connection ends or remains idle long enough.
 
@@ -132,7 +132,7 @@ NAT also affects logs. A public server normally records the NAT gateway's transl
 
 Outbound traffic usually still works. Inbound access is harder because each NAT gateway may need its own port-forwarding rule.
 
-**Carrier-grade NAT (CGNAT)** is a NAT gateway operated by an internet provider. It lets many customers share public IPv4 addresses. Because the customer does not control the provider's gateway, ordinary inbound port forwarding may not be available.
+**[Carrier-grade NAT (CGNAT)](/appendix/glossary/#carrier-grade-nat-cgnat)** is a NAT gateway operated by an internet provider. It lets many customers share public IPv4 addresses. Because the customer does not control the provider's gateway, ordinary inbound port forwarding may not be available.
 
 When an inbound service fails despite a correct local port forward, check whether another router or CGNAT exists upstream.
 
@@ -186,7 +186,7 @@ The public address check sends a normal HTTPS request to ipify. Like any externa
 
 ## Port Forwarding
 
-A port forward tells the gateway which private destination should receive a particular inbound connection.
+A [port forward](/appendix/glossary/#port-forwarding) tells the gateway which private destination should receive a particular inbound connection.
 
 | Incoming public destination | Forwarded private destination |
 | --- | --- |

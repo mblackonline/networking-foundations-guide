@@ -46,7 +46,7 @@ LINUXBOX: 10.0.20.25:22 -> WINCLIENT: 10.0.20.15:51514
 
 ## How Port Numbers Work
 
-A port number is a 16-bit value from `0` through `65535`. TCP and UDP maintain separate port-number spaces. TCP port 53 and UDP port 53 are therefore different endpoints, even though both are commonly used by DNS.
+A [port number](/appendix/glossary/#port) is a 16-bit value from `0` through `65535`. TCP and UDP maintain separate port-number spaces. TCP port 53 and UDP port 53 are therefore different endpoints, even though both are commonly used by DNS.
 
 IANA divides port numbers into three ranges:
 
@@ -56,7 +56,7 @@ IANA divides port numbers into three ranges:
 | `1024–49151` | User Ports | Ports available for registered services and applications |
 | `49152–65535` | Dynamic or Private Ports | Ports commonly available for temporary or private use |
 
-Operating systems select temporary, or **ephemeral**, client ports automatically. The exact range used by an operating system can differ from the IANA Dynamic or Private range.
+Operating systems select temporary, or **[ephemeral](/appendix/glossary/#ephemeral-port)**, client ports automatically. The exact range used by an operating system can differ from the IANA Dynamic or Private range.
 
 Some port numbers are worth recognizing:
 
@@ -83,7 +83,7 @@ Do not confuse similarly named file-transfer protocols:
 
 ## Sockets and Connection Identity
 
-A **socket** is a communication endpoint created and managed by the operating system. An application uses a socket to send or receive network data.
+A **[socket](/appendix/glossary/#socket)** is a communication endpoint created and managed by the operating system. An application uses a socket to send or receive network data.
 
 A listening server socket is associated with a transport protocol, a local address, and a local port. A connected TCP session has both a local endpoint and a remote endpoint.
 
@@ -96,13 +96,13 @@ Destination IP address: 10.0.20.25
 Destination TCP port:   22
 ```
 
-These values are commonly called the TCP **4-tuple**. When the transport protocol is included, network tools and firewall rules often refer to a **5-tuple**.
+These values are commonly called the TCP **[4-tuple](/appendix/glossary/#4-tuple)**. When the transport protocol is included, network tools and firewall rules often refer to a **[5-tuple](/appendix/glossary/#5-tuple)**.
 
 A server can support many clients on one listening port because every connection has a different four-tuple. Two clients may both connect to `10.0.20.25:22`, but their source addresses, source ports, or both will differ.
 
 ## TCP: An Ordered, Reliable Stream
 
-Transmission Control Protocol (TCP) is connection-oriented. The two endpoints establish a connection before exchanging application data.
+[Transmission Control Protocol (TCP)](/appendix/glossary/#transmission-control-protocol-tcp) is connection-oriented. The two endpoints establish a connection before exchanging application data.
 
 TCP provides:
 
@@ -135,7 +135,7 @@ A normal TCP close uses FIN and ACK flags so each endpoint can finish sending an
 
 ## UDP: Independent Datagrams
 
-User Datagram Protocol (UDP) is connectionless. It sends each application message as an independent datagram without first performing a handshake.
+[User Datagram Protocol (UDP)](/appendix/glossary/#user-datagram-protocol-udp) is connectionless. It sends each application message as an independent datagram without first performing a handshake.
 
 UDP itself does not:
 
@@ -160,7 +160,7 @@ The application chooses the transport that fits its requirements. UDP is not aut
 
 ## Listening Ports and Active Connections
 
-A **listening socket** waits for new traffic on a local port. An **established connection** represents an active TCP conversation between a local endpoint and a remote endpoint.
+A **[listening socket](/appendix/glossary/#listening-socket)** waits for new traffic on a local port. An **established connection** represents an active TCP conversation between a local endpoint and a remote endpoint.
 
 Example entries might look like:
 

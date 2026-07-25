@@ -27,7 +27,7 @@ The other payoff is the one you will use daily. When something breaks, layers te
 
 ## The TCP/IP Model
 
-This is the model the internet actually runs on. It takes its name from the Transmission Control Protocol (TCP) and the Internet Protocol (IP), and it has four layers.
+This is the model the internet actually runs on. It takes its name from the [Transmission Control Protocol (TCP)](/appendix/glossary/#transmission-control-protocol-tcp) and the [Internet Protocol (IP)](/appendix/glossary/#internet-protocol-ip), and it has four layers.
 
 | Layer | Its job | Examples |
 | --- | --- | --- |
@@ -42,7 +42,7 @@ Read it from the bottom up and it tells a story. The link layer moves data betwe
 
 ## The OSI Model
 
-The Open Systems Interconnection (OSI) model is older, has seven layers, and describes roughly the same thing in more detail.
+The [Open Systems Interconnection (OSI) model](/appendix/glossary/#open-systems-interconnection-osi-model) is older, has seven layers, and describes roughly the same thing in more detail.
 
 | OSI layer | Name | Maps to TCP/IP |
 | --- | --- | --- |

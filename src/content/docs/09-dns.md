@@ -5,7 +5,7 @@ description: How DNS turns names into useful records, where answers come from, a
 
 Which would be easier to remember when visiting a website: `portal.example.com` or `192.0.2.80`?
 
-People prefer meaningful names, but network traffic needs an IP address as its destination. The Domain Name System (DNS) connects the two.
+People prefer meaningful names, but network traffic needs an IP address as its destination. The [Domain Name System (DNS)](/appendix/glossary/#domain-name-system-dns) connects the two.
 
 DNS is often compared to a phone book. You look up a person's name to find a phone number. A computer looks up a DNS name to find an IP address or another piece of information associated with that name.
 
@@ -51,9 +51,9 @@ The configured server might be:
 - A Windows or Linux DNS server operated by an organization
 - A DNS service supplied by a cloud or virtualization platform
 
-The server that accepts a client's request and finds the answer is called a **recursive resolver**. It performs the lookup work and caches results for reuse.
+The server that accepts a client's request and finds the answer is called a **[recursive resolver](/appendix/glossary/#recursive-resolver)**. It performs the lookup work and caches results for reuse.
 
-An **authoritative DNS server** is different. It stores the official DNS records for a domain or zone. A recursive resolver asks authoritative servers for information when the answer is not already cached.
+An **[authoritative DNS server](/appendix/glossary/#authoritative-dns-server)** is different. It stores the official DNS records for a domain or zone. A recursive resolver asks authoritative servers for information when the answer is not already cached.
 
 | DNS role | Main job |
 | --- | --- |
@@ -122,7 +122,7 @@ This full path does not occur for every lookup. Recursive resolvers answer many 
 
 ## Common DNS Record Types
 
-DNS stores information in **resource records**. You do not need to memorize every record type, but these appear frequently:
+DNS stores information in **[resource records](/appendix/glossary/#resource-record)**. You do not need to memorize every record type, but these appear frequently:
 
 | Record | What it identifies |
 | --- | --- |
@@ -167,7 +167,7 @@ A firewall that permits only UDP port 53 can therefore cause some DNS requests t
 
 DNS would be slow and place unnecessary load on authoritative servers if every request repeated the full lookup path. Clients and recursive resolvers therefore cache answers.
 
-Each record has a **time to live (TTL)** expressed in seconds. The TTL tells a cache how long it may reuse that record before requesting a fresh copy.
+Each record has a **[time to live (TTL)](/appendix/glossary/#time-to-live-ttl)** expressed in seconds. The TTL tells a cache how long it may reuse that record before requesting a fresh copy.
 
 ```text
 TTL 300 = cache the record for up to 300 seconds

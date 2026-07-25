@@ -3,7 +3,7 @@ title: "Module 10: HTTP and TLS"
 description: Understand web requests, responses, status codes, protected connections, and certificate trust.
 ---
 
-Hypertext Transfer Protocol (HTTP) defines how web clients and servers exchange requests and responses. Transport Layer Security (TLS) protects that exchange. HTTP protected by TLS is called Hypertext Transfer Protocol Secure (HTTPS).
+[Hypertext Transfer Protocol (HTTP)](/appendix/glossary/#hypertext-transfer-protocol-http) defines how web clients and servers exchange requests and responses. [Transport Layer Security (TLS)](/appendix/glossary/#transport-layer-security-tls) protects that exchange. HTTP protected by TLS is called [Hypertext Transfer Protocol Secure (HTTPS)](/appendix/glossary/#hypertext-transfer-protocol-secure-https).
 
 When you open a website, several things happen before the page appears:
 
@@ -144,7 +144,7 @@ Before sending protected HTTP data, the client and server establish TLS:
 
 1. The client offers supported TLS options and usually identifies the requested hostname.
 2. The server selects compatible options and sends information used to establish shared encryption keys.
-3. The server proves its identity with a certificate.
+3. The server proves its identity with a [certificate](/appendix/glossary/#certificate).
 4. The client validates the certificate.
 5. Both sides derive session keys and begin exchanging protected HTTP data.
 
@@ -156,7 +156,7 @@ A server certificate connects a hostname to a public key. The client normally ch
 
 1. **Name:** The requested hostname is covered by the certificate.
 2. **Time:** The certificate is currently within its valid date range.
-3. **Trust:** The certificate leads through a valid chain to a certificate authority the client trusts.
+3. **Trust:** The certificate leads through a valid chain to a [certificate authority](/appendix/glossary/#certificate-authority-ca) the client trusts.
 
 A typical chain contains a server certificate and one or more Certificate Authority (CA) certificates:
 
@@ -176,7 +176,7 @@ Do not treat `curl --insecure` or a browser's certificate-warning bypass as a pe
 
 Multiple websites can share one server IP address. The hostname in the HTTP request tells the web server which site the client wants.
 
-For HTTPS, the server usually needs that name earlier so it can select the correct certificate. The client supplies it during the TLS handshake using **Server Name Indication (SNI)**.
+For HTTPS, the server usually needs that name earlier so it can select the correct certificate. The client supplies it during the TLS handshake using **[Server Name Indication (SNI)](/appendix/glossary/#server-name-indication-sni)**.
 
 If a client connects by IP address or supplies the wrong hostname, the server may present a default certificate that does not match.
 
