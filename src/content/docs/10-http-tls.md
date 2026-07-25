@@ -1,37 +1,241 @@
 ---
 title: "Module 10: HTTP and TLS"
-description: Request and response structure, status codes, the TLS handshake, and certificate trust.
+description: Understand web requests, responses, status codes, protected connections, and certificate trust.
 ---
 
-:::note[Draft]
-This module is not written yet. The outline below is the planned coverage.
+Hypertext Transfer Protocol (HTTP) defines how web clients and servers exchange requests and responses. Transport Layer Security (TLS) protects that exchange. HTTP protected by TLS is called Hypertext Transfer Protocol Secure (HTTPS).
+
+When you open a website, several things happen before the page appears:
+
+1. The Domain Name System (DNS) finds an IP address for the website's name.
+2. The client connects to the server.
+3. If the web address uses HTTPS, the client and server establish a protected TLS connection.
+4. The client sends an HTTP request.
+5. The server returns an HTTP response.
+
+This module focuses on the last three steps.
+
+## Reading a Web Address
+
+Consider this Uniform Resource Locator (URL):
+
+```text
+https://portal.example.com/account
+```
+
+| URL part | Example | Meaning |
+| --- | --- | --- |
+| Scheme | `https` | Use HTTP protected by TLS |
+| Hostname | `portal.example.com` | The server name that DNS resolves |
+| Path | `/account` | The resource requested from that server |
+
+The hostname helps the client find and identify the server. The path tells the server which resource the client wants.
+
+## HTTP Is a Request and Response Protocol
+
+The client sends a **request**, and the server returns a **response**.
+
+For example, a browser requesting a Hypertext Markup Language (HTML) page might send:
+
+```http
+GET /account HTTP/1.1
+Host: portal.example.com
+Accept: text/html
+```
+
+The fields are:
+
+| Request field | Example | Meaning |
+| --- | --- | --- |
+| Method | `GET` | The action the client is requesting |
+| Path | `/account` | The resource the client wants |
+| HTTP version | `HTTP/1.1` | The message format being used |
+| `Host` header | `portal.example.com` | The website the client wants |
+| `Accept` header | `text/html` | A type of content the client can use |
+
+A request can also contain a **body** after the headers. A blank line separates the headers from that body. For example, a form submission may place entered data in the request body.
+
+### Common HTTP Methods
+
+| Method | Common purpose |
+| --- | --- |
+| `GET` | Retrieve a resource |
+| `POST` | Submit data or request an action |
+| `PUT` or `PATCH` | Update a resource |
+| `DELETE` | Remove a resource |
+| `HEAD` | Request headers without the response body |
+
+The application decides what each path and method actually does. A successful network connection does not guarantee that the application will accept the request.
+
+## Reading an HTTP Response
+
+The server might answer:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 1250
+
+<html>...</html>
+```
+
+| Response field | Example | Meaning |
+| --- | --- | --- |
+| HTTP version | `HTTP/1.1` | The message format being used |
+| Status code | `200` | The numeric result |
+| Reason phrase | `OK` | A short description of the result |
+| `Content-Type` header | `text/html` | The format of the response body |
+| `Content-Length` header | `1250` | The body length in bytes |
+| Body | `<html>...</html>` | The content returned to the client |
+
+HTTP/2 and HTTP/3 encode messages differently, but they still use the same request methods, headers, responses, and status codes.
+
+## HTTP Status Codes
+
+The first digit identifies the general result:
+
+| Range | Category | General meaning |
+| --- | --- | --- |
+| `100`–`199` | Informational | The exchange is continuing |
+| `200`–`299` | Success | The request succeeded |
+| `300`–`399` | Redirection | The client should use another location |
+| `400`–`499` | Client request | The server rejected something about the request |
+| `500`–`599` | Server failure | The server or an upstream service failed |
+
+Common examples include:
+
+| Code | Meaning |
+| --- | --- |
+| `200 OK` | The request succeeded |
+| `301` or `302` | The resource is available at another location |
+| `400 Bad Request` | The server could not understand or accept the request |
+| `401 Unauthorized` | Authentication is required or failed |
+| `403 Forbidden` | The server understood the request but refuses access |
+| `404 Not Found` | The requested resource was not found |
+| `500 Internal Server Error` | The application encountered an unexpected failure |
+| `502`, `503`, or `504` | A server, service, or upstream connection is unavailable or failing |
+
+A `404` response proves that HTTP reached a server and received an answer. The problem is not the same as a DNS failure or connection timeout.
+
+## HTTPS Adds TLS Protection
+
+HTTPS means that HTTP is exchanged through a TLS-protected connection.
+
+Most HTTP and HTTPS connections use the Transmission Control Protocol (TCP).
+
+| Protocol | Common destination port | Protection |
+| --- | --- | --- |
+| HTTP | TCP 80 | HTTP content is not encrypted |
+| HTTPS | TCP 443 | TLS protects the HTTP content |
+
+HTTP/3 uses a transport protocol named QUIC over User Datagram Protocol (UDP) port 443, but the HTTP concepts in this module remain the same.
+
+TLS provides three important protections:
+
+- **Confidentiality:** Other systems carrying the traffic cannot read the protected HTTP content.
+- **Integrity:** Changes made in transit can be detected.
+- **Authentication:** The client can verify the server's identity.
+
+TLS does not prove that a website is honest or free from malicious content. It also does not hide every connection detail. The destination IP address, timing, and amount of traffic can still be visible.
+
+## A Simplified TLS Handshake
+
+Before sending protected HTTP data, the client and server establish TLS:
+
+1. The client offers supported TLS options and usually identifies the requested hostname.
+2. The server selects compatible options and sends information used to establish shared encryption keys.
+3. The server proves its identity with a certificate.
+4. The client validates the certificate.
+5. Both sides derive session keys and begin exchanging protected HTTP data.
+
+The real handshake contains additional fields and security checks. For troubleshooting, the important distinction is that TLS must succeed before the server can return an HTTPS response.
+
+## What the Certificate Proves
+
+A server certificate connects a hostname to a public key. The client normally checks:
+
+1. **Name:** The requested hostname is covered by the certificate.
+2. **Time:** The certificate is currently within its valid date range.
+3. **Trust:** The certificate leads through a valid chain to a certificate authority the client trusts.
+
+A typical chain contains a server certificate and one or more Certificate Authority (CA) certificates:
+
+| Certificate | Role |
+| --- | --- |
+| Server certificate | Identifies the website |
+| Intermediate CA certificate | Connects the server certificate to a trusted authority |
+| Root CA certificate | Acts as a trust anchor in the client's trust store |
+
+Common failures include an expired certificate, a hostname mismatch, a missing intermediate certificate, an untrusted internal CA, or an incorrect client clock.
+
+:::caution
+Do not treat `curl --insecure` or a browser's certificate-warning bypass as a permanent fix. Those actions skip identity validation and can hide the real configuration problem.
 :::
 
-## In This Module
+## Why One IP Address Can Host Many Websites
 
-- HTTP request and response anatomy, methods, headers, body
-- Status codes grouped by what they tell you to do next
-- Why TLS exists, and what it does and does not protect
-- The TLS handshake, and where certificates fit
-- Chains of trust, certificate authorities, and expiry
-- SNI, and why one IP can serve many sites
+Multiple websites can share one server IP address. The hostname in the HTTP request tells the web server which site the client wants.
 
-## Planned Coverage
+For HTTPS, the server usually needs that name earlier so it can select the correct certificate. The client supplies it during the TLS handshake using **Server Name Indication (SNI)**.
 
-- Use `curl` with verbose output as the main teaching tool, since it shows the whole exchange in text
-- Status codes taught as categories first, then the specific ones worth memorizing
-- Certificate validation broken into its checks, name match, validity dates, chain to a trusted root
-- Cover the errors people actually hit, expired certificate, name mismatch, incomplete chain, untrusted internal CA
-- Note that TLS hides content but not destination, which matters for both privacy and troubleshooting
+If a client connects by IP address or supplies the wrong hostname, the server may present a default certificate that does not match.
 
-:::tip[Optional Lab]
-Serve a page from the Linux VM over plain HTTP, then add a self-signed certificate. Watch the Windows VM reject it, then trust it deliberately and see the difference.
-:::
+## Find the Layer That Failed
+
+| Symptom | Layer to investigate first |
+| --- | --- |
+| The name does not resolve | DNS |
+| The connection times out or is refused | Routing, firewall, or listening service |
+| The client reports a certificate error | TLS, certificate, hostname, or client time |
+| The server returns a `400`-range code | HTTP request, authentication, or permissions |
+| The server returns a `500`-range code | Web server, application, or upstream service |
+
+Work from the lowest failing layer upward. Changing certificates will not fix a DNS failure, and changing DNS will not fix a `403 Forbidden` response.
+
+## Inspect an HTTPS Exchange with curl
+
+This read-only exercise requests the public documentation site `example.com` and discards the page body.
+
+On the Windows 11 virtual machine named WINCLIENT, run:
+
+```powershell
+curl.exe --verbose --output NUL https://example.com
+```
+
+On the Debian virtual machine named LINUXBOX, run:
+
+```text
+curl --verbose --output /dev/null https://example.com
+```
+
+Look for:
+
+- A connection to an IP address on port 443
+- TLS and certificate information
+- A line beginning with `>` that shows the HTTP request
+- A line beginning with `<` that shows the HTTP response
+- A successful status such as `200`
+
+The exact TLS and HTTP versions may differ between the two systems. Verbose output from authenticated websites can contain sensitive headers, so do not share it without checking for credentials or session data.
 
 ## Further Learning
 
-To be added.
+These public Request for Comments (RFC) documents define the protocols and certificate format:
+
+- [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/info/rfc9110/) defines HTTP methods, fields, and status codes.
+- [RFC 9112: HTTP/1.1](https://www.rfc-editor.org/info/rfc9112/) defines the text-based HTTP/1.1 message format used in the examples.
+- [RFC 9846: TLS 1.3](https://www.rfc-editor.org/info/rfc9846/) defines the current TLS 1.3 protocol.
+- [RFC 5280: Internet X.509 Public Key Infrastructure](https://www.rfc-editor.org/info/rfc5280/) defines certificate and certification-path validation.
+- [curl command-line documentation](https://curl.se/docs/manpage.html) explains the options used in the exercise.
 
 ## Checklist Before Moving On
 
-To be added.
+- [ ] You can identify the scheme, hostname, and path in a URL
+- [ ] You can distinguish an HTTP request from an HTTP response
+- [ ] You know what the five status-code groups indicate
+- [ ] You can explain what TLS protects
+- [ ] You can name the three main certificate checks
+- [ ] You can distinguish a DNS, connection, TLS, and HTTP failure
+- [ ] You inspected an HTTPS exchange with `curl`
+
+Continue to Module 11 to see how firewalls decide which traffic is permitted or blocked.
