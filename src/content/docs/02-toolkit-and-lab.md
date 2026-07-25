@@ -5,7 +5,7 @@ description: Verify the networking tools already on your computer, install Wires
 
 This module gets your environment ready. Most of it takes a few minutes, because the majority of what you need is already installed with the operating system (OS) on the computer you are using right now.
 
-The optional lab at the end adds two virtual machines (VMs). You only need them for the exercises where the point is to break something on purpose, which is not something you want to do to your own machine.
+The optional lab at the end adds two virtual machines (VMs): a Windows virtual machine (WINCLIENT) and a Linux virtual machine (LINUXBOX). You can read the guide without them, but building the lab is strongly recommended because many later modules use it for hands-on exercises.
 
 ## In This Module
 
@@ -86,10 +86,10 @@ You just watched the Domain Name System (DNS) turn a name into an address. Modul
 ## About the Optional Lab
 
 :::tip[Optional Lab]
-Lab sections appear in callouts like this one throughout the guide. Every module is written so that skipping all of them still leaves you with a complete understanding. Nothing later depends on having built the lab.
+The lab is optional, and you can read the guide without building it. However, building it is strongly recommended. Many later modules use the Windows virtual machine (WINCLIENT) and Linux virtual machine (LINUXBOX) for hands-on exercises that reinforce the concepts and provide practical experience.
 :::
 
-Some things cannot be learned on your own machine. You cannot safely put a wrong subnet mask on your work laptop, turn it into a router, or block your own traffic to see what a firewall drop looks like. The lab exists for exactly those exercises.
+The lab also gives you a safe place to change addresses, routes, services, and firewall rules without disrupting your everyday computer.
 
 It is two virtual machines.
 
