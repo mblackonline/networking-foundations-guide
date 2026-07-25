@@ -35,18 +35,20 @@ Look for **Physical Address**. On Linux use `ip link`, and on macOS use `ifconfi
 
 ## How a Switch Learns
 
-A switch has no configuration telling it where anything is. It works it out by watching.
+A switch connects devices on a local network. The physical sockets where network cables connect are called ports. You normally do not have to tell the switch which device is connected to each port. It learns those locations automatically by reading the source MAC addresses in the frames it receives.
 
-When a frame arrives, the switch reads the source MAC address and records which port it came from. That builds a table mapping addresses to ports.
+This automatic learning does not mean that a switch has no configuration. A managed switch can also be configured for security, separate networks, or fixed MAC-address entries.
+
+When a frame arrives, the switch reads the source MAC address and records which port it came from. This builds a MAC address table that maps addresses to ports.
 
 When a frame needs forwarding, the switch looks up the destination MAC address in that table.
 
-- If the address is in the table, the frame goes out that one port only.
-- If it is not, the switch floods the frame out every port except the one it arrived on. Whichever device replies teaches the switch where it lives, and the next frame is forwarded normally.
+- If the address is in the table, the switch forwards the frame toward the recorded port.
+- If it is not, the switch floods the frame to the other ports in the same Layer 2 network. When the destination sends a frame, the switch learns its location from that frame's source address.
 
-This is the whole algorithm, and it explains a useful diagnostic fact. A switch normally does not send you traffic destined for other machines, which is why a packet capture on a switched network shows your own traffic plus broadcasts rather than everything on the network.
+This simplified learning process explains a useful diagnostic fact. A switch normally does not send one device unicast traffic intended for another device. A packet capture therefore usually shows your own traffic, broadcasts, and some multicast or unknown-destination traffic rather than every conversation on the network.
 
-The older device this replaced was a hub, which repeated every frame to every port with no table at all. Hubs are gone, but the vocabulary survives in phrases like putting a port "in hub mode" for monitoring.
+Some switches, called Layer 3 switches, can also route traffic between IP networks. They still use MAC-address learning when switching local traffic. Module 5 covers routing.
 
 ## ARP
 
