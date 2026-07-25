@@ -1,6 +1,6 @@
 ---
 title: Networking Foundations
-description: A beginner-friendly, vendor-agnostic guide to the networking concepts that system administrators, DevOps engineers, and developers use every day.
+description: A beginner-friendly, vendor-agnostic networking guide for information technology support, system administration, DevOps, software development, and cybersecurity.
 template: splash
 hero:
   tagline: Learn the networking concepts behind every system you will build, support, or debug. No vendor certifications, no prior networking experience required.
@@ -11,19 +11,19 @@ hero:
       variant: primary
 ---
 
-:::note[AI-Assisted Development]
-AI tools were used to assist with research, drafting, editing, and reviewing portions of this guide. AI-assisted material can be incomplete, inaccurate, or outdated. Verify important information against the linked official documentation and use your own judgment before making changes.
+:::note[Artificial Intelligence-Assisted Development]
+Artificial intelligence (AI) tools were used to assist with research, drafting, editing, and reviewing portions of this guide. AI-assisted material can be incomplete, inaccurate, or outdated. Verify important information against the linked official documentation and use your own judgment before making changes.
 :::
 
 ## What This Guide Covers
 
-Networking is the layer underneath almost every problem you will troubleshoot. A service that will not start, a deployment that cannot reach its database, a laptop that gets an address but no internet, an API call that hangs. All of these are network questions before they are anything else.
+Networking is the layer underneath almost every problem you will troubleshoot. A service that will not start, a deployment that cannot reach its database, a laptop that gets an address but no internet, an application programming interface (API) call that hangs. All of these are network questions before they are anything else.
 
 This guide teaches the concepts that come up most often in real work, in the order that makes them build on each other.
 
 ## Who This Is For
 
-This guide is for people moving into system administration, DevOps, or software development. You should be comfortable using a computer and installing software. No prior networking knowledge is assumed.
+This guide is for people interested in information technology (IT) support, system administration, DevOps, software development, or cybersecurity. You should be comfortable using a computer and installing software. No prior networking knowledge is assumed.
 
 ## Vendor Agnostic
 

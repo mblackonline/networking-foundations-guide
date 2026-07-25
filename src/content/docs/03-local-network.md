@@ -1,27 +1,27 @@
 ---
 title: "Module 3: The Local Network"
-description: Ethernet frames, MAC addresses, switching, ARP, and broadcast domains.
+description: How Ethernet frames, hardware addresses, switches, and broadcasts move local traffic.
 ---
 
 Before data can go anywhere in the world, it has to get off your machine and onto the wire. This module covers the layer 2 hop, which is everything that happens inside your own network segment.
 
-This is also where a common misunderstanding gets cleared up. People often think an IP address is how one machine finds another. On your local network, it is not. It is how the conversation gets started, but the actual delivery uses something else entirely.
+This is also where a common misunderstanding gets cleared up. People often think an Internet Protocol (IP) address is how one machine finds another. On your local network, it is not. It is how the conversation gets started, but the actual delivery uses something else entirely.
 
 ## In This Module
 
-- What a MAC address identifies, and how it differs from an IP address
+- What a media access control (MAC) address identifies, and how it differs from an IP address
 - How a switch learns where devices are
-- ARP, and why every local IP conversation begins with a layer 2 question
+- How the Address Resolution Protocol (ARP) begins a local IP conversation
 - Broadcast domains, and the boundary that makes routing necessary
-- A conceptual look at VLANs
+- A conceptual look at virtual local area networks (VLANs)
 
 ## Frames and MAC Addresses
 
 At layer 2, the unit of data is a [frame](/appendix/glossary/#frame), and the addresses are [media access control (MAC) addresses](/appendix/glossary/#media-access-control-address-mac-address).
 
-A MAC address is 48 bits, usually written as six pairs of hex digits like `00:1A:2B:3C:4D:5E`. It is assigned to the network interface itself rather than to the machine, so a laptop with Wi-Fi and Ethernet has two of them.
+A typical Ethernet MAC address is 48 bits, usually written as six pairs of hexadecimal digits like `00:1A:2B:3C:4D:5E`. The address belongs to a network interface rather than to the entire machine, so a laptop with Wi-Fi and Ethernet has a separate address for each interface.
 
-The first three bytes identify the manufacturer and come from a block registered with the Institute of Electrical and Electronics Engineers (IEEE). The remaining three are assigned by that manufacturer. That is why you can often tell what kind of device you are looking at from its MAC address alone, which is useful when you are staring at an unfamiliar network.
+For many globally assigned addresses, a prefix registered by the Institute of Electrical and Electronics Engineers (IEEE) identifies the organization that received the address block. However, operating systems can use locally administered or randomized MAC addresses. A prefix can provide a clue about a device, but it does not always identify its manufacturer.
 
 The critical property is scope. A MAC address only has meaning on the local segment. It never crosses a router. Recall the point from Module 1, where the IP addresses stay fixed for the whole journey while the Ethernet header is rebuilt at every hop. MAC addresses are what live in that rebuilt header.
 
@@ -121,10 +121,10 @@ Then compare the two entries in the cache. The gateway and LINUXBOX are both rea
 
 ## Further Learning
 
-- [RFC 826: An Ethernet Address Resolution Protocol](https://www.rfc-editor.org/info/rfc826/) is the original ARP specification, and it is short enough to read in one sitting.
+- [Request for Comments (RFC) 826: An Ethernet Address Resolution Protocol](https://www.rfc-editor.org/info/rfc826/) is the original ARP specification, and it is short enough to read in one sitting.
 - [arp command reference](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/arp) documents the Windows options for viewing, adding, and deleting cache entries.
-- [MAC address](https://en.wikipedia.org/wiki/MAC_address) covers address structure, the manufacturer prefix, and the difference between unicast, multicast, and broadcast addresses.
-- [Network switch](https://en.wikipedia.org/wiki/Network_switch) covers switch behavior, address tables, and how switching compares with the hubs it replaced.
+- [IEEE Registration Authority: MAC Address Block Large](https://standards.ieee.org/products-programs/regauth/oui/) explains how organizational prefixes are used to create globally unique MAC addresses.
+- [National Institute of Standards and Technology switch glossary entry](https://csrc.nist.gov/glossary/term/switch) provides a concise definition of a network switch.
 
 ## Checklist Before Moving On
 

@@ -118,7 +118,7 @@ The definitions are original summaries written for this guide. Selecting a linke
 ## R
 
 - <span id="recursive-resolver"></span>**[Recursive resolver](https://www.rfc-editor.org/info/rfc1034):** A DNS server that accepts a client's query, finds the answer, and commonly caches it.
-- <span id="request-for-comments-rfc"></span>**[Request for Comments (RFC)](https://www.rfc-editor.org/about/):** A publication in the RFC series that documents internet standards, protocols, practices, or other technical information.
+- <span id="request-for-comments-rfc"></span>**[Request for Comments (RFC)](https://www.rfc-editor.org/about/rfc-editor/):** A publication in the RFC series that documents internet standards, protocols, practices, or other technical information.
 - <span id="resource-record"></span>**[Resource record](https://www.rfc-editor.org/info/rfc1035):** One item of DNS data, such as an address, mail-server, or alias record.
 - <span id="reverse-proxy"></span>**[Reverse proxy](https://www.rfc-editor.org/info/rfc9110):** A proxy that accepts connections on behalf of one or more servers.
 - <span id="route"></span>**[Route](https://www.rfc-editor.org/info/rfc1812):** An entry describing how traffic should reach a destination network or host.
@@ -164,4 +164,4 @@ The definitions are original summaries written for this guide. Selecting a linke
 
 This page links to source material; it does not reproduce source text, tables, or images. External material remains subject to its own copyright and license terms and is not included under this guide's MIT License.
 
-The RFC Editor's [RFC format guidance](https://www.rfc-editor.org/info/rfc7995) recommends linking references to RFC information pages. [IANA's protocol registries use a CC0 public-domain dedication](https://www.iana.org/help/licensing-terms). [NIST describes most information on its sites as public information](https://www.nist.gov/copyrights-disclaimers). [Microsoft permits plain-text links to its content](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions).
+The RFC Editor's [RFC format guidance](https://www.rfc-editor.org/info/rfc7995) recommends linking references to RFC information pages. [IANA's protocol registries use a Creative Commons Zero (CC0) public-domain dedication](https://www.iana.org/help/licensing-terms). [NIST describes most information on its sites as public information](https://www.nist.gov/copyrights-disclaimers). [Microsoft permits plain-text links to its content](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions).

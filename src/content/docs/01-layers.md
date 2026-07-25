@@ -1,6 +1,6 @@
 ---
 title: "Module 1: How Networks Are Layered"
-description: The TCP/IP and OSI models, encapsulation, and how to use layers as a troubleshooting map.
+description: How networking layers organize communication and provide a troubleshooting map.
 ---
 
 Networking looks like a pile of unrelated facts until you see the structure underneath it. That structure is layering, and it is the single idea that makes everything else in this guide fit together.
@@ -10,8 +10,8 @@ Every module that follows sits at one layer or another. Once you know where a to
 ## In This Module
 
 - Why networks are built in layers at all
-- The four layers of the TCP/IP model
-- The OSI model, and how it maps onto TCP/IP
+- The four layers of the Transmission Control Protocol/Internet Protocol (TCP/IP) model
+- The Open Systems Interconnection (OSI) model, and how it maps onto TCP/IP
 - Encapsulation, or what wraps what as data leaves your machine
 - Using layers as a deliberate troubleshooting order
 
@@ -29,6 +29,8 @@ The other payoff is the one you will use daily. When something breaks, layers te
 
 This is the model the internet actually runs on. It takes its name from the [Transmission Control Protocol (TCP)](/appendix/glossary/#transmission-control-protocol-tcp) and the [Internet Protocol (IP)](/appendix/glossary/#internet-protocol-ip), and it has four layers.
 
+The examples below include the Hypertext Transfer Protocol (HTTP), Domain Name System (DNS), Secure Shell (SSH), Simple Mail Transfer Protocol (SMTP), User Datagram Protocol (UDP), Internet Control Message Protocol (ICMP), and Address Resolution Protocol (ARP).
+
 | Layer | Its job | Examples |
 | --- | --- | --- |
 | Application | Do something useful for the user | HTTP, DNS, SSH, SMTP |
@@ -36,7 +38,7 @@ This is the model the internet actually runs on. It takes its name from the [Tra
 | Internet | Get a packet from one network to another | IP, ICMP |
 | Link | Move data across one physical hop | Ethernet, Wi-Fi, ARP |
 
-The examples above in full are the Hypertext Transfer Protocol (HTTP), the Domain Name System (DNS), Secure Shell (SSH), the Simple Mail Transfer Protocol (SMTP), the User Datagram Protocol (UDP), the Internet Control Message Protocol (ICMP), and the Address Resolution Protocol (ARP). Each one gets its own treatment later.
+Each example gets its own treatment later.
 
 Read it from the bottom up and it tells a story. The link layer moves data between two devices that can see each other directly. The internet layer chains those hops together so data can cross networks it has never seen. The transport layer makes sure it reaches the right program on the far machine. The application layer does something meaningful with it.
 
@@ -133,7 +135,7 @@ Some hosts are configured not to answer ping at all. A failed ping is evidence, 
 
 These optional references go deeper than this module needs.
 
-- [RFC 1122: Requirements for Internet Hosts](https://www.rfc-editor.org/info/rfc1122/) is the specification that defines the internet layering model and what each layer is responsible for.
+- [Request for Comments (RFC) 1122: Requirements for Internet Hosts](https://www.rfc-editor.org/info/rfc1122/) is the specification that defines the internet layering model and what each layer is responsible for.
 - [What is the OSI Model?](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) walks all seven layers with an example message travelling down and back up the stack.
 - [What is the network layer?](https://www.cloudflare.com/learning/network-layer/what-is-the-network-layer/) explains headers, packets, and how the OSI and TCP/IP models compare.
 - If you prefer video, Ed Harmoush's [Networking Fundamentals YouTube series](https://www.youtube.com/playlist?list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi) is one of my favorites and covers a wide range of topics.

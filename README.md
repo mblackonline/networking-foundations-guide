@@ -1,6 +1,6 @@
 # Networking Foundations
 
-This repository contains the source code for a beginner-friendly, vendor-agnostic networking guide aimed at people moving into system administration, DevOps, or software development.
+This repository contains the source code for a beginner-friendly, vendor-agnostic networking guide for people interested in information technology (IT) support, system administration, DevOps, software development, or cybersecurity.
 
 **If you want to follow the guide, you don't need anything in this repository. Read it on the website.**
 

@@ -36,9 +36,9 @@ Consider this simplified table:
 | `10.20.0.0/16` | `192.168.10.1` | Ethernet | 10 |
 | `0.0.0.0/0` | `192.168.10.1` | Ethernet | 25 |
 
-**[On-link](/appendix/glossary/#on-link)** means the destination is directly reachable on the local network. The host uses ARP to find the destination's MAC address and sends the frame directly.
+**[On-link](/appendix/glossary/#on-link)** means the destination is directly reachable on the local network. The host uses the Address Resolution Protocol (ARP) to find the destination's media access control (MAC) address and sends the frame directly.
 
-When a [next hop](/appendix/glossary/#next-hop) is listed, the host keeps the packet's final destination IP address but sends the local frame to that router's MAC address.
+When a [next hop](/appendix/glossary/#next-hop) is listed, the host keeps the packet's final destination Internet Protocol (IP) address but sends the local frame to that router's MAC address.
 
 ## Longest Prefix Match
 
@@ -65,9 +65,9 @@ This is the same idea as choosing a street address over a city name. Both descri
 
 The route `0.0.0.0/0` is the [default route](/appendix/glossary/#default-route).
 
-A `/0` fixes none of the address bits, so it matches every IPv4 destination. Because every more specific route has a longer prefix, the default is used only when nothing better matches.
+A `/0` fixes none of the address bits, so it matches every Internet Protocol version 4 (IPv4) destination. Because every more specific route has a longer prefix, the default is used only when nothing better matches.
 
-On a workstation, the default route normally points to the default gateway learned from DHCP or configured manually.
+On a workstation, the default route normally points to the default gateway learned from the Dynamic Host Configuration Protocol (DHCP) or configured manually.
 
 ```text
 0.0.0.0/0 -> default gateway
@@ -117,7 +117,7 @@ netstat -rn -f inet
 The formatting differs, but the same destination, gateway, interface, and metric ideas apply.
 
 :::note
-Your routing table may contain VPN routes, virtual machine networks, loopback routes, and several entries created automatically by the operating system. Start by finding only the connected network and default route. You do not need to understand every line yet.
+Your routing table may contain virtual private network (VPN) routes, virtual machine networks, loopback routes, and several entries created automatically by the operating system. Start by finding only the connected network and default route. You do not need to understand every line yet.
 :::
 
 ## Static and Dynamic Routes
@@ -215,7 +215,7 @@ The route is not persistent, but delete it when finished rather than waiting for
 
 ## Further Learning
 
-- [RFC 1812: Requirements for IPv4 Routers](https://www.rfc-editor.org/info/rfc1812/) defines longest-prefix route selection and other router behavior.
+- [Request for Comments (RFC) 1812: Requirements for IPv4 Routers](https://www.rfc-editor.org/info/rfc1812/) defines longest-prefix route selection and other router behavior.
 - [Microsoft's `route` command reference](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/route_ws2008) documents how Windows displays and changes its IPv4 routing table.
 - [Microsoft's TRACERT troubleshooting guide](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/trace-route-troubleshoot-tcp-ip-problems) explains how TTL and ICMP replies reveal a path.
 - [Linux `ip-route` manual page](https://man7.org/linux/man-pages/man8/ip-route.8.html) documents Linux route display and management.
@@ -230,4 +230,4 @@ The route is not persistent, but delete it when finished rather than waiting for
 - [ ] You understand how traceroute uses TTL and why a silent hop may still be working
 - [ ] Optional: you added, observed, and removed the temporary lab route
 
-Continue to Module 6 to see how NAT changes addresses as packets cross a network boundary.
+Continue to Module 6 to see how network address translation (NAT) changes addresses as packets cross a network boundary.

@@ -1,18 +1,18 @@
 ---
 title: "Module 2: Your Toolkit and Optional Lab"
-description: Verify the networking tools already on your computer, install Wireshark, and optionally build the two-VM lab.
+description: Verify the networking tools already on your computer, install Wireshark, and optionally build a two-machine virtual lab.
 ---
 
-This module gets your environment ready. Most of it takes a few minutes, because the majority of what you need is already installed on the computer you are using right now.
+This module gets your environment ready. Most of it takes a few minutes, because the majority of what you need is already installed with the operating system (OS) on the computer you are using right now.
 
-The optional lab at the end adds two virtual machines. You only need them for the exercises where the point is to break something on purpose, which is not something you want to do to your own machine.
+The optional lab at the end adds two virtual machines (VMs). You only need them for the exercises where the point is to break something on purpose, which is not something you want to do to your own machine.
 
 ## In This Module
 
 - Confirm the networking tools already built into your operating system
 - Install Wireshark and take a first capture
 - Understand which exercises need the lab and which do not
-- Optionally build the two-VM lab
+- Optionally build the two-virtual-machine lab
 
 ## The Tools You Already Have
 
@@ -20,7 +20,7 @@ Every operating system ships with tools that answer the basic networking questio
 
 | Question | Windows | Linux | macOS |
 | --- | --- | --- | --- |
-| What are my IP settings? | `ipconfig /all` | `ip addr` | `ifconfig` |
+| What are my Internet Protocol (IP) settings? | `ipconfig /all` | `ip addr` | `ifconfig` |
 | How does my machine pick a route? | `route print` | `ip route` | `netstat -rn` |
 | Who is on my local segment? | `arp -a` | `ip neigh` | `arp -a` |
 | What is listening or connected? | `netstat -ano` | `ss -tulpn` | `netstat -an` |
@@ -95,17 +95,19 @@ It is two virtual machines.
 
 **WINCLIENT** is a Windows 11 Enterprise evaluation. It is the machine you configure through the familiar graphical settings, and it plays the client in every exercise.
 
-**LINUXBOX** is a minimal Debian install with no desktop. It plays the other end, acting as server, router, NAT gateway, and reverse proxy in later modules. Every command for it is given as copy and paste, so no prior Linux experience is assumed.
+**LINUXBOX** is a minimal Debian install with no desktop. It plays the other end, acting as server, router, network address translation (NAT) gateway, and reverse proxy in later modules. Every command for it is given as copy and paste, so no prior Linux experience is assumed.
 
-The footprint is roughly 5 GB of memory while both run, and about 75 GB of disk. A machine with 16 GB of RAM is comfortable. With 8 GB it works, but close other applications and expect it to be slow.
+The footprint is roughly 5 gigabytes (GB) of memory while both run, and about 75 GB of disk. A machine with 16 GB of random-access memory (RAM) is comfortable. With 8 GB it works, but close other applications and expect it to be slow.
 
 Both operating systems are free to obtain. Debian is free software. Windows 11 Enterprise is a 90 day evaluation, so note the date you install it.
 
 ## Build the Lab Network
 
-The lab uses VirtualBox, which is free, open source under the GNU General Public License (GPL) version 3, and available for Windows, Linux, and Intel-based Macs. Other hypervisors work equally well, but the steps below are written for VirtualBox.
+The lab uses an Internet Protocol version 4 (IPv4) network in VirtualBox. The VirtualBox base package is free and open source under the GNU General Public License (GPL) version 3. The optional Extension Pack uses a separate license and is not required for this lab. VirtualBox's Dynamic Host Configuration Protocol (DHCP) service supplies the lab addresses automatically.
 
-1. Download and install VirtualBox from [virtualbox.org](https://www.virtualbox.org/). Accept the installer defaults.
+These x64 virtual machines require an Intel or AMD host. The steps are not written for Arm-based Macs or Windows devices. Other hypervisors can work, but the steps below are written for VirtualBox.
+
+1. Download and install the base package from the official [VirtualBox Downloads page](https://www.virtualbox.org/wiki/Downloads). Accept the installer defaults.
 2. In VirtualBox Manager, open **File > Tools > Network Manager**.
 3. Click the **NAT Networks** tab, then click **Create**.
 4. Select the new network and set:
@@ -122,16 +124,18 @@ The Dynamic Host Configuration Protocol (DHCP) is what supplies addresses automa
 
 ## Build WINCLIENT
 
-1. Download the Windows 11 Enterprise evaluation ISO from the [Microsoft Evaluation Center](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-11-enterprise). Choose the x64 ISO, not ARM64.
+An ISO image is a file containing the contents of an installation disc. Windows 11 also requires the Extensible Firmware Interface (EFI), Secure Boot, and a Trusted Platform Module (TPM). EFI replaces the traditional Basic Input/Output System (BIOS).
+
+1. Download the Windows 11 Enterprise evaluation ISO from the [Microsoft Evaluation Center](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-11-enterprise). Choose the x64 image used by ordinary Intel or AMD computers, not the ARM64 image intended for Arm-based computers.
 2. In VirtualBox Manager, click **New** and set:
    - **Name:** `WINCLIENT`
    - **ISO Image:** the Windows 11 ISO
    - Choose a manual installation. Depending on your VirtualBox version, either check **Skip Unattended Installation** or clear **Install OS Using Unattended Installation**
-   - **Base Memory:** 4096 MB
+   - **Base Memory:** 4096 megabytes (MB)
    - **Processors:** 2
    - Check **Enable EFI**
    - **Hard Disk:** 64 GB
-3. Before starting it, open **Settings > System** and confirm **TPM Version** is 2.0 and **Enable Secure Boot** is checked. Windows 11 setup refuses to run without both. EFI is the Extensible Firmware Interface, the modern replacement for the traditional BIOS, and a TPM is a Trusted Platform Module, a chip that stores encryption keys.
+3. Before starting it, open **Settings > System** and confirm **TPM Version** is 2.0 and **Enable Secure Boot** is checked. Windows 11 setup refuses to run without both.
 4. Open **Settings > Network** and set Adapter 1 to **NAT Network**, name **NETLAB**.
 5. Start the VM and install Windows. When setup asks you to sign in, choose **Sign-in options**, then the option to create a local account, and name it `labuser`.
 6. After reaching the desktop, install Guest Additions from **Devices > Insert Guest Additions CD image**, run the installer from the CD drive, and restart.
@@ -149,7 +153,7 @@ The Dynamic Host Configuration Protocol (DHCP) is what supplies addresses automa
 3. Open **Settings > Network** and set Adapter 1 to **NAT Network**, name **NETLAB**.
 4. Start the VM and run the installer. Accept the defaults for language, location, and disk partitioning.
 5. Set a root password and create a normal user named `labuser`.
-6. At the software selection screen, clear every desktop environment and leave only **SSH server** and **standard system utilities** checked. This keeps the VM small and fast.
+6. At the software selection screen, clear every desktop environment and leave only **Secure Shell (SSH) server** and **standard system utilities** checked. This keeps the VM small and fast.
 7. When the install finishes and the VM reboots, log in as `labuser`.
 
 Install the handful of tools the later modules use:

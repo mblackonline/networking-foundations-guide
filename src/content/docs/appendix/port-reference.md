@@ -47,7 +47,7 @@ Ports `8080` and `8443` are commonly used as alternate web or proxy ports, but t
 | Service | Port | Transport | Purpose and protection |
 | --- | ---: | --- | --- |
 | File Transfer Protocol (FTP) data | `20` | TCP | Default data connection for active-mode FTP |
-| FTP and explicit FTPS control | `21` | TCP | FTP control connection; explicit FTPS can upgrade it to TLS |
+| File Transfer Protocol (FTP) and explicit File Transfer Protocol Secure (FTPS) control | `21` | TCP | FTP control connection; explicit FTPS can upgrade it to TLS |
 | Secure Shell (SSH), SSH File Transfer Protocol (SFTP), and Secure Copy Protocol (SCP) | `22` | TCP | Protected remote access and file transfer |
 | Telnet | `23` | TCP | Legacy remote text session without encryption |
 | FTP protected by TLS (implicit FTPS) | `990` | TCP | FTPS control connection that begins with TLS |

@@ -10,7 +10,7 @@ That local-or-remote decision is the main idea in this module. The calculations 
 ## In This Module
 
 - What an IPv4 address and subnet mask each do
-- How CIDR notation describes a subnet
+- How Classless Inter-Domain Routing (CIDR) notation describes a subnet
 - How to find the network, broadcast, and usable host range
 - The private IPv4 ranges
 - How a host decides whether to use its default gateway
@@ -118,10 +118,10 @@ Before sending a packet, a host compares the destination with its own network.
 
 Suppose the host is `192.168.10.77/24`.
 
-- `192.168.10.100` is in the same `/24`, so the host uses ARP to find that destination's MAC address.
+- `192.168.10.100` is in the same `/24`, so the host uses the Address Resolution Protocol (ARP) to find that destination's media access control (MAC) address.
 - `192.168.11.20` is outside the `/24`, so the host sends the frame to its [default gateway](/appendix/glossary/#default-gateway).
 
-The destination IP address remains `192.168.11.20`. Only the local frame is addressed to the gateway's MAC address.
+The destination Internet Protocol (IP) address remains `192.168.11.20`. Only the local frame is addressed to the gateway's MAC address.
 
 ```text
 Local destination  -> ARP for the destination
@@ -186,18 +186,18 @@ Use the address and mask to find:
 Then compare your default gateway with that range. The gateway should be reachable on the local subnet.
 
 :::tip[Optional Lab]
-On WINCLIENT, record the current address, mask, gateway, and DNS settings. Temporarily configure the same values with a broader `/16` mask.
+On WINCLIENT, record the current address, mask, gateway, and Domain Name System (DNS) settings. Temporarily configure the same values with a broader `/16` mask.
 
 Capture with the Wireshark filter `arp`, clear the ARP cache with `arp -d *`, and ping `10.0.30.1`. WINCLIENT should send an unanswered ARP request because the wrong `/16` makes that address appear local.
 
-Return the adapter to automatic DHCP afterward, run `ipconfig /renew`, and confirm the original `/24` mask returns.
+Return the adapter to automatic Dynamic Host Configuration Protocol (DHCP) afterward, run `ipconfig /renew`, and confirm the original `/24` mask returns.
 :::
 
 ## Further Learning
 
-- [RFC 1918: Address Allocation for Private Internets](https://www.rfc-editor.org/info/rfc1918/) defines the private IPv4 ranges.
+- [Request for Comments (RFC) 1918: Address Allocation for Private Internets](https://www.rfc-editor.org/info/rfc1918/) defines the private IPv4 ranges.
 - [RFC 3021: Using 31-Bit Prefixes on IPv4 Point-to-Point Links](https://www.rfc-editor.org/info/rfc3021/) explains the `/31` exception.
-- [IANA IPv4 Special-Purpose Address Space](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml) lists private, loopback, link-local, and other special ranges.
+- [Internet Assigned Numbers Authority (IANA) IPv4 Special-Purpose Address Space](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml) lists private, loopback, link-local, and other special ranges.
 - Ed Harmoush's free [Subnetting Mastery video series](https://www.practicalnetworking.net/stand-alone/subnetting-mastery/) provides additional calculation methods and practice.
 
 ## Checklist Before Moving On

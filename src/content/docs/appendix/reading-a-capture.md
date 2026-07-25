@@ -103,7 +103,7 @@ A graceful TCP close commonly uses the finish (FIN) and ACK flags. An RST ends a
 Apply the `dns` display filter and match each query with its response.
 
 - A response marked **NoError** means the DNS server processed the query without a DNS error. It does not guarantee that the returned address is correct for the application.
-- A response marked **Name Error** or **NXDOMAIN** means the requested name does not exist according to that server.
+- A response marked **Name Error** or **Non-Existent Domain (NXDOMAIN)** means the requested name does not exist according to that server.
 - Repeated queries with no response show that the client did not receive an answer in this capture. They do not identify where the response was lost.
 
 Use `dns.flags.rcode == 3` to show only NXDOMAIN responses. Other DNS failures use different response codes, so this filter does not find every possible DNS problem.

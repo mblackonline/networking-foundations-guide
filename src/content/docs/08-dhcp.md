@@ -3,7 +3,7 @@ title: "Module 8: DHCP"
 description: How devices receive IPv4 settings automatically, what can provide DHCP, and what common failures look like.
 ---
 
-A device needs several settings before it can communicate on an IPv4 network. You could enter those settings by hand, but doing that for every laptop, phone, printer, and virtual machine would be slow and easy to get wrong.
+A device needs several settings before it can communicate on an Internet Protocol version 4 (IPv4) network. You could enter those settings by hand, but doing that for every laptop, phone, printer, and virtual machine would be slow and easy to get wrong.
 
 The [Dynamic Host Configuration Protocol (DHCP)](/appendix/glossary/#dynamic-host-configuration-protocol-dhcp) supplies those settings automatically.
 
@@ -27,10 +27,10 @@ The server commonly supplies:
 | IPv4 address | Identifies the client's interface on the network |
 | Subnet mask | Tells the client which IPv4 destinations are local |
 | Default gateway | Provides a path to destinations outside the local subnet |
-| DNS server addresses | Tell the client where to send name-resolution requests |
+| Domain Name System (DNS) server addresses | Tell the client where to send name-resolution requests |
 | Lease time | States how long the client may use the address |
 
-These settings must work together. A client can have a valid-looking address but still fail to reach other networks because it received the wrong mask or gateway. It may also reach IP addresses successfully while names fail because it received the wrong DNS settings.
+These settings must work together. A client can have a valid-looking address but still fail to reach other networks because it received the wrong mask or gateway. It may also reach Internet Protocol (IP) addresses successfully while names fail because it received the wrong DNS settings.
 
 The DHCP server keeps a range of addresses available for clients. This range is often called a **pool** or **scope**. When the server assigns one of those addresses, it records a **[lease](/appendix/glossary/#dhcp-lease)** so it does not give the same address to another client.
 
@@ -47,7 +47,7 @@ DHCP is a service or role, not one particular type of physical device. Many diff
 | Virtualization platform | Supplies settings to virtual machines on a virtual network |
 | Cloud provider's network service | Supplies settings to virtual machines and other cloud resources |
 
-In this guide's lab, Oracle VirtualBox provides DHCP for the VirtualBox NAT Network named NETLAB. The Windows 11 virtual machine named WINCLIENT and the Debian virtual machine named LINUXBOX are both DHCP clients.
+In this guide's lab, Oracle VirtualBox provides DHCP for the VirtualBox network address translation (NAT) Network named NETLAB. The Windows 11 virtual machine named WINCLIENT and the Debian virtual machine named LINUXBOX are both DHCP clients.
 
 :::note[DHCP and Active Directory]
 Active Directory Domain Services (AD DS) does not assign IP addresses by itself. A Windows Server can provide addresses after the separate **DHCP Server** role is installed and configured.
@@ -70,7 +70,7 @@ A new DHCP client has two immediate problems:
 - It does not have a usable IPv4 address.
 - It may not know the DHCP server's IPv4 address.
 
-The client therefore sends a local broadcast that every device on the subnet can receive:
+Dynamic Host Configuration Protocol version 4 (DHCPv4) uses the User Datagram Protocol (UDP). The client sends a local broadcast that every device on the subnet can receive:
 
 ```text
 Source IPv4 address (unconfigured client):  0.0.0.0
@@ -81,9 +81,9 @@ Destination UDP port (DHCP server):          67
 
 The DHCP server replies from UDP port 67 to the client's UDP port 68.
 
-## The DORA Exchange
+## The Discover, Offer, Request, Acknowledgment (DORA) Exchange
 
-A client obtaining a new DHCPv4 lease normally completes four steps. Their first letters form **[DORA](/appendix/glossary/#dora)**.
+A client obtaining a new DHCPv4 lease normally completes four steps known as **[DORA](/appendix/glossary/#dora)**.
 
 | Step | Message | Sent by | Meaning |
 | ---: | --- | --- | --- |
@@ -135,7 +135,7 @@ The relay also tells the server which subnet the request came from, allowing the
 
 Routers, firewalls, and many Layer 3 switches can act as DHCP relays. Windows Server can also provide a relay through its Remote Access role. The relay is an intermediary; it is not the server that owns the address pool.
 
-If DHCP works on several subnets but fails on only one, check that subnet's DHCP pool, VLAN, and relay configuration.
+If DHCP works on several subnets but fails on only one, check that subnet's DHCP pool, virtual local area network (VLAN), and relay configuration.
 
 ## What a 169.254 Address Means
 
@@ -176,7 +176,7 @@ Find the active network adapter and identify:
 - **Lease Obtained**
 - **Lease Expires**
 
-Do not assume that the first adapter is the active one. VPN and virtualization software can create several adapters.
+Do not assume that the first adapter is the active one. Virtual private network (VPN) and virtualization software can create several adapters.
 
 On Linux, these commands show the assigned IPv4 addresses, routes, and current DNS configuration:
 
@@ -228,8 +228,8 @@ WINCLIENT may receive the same IPv4 address again. That is normal and does not m
 
 ## Further Learning
 
-- [RFC 2131: Dynamic Host Configuration Protocol](https://www.rfc-editor.org/info/rfc2131/) defines DHCPv4 client, server, relay, and lease behavior.
-- [RFC 2132: DHCP Options and BOOTP Vendor Extensions](https://www.rfc-editor.org/info/rfc2132/) defines the configuration options carried by DHCPv4.
+- [Request for Comments (RFC) 2131: Dynamic Host Configuration Protocol](https://www.rfc-editor.org/info/rfc2131/) defines DHCPv4 client, server, relay, and lease behavior.
+- [RFC 2132: DHCP Options and Bootstrap Protocol (BOOTP) Vendor Extensions](https://www.rfc-editor.org/info/rfc2132/) defines the configuration options carried by DHCPv4.
 - [RFC 3927: Dynamic Configuration of IPv4 Link-Local Addresses](https://www.rfc-editor.org/info/rfc3927/) defines the `169.254.0.0/16` link-local range.
 - [Microsoft Windows Server DHCP documentation](https://learn.microsoft.com/en-us/windows-server/networking/technologies/dhcp/quickstart-install-configure-dhcp-server) explains the DHCP Server role and authorization in an Active Directory domain.
 - [Microsoft DHCP relay documentation](https://learn.microsoft.com/en-us/windows-server/networking/technologies/dhcp/dhcp-deploy-relay-agent) explains the separate Windows Server relay role.

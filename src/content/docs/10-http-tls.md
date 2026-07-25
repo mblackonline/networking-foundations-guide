@@ -7,7 +7,7 @@ description: Understand web requests, responses, status codes, protected connect
 
 When you open a website, several things happen before the page appears:
 
-1. The Domain Name System (DNS) finds an IP address for the website's name.
+1. The Domain Name System (DNS) finds an Internet Protocol (IP) address for the website's name.
 2. The client connects to the server.
 3. If the web address uses HTTPS, the client and server establish a protected TLS connection.
 4. The client sends an HTTP request.

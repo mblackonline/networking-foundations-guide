@@ -5,6 +5,8 @@ description: A complete CIDR reference, calculation shortcuts, and practice prob
 
 Use this appendix after Module 4 when you want more subnetting practice or a complete reference. You do not need to memorize the tables before continuing through the guide.
 
+This appendix uses Internet Protocol version 4 (IPv4) and Classless Inter-Domain Routing (CIDR) notation.
+
 ## Complete IPv4 CIDR Reference
 
 | Prefix | Subnet mask | Total addresses | Usually usable by hosts |

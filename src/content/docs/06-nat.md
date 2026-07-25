@@ -3,7 +3,7 @@ title: "Module 6: NAT"
 description: Network address translation, port forwarding, and why inbound is the hard direction.
 ---
 
-The private IPv4 address on your computer cannot be routed across the public internet. On a typical IPv4 network, a gateway replaces that address with one that can be routed publicly before sending the packet onward.
+The private Internet Protocol version 4 (IPv4) address on your computer cannot be routed across the public internet. On a typical IPv4 network, a gateway replaces that address with one that can be routed publicly before sending the packet onward.
 
 That replacement is [network address translation (NAT)](/appendix/glossary/#network-address-translation-nat).
 
@@ -66,9 +66,11 @@ This works easily for one device. A real gateway may have many devices making co
 
 ## Sharing One Public Address
 
-Port numbers identify individual network conversations. Module 7 covers them in detail. For now, read `10.0.20.15:51514` as IP address `10.0.20.15` using port `51514`.
+Port numbers identify individual network conversations. Module 7 covers them in detail. For now, read `10.0.20.15:51514` as Internet Protocol (IP) address `10.0.20.15` using port `51514`.
 
-For the laptop's HTTPS connection, the complete address-and-port translation might be:
+For the laptop's Hypertext Transfer Protocol Secure (HTTPS) connection, the complete address-and-port translation might be:
+
+HTTPS normally uses the Transmission Control Protocol (TCP).
 
 | Laptop's private source | Gateway's translated public source | Web server destination |
 | --- | --- | --- |
@@ -122,21 +124,21 @@ Traditional outbound NAT makes unsolicited inbound connections difficult because
 - Home routers let many devices share one public IPv4 address.
 - Cloud NAT gateways give private virtual machines outbound access.
 - Container platforms translate traffic between container and host networks.
-- VPN gateways may translate traffic when connected networks use overlapping addresses.
+- Virtual private network (VPN) gateways may translate traffic when connected networks use overlapping addresses.
 
 NAT also affects logs. A public server normally records the NAT gateway's translated public source address, not the private address of the client that started the connection.
 
-## Double NAT and CGNAT
+## Double NAT and Carrier-Grade NAT
 
 **Double NAT** means traffic crosses two NAT gateways. A virtual machine behind a home router is a common example: the virtualization platform translates the VM's address first, and the home router translates it again before the packet reaches the internet.
 
 Outbound traffic usually still works. Inbound access is harder because each NAT gateway may need its own port-forwarding rule.
 
-**[Carrier-grade NAT (CGNAT)](/appendix/glossary/#carrier-grade-nat-cgnat)** is a NAT gateway operated by an internet provider. It lets many customers share public IPv4 addresses. Because the customer does not control the provider's gateway, ordinary inbound port forwarding may not be available.
+**[Carrier-grade network address translation (CGNAT)](/appendix/glossary/#carrier-grade-nat-cgnat)** is a NAT gateway operated by an internet provider. It lets many customers share public IPv4 addresses. Because the customer does not control the provider's gateway, ordinary inbound port forwarding may not be available.
 
 When an inbound service fails despite a correct local port forward, check whether another router or CGNAT exists upstream.
 
-:::note[IPv6]
+:::note[Internet Protocol Version 6 (IPv6)]
 This module describes IPv4 NAT. IPv6 provides a much larger address space and does not require NAT for address conservation. IPv6 services still need firewall rules and other access controls.
 :::
 
@@ -227,18 +229,18 @@ You can practice the idea with the `NETLAB` NAT Network in VirtualBox. The rule 
    Test-NetConnection 127.0.0.1 -Port 18022
    ```
 
-5. Find `TcpTestSucceeded : True` in the result. The test contacted TCP port 18022 on the Windows host, and VirtualBox forwarded the connection to the SSH service on TCP port 22 on LINUXBOX.
+5. Find `TcpTestSucceeded : True` in the result. The test contacted Transmission Control Protocol (TCP) port 18022 on the Windows host, and VirtualBox forwarded the connection to the Secure Shell (SSH) service on TCP port 22 on LINUXBOX.
 6. When finished, delete the `natlab-ssh` rule in VirtualBox. Removing it returns NETLAB to its previous configuration.
 :::
 
 ## Further Learning
 
 - [Oracle VirtualBox networking documentation](https://docs.oracle.com/en/virtualization/virtualbox/7.2/user/networkingdetails.html) explains NAT Network port-forwarding rules and how to remove them.
-- [RFC 3022: Traditional IP Network Address Translator](https://www.rfc-editor.org/info/rfc3022/) describes basic NAT, port translation, and translation state.
+- [Request for Comments (RFC) 3022: Traditional IP Network Address Translator](https://www.rfc-editor.org/info/rfc3022/) describes basic NAT, port translation, and translation state.
 - [RFC 2663: NAT Terminology and Considerations](https://www.rfc-editor.org/info/rfc2663/) defines common NAT terms and behaviors.
 - [RFC 6888: Common Requirements for Carrier-Grade NATs](https://www.rfc-editor.org/info/rfc6888/) explains provider-operated address sharing.
 - [RFC 5737: IPv4 Address Blocks for Documentation](https://www.rfc-editor.org/info/rfc5737/) defines the example addresses used in this module.
-- [ipify](https://www.ipify.org/) documents the free public-address API used in the exercise.
+- [ipify](https://www.ipify.org/) documents the free public-address application programming interface (API) used in the exercise.
 
 ## Checklist Before Moving On
 
@@ -250,4 +252,4 @@ You can practice the idea with the `NETLAB` NAT Network in VirtualBox. The rule 
 - [ ] You compared a private address with the public address seen externally
 - [ ] Optional: You created and removed a local-only VirtualBox port-forwarding rule
 
-Continue to Module 7 to see how TCP, UDP, ports, and sockets identify individual conversations.
+Continue to Module 7 to see how TCP, User Datagram Protocol (UDP), ports, and sockets identify individual conversations.

@@ -25,7 +25,7 @@ Cloud providers let you build networks with software instead of connecting physi
 | Subnet | An IP address range with a prefix, such as `10.20.1.0/24` |
 | Route table | Destination prefixes and the targets that can reach them |
 | Internet gateway | A path between a cloud network and the internet |
-| Network address translation (NAT) gateway | Translates private source addresses for outbound IPv4 traffic |
+| Network address translation (NAT) gateway | Translates private source addresses for outbound Internet Protocol version 4 (IPv4) traffic |
 | Security group or network security group | Rules that permit or block traffic at a cloud resource or subnet |
 | Load balancer | Accepts connections and distributes them among backend systems |
 
@@ -94,7 +94,7 @@ Do not expose SSH or RDP through an internet-facing firewall merely because you 
 
 | Role | Common networking work |
 | --- | --- |
-| IT Support | Troubleshooting Wi-Fi, Dynamic Host Configuration Protocol (DHCP), DNS, VPN connections, and remote access |
+| Information Technology (IT) Support | Troubleshooting Wi-Fi, Dynamic Host Configuration Protocol (DHCP), DNS, VPN connections, and remote access |
 | System Administration | Managing addressing, routing, firewalls, name services, remote administration, and virtual machine networks |
 | DevOps and Cloud | Building cloud subnets, routes, security rules, load balancers, container networks, and service connectivity |
 | Software Development | Understanding DNS, sockets, ports, application programming interfaces (APIs), HTTP, Transport Layer Security (TLS), proxies, and database connections |

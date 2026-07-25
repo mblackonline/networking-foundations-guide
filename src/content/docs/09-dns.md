@@ -5,11 +5,11 @@ description: How DNS turns names into useful records, where answers come from, a
 
 Which would be easier to remember when visiting a website: `portal.example.com` or `192.0.2.80`?
 
-People prefer meaningful names, but network traffic needs an IP address as its destination. The [Domain Name System (DNS)](/appendix/glossary/#domain-name-system-dns) connects the two.
+People prefer meaningful names, but network traffic needs an Internet Protocol (IP) address as its destination. The [Domain Name System (DNS)](/appendix/glossary/#domain-name-system-dns) connects the two.
 
 DNS is often compared to a phone book. You look up a person's name to find a phone number. A computer looks up a DNS name to find an IP address or another piece of information associated with that name.
 
-The domain name and IPv4 address used here are reserved for documentation and do not identify real systems.
+The domain name and Internet Protocol version 4 (IPv4) address used here are reserved for documentation and do not identify real systems.
 
 ## In This Module
 
@@ -41,7 +41,7 @@ DNS lookup returns an address -> Application connects to that address
 
 ## The DNS Server Your Client Uses
 
-Your computer is configured with one or more DNS server addresses. Those addresses often arrive through DHCP, as described in Module 8.
+Your computer is configured with one or more DNS server addresses. Those addresses often arrive through the Dynamic Host Configuration Protocol (DHCP), as described in Module 8.
 
 The configured server might be:
 
@@ -126,16 +126,16 @@ DNS stores information in **[resource records](/appendix/glossary/#resource-reco
 
 | Record | What it identifies |
 | --- | --- |
-| A | An IPv4 address for a name |
-| AAAA | An IPv6 address for a name |
-| CNAME | Another DNS name used as an alias |
-| MX | The mail servers that accept email for a domain |
-| NS | The authoritative DNS servers for a zone |
-| PTR | A name associated with an IP address in reverse DNS |
-| SRV | The host and port providing a particular service |
-| TXT | Text used for verification, email policies, and other published data |
+| A (Address) | An IPv4 address for a name |
+| AAAA | An Internet Protocol version 6 (IPv6) address for a name |
+| CNAME (Canonical Name) | Another DNS name used as an alias |
+| MX (Mail Exchange) | The mail servers that accept email for a domain |
+| NS (Name Server) | The authoritative DNS servers for a zone |
+| PTR (Pointer) | A name associated with an IP address in reverse DNS |
+| SRV (Service) | The host and port providing a particular service |
+| TXT (Text) | Text used for verification, email policies, and other published data |
 
-DNS supports both IP versions. An A record supplies an IPv4 address, while an AAAA record supplies an IPv6 address. A name can have one type or both. DNS is resolving the name to the requested record; it is not translating an IPv4 address into an IPv6 address.
+DNS supports both IP versions. An A record supplies an IPv4 address, while an AAAA record supplies an Internet Protocol version 6 (IPv6) address. A name can have one type or both. DNS is resolving the name to the requested record; it is not translating an IPv4 address into an IPv6 address.
 
 An A record might be read as:
 
@@ -153,9 +153,9 @@ The resolver must then find the address records for `webhost.example.net`.
 
 One name can have more than one A or AAAA record. Multiple answers may be used for redundancy or traffic distribution, so receiving several addresses is not automatically a problem.
 
-SRV records are especially important in Active Directory. Windows clients use them to find domain controllers and services such as LDAP and Kerberos.
+SRV records are especially important in Active Directory. Windows clients use them to find domain controllers and services such as the Lightweight Directory Access Protocol (LDAP) and Kerberos.
 
-## DNS Uses UDP and TCP Port 53
+## DNS Uses User Datagram Protocol (UDP) and Transmission Control Protocol (TCP) Port 53
 
 Traditional DNS supports both UDP port 53 and TCP port 53.
 
@@ -163,7 +163,7 @@ Most ordinary queries begin with UDP because a short question and answer fit nat
 
 A firewall that permits only UDP port 53 can therefore cause some DNS requests to work while others fail.
 
-## Caching and TTL
+## Caching and Time to Live (TTL)
 
 DNS would be slow and place unnecessary load on authoritative servers if every request repeated the full lookup path. Clients and recursive resolvers therefore cache answers.
 
@@ -236,8 +236,8 @@ dig example.com NS
 | Result or symptom | Likely meaning |
 | --- | --- |
 | Connecting by IP works, but connecting by name fails | DNS configuration or resolution is likely involved |
-| `NXDOMAIN` | The DNS server reports that the requested name does not exist |
-| `SERVFAIL` | The resolver could not complete the lookup |
+| Non-Existent Domain (`NXDOMAIN`) | The DNS server reports that the requested name does not exist |
+| Server Failure (`SERVFAIL`) | The resolver could not complete the lookup |
 | Query times out | The DNS server may be unreachable, blocked, or not responding |
 | Corrected record still returns an old value | A client or resolver may still have the previous answer cached |
 | Internal name fails while public names work | The client may be using the wrong DNS server |
@@ -281,9 +281,9 @@ Record order and TTL values may differ because of caching. Both clients should s
 
 ## Further Learning
 
-- [RFC 1034: Domain Names—Concepts and Facilities](https://www.rfc-editor.org/info/rfc1034/) explains the DNS hierarchy, resolvers, authoritative data, and caching.
+- [Request for Comments (RFC) 1034: Domain Names—Concepts and Facilities](https://www.rfc-editor.org/info/rfc1034/) explains the DNS hierarchy, resolvers, authoritative data, and caching.
 - [RFC 1035: Domain Names—Implementation and Specification](https://www.rfc-editor.org/info/rfc1035/) defines DNS messages, common records, and UDP/TCP transport.
-- [IANA DNS Parameters](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml) maintains the authoritative registry of DNS record types and other protocol values.
+- [Internet Assigned Numbers Authority (IANA) DNS Parameters](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml) maintains the authoritative registry of DNS record types and other protocol values.
 - [Microsoft DNS queries and lookups documentation](https://learn.microsoft.com/en-us/windows-server/networking/dns/queries-lookups) explains recursive and iterative lookups in Windows environments.
 - [Microsoft `Resolve-DnsName` documentation](https://learn.microsoft.com/en-us/powershell/module/dnsclient/resolve-dnsname) documents record queries and command options.
 - [BIND 9 `dig` documentation](https://bind9.readthedocs.io/en/stable/manpages.html#dig-dns-lookup-utility) documents the Linux lookup tool used in this module.
@@ -299,4 +299,4 @@ Record order and TTL values may differ because of caching. Both clients should s
 - [ ] You queried an A record using a tool available on your operating system
 - [ ] Optional: You compared DNS answers on WINCLIENT and LINUXBOX
 
-Continue to Module 10 to see how HTTP and TLS use the addresses returned by DNS.
+Continue to Module 10 to see how the Hypertext Transfer Protocol (HTTP) and Transport Layer Security (TLS) use the addresses returned by DNS.

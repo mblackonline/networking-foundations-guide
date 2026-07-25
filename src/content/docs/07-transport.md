@@ -3,7 +3,7 @@ title: "Module 7: Transport, Ports, and Sockets"
 description: How ports identify network services, how TCP establishes reliable connections, and how UDP sends independent messages.
 ---
 
-An IP address gets network traffic to the correct device. A device may be running a web browser, an email client, a game, and many background services at the same time. The operating system still needs to deliver each piece of incoming data to the correct application.
+An Internet Protocol (IP) address gets network traffic to the correct device. A device may be running a web browser, an email client, a game, and many background services at the same time. The operating system still needs to deliver each piece of incoming data to the correct application.
 
 Transport protocols and port numbers provide that next level of identification.
 
@@ -12,20 +12,20 @@ Transport protocols and port numbers provide that next level of identification.
 - How IP addresses and port numbers perform different jobs
 - How one server handles many connections on the same port
 - What a socket is
-- How TCP starts, maintains, and closes a connection
-- How UDP differs from TCP
+- How the Transmission Control Protocol (TCP) starts, maintains, and closes a connection
+- How the User Datagram Protocol (UDP) differs from TCP
 - How to view listening ports and current connections
 
 ## IP Addresses and Ports Do Different Jobs
 
-Imagine the Windows 11 virtual machine named WINCLIENT opening an SSH connection to the Debian virtual machine named LINUXBOX.
+Imagine the Windows 11 virtual machine named WINCLIENT opening a Secure Shell (SSH) connection to the Debian virtual machine named LINUXBOX.
 
 | Connection field | Example value | What it identifies |
 | --- | --- | --- |
 | Transport protocol | TCP | The transport rules used for the connection |
-| Source IPv4 address | `10.0.20.15` | The Windows 11 VM named WINCLIENT |
+| Source Internet Protocol version 4 (IPv4) address | `10.0.20.15` | The Windows 11 virtual machine named WINCLIENT |
 | Source TCP port | `51514` | A temporary port selected by WINCLIENT |
-| Destination IPv4 address | `10.0.20.25` | The Debian VM named LINUXBOX |
+| Destination IPv4 address | `10.0.20.25` | The Debian virtual machine named LINUXBOX |
 | Destination TCP port | `22` | The SSH service running on LINUXBOX |
 
 The connection can be written in a shortened form:
@@ -46,9 +46,9 @@ LINUXBOX: 10.0.20.25:22 -> WINCLIENT: 10.0.20.15:51514
 
 ## How Port Numbers Work
 
-A [port number](/appendix/glossary/#port) is a 16-bit value from `0` through `65535`. TCP and UDP maintain separate port-number spaces. TCP port 53 and UDP port 53 are therefore different endpoints, even though both are commonly used by DNS.
+A [port number](/appendix/glossary/#port) is a 16-bit value from `0` through `65535`. TCP and UDP maintain separate port-number spaces. TCP port 53 and UDP port 53 are therefore different endpoints, even though both are commonly used by the Domain Name System (DNS).
 
-IANA divides port numbers into three ranges:
+The Internet Assigned Numbers Authority (IANA) divides port numbers into three ranges:
 
 | Port range | IANA name | Common description |
 | --- | --- | --- |
@@ -62,15 +62,15 @@ Some port numbers are worth recognizing:
 
 | Service | Common port | Transport |
 | --- | --- | --- |
-| FTP and explicit FTPS control connection | 21 | TCP |
-| SSH remote access, SFTP, and SCP | 22 | TCP |
+| File Transfer Protocol (FTP) and explicit File Transfer Protocol Secure (FTPS) control connection | 21 | TCP |
+| SSH remote access, SSH File Transfer Protocol (SFTP), and Secure Copy Protocol (SCP) | 22 | TCP |
 | DNS name resolution | 53 | UDP and TCP |
-| DHCPv4 address assignment | 67 for servers and 68 for clients | UDP |
-| HTTP web traffic | 80 | TCP |
-| NTP time synchronization | 123 | UDP |
-| HTTPS web traffic | 443 | Usually TCP; HTTP/3 uses QUIC over UDP |
-| SMB Windows file sharing | 445 | TCP |
-| RDP Windows remote desktop | 3389 | TCP and UDP |
+| Dynamic Host Configuration Protocol version 4 (DHCPv4) address assignment | 67 for servers and 68 for clients | UDP |
+| Hypertext Transfer Protocol (HTTP) web traffic | 80 | TCP |
+| Network Time Protocol (NTP) time synchronization | 123 | UDP |
+| Hypertext Transfer Protocol Secure (HTTPS) web traffic | 443 | Usually TCP; HTTP/3 uses QUIC over UDP |
+| Server Message Block (SMB) Windows file sharing | 445 | TCP |
+| Remote Desktop Protocol (RDP) Windows remote desktop | 3389 | TCP and UDP |
 
 These numbers are conventions, not restrictions. An administrator can configure an SSH server to listen on TCP port 2222, for example. A port number is a useful clue about the expected service, but it does not prove which application is running or whether the traffic is safe.
 
@@ -79,7 +79,7 @@ Both DHCPv4 port numbers matter. A client sends DHCP messages to UDP port 67 on 
 Do not confuse similarly named file-transfer protocols:
 
 - **SFTP** is the SSH File Transfer Protocol. It normally runs through SSH on TCP port 22.
-- **FTPS** is FTP protected with TLS. Explicit FTPS begins on the normal FTP control port, TCP 21.
+- **FTPS** is FTP protected with Transport Layer Security (TLS). Explicit FTPS begins on the normal FTP control port, TCP 21.
 
 ## Sockets and Connection Identity
 
@@ -117,6 +117,8 @@ TCP presents data to the application as a continuous stream of bytes. It does no
 
 TCP normally establishes a connection with three packets. For the SSH example:
 
+The flags used here are synchronize (SYN) and acknowledgment (ACK).
+
 | Step | TCP flags | Direction | Meaning |
 | --- | --- | --- | --- |
 | 1 | SYN | WINCLIENT `10.0.20.15:51514` → LINUXBOX `10.0.20.25:22` | WINCLIENT requests a new connection |
@@ -131,7 +133,7 @@ Reliable delivery does not mean that a connection will always succeed. If the ne
 
 ### Closing or Rejecting a Connection
 
-A normal TCP close uses FIN and ACK flags so each endpoint can finish sending and acknowledge the other side. A reset, shown as RST in packet captures, ends or rejects a connection immediately. One common reason for a reset is reaching a device successfully when no application is listening on the requested TCP port.
+A normal TCP close uses the finish (FIN) and ACK flags so each endpoint can finish sending and acknowledge the other side. A reset (RST) in a packet capture ends or rejects a connection immediately. One common reason for a reset is reaching a device successfully when no application is listening on the requested TCP port.
 
 ## UDP: Independent Datagrams
 
@@ -217,7 +219,7 @@ Identify:
 Do not stop or reconfigure an unfamiliar process merely because it has a listening socket. First identify what owns it and why it is running.
 
 :::tip[Optional Lab: Capture a TCP Handshake]
-This exercise uses the SSH server already installed on the Debian VM named LINUXBOX and stays entirely within NETLAB.
+This exercise uses the SSH server already installed on the Debian virtual machine named LINUXBOX and stays entirely within NETLAB.
 
 1. On LINUXBOX, record its NETLAB IPv4 address and confirm that SSH is listening on TCP port 22:
 
@@ -233,7 +235,7 @@ This exercise uses the SSH server already installed on the Debian VM named LINUX
    tcpdump -n -i any 'tcp port 22'
    ```
 
-3. On the Windows 11 VM named WINCLIENT, open PowerShell and replace `<LINUXBOX-IP>` with the address from step 1:
+3. On the Windows 11 virtual machine named WINCLIENT, open PowerShell and replace `<LINUXBOX-IP>` with the address from step 1:
 
    ```powershell
    Test-NetConnection <LINUXBOX-IP> -Port 22
@@ -251,9 +253,9 @@ This exercise uses the SSH server already installed on the Debian VM named LINUX
 
 ## Further Learning
 
-- [RFC 9293: Transmission Control Protocol](https://www.rfc-editor.org/info/rfc9293/) is the current core TCP specification.
+- [Request for Comments (RFC) 9293: Transmission Control Protocol](https://www.rfc-editor.org/info/rfc9293/) is the current core TCP specification.
 - [RFC 768: User Datagram Protocol](https://www.rfc-editor.org/info/rfc768/) defines UDP.
-- [RFC 8095: Services Provided by IETF Transport Protocols](https://www.rfc-editor.org/info/rfc8095/) compares the behavior offered by TCP, UDP, and other transports.
+- [RFC 8095: Services Provided by Internet Engineering Task Force (IETF) Transport Protocols](https://www.rfc-editor.org/info/rfc8095/) compares the behavior offered by TCP, UDP, and other transports.
 - [RFC 4253: The Secure Shell Transport Layer Protocol](https://www.rfc-editor.org/info/rfc4253/) documents SSH's normal use of TCP port 22.
 - [IANA Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml) lists assigned service names and port ranges.
 - [Microsoft Remote Desktop Services port documentation](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/ports-used-by-rds) identifies TCP and UDP port 3389 as the standard RDP port.
