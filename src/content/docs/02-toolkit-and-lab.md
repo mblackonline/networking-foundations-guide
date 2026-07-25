@@ -81,7 +81,7 @@ Wireshark shows everything crossing the interface you select, including traffic 
 6. Switch back to Wireshark. You should see your query and the response.
 7. Click the red square to stop the capture.
 
-You just watched name resolution happen. Module 9 explains what those packets mean. For now the point is that the tool works and you know how to filter it, since an unfiltered capture is unreadable.
+You just watched the Domain Name System (DNS) turn a name into an address. Module 9 explains what those packets mean. For now the point is that the tool works and you know how to filter it, since an unfiltered capture is unreadable.
 
 ## About the Optional Lab
 
@@ -103,7 +103,7 @@ Both operating systems are free to obtain. Debian is free software. Windows 11 E
 
 ## Build the Lab Network
 
-The lab uses VirtualBox, which is free, open source under GPL version 3, and available for Windows, Linux, and Intel-based Macs. Other hypervisors work equally well, but the steps below are written for VirtualBox.
+The lab uses VirtualBox, which is free, open source under the GNU General Public License (GPL) version 3, and available for Windows, Linux, and Intel-based Macs. Other hypervisors work equally well, but the steps below are written for VirtualBox.
 
 1. Download and install VirtualBox from [virtualbox.org](https://www.virtualbox.org/). Accept the installer defaults.
 2. In VirtualBox Manager, open **File > Tools > Network Manager**.
@@ -114,10 +114,10 @@ The lab uses VirtualBox, which is free, open source under GPL version 3, and ava
    - **Enable DHCP:** checked
 5. Click **Apply** and close Network Manager.
 
-Both VMs attach to this network. They can reach each other and the internet, and your home devices cannot reach into the lab.
+VirtualBox calls this a NAT Network. Network address translation (NAT) is covered in Module 6. Both VMs attach to this network. They can reach each other and the internet, and your home devices cannot reach into the lab.
 
 :::note
-DHCP stays enabled for now so the VMs get addresses without any work. In Module 8 you turn it off and run your own DHCP server on LINUXBOX, which is a more useful exercise than reading about it. If you also built the lab from an Active Directory guide, note that this network uses a different name and address range so the two labs do not collide.
+The Dynamic Host Configuration Protocol (DHCP) is what hands out addresses automatically. It stays enabled for now so the VMs get addresses without any work. In Module 8 you turn it off and run your own DHCP server on LINUXBOX, which is a more useful exercise than reading about it. If you also built the lab from an Active Directory guide, note that this network uses a different name and address range so the two labs do not collide.
 :::
 
 ## Build WINCLIENT
@@ -131,7 +131,7 @@ DHCP stays enabled for now so the VMs get addresses without any work. In Module 
    - **Processors:** 2
    - Check **Enable EFI**
    - **Hard Disk:** 64 GB
-3. Before starting it, open **Settings > System** and confirm **TPM Version** is 2.0 and **Enable Secure Boot** is checked. Windows 11 setup refuses to run without both.
+3. Before starting it, open **Settings > System** and confirm **TPM Version** is 2.0 and **Enable Secure Boot** is checked. Windows 11 setup refuses to run without both. EFI is the Extensible Firmware Interface, the modern replacement for the traditional BIOS, and a TPM is a Trusted Platform Module, a chip that stores encryption keys.
 4. Open **Settings > Network** and set Adapter 1 to **NAT Network**, name **NETLAB**.
 5. Start the VM and install Windows. When setup asks you to sign in, choose **Sign-in options**, then the option to create a local account, and name it `labuser`.
 6. After reaching the desktop, install Guest Additions from **Devices > Insert Guest Additions CD image**, run the installer from the CD drive, and restart.

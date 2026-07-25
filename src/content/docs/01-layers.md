@@ -27,7 +27,7 @@ The other payoff is the one you will use daily. When something breaks, layers te
 
 ## The TCP/IP Model
 
-This is the model the internet actually runs on. It has four layers.
+This is the model the internet actually runs on. It takes its name from the Transmission Control Protocol (TCP) and the Internet Protocol (IP), and it has four layers.
 
 | Layer | Its job | Examples |
 | --- | --- | --- |
@@ -36,11 +36,13 @@ This is the model the internet actually runs on. It has four layers.
 | Internet | Get a packet from one network to another | IP, ICMP |
 | Link | Move data across one physical hop | Ethernet, Wi-Fi, ARP |
 
+The examples above in full are the Hypertext Transfer Protocol (HTTP), the Domain Name System (DNS), Secure Shell (SSH), the Simple Mail Transfer Protocol (SMTP), the User Datagram Protocol (UDP), the Internet Control Message Protocol (ICMP), and the Address Resolution Protocol (ARP). Each one gets its own treatment later.
+
 Read it from the bottom up and it tells a story. The link layer moves data between two devices that can see each other directly. The internet layer chains those hops together so data can cross networks it has never seen. The transport layer makes sure it reaches the right program on the far machine. The application layer does something meaningful with it.
 
 ## The OSI Model
 
-The OSI model is older, has seven layers, and describes roughly the same thing in more detail.
+The Open Systems Interconnection (OSI) model is older, has seven layers, and describes roughly the same thing in more detail.
 
 | OSI layer | Name | Maps to TCP/IP |
 | --- | --- | --- |
@@ -57,7 +59,7 @@ You will meet both models, and the reason is worth knowing. Systems are built to
 For practical work, four numbers carry almost all the conversation.
 
 - **Layer 1** is the physical side, cables, radios, and ports
-- **Layer 2** is the local hop, MAC addresses and switches
+- **Layer 2** is the local hop, media access control (MAC) addresses and switches
 - **Layer 3** is addressing and routing, IP
 - **Layer 4** is ports and connections, TCP and UDP
 - **Layer 7** is the application itself, usually HTTP
