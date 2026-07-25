@@ -17,6 +17,15 @@ Client -> Proxy -> Server
 
 The proxy accepts one connection and creates another connection toward the destination. This distinction explains why the server may see the proxy's Internet Protocol (IP) address instead of the client's address.
 
+## In This Module
+
+- The difference between a forward proxy and a reverse proxy
+- Why a proxy always creates two separate connections
+- What a load balancer does and how it selects a backend
+- Layer 4 and layer 7 load balancing
+- TLS termination, health checks, and session persistence
+- Why a backend may log the proxy's address instead of the client's
+
 ## Forward and Reverse Proxies
 
 The names describe which side the proxy represents.
@@ -105,9 +114,9 @@ The layer determines which information the load balancer can use.
 | Layer 4, transport | Transmission Control Protocol (TCP) or User Datagram Protocol (UDP), IP addresses, and ports | Send a new TCP connection on port 443 to Backend A |
 | Layer 7, application | Hypertext Transfer Protocol (HTTP) hostnames, paths, headers, and cookies | Send `/images` to one backend group and `/checkout` to another |
 
-A Layer 4 load balancer can pass encrypted traffic without reading the protected HTTP request. A Layer 7 load balancer must understand the application protocol and commonly terminates TLS before inspecting HTTP information.
+A layer 4 load balancer can pass encrypted traffic without reading the protected HTTP request. A layer 7 load balancer must understand the application protocol and commonly terminates TLS before inspecting HTTP information.
 
-Layer 4 is not automatically better or worse than Layer 7. The correct choice depends on what the service needs the load balancer to see and control.
+Layer 4 is not automatically better or worse than layer 7. The correct choice depends on what the service needs the load balancer to see and control.
 
 ## TLS Termination
 
@@ -179,8 +188,7 @@ Status-code meanings can vary with the product and configuration. Check both the
 
 Treat the client-to-proxy and proxy-to-backend connections as separate network paths.
 
-## Optional Lab: A Reverse Proxy in NETLAB
-
+:::tip[Optional Lab: A Reverse Proxy in NETLAB]
 This exercise installs NGINX on LINUXBOX. The proxy listens only inside the isolated NETLAB network, and its backend listens only on LINUXBOX's loopback address.
 
 1. On LINUXBOX, install NGINX and create a small backend page:
@@ -258,6 +266,7 @@ exit
 ```
 
 These commands leave the NGINX package installed but stop and disable its service.
+:::
 
 ## Further Learning
 
@@ -272,7 +281,7 @@ These commands leave the NGINX package installed but stop and disable its servic
 
 - [ ] You can distinguish a forward proxy from a reverse proxy
 - [ ] You can explain why a proxy creates two connections
-- [ ] You can distinguish Layer 4 from Layer 7 load balancing
+- [ ] You can distinguish layer 4 from layer 7 load balancing
 - [ ] You can explain TLS termination
 - [ ] You know how health checks affect backend selection
 - [ ] You know why a backend may log the proxy's IP address

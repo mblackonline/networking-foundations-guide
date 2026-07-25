@@ -1,5 +1,5 @@
 ---
-title: "Module 9: DNS"
+title: "Module 9: Domain Name System (DNS)"
 description: How DNS turns names into useful records, where answers come from, and how to troubleshoot common failures.
 ---
 

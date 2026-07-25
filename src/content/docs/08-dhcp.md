@@ -1,5 +1,5 @@
 ---
-title: "Module 8: DHCP"
+title: "Module 8: Dynamic Host Configuration Protocol (DHCP)"
 description: How devices receive IPv4 settings automatically, what can provide DHCP, and what common failures look like.
 ---
 
@@ -41,7 +41,7 @@ DHCP is a service or role, not one particular type of physical device. Many diff
 | DHCP provider | Where you might see it |
 | --- | --- |
 | Home router or Wi-Fi gateway | Supplies settings to phones, computers, televisions, and other home devices |
-| Firewall, router, or Layer 3 switch | Supplies settings to one or more business networks |
+| Firewall, router, or layer 3 switch | Supplies settings to one or more business networks |
 | Windows Server with the DHCP Server role | Common in Windows and Active Directory environments |
 | Linux or another Unix-like server running DHCP software | Used in labs, businesses, service-provider networks, and custom environments |
 | Virtualization platform | Supplies settings to virtual machines on a virtual network |
@@ -133,7 +133,7 @@ Client broadcast -> DHCP relay -> DHCP server on another subnet
 
 The relay also tells the server which subnet the request came from, allowing the server to select the correct address pool.
 
-Routers, firewalls, and many Layer 3 switches can act as DHCP relays. Windows Server can also provide a relay through its Remote Access role. The relay is an intermediary; it is not the server that owns the address pool.
+Routers, firewalls, and many layer 3 switches can act as DHCP relays. Windows Server can also provide a relay through its Remote Access role. The relay is an intermediary; it is not the server that owns the address pool.
 
 If DHCP works on several subnets but fails on only one, check that subnet's DHCP pool, virtual local area network (VLAN), and relay configuration.
 

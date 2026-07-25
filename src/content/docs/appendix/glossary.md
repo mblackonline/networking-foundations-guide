@@ -5,7 +5,7 @@ description: Plain-language definitions and authoritative references for network
 
 Use this page when you encounter an unfamiliar term. You do not need to memorize every definition.
 
-The definitions are original summaries written for this guide. Selecting a linked term opens a public reference from the Request for Comments (RFC) Editor, Internet Assigned Numbers Authority (IANA), National Institute of Standards and Technology (NIST), or Microsoft Learn.
+This glossary provides brief definitions of terms used throughout the guide. Select a linked term for a more detailed reference.
 
 ## Numbers
 
@@ -142,7 +142,7 @@ The definitions are original summaries written for this guide. Selecting a linke
 
 - <span id="transmission-control-protocol-tcp"></span>**[Transmission Control Protocol (TCP)](https://www.rfc-editor.org/info/rfc9293):** A connection-oriented transport protocol that provides ordered, reliable byte delivery.
 - <span id="tcp-ip"></span>**[TCP/IP](https://www.rfc-editor.org/info/rfc1122):** The family of protocols used by the internet, named for the Transmission Control Protocol and Internet Protocol.
-- <span id="transport-layer-security-tls"></span>**[Transport Layer Security (TLS)](https://www.rfc-editor.org/info/rfc8446):** A protocol that protects network traffic with encryption, integrity checking, and authentication.
+- <span id="transport-layer-security-tls"></span>**[Transport Layer Security (TLS)](https://www.rfc-editor.org/info/rfc9846):** A protocol that protects network traffic with encryption, integrity checking, and authentication.
 - <span id="time-to-live-ttl"></span>**[Time to live (TTL)](https://www.rfc-editor.org/info/rfc1122):** In an IP packet, a value reduced by each router to prevent routing loops. In a DNS record, the same abbreviation means how long a cache may reuse that record, as defined in [RFC 1035](https://www.rfc-editor.org/info/rfc1035).
 
 ## U

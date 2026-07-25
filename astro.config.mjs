@@ -25,15 +25,15 @@ export default defineConfig({
             { label: 'Module 3: The Local Network', slug: '03-local-network' },
             { label: 'Module 4: IPv4 Addressing and Subnetting', slug: '04-addressing-subnetting' },
             { label: 'Module 5: Routing', slug: '05-routing' },
-            { label: 'Module 6: NAT', slug: '06-nat' },
+            { label: 'Module 6: Network Address Translation (NAT)', slug: '06-nat' },
           ],
         },
         {
           label: 'Getting to a Service',
           items: [
             { label: 'Module 7: Transport, Ports, and Sockets', slug: '07-transport' },
-            { label: 'Module 8: DHCP', slug: '08-dhcp' },
-            { label: 'Module 9: DNS', slug: '09-dns' },
+            { label: 'Module 8: Dynamic Host Configuration Protocol (DHCP)', slug: '08-dhcp' },
+            { label: 'Module 9: Domain Name System (DNS)', slug: '09-dns' },
           ],
         },
         {

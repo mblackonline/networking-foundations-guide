@@ -15,6 +15,15 @@ When you open a website, several things happen before the page appears:
 
 This module focuses on the last three steps.
 
+## In This Module
+
+- How to read the parts of a web address
+- How HTTP requests and responses are structured
+- The common HTTP methods and what the status-code groups mean
+- What TLS protects, and what it does not
+- What a server certificate proves
+- Why one IP address can host many websites
+
 ## Reading a Web Address
 
 Consider this Uniform Resource Locator (URL):
@@ -220,9 +229,7 @@ The exact TLS and HTTP versions may differ between the two systems. Verbose outp
 
 ## Further Learning
 
-These public Request for Comments (RFC) documents define the protocols and certificate format:
-
-- [RFC 9110: HTTP Semantics](https://www.rfc-editor.org/info/rfc9110/) defines HTTP methods, fields, and status codes.
+- [Request for Comments (RFC) 9110: HTTP Semantics](https://www.rfc-editor.org/info/rfc9110/) defines HTTP methods, fields, and status codes.
 - [RFC 9112: HTTP/1.1](https://www.rfc-editor.org/info/rfc9112/) defines the text-based HTTP/1.1 message format used in the examples.
 - [RFC 9846: TLS 1.3](https://www.rfc-editor.org/info/rfc9846/) defines the current TLS 1.3 protocol.
 - [RFC 5280: Internet X.509 Public Key Infrastructure](https://www.rfc-editor.org/info/rfc5280/) defines certificate and certification-path validation.

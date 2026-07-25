@@ -9,6 +9,15 @@ For example, a server may accept Secure Shell (SSH) connections from an administ
 
 A firewall does not replace passwords, software updates, or application security. It provides another layer of control.
 
+## In This Module
+
+- The values a filtering rule examines
+- Why traffic direction depends on whose perspective you take
+- Stateful filtering, and how it differs from a stateless filter
+- Rule actions, rule order, and default behavior
+- The host, network, and cloud layers where filtering can happen
+- What a firewall failure looks like from the client
+
 ## What a Firewall Examines
 
 For the Transmission Control Protocol (TCP) and User Datagram Protocol (UDP), a filtering rule commonly examines five values:
@@ -175,8 +184,7 @@ These symptoms are clues, not proof. Confirm them with firewall logs, rule count
 Do not disable an entire firewall as your first test. A narrow temporary rule limited by source, protocol, and destination port provides better evidence with less risk.
 :::
 
-## Optional Lab: Allow and Block Ping in NETLAB
-
+:::tip[Optional Lab: Allow and Block Ping in NETLAB]
 Run this exercise only on WINCLIENT inside the isolated NETLAB network. It creates two temporary Windows Firewall rules and removes them before the exercise ends.
 
 1. On WINCLIENT, run `ipconfig` and record its `10.0.20.x` address.
@@ -209,6 +217,7 @@ Run this exercise only on WINCLIENT inside the isolated NETLAB network. It creat
    ```
 
 The final ping behavior returns to whatever WINCLIENT's original firewall policy allowed.
+:::
 
 ## Further Learning
 

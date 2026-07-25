@@ -258,8 +258,7 @@ A useful troubleshooting note includes:
 
 Good notes let another person continue the investigation without repeating every test.
 
-## Optional Lab: Find a Stopped Service
-
+:::tip[Optional Lab: Find a Stopped Service]
 This exercise temporarily stops Secure Shell (SSH) on LINUXBOX. Use the VirtualBox console for LINUXBOX so stopping SSH does not disconnect the session you need to restore it.
 
 1. On LINUXBOX, find its NETLAB address:
@@ -300,7 +299,8 @@ This exercise temporarily stops Secure Shell (SSH) on LINUXBOX. Use the VirtualB
 
 7. Repeat `Test-NetConnection` on WINCLIENT. It should succeed again.
 
-The client test located the failure at the destination port. The server test then showed why: no process was listening.
+The client test located the failure at the destination port. The server test then showed why, because no process was listening.
+:::
 
 ## Further Learning
 

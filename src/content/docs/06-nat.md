@@ -1,5 +1,5 @@
 ---
-title: "Module 6: NAT"
+title: "Module 6: Network Address Translation (NAT)"
 description: Network address translation, port forwarding, and why inbound is the hard direction.
 ---
 

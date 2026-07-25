@@ -44,11 +44,11 @@ When a frame arrives, the switch reads the source MAC address and records which 
 When a frame needs forwarding, the switch looks up the destination MAC address in that table.
 
 - If the address is in the table, the switch forwards the frame toward the recorded port.
-- If it is not, the switch floods the frame to the other ports in the same Layer 2 network. When the destination sends a frame, the switch learns its location from that frame's source address.
+- If it is not, the switch floods the frame to the other ports in the same layer 2 network. When the destination sends a frame, the switch learns its location from that frame's source address.
 
 This simplified learning process explains a useful diagnostic fact. A switch normally does not send one device unicast traffic intended for another device. A packet capture therefore usually shows your own traffic, broadcasts, and some multicast or unknown-destination traffic rather than every conversation on the network.
 
-Some switches, called Layer 3 switches, can also route traffic between IP networks. They still use MAC-address learning when switching local traffic. Module 5 covers routing.
+Some switches, called layer 3 switches, can also route traffic between IP networks. They still use MAC-address learning when switching local traffic. Module 5 covers routing.
 
 ## ARP
 

@@ -34,6 +34,8 @@ A few notes before you start.
 
 `dig` is not included with Windows. Use `nslookup`, or `Resolve-DnsName` in PowerShell, which produces more readable output. Module 9 shows both.
 
+`dig` is not always installed on Linux either. On Linux Mint and Ubuntu it comes from the `dnsutils` package, which you can install with `sudo apt install dnsutils`.
+
 `traceroute` is not always installed on Linux. On Linux Mint and Ubuntu, install it with `sudo apt install traceroute`.
 
 `ss` has replaced `netstat` on most Linux distributions. If `ss` is missing, `netstat` usually still works.
