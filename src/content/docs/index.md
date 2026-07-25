@@ -14,10 +14,6 @@ hero:
       variant: secondary
 ---
 
-:::note[Artificial Intelligence-Assisted Development]
-Artificial intelligence (AI) tools were used to assist with research, drafting, editing, and reviewing portions of this guide. AI-assisted material can be incomplete, inaccurate, or outdated. Verify important information against the linked official documentation and use your own judgment before making changes.
-:::
-
 ## What This Guide Covers
 
 This guide is my best effort to provide a high-level overview of common networking concepts you may encounter in information technology (IT) support, system administration, DevOps, software development, and cybersecurity. It is not intended to cover every networking topic.
@@ -41,3 +37,7 @@ Some concepts only make sense when you can break them on purpose. Those exercise
 ## Source and Reuse
 
 The source files for this guide are available on [GitHub](https://github.com/mblackonline/networking-foundations-guide) under the [MIT License](https://github.com/mblackonline/networking-foundations-guide/blob/main/LICENSE). You are welcome to fork the repository and adapt or expand it for your own use.
+
+:::note[Artificial Intelligence-Assisted Development]
+Artificial intelligence (AI) tools were used to assist with research, drafting, editing, and reviewing portions of this guide. AI-assisted material can be incomplete, inaccurate, or outdated. Verify important information against the linked official documentation and use your own judgment before making changes.
+:::
