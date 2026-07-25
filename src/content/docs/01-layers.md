@@ -33,14 +33,16 @@ The examples below include the Hypertext Transfer Protocol (HTTP), Domain Name S
 
 | Layer | Its job | Examples |
 | --- | --- | --- |
-| Application | Do something useful for the user | HTTP, DNS, SSH, SMTP |
-| Transport | Deliver data to the right program, reliably or not | TCP, UDP |
-| Internet | Get a packet from one network to another | IP, ICMP |
-| Link | Move data across one physical hop | Ethernet, Wi-Fi, ARP |
+| Application | Provide network services used by applications | HTTP, DNS, SSH, SMTP |
+| Transport | Deliver data to the correct application process | TCP, UDP |
+| Internet | Address and route packets between networks | IP, ICMP |
+| Link | Deliver frames and resolve addresses on a local link | Ethernet, Wi-Fi, ARP |
 
 Each example gets its own treatment later.
 
-Read it from the bottom up and it tells a story. The link layer moves data between two devices that can see each other directly. The internet layer chains those hops together so data can cross networks it has never seen. The transport layer makes sure it reaches the right program on the far machine. The application layer does something meaningful with it.
+ARP is included in the Link layer because it finds the media access control (MAC) address associated with an IPv4 address on the local network. That MAC address is needed to deliver the frame to the next device.
+
+Read the table from the bottom up and it tells a story. The Link layer moves frames between devices on the same local network. The Internet layer sends packets across connected networks. The Transport layer delivers data to the correct application on the destination device, with TCP providing reliability when it is needed. The Application layer provides services that software can use.
 
 ## The OSI Model
 
@@ -61,7 +63,7 @@ You will meet both models, and the reason is worth knowing. Systems are built to
 For practical work, four numbers carry almost all the conversation.
 
 - **Layer 1** is the physical side, cables, radios, and ports
-- **Layer 2** is the local hop, media access control (MAC) addresses and switches
+- **Layer 2** is the local hop, MAC addresses and switches
 - **Layer 3** is addressing and routing, IP
 - **Layer 4** is ports and connections, TCP and UDP
 - **Layer 7** is the application itself, usually HTTP
