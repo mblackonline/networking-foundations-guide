@@ -84,10 +84,23 @@ Capture only on networks you own or are authorized to work on. Doing so without 
 3. Packets start scrolling immediately. That is normal, and it is a lot.
 4. In the display filter bar at the top, type `dns` and press Enter.
 5. Open a Command Prompt and run `nslookup example.com`.
-6. Switch back to Wireshark. You should see your query and the response.
+6. Switch back to Wireshark. New rows appear at the bottom of the list.
 7. Click the red square to stop the capture.
 
-You just watched the Domain Name System (DNS) turn a name into an address. Module 9 explains what those packets mean. For now the point is that the tool works and you know how to filter it, since an unfiltered capture is unreadable.
+Each row is one packet, and the **Info** column at the far right summarizes it in plain language. Your lookup is at the bottom, since Wireshark adds rows as they arrive. Everything above it is background traffic from other programs on your computer.
+
+Look for a pair of rows like these:
+
+```text
+Standard query 0x8f3a A www.example.com
+Standard query response 0x8f3a A www.example.com A 192.0.2.10
+```
+
+The first is your question, the second is the answer, and the matching number pairs them. Their **Source** and **Destination** columns swap, because your machine asked your Domain Name System (DNS) server and the server replied.
+
+You will probably see more than two rows, which is normal. Module 9 explains what all of them mean.
+
+You just watched DNS turn a name into an address. For now the point is that the tool works and you know how to filter it, since an unfiltered capture is unreadable.
 
 ## About the Optional Lab
 
