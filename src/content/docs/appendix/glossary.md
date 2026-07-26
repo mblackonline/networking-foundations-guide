@@ -10,7 +10,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 ## Numbers
 
 - <span id="4-tuple"></span>**[4-tuple](https://www.rfc-editor.org/info/rfc9293):** The source Internet Protocol (IP) address, source port, destination IP address, and destination port that identify a Transmission Control Protocol (TCP) connection.
-- <span id="5-tuple"></span>**[5-tuple](https://www.rfc-editor.org/info/rfc6146):** A 4-tuple plus the transport protocol, commonly used to describe traffic in firewall rules and network tools.
+- <span id="5-tuple"></span>**[5-tuple](https://csrc.nist.gov/pubs/sp/800/41/r1/final):** A 4-tuple plus the transport protocol, commonly used to describe traffic in firewall rules and network tools.
 
 ## A
 
@@ -34,9 +34,9 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 - <span id="cache"></span>**[Cache](https://www.rfc-editor.org/info/rfc1034):** A temporary stored copy of information that can be reused instead of requesting it again.
 - <span id="carrier-grade-nat-cgnat"></span>**[Carrier-grade network address translation (CGNAT)](https://www.rfc-editor.org/info/rfc6598):** Network address translation performed by an internet provider so multiple customers can share public IPv4 addresses.
 - <span id="certificate"></span>**[Certificate](https://www.rfc-editor.org/info/rfc5280):** A signed electronic document that connects a name or identity with a public key.
-- <span id="certificate-authority-ca"></span>**[Certificate authority (CA)](https://www.rfc-editor.org/info/rfc5280):** An organization or system trusted to issue and sign certificates.
+- <span id="certificate-authority-ca"></span>**[Certificate authority (CA)](https://csrc.nist.gov/glossary/term/Certificate_Authority):** An organization or system trusted to issue and sign certificates.
 - <span id="classless-inter-domain-routing-cidr"></span>**[Classless Inter-Domain Routing (CIDR)](https://www.rfc-editor.org/info/rfc4632):** A way to describe an IP network using an address and prefix length, such as `192.168.10.0/24`.
-- <span id="client"></span>**[Client](https://www.rfc-editor.org/info/rfc9110):** A device or application that starts a request or connection to a server.
+- <span id="client"></span>**[Client](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview):** A device or application that starts a request or connection to a server.
 
 ## D
 
@@ -60,7 +60,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 ## F
 
 - <span id="firewall"></span>**[Firewall](https://csrc.nist.gov/glossary/term/firewall):** A control that permits or blocks network traffic according to rules.
-- <span id="forward-proxy"></span>**[Forward proxy](https://www.rfc-editor.org/info/rfc9110):** A proxy that makes requests on behalf of clients.
+- <span id="forward-proxy"></span>**[Forward proxy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Proxy_servers_and_tunneling):** A proxy that makes requests on behalf of clients.
 - <span id="frame"></span>**[Frame](https://www.rfc-editor.org/info/rfc894):** The unit of data carried across one local link, such as an Ethernet network.
 
 ## H
@@ -68,8 +68,8 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 - <span id="health-check"></span>**[Health check](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview):** A test a load balancer uses to decide whether a backend can receive traffic.
 - <span id="host"></span>**[Host](https://www.rfc-editor.org/info/rfc1122):** A device with an IP address that can send or receive network traffic.
 - <span id="hostname"></span>**[Hostname](https://www.rfc-editor.org/info/rfc1123):** A name assigned to a host. A hostname may be used as part of a complete domain name.
-- <span id="hypertext-transfer-protocol-http"></span>**[Hypertext Transfer Protocol (HTTP)](https://www.rfc-editor.org/info/rfc9110):** An application protocol that uses requests and responses to transfer web content and other data.
-- <span id="hypertext-transfer-protocol-secure-https"></span>**[Hypertext Transfer Protocol Secure (HTTPS)](https://www.rfc-editor.org/info/rfc9110):** HTTP protected by Transport Layer Security (TLS).
+- <span id="hypertext-transfer-protocol-http"></span>**[Hypertext Transfer Protocol (HTTP)](https://developer.mozilla.org/en-US/docs/Glossary/HTTP):** An application protocol that uses requests and responses to transfer web content and other data.
+- <span id="hypertext-transfer-protocol-secure-https"></span>**[Hypertext Transfer Protocol Secure (HTTPS)](https://developer.mozilla.org/en-US/docs/Glossary/HTTPS):** HTTP protected by Transport Layer Security (TLS).
 
 ## I
 
@@ -90,7 +90,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## M
 
-- <span id="media-access-control-address-mac-address"></span>**[Media access control address (MAC address)](https://www.rfc-editor.org/info/rfc826):** An address used to deliver frames across a local link.
+- <span id="media-access-control-address-mac-address"></span>**[Media access control address (MAC address)](https://csrc.nist.gov/glossary/term/media_access_control_address):** An address used to deliver frames across a local link.
 - <span id="maximum-transmission-unit-mtu"></span>**[Maximum transmission unit (MTU)](https://csrc.nist.gov/glossary/term/maximum_transmission_unit):** The largest IP packet an interface can send across a link without IP fragmentation.
 
 ## N
@@ -112,7 +112,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 - <span id="port-forwarding"></span>**[Port forwarding](https://www.rfc-editor.org/info/rfc2663):** A rule that sends traffic arriving at one address and port to a chosen internal address and port.
 - <span id="prefix-length"></span>**[Prefix length](https://www.rfc-editor.org/info/rfc4632):** The number after `/` in CIDR notation, showing how many leading address bits identify the network.
 - <span id="private-ipv4-address"></span>**[Private IPv4 address](https://www.rfc-editor.org/info/rfc1918):** An address from a range reserved for private networks and not routed across the public internet.
-- <span id="proxy"></span>**[Proxy](https://www.rfc-editor.org/info/rfc9110):** A system that accepts one connection and creates another connection on behalf of a client or server.
+- <span id="proxy"></span>**[Proxy](https://developer.mozilla.org/en-US/docs/Glossary/Proxy_server):** A system that accepts one connection and creates another connection on behalf of a client or server.
 - <span id="public-ip-address"></span>**[Public IP address](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml):** An IP address that may be globally routed, subject to allocation and network policy.
 
 ## R
@@ -120,15 +120,15 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 - <span id="recursive-resolver"></span>**[Recursive resolver](https://www.rfc-editor.org/info/rfc1034):** A DNS server that accepts a client's query, finds the answer, and commonly caches it.
 - <span id="request-for-comments-rfc"></span>**[Request for Comments (RFC)](https://www.rfc-editor.org/about/rfc-editor/):** A publication in the RFC series that documents internet standards, protocols, practices, or other technical information.
 - <span id="resource-record"></span>**[Resource record](https://www.rfc-editor.org/info/rfc1035):** One item of DNS data, such as an address, mail-server, or alias record.
-- <span id="reverse-proxy"></span>**[Reverse proxy](https://www.rfc-editor.org/info/rfc9110):** A proxy that accepts connections on behalf of one or more servers.
+- <span id="reverse-proxy"></span>**[Reverse proxy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Proxy_servers_and_tunneling):** A proxy that accepts connections on behalf of one or more servers.
 - <span id="route"></span>**[Route](https://www.rfc-editor.org/info/rfc1812):** An entry describing how traffic should reach a destination network or host.
-- <span id="router"></span>**[Router](https://www.rfc-editor.org/info/rfc1812):** A device or system that forwards IP packets between networks.
+- <span id="router"></span>**[Router](https://csrc.nist.gov/glossary/term/router):** A device or system that forwards IP packets between networks.
 - <span id="routing-table"></span>**[Routing table](https://www.rfc-editor.org/info/rfc1812):** The list of routes a host or router uses to select a path.
 
 ## S
 
 - <span id="segment"></span>**[Segment](https://www.rfc-editor.org/info/rfc9293):** Depending on context, this can mean a TCP unit of data or a portion of a local network. The linked standard covers the TCP meaning.
-- <span id="server"></span>**[Server](https://www.rfc-editor.org/info/rfc9110):** A device or application that listens for and responds to client requests.
+- <span id="server"></span>**[Server](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview):** A device or application that listens for and responds to client requests.
 - <span id="server-name-indication-sni"></span>**[Server Name Indication (SNI)](https://www.rfc-editor.org/info/rfc6066):** Information sent during a TLS connection so a server can select the certificate for the requested hostname.
 - <span id="session-persistence"></span>**[Session persistence](https://learn.microsoft.com/en-us/azure/load-balancer/distribution-mode-concepts):** A load-balancing behavior that repeatedly sends one client's traffic to the same backend. It is also called a sticky session.
 - <span id="socket"></span>**[Socket](https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-start-page-2):** A communication endpoint an application uses to send or receive network data.
@@ -164,4 +164,4 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 This page links to source material; it does not reproduce source text, tables, or images. External material remains subject to its own copyright and license terms and is not included under this guide's MIT License.
 
-The RFC Editor's [RFC format guidance](https://www.rfc-editor.org/info/rfc7995) recommends linking references to RFC information pages. [IANA's protocol registries use a Creative Commons Zero (CC0) public-domain dedication](https://www.iana.org/help/licensing-terms). [NIST describes most information on its sites as public information](https://www.nist.gov/copyrights-disclaimers). [Microsoft permits plain-text links to its content](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions).
+The RFC Editor publishes an [information page for each RFC](https://www.rfc-editor.org/info/rfc9293), which is the stable landing page this glossary links to. [IANA's protocol registries use a Creative Commons Zero (CC0) public-domain dedication](https://www.iana.org/help/licensing-terms). [NIST describes most information on its sites as public information](https://www.nist.gov/copyrights-disclaimers). [Microsoft permits plain-text links to its content](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions).
