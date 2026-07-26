@@ -81,32 +81,6 @@ One detail here explains a great deal of later material. The IP addresses stay t
 
 That is why MAC addresses are used for delivery on the local network, while IP addresses are used to deliver packets between networks.
 
-## Using Layers to Troubleshoot
-
-Suppose a web page will not load. Two quick tests can help you separate basic reachability from a problem with the web service.
-
-Open a Command Prompt on Windows, or a terminal on Linux or macOS, and run this command.
-
-```text
-ping example.com
-```
-
-Before `ping` sends anything, your computer must resolve `example.com` to an IP address. If you receive replies, name resolution worked and ICMP packets made the round trip. This does not tell you whether the website itself is working.
-
-Now run this command.
-
-```text
-curl -I https://example.com
-```
-
-This command connects to TCP port 443, negotiates TLS, and sends an HTTP request. If it returns response headers, the web service is answering and every layer needed for that request worked.
-
-The results help narrow down where to look. If `ping` works but `curl` fails, the problem could involve TCP port 443, TLS, a firewall, or the web server. If `curl` works but `ping` fails, the path to the website is working and ICMP may simply be blocked. If both fail, you still need more evidence to distinguish among name resolution, local network access, addressing, routing, and filtering.
-
-:::note
-Some hosts are configured not to answer `ping`. A failed `ping` is evidence, not proof of a network problem.
-:::
-
 ## Further Learning
 
 These optional references go deeper than this module needs.
@@ -121,7 +95,5 @@ These optional references go deeper than this module needs.
 - [ ] You can name the four TCP/IP layers and what each one does
 - [ ] You know what layers 2, 3, 4, and 7 refer to in conversation
 - [ ] You can explain why a router changes the Ethernet header but not the IP addresses
-- [ ] You know why troubleshooting works from the bottom layer upward
-- [ ] `ping` and `curl` both ran on your machine, and you understand why they test different things
 
 Continue to Module 2 to set up the tools used throughout the guide, and optionally build the lab.
