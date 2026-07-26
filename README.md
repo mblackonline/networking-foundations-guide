@@ -1,6 +1,6 @@
 # Networking Foundations
 
-This repository contains the source for [Networking Foundations](https://networking-foundations-guide.netlify.app), a free, open-source learning site built with Astro and Starlight.
+This repository contains the source for [Networking Foundations](https://networking-foundations-guide.netlify.app), a free networking guide built with Astro and Starlight.
 
 > **Looking for the guide?** [Read Networking Foundations online](https://networking-foundations-guide.netlify.app). You do not need to clone or build this repository.
 
