@@ -51,27 +51,17 @@ Read the table from the bottom up and it tells a story.
 
 The [Open Systems Interconnection (OSI) model](/appendix/glossary/#open-systems-interconnection-osi-model) is older, has seven layers, and describes roughly the same thing in more detail.
 
-| OSI layer | Name | Maps to TCP/IP |
-| --- | --- | --- |
-| 7 | Application | Application |
-| 6 | Presentation | Application |
-| 5 | Session | Application |
-| 4 | Transport | Transport |
-| 3 | Network | Internet |
-| 2 | Data Link | Link |
-| 1 | Physical | Link |
+| OSI layer | Name | Maps to TCP/IP | What it covers |
+| --- | --- | --- | --- |
+| 7 | Application | Application | Network services used by applications, including HTTP and DNS |
+| 6 | Presentation | Application | Data formatting, encoding, compression, and encryption |
+| 5 | Session | Application | Communication sessions between applications |
+| 4 | Transport | Transport | Delivery between applications, including TCP, UDP, and port numbers |
+| 3 | Network | Internet | IP addressing and routing between networks |
+| 2 | Data Link | Link | Frames, MAC addresses, and switches on the local network |
+| 1 | Physical | Link | Transmission through cables, radios, and network interfaces |
 
-You will meet both models, and the reason is worth knowing. Systems are built to the TCP/IP model, but people talk using OSI numbers. Someone says a load balancer is "layer 7" or that a problem is "layer 3", and they mean the OSI numbering.
-
-The OSI layer numbers are often used in networking discussions.
-
-- **Layer 1** covers physical transmission, including cables, radios, and network interfaces.
-- **Layer 2** covers communication on the same local network, including frames, MAC addresses, and switches.
-- **Layer 3** covers IP addressing and routing between networks.
-- **Layer 4** covers transport between applications, including TCP, UDP, and port numbers.
-- **Layer 5** manages communication sessions between applications.
-- **Layer 6** prepares data in a form applications can use, including encoding, compression, and encryption.
-- **Layer 7** covers network services used by applications, such as HTTP and DNS.
+You will meet both models, and the reason is worth knowing. Systems use the TCP/IP model, but people often use OSI numbers when talking about networking. A load balancer described as "layer 7" works with application traffic. A "layer 3" problem involves IP addressing or routing.
 
 ## Encapsulation
 
