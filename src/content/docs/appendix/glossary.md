@@ -91,7 +91,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 ## M
 
 - <span id="media-access-control-address-mac-address"></span>**[Media access control address (MAC address)](https://en.wikipedia.org/wiki/MAC_address):** A link-layer identifier assigned to a network interface and used to deliver frames within a local network segment.
-- <span id="maximum-transmission-unit-mtu"></span>**[Maximum transmission unit (MTU)](https://csrc.nist.gov/glossary/term/maximum_transmission_unit):** The largest IP packet an interface can send across a link without IP fragmentation.
+- <span id="maximum-transmission-unit-mtu"></span>**[Maximum transmission unit (MTU)](https://www.cloudflare.com/learning/network-layer/what-is-mtu/):** The largest IP packet, measured in bytes, that a network-connected device or interface will accept.
 
 ## N
 
@@ -108,7 +108,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 - <span id="packet"></span>**[Packet](https://en.wikipedia.org/wiki/Network_packet):** The unit of data carried by IP from a source host toward a destination host.
 - <span id="port"></span>**[Port](https://en.wikipedia.org/wiki/Port_(computer_networking)):** A number used by TCP or User Datagram Protocol (UDP) to direct traffic to the correct application or service.
-- <span id="port-address-translation-pat"></span>**[Port Address Translation (PAT)](https://www.rfc-editor.org/info/rfc2663):** A form of NAT that translates port numbers as well as addresses, allowing many private connections to share one public IPv4 address.
+- <span id="port-address-translation-pat"></span>**[Port Address Translation (PAT)](https://www.cisco.com/site/us/en/learn/topics/networking/what-is-network-address-translation-nat.html#how-does-nat-work):** A form of NAT that translates port numbers as well as addresses, allowing multiple private hosts to share one public IPv4 address.
 - <span id="port-forwarding"></span>**[Port forwarding](https://en.wikipedia.org/wiki/Port_forwarding):** A rule that sends traffic arriving at one address and port to a chosen internal address and port.
 - <span id="prefix-length"></span>**[Prefix length](https://en.wikipedia.org/wiki/Subnetwork#Network_addressing_and_routing):** The number after `/` in CIDR notation, showing how many leading address bits identify the network.
 - <span id="private-ipv4-address"></span>**[Private IPv4 address](https://www.rfc-editor.org/info/rfc1918):** An address from a range reserved for private networks and not routed across the public internet.
@@ -133,9 +133,9 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 - <span id="session-persistence"></span>**[Session persistence](https://learn.microsoft.com/en-us/azure/load-balancer/distribution-mode-concepts):** A load-balancing behavior that repeatedly sends one client's traffic to the same backend. It is also called a sticky session.
 - <span id="socket"></span>**[Socket](https://en.wikipedia.org/wiki/Network_socket):** A communication endpoint an application uses to send or receive network data.
 - <span id="stateful-firewall"></span>**[Stateful firewall](https://csrc.nist.gov/glossary/term/stateful_inspection):** A firewall that remembers active network flows and can recognize their return traffic.
-- <span id="stateless-filter"></span>**[Stateless filter](https://csrc.nist.gov/glossary/term/Packet_Filtering):** A filter that evaluates packets without remembering an active connection.
+- <span id="stateless-filter"></span>**[Stateless firewall (stateless filter)](https://www.checkpoint.com/cyber-hub/network-security/what-is-firewall/what-is-a-stateless-firewall/):** A firewall that evaluates each packet independently using packet data and predefined rules, without retaining connection state.
 - <span id="subnet"></span>**[Subnet](https://en.wikipedia.org/wiki/Subnetwork):** A range of IP addresses that share a network prefix.
-- <span id="subnet-mask"></span>**[Subnet mask](https://www.rfc-editor.org/info/rfc950):** An IPv4 value that separates the network portion of an address from the host portion.
+- <span id="subnet-mask"></span>**[Subnet mask](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#Subnet_masks):** A 32-bit IPv4 mask that identifies the network-prefix bits and the remaining host bits of an address.
 - <span id="switch"></span>**[Switch](https://csrc.nist.gov/glossary/term/switch):** A device that forwards frames between devices on a local network using MAC addresses.
 
 ## T
@@ -153,7 +153,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 ## V
 
 - <span id="virtual-local-area-network-vlan"></span>**[Virtual local area network (VLAN)](https://csrc.nist.gov/glossary/term/virtual_local_area_network):** A logical network that creates a separate broadcast domain while sharing physical switching equipment.
-- <span id="virtual-private-cloud-vpc"></span>**[Virtual private cloud (VPC)](https://csrc.nist.gov/glossary/term/virtual_private_cloud):** A logically isolated virtual network provided by a cloud platform, usually containing subnets, routes, and traffic controls.
+- <span id="virtual-private-cloud-vpc"></span>**[Virtual private cloud (VPC)](https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud/):** A secure, isolated private cloud hosted within a public cloud.
 - <span id="virtual-private-network-vpn"></span>**[Virtual private network (VPN)](https://csrc.nist.gov/glossary/term/virtual_private_network):** A logical private connection carried across another network, commonly protected with encryption.
 
 ## Z
