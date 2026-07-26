@@ -3,7 +3,7 @@ title: "Module 3: The Local Network"
 description: How Ethernet frames, hardware addresses, switches, and broadcasts move local traffic.
 ---
 
-Before data can go anywhere in the world, it has to get off your machine and onto the wire. This module covers the layer 2 hop, which is everything that happens inside your own network segment.
+Before data can cross the internet, it has to leave your machine and reach the device next to it on the network. This module covers the layer 2 hop, which is everything that happens inside your own network segment.
 
 This is also where a common misunderstanding gets cleared up. People often think an Internet Protocol (IP) address is how one machine finds another. On your local network, it is not. It is how the conversation gets started, but the actual delivery uses something else entirely.
 

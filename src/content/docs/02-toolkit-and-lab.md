@@ -62,7 +62,7 @@ If all three produce output rather than a "command not found" error, you are rea
 
 ## Install Wireshark
 
-Wireshark shows you the actual packets on the wire. Several modules use it to make an abstract exchange concrete.
+Wireshark shows you the actual packets your machine sends and receives. Several modules use it to make an abstract exchange concrete.
 
 1. Download it from [wireshark.org](https://www.wireshark.org/download.html). Use the official site rather than a download portal.
 2. Run the installer and accept the defaults.
