@@ -83,11 +83,13 @@ Broadcast domains also explain why networks get divided up at all. Every device 
 
 ## VLANs, Briefly
 
-A [virtual local area network (VLAN)](/appendix/glossary/#virtual-local-area-network-vlan) lets one physical switch carry several separate networks. Ports are assigned to a VLAN, and frames in one VLAN are never forwarded to ports in another.
+A [virtual local area network (VLAN)](/appendix/glossary/#virtual-local-area-network-vlan) lets one physical switch carry several separate networks. Each port is assigned to a VLAN, and the switch does not forward traffic from one VLAN to ports in another.
 
 The effect is that each VLAN is its own broadcast domain, with its own ARP traffic, isolated from the others even though they share hardware. Moving traffic between VLANs requires a router, exactly as if they were on separate switches.
 
-That is as far as this guide goes on VLANs. Configuring them is vendor-specific, and the concept is what matters for understanding a network you did not build.
+The link between two switches is the one place a single port carries more than one VLAN. Each frame crossing it is tagged with the VLAN it belongs to, so the switch at the far end can sort it back out.
+
+Configuring VLANs is vendor-specific, so this guide stops at the concept. The underlying standard is IEEE 802.1Q, and the Further Learning section below points to a fuller explanation and to a free simulator where you can configure VLANs yourself.
 
 ## Try It Yourself
 
@@ -125,6 +127,8 @@ Then compare the two entries in the cache. The gateway and LINUXBOX are both rea
 - [arp command reference](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/arp) documents the Windows options for viewing, adding, and deleting cache entries.
 - [IEEE Registration Authority: MAC Address Block Large](https://standards.ieee.org/products-programs/regauth/oui/) explains how organizational prefixes are used to create globally unique MAC addresses.
 - [National Institute of Standards and Technology switch glossary entry](https://csrc.nist.gov/glossary/term/switch) provides a concise definition of a network switch.
+- [Cisco Packet Tracer](https://www.netacad.com/cisco-packet-tracer) lets you build switches, assign ports to VLANs, and configure trunk links in a simulator. It is free, though Cisco distributes it only through a no-cost Networking Academy account. The commands are Cisco-specific, but the behavior you observe is not.
+- [Virtual Local Area Networks (VLANs)](https://www.practicalnetworking.net/stand-alone/vlans/) by Ed Harmoush at Practical Networking covers access ports, trunk ports, tagging, and the native VLAN, and it maps the Cisco terms to the tagged and untagged terms other vendors use. Free to read and there is a video version at the bottom if you learn better that way.
 
 ## Checklist Before Moving On
 
