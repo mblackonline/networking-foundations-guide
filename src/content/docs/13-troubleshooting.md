@@ -13,6 +13,7 @@ Troubleshooting means narrowing those possibilities with evidence. Start with th
 
 - Turn a vague report into a specific problem
 - Test a connection in a repeatable order
+- Use network layers to organize troubleshooting tests
 - Understand what common tools prove
 - Interpret common failure messages
 - Record evidence and make one change at a time
@@ -53,6 +54,10 @@ Work from the client toward the application:
 4. Destination port
 5. Application response
 ```
+
+This sequence is guided by the TCP/IP layers, but it is not a strict trip from the bottom layer to the top. The network interface and local network involve the Link layer. IP addressing and routing involve the Internet layer. The destination port involves the Transport layer. DNS and the service response involve the Application layer. DNS is checked early because the client needs a destination address before it can test the route or service.
+
+Layers do not identify the cause by themselves. They organize the checks and help you understand what each result does and does not rule out.
 
 This order prevents an application error from being mistaken for a disconnected cable, or a Domain Name System (DNS) problem from being mistaken for a failed server.
 

@@ -1,6 +1,6 @@
 ---
 title: "Module 1: How Networks Are Layered"
-description: How networking layers organize communication and provide a troubleshooting map.
+description: How networking layers organize communication and carry data between applications.
 ---
 
 Networking can feel like a long list of terms and protocols with nothing holding them together. The thing holding them together is layering, and it is the structure the rest of this guide is built on.
@@ -13,7 +13,6 @@ Cables, addresses, ports, and names all belong to different layers, and each one
 - The four layers of the Transmission Control Protocol/Internet Protocol (TCP/IP) model
 - The Open Systems Interconnection (OSI) model, and how it maps onto TCP/IP
 - Encapsulation, or what wraps what as data leaves your machine
-- Using layers as a deliberate troubleshooting order
 
 ## Why Layers Exist
 
