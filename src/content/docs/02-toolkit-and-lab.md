@@ -70,7 +70,11 @@ Wireshark shows you the actual packets on the wire. Several modules use it to ma
 4. On Windows, restart after the install so the capture driver loads.
 
 :::caution
-Wireshark shows everything crossing the interface you select, including traffic that is not yours. Capture only on networks you own or are authorized to work on. Capturing on a corporate or public network without permission can violate policy or law. Everything in this guide is done on your own machine or your own lab.
+Wireshark records everything reaching the interface you select, not just the traffic you generated. On a typical switched network that means your own traffic plus broadcast and multicast, though some designs expose more.
+
+Unencrypted traffic is readable in full, credentials included. Encrypted traffic stays protected, but a capture still shows which systems communicated, when, and how much.
+
+Capture only on networks you own or are authorized to work on. Doing so without permission can violate policy or law. Every capture in this guide is on your own machine or your own lab.
 :::
 
 ## Your First Capture
