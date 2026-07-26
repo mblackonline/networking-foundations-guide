@@ -65,7 +65,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## H
 
-- <span id="health-check"></span>**[Health check](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview):** A test a load balancer uses to decide whether a backend can receive traffic.
+- <span id="health-check"></span>**[Health check](https://www.cloudflare.com/learning/performance/glossary/application-availability/#health-checks):** A check that monitors whether a backend server is available so a load balancer can avoid sending traffic to an unhealthy server.
 - <span id="host"></span>**[Host](https://en.wikipedia.org/wiki/Host_(network)):** A device with an IP address that can send or receive network traffic.
 - <span id="hostname"></span>**[Hostname](https://en.wikipedia.org/wiki/Hostname):** A name assigned to a host. A hostname may be used as part of a complete domain name.
 - <span id="hypertext-transfer-protocol-http"></span>**[Hypertext Transfer Protocol (HTTP)](https://developer.mozilla.org/en-US/docs/Glossary/HTTP):** An application protocol that uses requests and responses to transfer web content and other data.
@@ -85,12 +85,12 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 - <span id="layer"></span>**[Layer](https://en.wikipedia.org/wiki/OSI_model):** A group of related networking responsibilities. Layer numbers usually refer to the Open Systems Interconnection model.
 - <span id="lease"></span>**[Lease](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol#Overview):** See **DHCP lease**.
 - <span id="listening-socket"></span>**[Listening socket](https://learn.microsoft.com/en-us/windows/win32/winsock/listening-on-a-socket):** A socket waiting for new traffic on a local address and port.
-- <span id="load-balancer"></span>**[Load balancer](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview):** A system that distributes connections or requests among multiple backend servers.
+- <span id="load-balancer"></span>**[Load balancer](https://www.cloudflare.com/learning/performance/what-is-load-balancing/#what-is-a-load-balancer):** A hardware or software system that distributes connections, requests, or workloads among multiple backend servers.
 - <span id="loopback"></span>**[Loopback](https://en.wikipedia.org/wiki/Localhost):** A special address used to reach the same host without sending traffic onto a physical network. IPv4 commonly uses `127.0.0.1`.
 
 ## M
 
-- <span id="media-access-control-address-mac-address"></span>**[Media access control address (MAC address)](https://csrc.nist.gov/glossary/term/media_access_control_address):** An address used to deliver frames across a local link.
+- <span id="media-access-control-address-mac-address"></span>**[Media access control address (MAC address)](https://en.wikipedia.org/wiki/MAC_address):** A link-layer identifier assigned to a network interface and used to deliver frames within a local network segment.
 - <span id="maximum-transmission-unit-mtu"></span>**[Maximum transmission unit (MTU)](https://csrc.nist.gov/glossary/term/maximum_transmission_unit):** The largest IP packet an interface can send across a link without IP fragmentation.
 
 ## N
@@ -101,8 +101,8 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## O
 
-- <span id="on-link"></span>**[On-link](https://en.wikipedia.org/wiki/Subnetwork#Network_addressing_and_routing):** Directly reachable on the local network without sending the packet through a router.
-- <span id="open-systems-interconnection-osi-model"></span>**[Open Systems Interconnection (OSI) model](https://csrc.nist.gov/glossary/term/open_systems_interconnection):** A seven-layer reference model commonly used to describe where networking functions and problems occur.
+- <span id="on-link"></span>**[On-link](https://www.rfc-editor.org/rfc/rfc5942.html#section-3):** Directly reachable on the local network without sending the packet through a router.
+- <span id="open-systems-interconnection-osi-model"></span>**[Open Systems Interconnection (OSI) model](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/):** A conceptual seven-layer reference model commonly used to describe where networking functions and problems occur.
 
 ## P
 
