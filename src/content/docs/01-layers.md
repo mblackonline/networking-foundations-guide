@@ -3,7 +3,7 @@ title: "Module 1: How Networks Are Layered"
 description: How networking layers organize communication and carry data between applications.
 ---
 
-Networking can feel like a long list of terms and protocols with nothing holding them together. The thing holding them together is layering, and it is the structure the rest of this guide is built on.
+Networking can feel like a long list of terms and protocols with nothing giving them structure. Layering is what gives them structure, and much of what follows makes more sense once you understand it.
 
 Cables, addresses, ports, and names all belong to different layers, and each one solves a different part of getting data from one machine to another. Once you know which layer something lives at, you know what it can and cannot explain, and you know where to look when something breaks.
 

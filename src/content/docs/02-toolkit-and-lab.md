@@ -3,7 +3,7 @@ title: "Module 2: Your Toolkit and Optional Lab"
 description: Verify the networking tools already on your computer, install Wireshark, and optionally build a two-machine virtual lab.
 ---
 
-This module gets your environment ready. Most of it takes a few minutes, because the majority of what you need is already installed with the operating system (OS) on the computer you are using right now.
+This module gets your environment ready. There is very little to install, because most of what you need already ships with the operating system (OS) on the computer you are using right now.
 
 The optional lab at the end adds two virtual machines (VMs): a Windows virtual machine (WINCLIENT) and a Linux virtual machine (LINUXBOX). You can read the guide without them, but building the lab is strongly recommended because many later modules use it for hands-on exercises.
 

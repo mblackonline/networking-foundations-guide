@@ -26,6 +26,10 @@ A solid understanding of networking fundamentals is vital to troubleshooting pro
 
 This guide is for anyone interested in learning networking fundamentals. You should be comfortable using a computer and installing software. No prior networking knowledge is assumed.
 
+## What This Guide Covers
+
+The examples and exercises describe wired and Wi-Fi networks built from computers, switches, routers, and firewalls. That covers most home, office, data center, and cloud environments. Mobile networks work differently and are outside the scope of this guide.
+
 ## Vendor Agnostic
 
 This guide is not tied to a particular vendor, product, or certification track. It focuses on broadly applicable concepts and standard protocols used across physical, virtual, and cloud environments.

@@ -3,7 +3,9 @@ title: "Module 3: The Local Network"
 description: How Ethernet frames, hardware addresses, switches, and broadcasts move local traffic.
 ---
 
-Before data can cross the internet, it has to leave your machine and reach the device next to it on the network. This module covers the layer 2 hop, which is how traffic moves inside your own network segment.
+Before data can cross the internet, it has to leave your machine and reach whatever it connects to first, usually a switch or an access point. This module covers the layer 2 hop, which is how traffic moves inside your own network segment.
+
+This module describes wired and Wi-Fi networks. A phone on cellular data connects differently and will not show the behavior described here.
 
 ## In This Module
 
