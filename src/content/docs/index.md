@@ -18,7 +18,7 @@ hero:
 
 This guide provides a high-level overview of common networking concepts you may encounter in information technology (IT) support, system administration, DevOps, software development, cybersecurity, and other technical roles. It is not intended to cover every networking topic.
 
-A solid understanding of networking fundamentals is vital to troubleshooting problems, understanding how systems communicate, and succeeding in these roles. The modules introduce concepts in an order that allows each one to build on what came before it.
+A solid understanding of networking fundamentals is vital to troubleshooting problems, understanding how systems communicate, and succeeding in these roles.
 
 This guide is for anyone interested in learning networking fundamentals. You should be comfortable using a computer and installing software. No prior networking knowledge is assumed.
 
