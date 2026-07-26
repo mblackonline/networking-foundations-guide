@@ -14,6 +14,10 @@ hero:
       variant: secondary
 ---
 
+:::note[Work in Progress]
+This guide is still a work in progress. I will continue reviewing and updating it as time permits. If you find an error or have an idea that could improve it, feedback and suggestions are welcome through [GitHub Issues](https://github.com/mblackonline/networking-foundations-guide/issues).
+:::
+
 ## Purpose and Audience
 
 This guide provides a high-level overview of common networking concepts you may encounter in information technology (IT) support, system administration, DevOps, software development, cybersecurity, and other technical roles. It is not intended to cover every networking topic.
