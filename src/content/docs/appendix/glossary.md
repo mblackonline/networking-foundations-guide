@@ -9,8 +9,8 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## Numbers
 
-- <span id="4-tuple"></span>**[4-tuple](https://www.rfc-editor.org/info/rfc9293):** The source Internet Protocol (IP) address, source port, destination IP address, and destination port that identify a Transmission Control Protocol (TCP) connection.
-- <span id="5-tuple"></span>**[5-tuple](https://csrc.nist.gov/pubs/sp/800/41/r1/final):** A 4-tuple plus the transport protocol, commonly used to describe traffic in firewall rules and network tools.
+- <span id="4-tuple"></span>**[4-tuple](https://en.wikipedia.org/wiki/Network_socket#Socket_pairs):** The source and destination Internet Protocol (IP) addresses and port numbers that uniquely identify a Transmission Control Protocol (TCP) connection; together they form the local and remote socket-address pair.
+- <span id="5-tuple"></span>**[5-tuple](https://en.wikipedia.org/wiki/Network_socket#Socket_addresses):** The transport protocol plus the source and destination IP addresses and port numbers, commonly used to identify a network flow in firewall rules and monitoring tools.
 
 ## A
 
@@ -55,7 +55,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 - <span id="encapsulation"></span>**[Encapsulation](https://en.wikipedia.org/wiki/Encapsulation_(networking)):** The process of adding protocol information around data as it moves down the networking layers.
 - <span id="ephemeral-port"></span>**[Ephemeral port](https://en.wikipedia.org/wiki/Ephemeral_port):** A temporary source port normally selected by the operating system for a client connection.
 - <span id="ethernet"></span>**[Ethernet](https://en.wikipedia.org/wiki/Ethernet):** A common technology for moving frames across a local wired network.
-- <span id="egress"></span>**[Egress](https://csrc.nist.gov/glossary/term/egress_filtering):** Traffic leaving a system or network boundary. It is also called outbound traffic.
+- <span id="egress"></span>**[Egress filtering](https://csrc.nist.gov/glossary/term/egress_filtering):** Filtering network traffic as it leaves a system or network boundary; egress traffic is also called outbound traffic.
 
 ## F
 
@@ -78,7 +78,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 - <span id="internet-protocol-ip"></span>**[Internet Protocol (IP)](https://en.wikipedia.org/wiki/Internet_Protocol):** The protocol that addresses and routes packets between networks.
 - <span id="internet-protocol-version-4-ipv4"></span>**[Internet Protocol version 4 (IPv4)](https://en.wikipedia.org/wiki/IPv4):** The widely used IP version with 32-bit addresses written as four decimal numbers, such as `192.0.2.10`.
 - <span id="internet-protocol-version-6-ipv6"></span>**[Internet Protocol version 6 (IPv6)](https://en.wikipedia.org/wiki/IPv6):** The newer IP version with 128-bit addresses, created to provide a much larger address space.
-- <span id="ingress"></span>**[Ingress](https://csrc.nist.gov/glossary/term/Ingress_Filtering):** Traffic entering a system or network boundary. It is also called inbound traffic.
+- <span id="ingress"></span>**[Ingress filtering](https://csrc.nist.gov/glossary/term/ingress_filtering):** Filtering network traffic as it enters a system or network boundary; ingress traffic is also called inbound traffic.
 
 ## L
 
@@ -142,7 +142,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 - <span id="transmission-control-protocol-tcp"></span>**[Transmission Control Protocol (TCP)](https://en.wikipedia.org/wiki/Transmission_Control_Protocol):** A connection-oriented transport protocol that provides ordered, reliable byte delivery.
 - <span id="tcp-ip"></span>**[TCP/IP](https://en.wikipedia.org/wiki/Internet_protocol_suite):** The family of protocols used by the internet, named for the Transmission Control Protocol and Internet Protocol.
-- <span id="transport-layer-security-tls"></span>**[Transport Layer Security (TLS)](https://www.rfc-editor.org/info/rfc9846):** A protocol that protects network traffic with encryption, integrity checking, and authentication.
+- <span id="transport-layer-security-tls"></span>**[Transport Layer Security (TLS)](https://developer.mozilla.org/en-US/docs/Glossary/TLS):** A protocol that protects network traffic with encryption, integrity checking, and authentication.
 - <span id="time-to-live-ttl"></span>**[Time to live (TTL)](https://en.wikipedia.org/wiki/Time_to_live):** In an IP packet, a value reduced by each router to prevent routing loops. In a DNS record, the same abbreviation means how long a cache may reuse that record.
 
 ## U
@@ -164,4 +164,4 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 This page links to source material; it does not reproduce source text, tables, or images. External material remains subject to its own copyright and license terms and is not included under this guide's MIT License.
 
-The RFC Editor publishes an [information page for each RFC](https://www.rfc-editor.org/info/rfc9293), which is the stable landing page this glossary links to. [IANA's protocol registries use a Creative Commons Zero (CC0) public-domain dedication](https://www.iana.org/help/licensing-terms). [NIST describes most information on its sites as public information](https://www.nist.gov/copyrights-disclaimers). [Microsoft permits plain-text links to its content](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions).
+The RFC Editor publishes an [information page for each RFC](https://www.rfc-editor.org/info/rfc9293), which is the stable landing page this glossary links to. [IANA's protocol registries use a Creative Commons Zero (CC0) public-domain dedication](https://www.iana.org/help/licensing-terms). [NIST describes most information on its sites as public information](https://www.nist.gov/copyrights-disclaimers). [Microsoft permits plain-text links to its content](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions). [Wikipedia text is available under the Creative Commons Attribution-ShareAlike 4.0 International license](https://en.wikipedia.org/wiki/Wikipedia:Copyrights).
