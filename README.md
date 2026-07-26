@@ -1,10 +1,8 @@
 # Networking Foundations
 
-This repository contains the source code for a beginner-friendly, vendor-agnostic networking guide for anyone interested in learning networking fundamentals. IT support, system administration, DevOps, software development, and cybersecurity are a few common fields where this knowledge is useful, but they are not the only ones.
+This repository contains the source for [Networking Foundations](https://networking-foundations-guide.netlify.app), a free, open-source learning site built with Astro and Starlight.
 
-**If you want to follow the guide, you don't need anything in this repository. Read it on the website.**
-
-Everything below is only for developing the website itself.
+> **Looking for the guide?** [Read Networking Foundations online](https://networking-foundations-guide.netlify.app). You do not need to clone or build this repository.
 
 ---
 

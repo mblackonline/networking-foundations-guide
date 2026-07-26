@@ -14,15 +14,13 @@ hero:
       variant: secondary
 ---
 
-## What This Guide Covers
+## Purpose and Audience
 
-This guide is my best effort to provide a high-level overview of common networking concepts you may encounter in information technology (IT) support, system administration, DevOps, software development, and cybersecurity. It is not intended to cover every networking topic.
+This guide provides a high-level overview of common networking concepts you may encounter in information technology (IT) support, system administration, DevOps, software development, cybersecurity, and other technical roles. It is not intended to cover every networking topic.
 
-I believe that a solid understanding of networking fundamentals is vital to troubleshooting problems and being successful in any of these roles. The modules introduce the concepts in an order that allows each one to build on what came before it.
+A solid understanding of networking fundamentals can make it easier to troubleshoot problems and understand how systems communicate. The modules introduce concepts in an order that allows each one to build on what came before it.
 
-## Who This Is For
-
-This guide is for anyone interested in learning networking fundamentals. IT support, system administration, DevOps, software development, and cybersecurity are a few common fields where this knowledge is useful, but they are not the only ones. You should be comfortable using a computer and installing software. No prior networking knowledge is assumed.
+This guide is for anyone interested in learning networking fundamentals. You should be comfortable using a computer and installing software. No prior networking knowledge is assumed.
 
 ## Vendor Agnostic
 
