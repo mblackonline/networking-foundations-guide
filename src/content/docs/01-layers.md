@@ -40,7 +40,12 @@ Each example gets its own treatment later.
 
 ARP is included in the Link layer because it finds the media access control (MAC) address associated with an IPv4 address on the local network. That MAC address is needed to deliver the frame to the next device.
 
-Read the table from the bottom up and it tells a story. The Link layer moves frames between devices on the same local network. The Internet layer sends packets across connected networks. The Transport layer delivers data to the correct application on the destination device, with TCP providing reliability when it is needed. The Application layer provides services that software can use.
+Read the table from the bottom up and it tells a story.
+
+- The Link layer moves frames between devices on the same local network.
+- The Internet layer routes packets between networks.
+- The Transport layer delivers data to the correct application on the destination device. TCP provides reliability when it is needed.
+- The Application layer provides network services that software can use.
 
 ## The OSI Model
 
