@@ -63,15 +63,15 @@ The [Open Systems Interconnection (OSI) model](/appendix/glossary/#open-systems-
 
 You will meet both models, and the reason is worth knowing. Systems are built to the TCP/IP model, but people talk using OSI numbers. Someone says a load balancer is "layer 7" or that a problem is "layer 3", and they mean the OSI numbering.
 
-For practical work, four numbers carry almost all the conversation.
+The OSI layer numbers are often used in networking discussions.
 
-- **Layer 1** is the physical side, cables, radios, and ports
-- **Layer 2** is the local hop, MAC addresses and switches
-- **Layer 3** is addressing and routing, IP
-- **Layer 4** is ports and connections, TCP and UDP
-- **Layer 7** is the application itself, usually HTTP
-
-Layers 5 and 6 come up rarely in day-to-day work. Do not spend memorization effort there.
+- **Layer 1** covers physical transmission, including cables, radios, and network interfaces.
+- **Layer 2** covers communication on the same local network, including frames, MAC addresses, and switches.
+- **Layer 3** covers IP addressing and routing between networks.
+- **Layer 4** covers transport between applications, including TCP, UDP, and port numbers.
+- **Layer 5** manages communication sessions between applications.
+- **Layer 6** prepares data in a form applications can use, including encoding, compression, and encryption.
+- **Layer 7** covers network services used by applications, such as HTTP and DNS.
 
 ## Encapsulation
 
