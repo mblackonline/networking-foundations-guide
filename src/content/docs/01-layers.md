@@ -79,51 +79,32 @@ On the receiving machine the process runs in reverse. Each layer strips its own 
 
 One detail here explains a great deal of later material. The IP addresses stay the same for the whole journey, but the Ethernet header is rebuilt at every hop. Each router strips the frame it received, decides where the packet goes next, and builds a new frame for that next hop. The envelope changes repeatedly. The letter inside does not.
 
-That is why MAC addresses only matter locally and IP addresses matter end to end, and it is the reason Modules 3 and 5 are separate topics.
+That is why MAC addresses are used for delivery on the local network, while IP addresses are used to deliver packets between networks.
 
-## Layers as a Troubleshooting Order
+## Using Layers to Troubleshoot
 
-Working the layers in order is faster than guessing, because a working upper layer means nothing if a lower one is broken. There is no point testing a web request from a machine with no IP address.
+Suppose a web page will not load. Two quick tests can help you separate basic reachability from a problem with the web service.
 
-Start at the bottom and stop at the first thing that fails.
-
-| Layer | Question to answer | Covered in |
-| --- | --- | --- |
-| 1 and 2 | Is there a link, and can I reach anything locally? | Module 3 |
-| 3 | Do I have a valid address, and do I know how to leave my network? | Modules 4 and 5 |
-| 3 | Is address translation involved? | Module 6 |
-| 4 | Is the port open, and is something listening? | Module 7 |
-| Support | Did I get my settings automatically, and are they right? | Module 8 |
-| Support | Does the name resolve to the address I expect? | Module 9 |
-| 7 | Is the application itself answering correctly? | Module 10 |
-| Any | Is something deliberately blocking this? | Modules 11 and 12 |
-
-That table is also a map of this guide. Module 13 turns it into a repeatable method.
-
-## Try It Yourself
-
-You can watch two different layers succeed and fail independently using tools already on your computer.
-
-Open a Command Prompt on Windows, or a terminal on Linux or macOS, and run:
+Open a Command Prompt on Windows, or a terminal on Linux or macOS, and run this command.
 
 ```text
 ping example.com
 ```
 
-That is a layer 3 test. It asks whether packets can reach the machine and come back. It says nothing about whether a website is running there.
+Before `ping` sends anything, your computer must resolve `example.com` to an IP address. If you receive replies, name resolution worked and ICMP packets made the round trip. This does not tell you whether the website itself is working.
 
-Now run:
+Now run this command.
 
 ```text
 curl -I https://example.com
 ```
 
-That is a layer 7 test. It asks the web server to respond to an actual HTTP request.
+This command connects to TCP port 443, negotiates TLS, and sends an HTTP request. If it returns response headers, the web service is answering and every layer needed for that request worked.
 
-The useful case is when these disagree. A host that answers ping but refuses the HTTP request is reachable but not serving, which points at the application or a filter, not at the network. A host that fails both is more likely a routing, addressing, or name resolution problem. That distinction alone will save you hours later.
+The results help narrow down where to look. If `ping` works but `curl` fails, the problem could involve TCP port 443, TLS, a firewall, or the web server. If `curl` works but `ping` fails, the path to the website is working and ICMP may simply be blocked. If both fail, you still need more evidence to distinguish among name resolution, local network access, addressing, routing, and filtering.
 
 :::note
-Some hosts are configured not to answer ping at all. A failed ping is evidence, not proof. Module 13 covers what each tool actually proves.
+Some hosts are configured not to answer `ping`. A failed `ping` is evidence, not proof of a network problem.
 :::
 
 ## Further Learning
