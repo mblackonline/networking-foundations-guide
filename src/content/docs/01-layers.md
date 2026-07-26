@@ -23,7 +23,7 @@ Networks work the same way, and for the same reason. Each layer solves one probl
 
 The payoff is that layers can change independently. Your web browser works identically over Wi-Fi, over Ethernet, and over a mobile connection, because the browser never deals with radios or cables. Someone can invent a faster physical medium without anyone rewriting web servers.
 
-The other payoff is the one you will use daily. When something breaks, layers tell you where to look.
+The other payoff is the one you will use daily. When something breaks, layers help you narrow down where to look.
 
 ## The TCP/IP Model
 
