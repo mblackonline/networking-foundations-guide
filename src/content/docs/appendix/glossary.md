@@ -95,33 +95,33 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## N
 
-- <span id="network-address"></span>**[Network address](https://www.rfc-editor.org/info/rfc4632):** The first address in a traditional IPv4 subnet, used to identify the subnet itself.
-- <span id="network-address-translation-nat"></span>**[Network address translation (NAT)](https://www.rfc-editor.org/info/rfc3022):** A gateway function that changes IP addressing information as traffic crosses a network boundary.
-- <span id="next-hop"></span>**[Next hop](https://www.rfc-editor.org/info/rfc1812):** The next router or local destination to which a host or router sends a packet.
+- <span id="network-address"></span>**[Network address](https://en.wikipedia.org/wiki/Subnetwork#Special_addresses_and_subnets):** The first address in a traditional IPv4 subnet, used to identify the subnet itself.
+- <span id="network-address-translation-nat"></span>**[Network address translation (NAT)](https://en.wikipedia.org/wiki/Network_address_translation):** A gateway function that changes IP addressing information as traffic crosses a network boundary.
+- <span id="next-hop"></span>**[Next hop](https://en.wikipedia.org/wiki/Routing_table#Contents):** The next router or local destination to which a host or router sends a packet.
 
 ## O
 
-- <span id="on-link"></span>**[On-link](https://www.rfc-editor.org/info/rfc1122):** Directly reachable on the local network without sending the packet through a router.
+- <span id="on-link"></span>**[On-link](https://en.wikipedia.org/wiki/Subnetwork#Network_addressing_and_routing):** Directly reachable on the local network without sending the packet through a router.
 - <span id="open-systems-interconnection-osi-model"></span>**[Open Systems Interconnection (OSI) model](https://csrc.nist.gov/glossary/term/open_systems_interconnection):** A seven-layer reference model commonly used to describe where networking functions and problems occur.
 
 ## P
 
 - <span id="packet"></span>**[Packet](https://en.wikipedia.org/wiki/Network_packet):** The unit of data carried by IP from a source host toward a destination host.
-- <span id="port"></span>**[Port](https://www.rfc-editor.org/info/rfc6335):** A number used by TCP or User Datagram Protocol (UDP) to direct traffic to the correct application or service.
+- <span id="port"></span>**[Port](https://en.wikipedia.org/wiki/Port_(computer_networking)):** A number used by TCP or User Datagram Protocol (UDP) to direct traffic to the correct application or service.
 - <span id="port-address-translation-pat"></span>**[Port Address Translation (PAT)](https://www.rfc-editor.org/info/rfc2663):** A form of NAT that translates port numbers as well as addresses, allowing many private connections to share one public IPv4 address.
-- <span id="port-forwarding"></span>**[Port forwarding](https://www.rfc-editor.org/info/rfc2663):** A rule that sends traffic arriving at one address and port to a chosen internal address and port.
-- <span id="prefix-length"></span>**[Prefix length](https://www.rfc-editor.org/info/rfc4632):** The number after `/` in CIDR notation, showing how many leading address bits identify the network.
+- <span id="port-forwarding"></span>**[Port forwarding](https://en.wikipedia.org/wiki/Port_forwarding):** A rule that sends traffic arriving at one address and port to a chosen internal address and port.
+- <span id="prefix-length"></span>**[Prefix length](https://en.wikipedia.org/wiki/Subnetwork#Network_addressing_and_routing):** The number after `/` in CIDR notation, showing how many leading address bits identify the network.
 - <span id="private-ipv4-address"></span>**[Private IPv4 address](https://www.rfc-editor.org/info/rfc1918):** An address from a range reserved for private networks and not routed across the public internet.
 - <span id="proxy"></span>**[Proxy](https://developer.mozilla.org/en-US/docs/Glossary/Proxy_server):** A system that accepts one connection and creates another connection on behalf of a client or server.
 - <span id="public-ip-address"></span>**[Public IP address](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml):** An IP address that may be globally routed, subject to allocation and network policy.
 
 ## R
 
-- <span id="recursive-resolver"></span>**[Recursive resolver](https://www.rfc-editor.org/info/rfc1034):** A DNS server that accepts a client's query, finds the answer, and commonly caches it.
+- <span id="recursive-resolver"></span>**[Recursive resolver](https://en.wikipedia.org/wiki/Name_server#Recursive_Resolver):** A DNS server that accepts a client's query, finds the answer, and commonly caches it.
 - <span id="request-for-comments-rfc"></span>**[Request for Comments (RFC)](https://www.rfc-editor.org/about/rfc-editor/):** A publication in the RFC series that documents internet standards, protocols, practices, or other technical information.
-- <span id="resource-record"></span>**[Resource record](https://www.rfc-editor.org/info/rfc1035):** One item of DNS data, such as an address, mail-server, or alias record.
+- <span id="resource-record"></span>**[Resource record](https://en.wikipedia.org/wiki/Domain_Name_System#Resource_records):** One item of DNS data, such as an address, mail-server, or alias record.
 - <span id="reverse-proxy"></span>**[Reverse proxy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Proxy_servers_and_tunneling):** A proxy that accepts connections on behalf of one or more servers.
-- <span id="route"></span>**[Route](https://www.rfc-editor.org/info/rfc1812):** An entry describing how traffic should reach a destination network or host.
+- <span id="route"></span>**[Route](https://en.wikipedia.org/wiki/Routing_table#Overview):** An entry describing how traffic should reach a destination network or host.
 - <span id="router"></span>**[Router](https://csrc.nist.gov/glossary/term/router):** A device or system that forwards IP packets between networks.
 - <span id="routing-table"></span>**[Routing table](https://en.wikipedia.org/wiki/Routing_table):** The list of routes a host or router uses to select a path.
 
@@ -134,7 +134,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 - <span id="socket"></span>**[Socket](https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-start-page-2):** A communication endpoint an application uses to send or receive network data.
 - <span id="stateful-firewall"></span>**[Stateful firewall](https://csrc.nist.gov/glossary/term/stateful_inspection):** A firewall that remembers active network flows and can recognize their return traffic.
 - <span id="stateless-filter"></span>**[Stateless filter](https://csrc.nist.gov/glossary/term/Packet_Filtering):** A filter that evaluates packets without remembering an active connection.
-- <span id="subnet"></span>**[Subnet](https://www.rfc-editor.org/info/rfc4632):** A range of IP addresses that share a network prefix.
+- <span id="subnet"></span>**[Subnet](https://en.wikipedia.org/wiki/Subnetwork):** A range of IP addresses that share a network prefix.
 - <span id="subnet-mask"></span>**[Subnet mask](https://www.rfc-editor.org/info/rfc950):** An IPv4 value that separates the network portion of an address from the host portion.
 - <span id="switch"></span>**[Switch](https://csrc.nist.gov/glossary/term/switch):** A device that forwards frames between devices on a local network using MAC addresses.
 
