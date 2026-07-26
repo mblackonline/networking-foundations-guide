@@ -53,7 +53,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 ## E
 
 - <span id="encapsulation"></span>**[Encapsulation](https://en.wikipedia.org/wiki/Encapsulation_(networking)):** The process of adding protocol information around data as it moves down the networking layers.
-- <span id="ephemeral-port"></span>**[Ephemeral port](https://www.rfc-editor.org/info/rfc6335):** A temporary source port normally selected by the operating system for a client connection.
+- <span id="ephemeral-port"></span>**[Ephemeral port](https://en.wikipedia.org/wiki/Ephemeral_port):** A temporary source port normally selected by the operating system for a client connection.
 - <span id="ethernet"></span>**[Ethernet](https://en.wikipedia.org/wiki/Ethernet):** A common technology for moving frames across a local wired network.
 - <span id="egress"></span>**[Egress](https://csrc.nist.gov/glossary/term/egress_filtering):** Traffic leaving a system or network boundary. It is also called outbound traffic.
 
@@ -66,8 +66,8 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 ## H
 
 - <span id="health-check"></span>**[Health check](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview):** A test a load balancer uses to decide whether a backend can receive traffic.
-- <span id="host"></span>**[Host](https://www.rfc-editor.org/info/rfc1122):** A device with an IP address that can send or receive network traffic.
-- <span id="hostname"></span>**[Hostname](https://www.rfc-editor.org/info/rfc1123):** A name assigned to a host. A hostname may be used as part of a complete domain name.
+- <span id="host"></span>**[Host](https://en.wikipedia.org/wiki/Host_(network)):** A device with an IP address that can send or receive network traffic.
+- <span id="hostname"></span>**[Hostname](https://en.wikipedia.org/wiki/Hostname):** A name assigned to a host. A hostname may be used as part of a complete domain name.
 - <span id="hypertext-transfer-protocol-http"></span>**[Hypertext Transfer Protocol (HTTP)](https://developer.mozilla.org/en-US/docs/Glossary/HTTP):** An application protocol that uses requests and responses to transfer web content and other data.
 - <span id="hypertext-transfer-protocol-secure-https"></span>**[Hypertext Transfer Protocol Secure (HTTPS)](https://developer.mozilla.org/en-US/docs/Glossary/HTTPS):** HTTP protected by Transport Layer Security (TLS).
 
@@ -75,18 +75,18 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 - <span id="internet-assigned-numbers-authority-iana"></span>**[Internet Assigned Numbers Authority (IANA)](https://www.iana.org/about):** The organization that coordinates global protocol-number registries, including service names and port numbers.
 - <span id="internet-control-message-protocol-icmp"></span>**[Internet Control Message Protocol (ICMP)](https://www.rfc-editor.org/info/rfc792):** A protocol used for network status and error messages, including messages used by `ping` and `traceroute`.
-- <span id="internet-protocol-ip"></span>**[Internet Protocol (IP)](https://www.rfc-editor.org/info/rfc1122):** The protocol that addresses and routes packets between networks.
-- <span id="internet-protocol-version-4-ipv4"></span>**[Internet Protocol version 4 (IPv4)](https://www.rfc-editor.org/info/rfc791):** The widely used IP version with 32-bit addresses written as four decimal numbers, such as `192.0.2.10`.
-- <span id="internet-protocol-version-6-ipv6"></span>**[Internet Protocol version 6 (IPv6)](https://www.rfc-editor.org/info/rfc8200):** The newer IP version with 128-bit addresses, created to provide a much larger address space.
+- <span id="internet-protocol-ip"></span>**[Internet Protocol (IP)](https://en.wikipedia.org/wiki/Internet_Protocol):** The protocol that addresses and routes packets between networks.
+- <span id="internet-protocol-version-4-ipv4"></span>**[Internet Protocol version 4 (IPv4)](https://en.wikipedia.org/wiki/IPv4):** The widely used IP version with 32-bit addresses written as four decimal numbers, such as `192.0.2.10`.
+- <span id="internet-protocol-version-6-ipv6"></span>**[Internet Protocol version 6 (IPv6)](https://en.wikipedia.org/wiki/IPv6):** The newer IP version with 128-bit addresses, created to provide a much larger address space.
 - <span id="ingress"></span>**[Ingress](https://csrc.nist.gov/glossary/term/Ingress_Filtering):** Traffic entering a system or network boundary. It is also called inbound traffic.
 
 ## L
 
-- <span id="layer"></span>**[Layer](https://www.rfc-editor.org/info/rfc1122):** A group of related networking responsibilities. Layer numbers usually refer to the Open Systems Interconnection model.
-- <span id="lease"></span>**[Lease](https://www.rfc-editor.org/info/rfc2131):** See **DHCP lease**.
+- <span id="layer"></span>**[Layer](https://en.wikipedia.org/wiki/OSI_model):** A group of related networking responsibilities. Layer numbers usually refer to the Open Systems Interconnection model.
+- <span id="lease"></span>**[Lease](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol#Overview):** See **DHCP lease**.
 - <span id="listening-socket"></span>**[Listening socket](https://learn.microsoft.com/en-us/windows/win32/winsock/listening-on-a-socket):** A socket waiting for new traffic on a local address and port.
 - <span id="load-balancer"></span>**[Load balancer](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview):** A system that distributes connections or requests among multiple backend servers.
-- <span id="loopback"></span>**[Loopback](https://www.rfc-editor.org/info/rfc1122):** A special address used to reach the same host without sending traffic onto a physical network. IPv4 commonly uses `127.0.0.1`.
+- <span id="loopback"></span>**[Loopback](https://en.wikipedia.org/wiki/Localhost):** A special address used to reach the same host without sending traffic onto a physical network. IPv4 commonly uses `127.0.0.1`.
 
 ## M
 
