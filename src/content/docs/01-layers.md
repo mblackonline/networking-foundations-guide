@@ -29,8 +29,6 @@ The other payoff is the one you will use daily. When something breaks, layers he
 
 This is the model the internet actually runs on. It takes its name from the [Transmission Control Protocol (TCP)](/appendix/glossary/#transmission-control-protocol-tcp) and the [Internet Protocol (IP)](/appendix/glossary/#internet-protocol-ip), and it has four layers.
 
-The examples below include the Hypertext Transfer Protocol (HTTP), Domain Name System (DNS), Secure Shell (SSH), Simple Mail Transfer Protocol (SMTP), User Datagram Protocol (UDP), Internet Control Message Protocol (ICMP), and Address Resolution Protocol (ARP).
-
 | Layer | Its job | Examples |
 | --- | --- | --- |
 | Application | Provide network services used by applications | HTTP, DNS, SSH, SMTP |
