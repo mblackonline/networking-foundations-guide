@@ -127,9 +127,9 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## S
 
-- <span id="segment"></span>**[Segment](https://www.rfc-editor.org/info/rfc9293):** Depending on context, this can mean a TCP unit of data or a portion of a local network. The linked standard covers the TCP meaning.
+- <span id="segment"></span>**[Segment](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_segment_structure):** Depending on context, this can mean a TCP unit of data or a portion of a local network. The linked section covers the TCP meaning.
 - <span id="server"></span>**[Server](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview):** A device or application that listens for and responds to client requests.
-- <span id="server-name-indication-sni"></span>**[Server Name Indication (SNI)](https://www.rfc-editor.org/info/rfc6066):** Information sent during a TLS connection so a server can select the certificate for the requested hostname.
+- <span id="server-name-indication-sni"></span>**[Server Name Indication (SNI)](https://en.wikipedia.org/wiki/Server_Name_Indication):** Information sent during a TLS connection so a server can select the certificate for the requested hostname.
 - <span id="session-persistence"></span>**[Session persistence](https://learn.microsoft.com/en-us/azure/load-balancer/distribution-mode-concepts):** A load-balancing behavior that repeatedly sends one client's traffic to the same backend. It is also called a sticky session.
 - <span id="socket"></span>**[Socket](https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-start-page-2):** A communication endpoint an application uses to send or receive network data.
 - <span id="stateful-firewall"></span>**[Stateful firewall](https://csrc.nist.gov/glossary/term/stateful_inspection):** A firewall that remembers active network flows and can recognize their return traffic.
@@ -140,10 +140,10 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## T
 
-- <span id="transmission-control-protocol-tcp"></span>**[Transmission Control Protocol (TCP)](https://www.rfc-editor.org/info/rfc9293):** A connection-oriented transport protocol that provides ordered, reliable byte delivery.
-- <span id="tcp-ip"></span>**[TCP/IP](https://www.rfc-editor.org/info/rfc1122):** The family of protocols used by the internet, named for the Transmission Control Protocol and Internet Protocol.
+- <span id="transmission-control-protocol-tcp"></span>**[Transmission Control Protocol (TCP)](https://en.wikipedia.org/wiki/Transmission_Control_Protocol):** A connection-oriented transport protocol that provides ordered, reliable byte delivery.
+- <span id="tcp-ip"></span>**[TCP/IP](https://en.wikipedia.org/wiki/Internet_protocol_suite):** The family of protocols used by the internet, named for the Transmission Control Protocol and Internet Protocol.
 - <span id="transport-layer-security-tls"></span>**[Transport Layer Security (TLS)](https://www.rfc-editor.org/info/rfc9846):** A protocol that protects network traffic with encryption, integrity checking, and authentication.
-- <span id="time-to-live-ttl"></span>**[Time to live (TTL)](https://www.rfc-editor.org/info/rfc1122):** In an IP packet, a value reduced by each router to prevent routing loops. In a DNS record, the same abbreviation means how long a cache may reuse that record, as defined in [RFC 1035](https://www.rfc-editor.org/info/rfc1035).
+- <span id="time-to-live-ttl"></span>**[Time to live (TTL)](https://en.wikipedia.org/wiki/Time_to_live):** In an IP packet, a value reduced by each router to prevent routing loops. In a DNS record, the same abbreviation means how long a cache may reuse that record.
 
 ## U
 
@@ -158,7 +158,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## Z
 
-- <span id="zone"></span>**[Zone](https://www.rfc-editor.org/info/rfc1034):** An administratively managed portion of the DNS namespace containing authoritative records.
+- <span id="zone"></span>**[Zone](https://en.wikipedia.org/wiki/DNS_zone):** An administratively managed portion of the DNS namespace containing authoritative records.
 
 ## Source and Copyright Note
 
