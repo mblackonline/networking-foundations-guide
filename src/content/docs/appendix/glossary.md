@@ -10,7 +10,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 ## Numbers
 
 - <span id="4-tuple"></span>**[4-tuple](https://en.wikipedia.org/wiki/Network_socket#Socket_pairs):** The source and destination Internet Protocol (IP) addresses and port numbers that uniquely identify a Transmission Control Protocol (TCP) connection; together they form the local and remote socket-address pair.
-- <span id="5-tuple"></span>**[5-tuple](https://en.wikipedia.org/wiki/Network_socket#Socket_addresses):** The transport protocol plus the source and destination IP addresses and port numbers, commonly used to identify a network flow in firewall rules and monitoring tools.
+- <span id="5-tuple"></span>**[5-tuple](https://learn.microsoft.com/en-us/azure/load-balancer/distribution-mode-concepts#hash-based):** The transport protocol plus the source and destination IP addresses and port numbers, commonly used to identify a network flow in firewall rules and monitoring tools.
 
 ## A
 
@@ -27,7 +27,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 - <span id="border-gateway-protocol-bgp"></span>**[Border Gateway Protocol (BGP)](https://en.wikipedia.org/wiki/Border_Gateway_Protocol):** The routing protocol used to exchange reachability information between large networks, including networks that form the internet.
 - <span id="broadcast"></span>**[Broadcast](https://en.wikipedia.org/wiki/Broadcasting_(networking)):** Traffic sent to every device in the same broadcast domain.
 - <span id="broadcast-address"></span>**[Broadcast address](https://en.wikipedia.org/wiki/Broadcast_address):** The final address in a traditional IPv4 subnet, used to reach all IPv4 hosts on that subnet.
-- <span id="broadcast-domain"></span>**[Broadcast domain](https://csrc.nist.gov/glossary/term/virtual_local_area_network):** The group of devices that receive one another's local broadcast traffic. Routers separate broadcast domains.
+- <span id="broadcast-domain"></span>**[Broadcast domain](https://en.wikipedia.org/wiki/Broadcast_domain):** The group of devices that receive one another's local broadcast traffic. Routers separate broadcast domains.
 
 ## C
 
@@ -113,12 +113,12 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 - <span id="prefix-length"></span>**[Prefix length](https://en.wikipedia.org/wiki/Subnetwork#Network_addressing_and_routing):** The number after `/` in CIDR notation, showing how many leading address bits identify the network.
 - <span id="private-ipv4-address"></span>**[Private IPv4 address](https://www.rfc-editor.org/info/rfc1918):** An address from a range reserved for private networks and not routed across the public internet.
 - <span id="proxy"></span>**[Proxy](https://developer.mozilla.org/en-US/docs/Glossary/Proxy_server):** A system that accepts one connection and creates another connection on behalf of a client or server.
-- <span id="public-ip-address"></span>**[Public IP address](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml):** An IP address that may be globally routed, subject to allocation and network policy.
+- <span id="public-ip-address"></span>**[Public IP address](https://en.wikipedia.org/wiki/IP_address#Public_address):** An IP address that may be globally routed, subject to allocation and network policy.
 
 ## R
 
 - <span id="recursive-resolver"></span>**[Recursive resolver](https://en.wikipedia.org/wiki/Name_server#Recursive_Resolver):** A DNS server that accepts a client's query, finds the answer, and commonly caches it.
-- <span id="request-for-comments-rfc"></span>**[Request for Comments (RFC)](https://www.rfc-editor.org/about/rfc-editor/):** A publication in the RFC series that documents internet standards, protocols, practices, or other technical information.
+- <span id="request-for-comments-rfc"></span>**[Request for Comments (RFC)](https://www.rfc-editor.org/series/rfc/):** A publication in the RFC series that documents internet standards, protocols, practices, or other technical information.
 - <span id="resource-record"></span>**[Resource record](https://en.wikipedia.org/wiki/Domain_Name_System#Resource_records):** One item of DNS data, such as an address, mail-server, or alias record.
 - <span id="reverse-proxy"></span>**[Reverse proxy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Proxy_servers_and_tunneling):** A proxy that accepts connections on behalf of one or more servers.
 - <span id="route"></span>**[Route](https://en.wikipedia.org/wiki/Routing_table#Overview):** An entry describing how traffic should reach a destination network or host.
@@ -131,7 +131,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 - <span id="server"></span>**[Server](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview):** A device or application that listens for and responds to client requests.
 - <span id="server-name-indication-sni"></span>**[Server Name Indication (SNI)](https://en.wikipedia.org/wiki/Server_Name_Indication):** Information sent during a TLS connection so a server can select the certificate for the requested hostname.
 - <span id="session-persistence"></span>**[Session persistence](https://learn.microsoft.com/en-us/azure/load-balancer/distribution-mode-concepts):** A load-balancing behavior that repeatedly sends one client's traffic to the same backend. It is also called a sticky session.
-- <span id="socket"></span>**[Socket](https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-start-page-2):** A communication endpoint an application uses to send or receive network data.
+- <span id="socket"></span>**[Socket](https://en.wikipedia.org/wiki/Network_socket):** A communication endpoint an application uses to send or receive network data.
 - <span id="stateful-firewall"></span>**[Stateful firewall](https://csrc.nist.gov/glossary/term/stateful_inspection):** A firewall that remembers active network flows and can recognize their return traffic.
 - <span id="stateless-filter"></span>**[Stateless filter](https://csrc.nist.gov/glossary/term/Packet_Filtering):** A filter that evaluates packets without remembering an active connection.
 - <span id="subnet"></span>**[Subnet](https://en.wikipedia.org/wiki/Subnetwork):** A range of IP addresses that share a network prefix.
