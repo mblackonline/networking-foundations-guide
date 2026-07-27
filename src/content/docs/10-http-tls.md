@@ -207,7 +207,7 @@ This read-only exercise requests the public documentation site `example.com` and
 
 On the Windows 11 virtual machine named WINCLIENT, run:
 
-```powershell
+```text
 curl.exe --verbose --output NUL https://example.com
 ```
 

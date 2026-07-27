@@ -241,7 +241,7 @@ This exercise installs NGINX on LINUXBOX. The proxy listens only inside the isol
 
 5. On WINCLIENT, replace `<LINUXBOX-IP>` with LINUXBOX's NETLAB address:
 
-   ```powershell
+   ```text
    curl.exe http://<LINUXBOX-IP>:8080
    ```
 

@@ -236,7 +236,7 @@ This exercise uses the SSH server already installed on the Linux Mint virtual ma
 
 3. On the Windows 11 virtual machine named WINCLIENT, open PowerShell and replace `<LINUXBOX-IP>` with the address from step 1:
 
-   ```powershell
+   ```text
    Test-NetConnection <LINUXBOX-IP> -Port 22
    ```
 

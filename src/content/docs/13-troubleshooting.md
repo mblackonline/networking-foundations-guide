@@ -67,7 +67,7 @@ Confirm that the network interface is connected and has the expected Internet Pr
 
 On Windows:
 
-```powershell
+```text
 ipconfig /all
 ```
 
@@ -93,7 +93,7 @@ If the user connects by name, confirm which address that name returns.
 
 On Windows:
 
-```powershell
+```text
 Resolve-DnsName portal.example.com
 ```
 
@@ -113,7 +113,7 @@ The routing table shows where the client intends to send traffic.
 
 On Windows:
 
-```powershell
+```text
 route print
 ```
 
@@ -149,7 +149,7 @@ Test the port used by the actual service. For example, a web server may respond 
 
 On Windows, test a specific TCP destination:
 
-```powershell
+```text
 Test-NetConnection -ComputerName portal.example.com -Port 443
 ```
 
@@ -159,7 +159,7 @@ On the server, confirm that a process is listening on the expected address and p
 
 Windows:
 
-```powershell
+```text
 netstat -ano
 ```
 
@@ -177,7 +177,7 @@ Use a tool that speaks the application's protocol. For Hypertext Transfer Protoc
 
 On Windows:
 
-```powershell
+```text
 curl.exe -v https://portal.example.com
 ```
 
@@ -230,6 +230,12 @@ Changing several settings at once makes the result difficult to interpret. Inste
 
 For example, do not disable an entire firewall, change DNS servers, and restart the application together. A temporary rule for one required port is a safer and more useful test than disabling all filtering.
 
+:::note[When Restarting Fixes It]
+If a dependency is reachable when you test it, the application still reports a connection error, and restarting the application fixes it with no other change, the problem was probably startup order rather than the network.
+
+Many applications try their dependencies once at startup and do not retry. A listening port is also not the same as a ready service, since a database may accept connections while it is still starting and unable to answer queries. When restarting systems that depend on one another, bring up the dependency first, confirm it is actually serving requests, then start the things that need it.
+:::
+
 ## Use a Packet Capture with a Question
 
 Use Wireshark when the earlier checks do not show where the exchange stops. Decide what you need to learn before starting the capture.
@@ -274,7 +280,7 @@ This exercise temporarily stops Secure Shell (SSH) on LINUXBOX. Use the VirtualB
 
 2. On WINCLIENT, replace `<LINUXBOX-IP>` with that address and confirm TCP port 22 is reachable:
 
-   ```powershell
+   ```text
    Test-NetConnection -ComputerName <LINUXBOX-IP> -Port 22
    ```
 

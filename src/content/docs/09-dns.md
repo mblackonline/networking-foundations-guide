@@ -189,7 +189,7 @@ It does not clear a browser's private cache or the cache on a recursive resolver
 
 PowerShell provides `Resolve-DnsName`:
 
-```powershell
+```text
 Resolve-DnsName example.com -Type A -DnsOnly
 ```
 
@@ -258,7 +258,7 @@ This exercise makes no configuration changes.
 
 1. On the Windows 11 virtual machine named WINCLIENT, run:
 
-   ```powershell
+   ```text
    ipconfig /all
    Resolve-DnsName example.com -Type A -DnsOnly
    Resolve-DnsName example.com -Type NS -DnsOnly

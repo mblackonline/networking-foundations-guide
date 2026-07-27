@@ -225,7 +225,7 @@ You can practice the idea with the `NETLAB` NAT Network in VirtualBox. The rule 
 
 4. On the Windows host—not inside either VM—open PowerShell and test the forwarded port:
 
-   ```powershell
+   ```text
    Test-NetConnection 127.0.0.1 -Port 18022
    ```
 

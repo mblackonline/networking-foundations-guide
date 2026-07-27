@@ -190,7 +190,7 @@ Run this exercise only on WINCLIENT inside the isolated NETLAB network. It creat
 1. On WINCLIENT, run `ipconfig` and record its `10.0.20.x` address.
 2. Open PowerShell as Administrator on WINCLIENT. Create a rule allowing inbound Internet Control Message Protocol version 4 (ICMPv4) echo requests from NETLAB:
 
-   ```powershell
+   ```text
    New-NetFirewallRule -DisplayName "NETGUIDE Temporary ICMP Allow" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -RemoteAddress 10.0.20.0/24 -Action Allow
    ```
 
@@ -204,14 +204,14 @@ Run this exercise only on WINCLIENT inside the isolated NETLAB network. It creat
 
 4. On WINCLIENT, add a conflicting block rule:
 
-   ```powershell
+   ```text
    New-NetFirewallRule -DisplayName "NETGUIDE Temporary ICMP Block" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -RemoteAddress 10.0.20.0/24 -Action Block
    ```
 
 5. Repeat the ping from LINUXBOX. It should time out because the explicit block rule takes precedence.
 6. On WINCLIENT, remove both temporary rules:
 
-   ```powershell
+   ```text
    Remove-NetFirewallRule -DisplayName "NETGUIDE Temporary ICMP Block"
    Remove-NetFirewallRule -DisplayName "NETGUIDE Temporary ICMP Allow"
    ```
