@@ -10,6 +10,7 @@ export default defineConfig({
       title: 'Networking Foundations',
       description:
         'A beginner-friendly, vendor-agnostic networking guide for information technology support, system administration, DevOps, software development, and cybersecurity.',
+      customCss: ['./src/styles/custom.css'],
       sidebar: [
         {
           label: 'Start Here',

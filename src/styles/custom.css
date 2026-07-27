@@ -1,0 +1,68 @@
+@import '@fontsource/atkinson-hyperlegible/400.css';
+@import '@fontsource/atkinson-hyperlegible/400-italic.css';
+@import '@fontsource/atkinson-hyperlegible/700.css';
+
+/* Slate and forest theme. Dark mode is the :root default in Starlight. */
+
+:root {
+  --sl-font: 'Atkinson Hyperlegible', ui-sans-serif, system-ui, sans-serif;
+
+  /* Aside hues. Note was blue 234, tip was purple 281. */
+  --sl-hue-blue: 205;
+  --sl-hue-purple: 152;
+  --sl-hue-green: 152;
+
+  --sl-color-accent-low: #10291d;
+  --sl-color-accent: #2f7d52;
+  --sl-color-accent-high: #a8dcc0;
+
+  --sl-color-white: #e6ebe9;
+  --sl-color-gray-1: #d9dfdc;
+  --sl-color-gray-2: #c0c5c3;
+  --sl-color-gray-3: #868d8a;
+  --sl-color-gray-4: #545b58;
+  --sl-color-gray-5: #353b39;
+  --sl-color-gray-6: #242a28;
+  --sl-color-black: #171a19;
+
+  --sl-color-blue-low: #1f2523;
+  --sl-color-blue: #8d9995;
+  --sl-color-blue-high: #d6dcd9;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: #c8e6d3;
+  --sl-color-accent: #1f6b43;
+  --sl-color-accent-high: #123a25;
+
+  --sl-color-white: #171a19;
+  --sl-color-gray-1: #242a28;
+  --sl-color-gray-2: #3e4442;
+  --sl-color-gray-3: #666d6a;
+  --sl-color-gray-4: #949b98;
+  --sl-color-gray-5: #c8ccca;
+  --sl-color-gray-6: #e6e9e8;
+  --sl-color-gray-7: #f3f5f4;
+  --sl-color-black: #fbfcfc;
+
+  --sl-color-blue-high: #2b3230;
+  --sl-color-blue: #79837f;
+  --sl-color-blue-low: #e8ecea;
+}
+
+/* Prose links only. The site title, hero buttons, and sidebar stay green. */
+
+.sl-markdown-content a {
+  color: #dbe1de;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+:root[data-theme='light'] .sl-markdown-content a {
+  color: #1f2523;
+}
+
+.sl-markdown-content a:hover {
+  text-decoration-thickness: 2px;
+}
