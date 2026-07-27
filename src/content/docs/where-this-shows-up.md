@@ -86,10 +86,6 @@ Do not expose SSH or RDP through an internet-facing firewall merely because you 
 | Software Development | Understanding DNS, sockets, ports, application programming interfaces (APIs), HTTP, Transport Layer Security (TLS), proxies, and database connections |
 | Cybersecurity | Reviewing segmentation, firewall policy, exposed services, logs, and packet captures |
 
-No role uses every networking feature every day. The shared skill is being able to follow a connection from the client, through each network decision, to the listening application.
-
-This guide covers the concepts those tasks rest on. It does not teach any specific platform, and each of these areas needs its own study on top of the fundamentals here.
-
 ## Where to Go Next
 
 Choose the next topic that matches the work you want to do:
