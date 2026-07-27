@@ -10,7 +10,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 ## Numbers
 
 - <span id="4-tuple"></span>**[4-tuple](https://en.wikipedia.org/wiki/Network_socket#Socket_pairs):** The source and destination Internet Protocol (IP) addresses and port numbers that uniquely identify a Transmission Control Protocol (TCP) connection; together they form the local and remote socket-address pair.
-- <span id="5-tuple"></span>**[5-tuple](https://learn.microsoft.com/en-us/azure/load-balancer/distribution-mode-concepts#hash-based):** The transport protocol plus the source and destination IP addresses and port numbers, commonly used to identify a network flow in firewall rules and monitoring tools.
+- <span id="5-tuple"></span>**[5-tuple](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview#security-rules):** The transport protocol plus the source and destination IP addresses and port numbers, commonly used to identify a network flow in firewall rules and monitoring tools.
 
 ## A
 
