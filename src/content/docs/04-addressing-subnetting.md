@@ -18,7 +18,7 @@ That local-or-remote decision is the main idea in this module. The calculations 
 
 ## Four Octets, Thirty-Two Bits
 
-An IPv4 address is 32 bits long. The familiar dotted form splits those bits into four 8-bit groups called octets, written in decimal, the everyday base-10 numbers, because that is easier to read and type than a row of ones and zeros.
+An IPv4 address is 32 bits long. The familiar dotted form splits those bits into four 8-bit groups called [octets](/appendix/glossary/#octet), written in [decimal](/appendix/glossary/#decimal), the everyday base-10 numbers, because that is easier to read and type than a row of ones and zeros.
 
 ```text
 192.168.10.77
