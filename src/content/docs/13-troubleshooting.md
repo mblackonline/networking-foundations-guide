@@ -12,7 +12,7 @@ Troubleshooting means narrowing those possibilities with evidence. Start with th
 ## In This Module
 
 - Turn a vague report into a specific problem
-- Test a connection in a repeatable order
+- Test a connection in a repeatable order, starting with the physical or wireless connection
 - Use network layers to organize troubleshooting tests
 - Understand what common tools prove
 - Interpret common failure messages
@@ -48,20 +48,51 @@ The specific report identifies a client, destination, symptom, scope, and possib
 Work from the client toward the application:
 
 ```text
-1. Network interface and local settings
-2. Destination name and address
-3. Route toward the destination
-4. Destination port
-5. Application response
+1. Physical or wireless connection
+2. Network interface and local settings
+3. Destination name and address
+4. Route toward the destination
+5. Destination port
+6. Application response
 ```
 
-This sequence is guided by the TCP/IP layers, but it is not a strict trip from the bottom layer to the top. The network interface and local network involve the Link layer. IP addressing and routing involve the Internet layer. The destination port involves the Transport layer. DNS and the service response involve the Application layer. DNS is checked early because the client needs a destination address before it can test the route or service.
+This sequence is guided by the TCP/IP layers, but it is not a strict trip from the bottom layer to the top. The physical connection, the network interface, and the local network involve the Link layer. IP addressing and routing involve the Internet layer. The destination port involves the Transport layer. DNS and the service response involve the Application layer. DNS is checked early because the client needs a destination address before it can test the route or service.
 
 Layers do not identify the cause by themselves. They organize the checks and help you understand what each result does and does not rule out.
 
 This order prevents an application error from being mistaken for a disconnected cable, or a Domain Name System (DNS) problem from being mistaken for a failed server.
 
-### 1. Check the Client's Network Settings
+### 1. Check the Physical or Wireless Connection
+
+Before running any command, confirm the device is actually attached to a network.
+
+On a wired connection, check that the cable is seated at both ends, that the link light on the switch port or wall jack is lit, and that the cable is not damaged. A cable that works elsewhere is better evidence than a cable that looks fine.
+
+On Wi-Fi, check that wireless is turned on, that the device is not in airplane mode, and that it joined the network you expect. A device that automatically connected to a guest network, a neighboring network, or an old saved network will still show a complete and valid-looking configuration in the next step. Every command will succeed while nothing the user needs works.
+
+The operating system can confirm whether the interface is up.
+
+On Windows, a disconnected adapter reports `Media disconnected`:
+
+```text
+ipconfig
+```
+
+On Linux, look for `state UP` or `state DOWN` on the interface:
+
+```text
+ip link
+```
+
+On macOS:
+
+```text
+ifconfig
+```
+
+A connected interface does not prove the device is on the right network. Confirm the network name as well as the connection state.
+
+### 2. Check the Client's Network Settings
 
 Confirm that the network interface is connected and has the expected Internet Protocol (IP) address, subnet mask or prefix, default gateway, and DNS server.
 
@@ -87,7 +118,7 @@ netstat -rn
 
 An address by itself does not prove that the settings are correct. Compare the results with a working device or the network's documented configuration.
 
-### 2. Check Name Resolution
+### 3. Check Name Resolution
 
 If the user connects by name, confirm which address that name returns.
 
@@ -107,7 +138,7 @@ If name resolution fails, investigate DNS. If the name returns an address, confi
 
 Testing the expected IP address separately can help distinguish a DNS problem from a connection problem. It is a diagnostic step, not a permanent substitute for fixing DNS.
 
-### 3. Check the Route and Basic Reachability
+### 4. Check the Route and Basic Reachability
 
 The routing table shows where the client intends to send traffic.
 
@@ -143,7 +174,7 @@ A failed `ping` does not prove that the destination is offline. A host or firewa
 
 If the destination is beyond the local network, `tracert` on Windows or `traceroute` on Linux and macOS can show some of the routers along the path. Missing replies from one router do not necessarily indicate a failure because routers may limit or ignore these probes.
 
-### 4. Test the Required Port
+### 5. Test the Required Port
 
 Test the port used by the actual service. For example, a web server may respond on Transmission Control Protocol (TCP) port 443 even when it does not answer `ping`.
 
@@ -171,7 +202,7 @@ ss -lntup
 
 A listening process confirms that the service opened the port locally. It does not prove that firewalls, routing, or cloud controls allow a remote client to reach it.
 
-### 5. Test the Application
+### 6. Test the Application
 
 Use a tool that speaks the application's protocol. For Hypertext Transfer Protocol (HTTP) and Hypertext Transfer Protocol Secure (HTTPS), `curl` can show the response.
 
@@ -323,6 +354,7 @@ The client test located the failure at the destination port. The server test the
 ## Checklist Before Moving On
 
 - [ ] You can turn a vague report into a specific, testable statement
+- [ ] You check the physical or wireless connection before reading any configuration
 - [ ] You can check local settings, DNS, routing, the destination port, and the application in order
 - [ ] You can explain why a failed `ping` does not prove that a server is offline
 - [ ] You know the difference between a timeout and a refused connection
