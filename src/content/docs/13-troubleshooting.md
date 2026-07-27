@@ -249,6 +249,12 @@ Avoid conclusions that go beyond the evidence:
 | A port is listening on the server | A remote client can pass every firewall and route to it |
 | A TCP port test succeeds | The application is healthy |
 
+:::note[When the Network Is Not the Problem, Look at Startup Order]
+A test that passes now does not prove the dependency was reachable when the application started. Many applications try their dependencies once at startup and do not retry, so an application can stay broken long after the path recovers.
+
+Suspect startup order when the dependency is reachable, the application still reports a connection error, and restarting the application fixes it with no other change. A listening port is also not the same as a ready service, since a database may accept connections while it is still starting and unable to answer queries.
+:::
+
 ## Change One Thing at a Time
 
 Changing several settings at once makes the result difficult to interpret. Instead:
@@ -260,12 +266,6 @@ Changing several settings at once makes the result difficult to interpret. Inste
 5. Keep the change only if the evidence supports it.
 
 For example, do not disable an entire firewall, change DNS servers, and restart the application together. A temporary rule for one required port is a safer and more useful test than disabling all filtering.
-
-:::note[When Restarting Fixes It]
-If a dependency is reachable when you test it, the application still reports a connection error, and restarting the application fixes it with no other change, the problem was probably startup order rather than the network.
-
-Many applications try their dependencies once at startup and do not retry. A listening port is also not the same as a ready service, since a database may accept connections while it is still starting and unable to answer queries. When restarting systems that depend on one another, bring up the dependency first, confirm it is actually serving requests, then start the things that need it.
-:::
 
 ## Use a Packet Capture with a Question
 
