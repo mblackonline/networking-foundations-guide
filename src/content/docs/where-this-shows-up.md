@@ -19,15 +19,13 @@ This page connects those questions to terms you will encounter in different tech
 
 Cloud providers let you build networks with software instead of connecting physical routers and switches. The underlying ideas remain familiar.
 
-| Cloud term | Familiar networking concept |
+| Cloud term | What it is |
 | --- | --- |
 | Virtual private cloud (VPC) or virtual network (VNet) | A private network boundary that contains one or more subnets |
-| Subnet | An IP address range with a prefix, such as `10.20.1.0/24` |
-| Route table | Destination prefixes and the targets that can reach them |
 | Internet gateway | A path between a cloud network and the internet |
-| Network address translation (NAT) gateway | Translates private source addresses for outbound Internet Protocol version 4 (IPv4) traffic |
 | Security group or network security group | Rules that permit or block traffic at a cloud resource or subnet |
-| Load balancer | Accepts connections and distributes them among backend systems |
+
+Subnets, route tables, NAT, and load balancers work the way they do everywhere else. Only the names around them are new.
 
 The exact behavior differs between providers. For example, Amazon Web Services (AWS) uses **VPC**, while Microsoft Azure uses **VNet**. Neither term means a single subnet; both networks can contain multiple subnets.
 
