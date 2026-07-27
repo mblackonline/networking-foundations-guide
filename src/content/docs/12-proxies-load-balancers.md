@@ -158,7 +158,7 @@ The backend's network connection comes from the proxy, so its logs may show the 
 
 For HTTP traffic, a trusted proxy can add the standardized `Forwarded` header or the widely used `X-Forwarded-For` header to carry the original client address.
 
-```http
+```text
 X-Forwarded-For: 192.0.2.50
 ```
 
@@ -211,7 +211,7 @@ This exercise installs NGINX on LINUXBOX. The proxy listens only inside the isol
 
 3. Enter this configuration, then save and close the file:
 
-   ```nginx
+   ```text
    server {
        listen 127.0.0.1:8000;
        server_name _;
