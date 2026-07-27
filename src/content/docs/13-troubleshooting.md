@@ -267,7 +267,7 @@ Changing several settings at once makes the result difficult to interpret. Inste
 
 For example, do not disable an entire firewall, change DNS servers, and restart the application together. A temporary rule for one required port is a safer and more useful test than disabling all filtering.
 
-## Use a Packet Capture with a Question
+## When to Reach for a Packet Capture
 
 Use Wireshark when the earlier checks do not show where the exchange stops. Decide what you need to learn before starting the capture.
 
