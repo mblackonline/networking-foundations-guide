@@ -9,19 +9,29 @@ That local-or-remote decision is the main idea in this module. The calculations 
 
 ## In This Module
 
+- Why an IPv4 address is 32 bits, and why each octet stops at 255
 - What an IPv4 address and subnet mask each do
 - How Classless Inter-Domain Routing (CIDR) notation describes a subnet
 - How to find the network, broadcast, and usable host range
-- The private IPv4 ranges
+- The private IPv4 ranges, and why the address space is handed out in blocks
 - How a host decides whether to use its default gateway
 
-## An Address Needs a Prefix
+## Four Octets, Thirty-Two Bits
 
-An IPv4 address is 32 bits long and is written as four decimal numbers:
+An IPv4 address is 32 bits long. The familiar dotted form splits those bits into four 8-bit groups called octets, written in decimal, the everyday base-10 numbers, because that is easier to read and type than a row of ones and zeros.
 
 ```text
 192.168.10.77
+11000000.10101000.00001010.01001101
 ```
+
+Eight bits produce 256 possible combinations, counted from 0 to 255. That is the entire reason an octet never goes higher than 255. An address such as `192.168.10.300` is not valid, because eight bits cannot count that high.
+
+The dots are a display convenience. The 32 bits are continuous, and a subnet boundary does not have to land on a dot.
+
+## An Address Needs a Prefix
+
+The address by itself does not say where the network ends and the hosts begin.
 
 The [prefix length](/appendix/glossary/#prefix-length) after the slash tells you how many of those 32 bits identify the network.
 
@@ -38,6 +48,48 @@ The prefix can also be written as a subnet mask:
 ```
 
 These are two ways of saying the same thing.
+
+## What the Mask Is Doing
+
+A `255` in an octet is `11111111` in binary, so the mask has a bit pattern of its own:
+
+```text
+255.255.255.0
+11111111.11111111.11111111.00000000
+```
+
+A `1` marks a bit that belongs to the network. A `0` marks a bit left over to identify a host inside that network. Lining the mask up under the address shows the split:
+
+```text
+Address   11000000.10101000.00001010.01001101   192.168.10.77
+Mask      11111111.11111111.11111111.00000000   255.255.255.0
+          |------------ network -----------||--- host ---|
+```
+
+Counting the ones gives you the prefix length. Twenty-four ones is a `/24`.
+
+## Moving the Boundary
+
+The ones in a mask always begin at the left and run without a gap. Turning on one more bit moves the boundary one position to the right, which grows the network side and shrinks the host side.
+
+```text
+/24   11111111.11111111.11111111.00000000   255.255.255.0     256 addresses
+/25   11111111.11111111.11111111.10000000   255.255.255.128   128 addresses
+/26   11111111.11111111.11111111.11000000   255.255.255.192    64 addresses
+/27   11111111.11111111.11111111.11100000   255.255.255.224    32 addresses
+```
+
+Every bit moved from the host side to the network side cuts the number of addresses in the subnet in half.
+
+The decimal values come from the place value of each bit position:
+
+```text
+128  64  32  16  8  4  2  1
+```
+
+Adding from the left produces the mask numbers. One bit is 128. Two bits are 128 plus 64, or 192. Three bits are 128 plus 64 plus 32, or 224. That pattern produces every value in the table below, so the masks are not arbitrary numbers to memorize.
+
+The [Subnetting Practice appendix](/appendix/subnetting-practice/) uses these same place values as a calculation shortcut. Once the pattern makes sense, you rarely need to work in binary to answer a subnetting question.
 
 ## Common Prefixes
 
@@ -144,6 +196,20 @@ These addresses can be reused in homes, businesses, labs, and cloud networks bec
 
 Private does not mean secure. It describes how an address is allocated and routed, not who is allowed to reach it. Module 6 covers the network address translation (NAT) commonly used when private hosts access public services.
 
+## Why Addresses Come in Ranges
+
+Thirty-two bits produce a fixed number of addresses.
+
+```text
+2^32 = 4,294,967,296
+```
+
+That is the whole IPv4 address space. It begins at `0.0.0.0` and ends at `255.255.255.255`, and no IPv4 address exists outside that range.
+
+A supply that size has to be handed out in pieces, and the pieces have to be sized to what an organization actually needs. An office that needs 200 addresses should not receive 16 million. The prefix length is what makes that possible, because it can describe a block of almost any size, and whoever receives a block can divide it further for their own networks.
+
+The private ranges above are one slice of that pool. Loopback and the other special-purpose blocks in the IANA registry linked at the end of this module are more of them. Subnetting is the same idea applied inside your own network, taking the block you were given and dividing it to fit the networks you need.
+
 ## What a Wrong Mask Does
 
 A wrong mask changes which destinations the host considers local.
@@ -198,15 +264,17 @@ Return the adapter to automatic Dynamic Host Configuration Protocol (DHCP) after
 - [Request for Comments (RFC) 1918: Address Allocation for Private Internets](https://www.rfc-editor.org/info/rfc1918/) defines the private IPv4 ranges.
 - [RFC 3021: Using 31-Bit Prefixes on IPv4 Point-to-Point Links](https://www.rfc-editor.org/info/rfc3021/) explains the `/31` exception.
 - [Internet Assigned Numbers Authority (IANA) IPv4 Special-Purpose Address Space](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml) lists private, loopback, link-local, and other special ranges.
-- Ed Harmoush's free [Subnetting Mastery video series](https://www.practicalnetworking.net/stand-alone/subnetting-mastery/) provides additional calculation methods and practice.
+- The [Subnetting Practice appendix](/appendix/subnetting-practice/) has the complete CIDR reference, worked calculations, practice problems, and video and drill recommendations.
 
 ## Checklist Before Moving On
 
 - [ ] You can explain what the prefix length tells a host
+- [ ] You can explain what the ones and zeros in a subnet mask represent
 - [ ] You can identify the network, broadcast, and host range of a subnet
 - [ ] You can find the network and host range for a `/24`
 - [ ] You understand the special purpose of `/31` and `/32`
 - [ ] You know the three private IPv4 ranges
+- [ ] You can explain why the IPv4 address space is divided into blocks
 - [ ] You can explain when a host sends traffic to its default gateway
 
 Continue to Module 5 to see how routers choose the next network in a path.

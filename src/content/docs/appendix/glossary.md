@@ -24,6 +24,8 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 ## B
 
 - <span id="backend"></span>**[Backend](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#backend-pools):** A server behind a reverse proxy or load balancer that handles requests. It is also called an upstream server.
+- <span id="binary"></span>**[Binary](https://en.wikipedia.org/wiki/Binary_number):** A way of writing numbers using only 0 and 1. Devices store and process addresses in binary, and the decimal form of an IPv4 address is a convenience for people reading it.
+- <span id="bit"></span>**[Bit](https://en.wikipedia.org/wiki/Bit):** A single 0 or 1, the smallest unit of data. An IPv4 address is 32 bits long.
 - <span id="border-gateway-protocol-bgp"></span>**[Border Gateway Protocol (BGP)](https://en.wikipedia.org/wiki/Border_Gateway_Protocol):** The routing protocol used to exchange reachability information between large networks, including networks that form the internet.
 - <span id="broadcast"></span>**[Broadcast](https://en.wikipedia.org/wiki/Broadcasting_(networking)):** Traffic sent to every device in the same broadcast domain.
 - <span id="broadcast-address"></span>**[Broadcast address](https://en.wikipedia.org/wiki/Broadcast_address):** The final address in a traditional IPv4 subnet, used to reach all IPv4 hosts on that subnet.
@@ -40,6 +42,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## D
 
+- <span id="decimal"></span>**Decimal:** The everyday base-10 way of writing numbers, using the digits 0 through 9. Each octet of an IPv4 address is shown in decimal so it is easier to read than binary.
 - <span id="default-deny"></span>**[Default-deny](https://csrc.nist.gov/glossary/term/deny_by_default):** A filtering policy that blocks traffic unless a rule explicitly permits it.
 - <span id="default-gateway"></span>**[Default gateway](https://en.wikipedia.org/wiki/Default_gateway):** The router a host sends traffic to when the destination is outside the local subnet.
 - <span id="default-route"></span>**[Default route](https://en.wikipedia.org/wiki/Default_route):** The route used when no more specific route matches a destination.
@@ -101,6 +104,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## O
 
+- <span id="octet"></span>**Octet:** A group of eight bits. An IPv4 address is written as four octets separated by dots, and each octet holds a value from 0 to 255.
 - <span id="on-link"></span>**[On-link](https://www.rfc-editor.org/rfc/rfc5942.html#section-3):** Directly reachable on the local network without sending the packet through a router.
 - <span id="open-systems-interconnection-osi-model"></span>**[Open Systems Interconnection (OSI) model](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/):** A conceptual seven-layer reference model commonly used to describe where networking functions and problems occur.
 

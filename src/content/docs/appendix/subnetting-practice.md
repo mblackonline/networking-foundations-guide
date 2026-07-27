@@ -164,6 +164,24 @@ Try these without looking at the reference table.
 
 </details>
 
-## Further Practice
+## How a Host Applies the Mask
 
-Ed Harmoush's free [Subnetting Mastery video series](https://www.practicalnetworking.net/stand-alone/subnetting-mastery/) teaches a detailed hand-calculation method and links to an interactive IPv4 question generator.
+The block-size methods above are calculation shortcuts. Underneath, a host finds the network address by comparing the address and the mask one bit at a time, using the [bitwise AND operation](https://en.wikipedia.org/wiki/Bitwise_operation#AND). A result bit is 1 only when both input bits are 1.
+
+For `192.168.10.77/24`:
+
+```text
+Address   11000000.10101000.00001010.01001101   192.168.10.77
+Mask      11111111.11111111.11111111.00000000   255.255.255.0
+Result    11000000.10101000.00001010.00000000   192.168.10.0
+```
+
+Wherever the mask holds a 1, the address bit passes through unchanged. Wherever the mask holds a 0, the result is 0. What survives is the network address.
+
+You do not need to work this way to answer subnetting questions. The shortcuts reach the same answer with less effort, which is why most people use them. This is what they are standing in for.
+
+## Further Practice and Learning
+
+- Ed Harmoush's free [Subnetting Mastery video series](https://www.practicalnetworking.net/stand-alone/subnetting-mastery/) teaches a detailed hand-calculation method and links to an interactive IPv4 question generator.
+- Keith Barker's [Subnet Saturday #1: IPv4 Basics](https://www.youtube.com/live/Y8ZwmAxnOL0) is the video that finally made the difference between the network portion and the host portion click for me. It is aimed at Cisco Certified Network Associate (CCNA) study, but the addressing material stands on its own.
+- [Binary Conversion Practice](https://subnettingpractice.com/binary-conversion-practice.html) generates decimal and binary conversion questions if you want repetition on the place values.
