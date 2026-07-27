@@ -47,20 +47,6 @@ Host address and port -> Container address and port
 
 Publishing a port can make the service reachable beyond the container host, depending on the address and firewall configuration. Treat it as an access-control decision, not merely an application setting. It is separate from configuring an inbound port forward on an internet-facing router.
 
-## Kubernetes
-
-Kubernetes runs containers across a group of systems called a **cluster**. You only need a few networking terms to recognize what is happening:
-
-- A **Pod** runs one or more closely related containers and normally receives an IP address.
-- A **Service** provides a stable way to reach a changing group of Pods.
-- Cluster DNS creates names that applications can use to find Services.
-- An **Ingress** or **Gateway** can direct Hypertext Transfer Protocol (HTTP) and Hypertext Transfer Protocol Secure (HTTPS) requests to Services.
-- A **network policy** can restrict which Pods may communicate.
-
-These features combine concepts you already know: IP addressing, DNS, ports, filtering, reverse proxies, and load balancing. Kubernetes automates them, but it does not replace them.
-
-For example, if an application cannot reach a Kubernetes Service, an administrator may check the Service name, its DNS result, its destination port, the available backend Pods, and any network policy between them.
-
 ## Virtual Private Networks and Overlays
 
 A virtual private network (VPN) creates a logical private connection across another network. The operating system normally adds a virtual interface and routes traffic through it.
@@ -102,12 +88,14 @@ Do not expose SSH or RDP through an internet-facing firewall merely because you 
 
 No role uses every networking feature every day. The shared skill is being able to follow a connection from the client, through each network decision, to the listening application.
 
+This guide covers the concepts those tasks rest on. It does not teach any specific platform, and each of these areas needs its own study on top of the fundamentals here.
+
 ## Where to Go Next
 
 Choose the next topic that matches the work you want to do:
 
 - For IT Support or system administration, continue with wireless networking, virtual local area network (VLAN) configuration, and deeper Windows or Linux troubleshooting.
-- For DevOps or cloud work, build a small private network in one cloud platform, then study Docker networking before Kubernetes networking.
+- For DevOps or cloud work, build a small private network in one cloud platform, then study container networking.
 - For software development, explore HTTP diagnostics, certificates, application timeouts, and connection pooling.
 - For cybersecurity, continue with network segmentation, firewall management, secure remote access, and packet analysis.
 - For every path, add Internet Protocol version 6 (IPv6) addressing and routing to the IPv4 foundation in this guide.
@@ -117,5 +105,4 @@ Choose the next topic that matches the work you want to do:
 - [AWS VPC route tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) shows how cloud routes connect subnets to gateways and other networks.
 - [Microsoft Azure virtual networks and subnets](https://learn.microsoft.com/en-us/azure/networking/design-guide/vnets-subnets) explains VNet boundaries, subnets, routes, and security controls.
 - [Docker networking overview](https://docs.docker.com/engine/network/) connects container interfaces, addresses, gateways, DNS, and published ports.
-- [Kubernetes Services](https://kubernetes.io/docs/concepts/services-networking/service/) explains how a stable Service represents changing backend Pods.
 - [National Institute of Standards and Technology VPN glossary entry](https://csrc.nist.gov/glossary/term/virtual_private_network) provides an authoritative definition of a VPN.
