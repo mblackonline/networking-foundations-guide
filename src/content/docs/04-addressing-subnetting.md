@@ -81,7 +81,7 @@ A `1` marks a bit that belongs to the network. A `0` marks a bit left over to id
 ```text
 Address   11000000.10101000.00001010.01001101   192.168.10.77
 Mask      11111111.11111111.11111111.00000000   255.255.255.0
-          |------------ network -----------||--- host ---|
+          |-------- network -------| | host |
 ```
 
 Counting the ones gives you the prefix length. Twenty-four ones is a `/24`.
