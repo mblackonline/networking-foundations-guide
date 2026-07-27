@@ -12,9 +12,9 @@ That local-or-remote decision is the main idea in this module. The calculations 
 - Why an IPv4 address is 32 bits, and why each octet stops at 255
 - What an IPv4 address and subnet mask each do
 - How Classless Inter-Domain Routing (CIDR) notation describes a subnet
+- How a host decides whether to use its default gateway
 - How to find the network, broadcast, and usable host range
 - The private IPv4 ranges, and why the address space is handed out in blocks
-- How a host decides whether to use its default gateway
 
 ## Four Octets, Thirty-Two Bits
 
@@ -49,6 +49,24 @@ The prefix can also be written as a subnet mask:
 
 These are two ways of saying the same thing.
 
+## Local or Remote?
+
+Before sending a packet, a host compares the destination with its own network.
+
+Suppose the host is `192.168.10.77/24`.
+
+- `192.168.10.100` is in the same `/24`, so the host uses the Address Resolution Protocol (ARP) to find that destination's media access control (MAC) address.
+- `192.168.11.20` is outside the `/24`, so the host sends the frame to its [default gateway](/appendix/glossary/#default-gateway).
+
+The destination Internet Protocol (IP) address remains `192.168.11.20`. Only the local frame is addressed to the gateway's MAC address.
+
+```text
+Local destination  -> ARP for the destination
+Remote destination -> ARP for the default gateway
+```
+
+This is why the subnet mask matters. It tells the host which of those two actions to take.
+
 ## What the Mask Is Doing
 
 A `255` in an octet is `11111111` in binary, so the mask has a bit pattern of its own:
@@ -73,13 +91,13 @@ Counting the ones gives you the prefix length. Twenty-four ones is a `/24`.
 The ones in a mask always begin at the left and run without a gap. Turning on one more bit moves the boundary one position to the right, which grows the network side and shrinks the host side.
 
 ```text
-/24   11111111.11111111.11111111.00000000   255.255.255.0     256 addresses
-/25   11111111.11111111.11111111.10000000   255.255.255.128   128 addresses
-/26   11111111.11111111.11111111.11000000   255.255.255.192    64 addresses
-/27   11111111.11111111.11111111.11100000   255.255.255.224    32 addresses
+/24   11111111.11111111.11111111.00000000   255.255.255.0
+/25   11111111.11111111.11111111.10000000   255.255.255.128
+/26   11111111.11111111.11111111.11000000   255.255.255.192
+/27   11111111.11111111.11111111.11100000   255.255.255.224
 ```
 
-Every bit moved from the host side to the network side cuts the number of addresses in the subnet in half.
+Every bit moved from the host side to the network side cuts the number of addresses in the subnet in half, which is why the counts in the table below halve at each step.
 
 The decimal values come from the place value of each bit position:
 
@@ -156,31 +174,7 @@ For the host `192.168.10.77/24`:
 3. Set the last octet to `255` for the broadcast address: `192.168.10.255`.
 4. The usable host addresses are `192.168.10.1` through `192.168.10.254`.
 
-This octet-aligned boundary is why `/24` is a good place to begin. Smaller subnets such as `/25` and `/26` divide the final octet into multiple ranges. The appendix covers those calculations when you are ready for them.
-
-:::note[About Older Exam Questions]
-Some certification questions assume historical classful masks: `/8` for class A, `/16` for class B, and `/24` for class C. Modern networks use the prefix that is explicitly stated.
-
-For example, `172.22.0.0/25` is one `/25` subnet unless the question also tells you to divide a larger parent network, or clearly expects the old class B `/16` assumption. The appendix explains that exam-style calculation separately.
-:::
-
-## Local or Remote?
-
-Before sending a packet, a host compares the destination with its own network.
-
-Suppose the host is `192.168.10.77/24`.
-
-- `192.168.10.100` is in the same `/24`, so the host uses the Address Resolution Protocol (ARP) to find that destination's media access control (MAC) address.
-- `192.168.11.20` is outside the `/24`, so the host sends the frame to its [default gateway](/appendix/glossary/#default-gateway).
-
-The destination Internet Protocol (IP) address remains `192.168.11.20`. Only the local frame is addressed to the gateway's MAC address.
-
-```text
-Local destination  -> ARP for the destination
-Remote destination -> ARP for the default gateway
-```
-
-This is why the subnet mask matters. It tells the host which of those two actions to take.
+This octet-aligned boundary is why `/24` is a good place to begin. Smaller subnets such as `/25` and `/26` divide the final octet into multiple ranges. The appendix covers those calculations, along with the older classful conventions that some certification questions still assume, when you are ready for them.
 
 ## [Private IPv4 Addresses](/appendix/glossary/#private-ipv4-address)
 
