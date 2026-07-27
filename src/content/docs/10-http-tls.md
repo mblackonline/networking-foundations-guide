@@ -46,7 +46,7 @@ The client sends a **request**, and the server returns a **response**.
 
 For example, a browser requesting a Hypertext Markup Language (HTML) page might send:
 
-```http
+```text
 GET /account HTTP/1.1
 Host: portal.example.com
 Accept: text/html
@@ -80,7 +80,7 @@ The application decides what each path and method actually does. A successful ne
 
 The server might answer:
 
-```http
+```text
 HTTP/1.1 200 OK
 Content-Type: text/html
 Content-Length: 1250
