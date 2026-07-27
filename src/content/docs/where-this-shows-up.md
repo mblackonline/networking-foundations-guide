@@ -17,15 +17,13 @@ This page connects those questions to terms you will encounter in different tech
 
 ## Cloud Networks
 
-Cloud providers let you build networks with software instead of connecting physical routers and switches. The underlying ideas remain familiar.
+Cloud providers let you build networks with software instead of connecting physical routers and switches. Subnets, route tables, NAT, and load balancers all appear in a cloud console and work the way they do everywhere else. A few of the names are new.
 
 | Cloud term | What it is |
 | --- | --- |
 | Virtual private cloud (VPC) or virtual network (VNet) | A private network boundary that contains one or more subnets |
 | Internet gateway | A path between a cloud network and the internet |
 | Security group or network security group | Rules that permit or block traffic at a cloud resource or subnet |
-
-Subnets, route tables, NAT, and load balancers work the way they do everywhere else. Only the names around them are new.
 
 The exact behavior differs between providers. For example, Amazon Web Services (AWS) uses **VPC**, while Microsoft Azure uses **VNet**. Neither term means a single subnet; both networks can contain multiple subnets.
 
