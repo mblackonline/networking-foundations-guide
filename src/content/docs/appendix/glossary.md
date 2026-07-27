@@ -42,7 +42,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## D
 
-- <span id="decimal"></span>**Decimal:** The everyday base-10 way of writing numbers, using the digits 0 through 9. Each octet of an IPv4 address is shown in decimal so it is easier to read than binary.
+- <span id="decimal"></span>**[Decimal](https://en.wikipedia.org/wiki/Decimal):** The everyday base-10 way of writing numbers, using the digits 0 through 9. Each octet of an IPv4 address is shown in decimal so it is easier to read than binary.
 - <span id="default-deny"></span>**[Default-deny](https://csrc.nist.gov/glossary/term/deny_by_default):** A filtering policy that blocks traffic unless a rule explicitly permits it.
 - <span id="default-gateway"></span>**[Default gateway](https://en.wikipedia.org/wiki/Default_gateway):** The router a host sends traffic to when the destination is outside the local subnet.
 - <span id="default-route"></span>**[Default route](https://en.wikipedia.org/wiki/Default_route):** The route used when no more specific route matches a destination.
@@ -104,7 +104,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## O
 
-- <span id="octet"></span>**Octet:** A group of eight bits. An IPv4 address is written as four octets separated by dots, and each octet holds a value from 0 to 255.
+- <span id="octet"></span>**[Octet](https://csrc.nist.gov/glossary/term/octet):** A group of eight bits. An IPv4 address is written as four octets separated by dots, and each octet holds a value from 0 to 255.
 - <span id="on-link"></span>**[On-link](https://www.rfc-editor.org/rfc/rfc5942.html#section-3):** Directly reachable on the local network without sending the packet through a router.
 - <span id="open-systems-interconnection-osi-model"></span>**[Open Systems Interconnection (OSI) model](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/):** A conceptual seven-layer reference model commonly used to describe where networking functions and problems occur.
 
