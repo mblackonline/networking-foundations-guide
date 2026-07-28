@@ -351,17 +351,6 @@ The client test located the failure at the destination port. The server test the
 - [Everything curl: verbose output](https://everything.curl.dev/usingcurl/verbose/) explains how `curl -v` exposes connection details for troubleshooting.
 - [Wireshark User's Guide: display filters](https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html) explains how to limit a capture view to relevant packets.
 
-## Checklist Before Moving On
-
-- [ ] You can turn a vague report into a specific, testable statement
-- [ ] You check the physical or wireless connection before reading any configuration
-- [ ] You can check local settings, DNS, routing, the destination port, and the application in order
-- [ ] You can explain why a failed `ping` does not prove that a server is offline
-- [ ] You know the difference between a timeout and a refused connection
-- [ ] You can state what each troubleshooting test proves and what it does not
-- [ ] You know why changes should be narrow, reversible, and made one at a time
-- [ ] Optional: You diagnosed and restored the stopped SSH service in NETLAB
-
 You now have a repeatable method for combining the concepts and tools from the entire guide.
 
 ## Where to Go Next
