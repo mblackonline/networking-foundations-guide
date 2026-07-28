@@ -13,7 +13,7 @@ When troubleshooting any of these environments, start with the same questions:
 - Does a firewall permit the traffic?
 - Is the application listening on the expected port?
 
-This page connects those questions to terms you will encounter in different technical roles. It is an orientation, not a complete guide to each platform.
+This is an orientation, not a complete guide to any of these platforms.
 
 ## Cloud Networks
 
@@ -71,16 +71,6 @@ A successful remote connection requires:
 An authentication error returned by SSH or RDP shows that a service responded. A timeout may occur earlier in the path.
 
 Do not expose SSH or RDP through an internet-facing firewall merely because you know their default ports. Use the remote-access method approved for the environment, such as a managed VPN, bastion host, or remote-access gateway.
-
-## How Different Roles Use These Skills
-
-| Role | Common networking work |
-| --- | --- |
-| Information Technology (IT) Support | Troubleshooting Wi-Fi, Dynamic Host Configuration Protocol (DHCP), DNS, VPN connections, and remote access |
-| System Administration | Managing addressing, routing, firewalls, name services, remote administration, and virtual machine networks |
-| DevOps and Cloud | Building cloud subnets, routes, security rules, load balancers, container networks, and service connectivity |
-| Software Development | Understanding DNS, sockets, ports, application programming interfaces (APIs), HTTP, Transport Layer Security (TLS), proxies, and database connections |
-| Cybersecurity | Reviewing segmentation, firewall policy, exposed services, logs, and packet captures |
 
 ## Where to Go Next
 
