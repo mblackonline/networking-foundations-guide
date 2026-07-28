@@ -84,7 +84,6 @@ Choose the next topic that matches the work you want to do:
 
 ## Further Learning
 
-- [AWS VPC route tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) shows how cloud routes connect subnets to gateways and other networks.
+- [What is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) explains VPC boundaries, subnets, gateways, and how they connect.
 - [Microsoft Azure virtual networks and subnets](https://learn.microsoft.com/en-us/azure/networking/design-guide/vnets-subnets) explains VNet boundaries, subnets, routes, and security controls.
 - [Docker networking overview](https://docs.docker.com/engine/network/) connects container interfaces, addresses, gateways, DNS, and published ports.
-- [National Institute of Standards and Technology VPN glossary entry](https://csrc.nist.gov/glossary/term/virtual_private_network) provides an authoritative definition of a VPN.
