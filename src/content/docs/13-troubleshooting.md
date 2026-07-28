@@ -363,3 +363,13 @@ The client test located the failure at the destination port. The server test the
 - [ ] Optional: You diagnosed and restored the stopped SSH service in NETLAB
 
 You now have a repeatable method for combining the concepts and tools from the entire guide.
+
+## Where to Go Next
+
+Choose the next topic that matches the work you want to do:
+
+- For IT Support or system administration, continue with wireless networking, virtual local area network (VLAN) configuration, and deeper Windows or Linux troubleshooting.
+- For DevOps or cloud work, build a small private network in one cloud platform, then study container networking.
+- For software development, explore HTTP diagnostics, certificates, application timeouts, and connection pooling.
+- For cybersecurity, continue with network segmentation, firewall management, secure remote access, and packet analysis.
+- For every path, add Internet Protocol version 6 (IPv6) addressing and routing to the IPv4 foundation in this guide.

@@ -49,7 +49,6 @@ export default defineConfig({
           label: 'Working With It',
           items: [
             { label: 'Module 13: Troubleshooting Method', slug: '13-troubleshooting' },
-            { label: 'Where This Shows Up in Real Work', slug: 'where-this-shows-up' },
           ],
         },
         {

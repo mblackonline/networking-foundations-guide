@@ -200,6 +200,16 @@ The private service can listen on a different port from the one exposed publicly
 
 This example explains what port forwarding does. It is not an instruction to configure a port forward on a home router, workplace firewall, cloud firewall, or other internet-facing device.
 
+:::note[Publishing a Container Port]
+Publishing a container port maps an address and port on the container host to a port inside the container. It is the same destination NAT idea applied on a single machine.
+
+```text
+Host address and port -> Container address and port
+```
+
+Depending on the address it binds to and the host's firewall, publishing a port can make the service reachable from beyond the container host. Treat it as an access-control decision, not merely an application setting.
+:::
+
 :::tip[Optional Lab: A Local-Only VirtualBox Port Forward]
 You can practice the idea with the `NETLAB` NAT Network in VirtualBox. The rule below listens only on `127.0.0.1`, the Windows host's loopback address. It does not open a port on your physical network interface or make the service available from the internet.
 

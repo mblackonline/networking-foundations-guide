@@ -133,6 +133,15 @@ Two names are worth recognizing:
 
 You do not need to configure either protocol for this guide. They still produce routing-table entries that are selected using the same longest-prefix rule.
 
+## VPN Routes
+
+A virtual private network (VPN) adds a virtual interface and its own routes. Which traffic uses the VPN depends entirely on what those routes cover.
+
+- **Full tunnel:** The VPN adds a default route, so most or all traffic goes through it.
+- **Split tunnel:** The VPN adds routes only for specific destination networks. Everything else follows the device's normal route.
+
+If an internal application works in the office but not over the VPN, check which route matches the destination and which DNS server the remote device is using.
+
 ## Follow the Path With Traceroute
 
 Traceroute shows the routers that respond along a path.
