@@ -235,14 +235,10 @@ The exact TLS and HTTP versions may differ between the two systems. Verbose outp
 - [RFC 5280: Internet X.509 Public Key Infrastructure](https://www.rfc-editor.org/info/rfc5280/) defines certificate and certification-path validation.
 - [curl command-line documentation](https://curl.se/docs/manpage.html) explains the options used in the exercise.
 
-## Checklist Before Moving On
+## Main Takeaways
 
-- [ ] You can identify the scheme, hostname, and path in a URL
-- [ ] You can distinguish an HTTP request from an HTTP response
-- [ ] You know what the five status-code groups indicate
-- [ ] You can explain what TLS protects
-- [ ] You can name the three main certificate checks
-- [ ] You can distinguish a DNS, connection, TLS, and HTTP failure
-- [ ] You inspected an HTTPS exchange with `curl`
+- The Hypertext Transfer Protocol (HTTP) defines requests and responses between clients and web services.
+- Hypertext Transfer Protocol Secure (HTTPS) uses Transport Layer Security (TLS) to protect data in transit and authenticate the server.
+- DNS, connection, TLS, and HTTP failures occur at separate stages of the exchange.
 
 Continue to Module 11 to see how firewalls decide which traffic is permitted or blocked.

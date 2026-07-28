@@ -226,14 +226,10 @@ The final ping behavior returns to whatever WINCLIENT's original firewall policy
 - [AWS infrastructure security guidance](https://docs.aws.amazon.com/vpc/latest/userguide/infrastructure-security.html) compares security groups with network access control lists.
 - [Azure network security groups overview](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview) explains Azure rule fields, priority, and statefulness.
 
-## Checklist Before Moving On
+## Main Takeaways
 
-- [ ] You can identify the five values in a network 5-tuple
-- [ ] You can explain inbound and outbound from a specific device's perspective
-- [ ] You can explain why a stateful firewall permits replies to an allowed connection
-- [ ] You can distinguish allow, drop, and reject actions
-- [ ] You know that rule order and default behavior differ between products
-- [ ] You can identify host, network, and cloud filtering layers
-- [ ] Optional: You created and removed the temporary NETLAB firewall rules
+- Firewalls compare traffic with rules based on values such as addresses, ports, protocols, direction, and connection state.
+- Rule order and default behavior affect how traffic is handled.
+- Firewalls can allow traffic, silently drop it, or reject it with a response.
 
 Continue to Module 12 to see how proxies and load balancers handle connections on behalf of other systems.

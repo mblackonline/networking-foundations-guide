@@ -3,7 +3,7 @@ title: "Module 6: Network Address Translation (NAT)"
 description: Network address translation, port forwarding, and why inbound is the hard direction.
 ---
 
-The private Internet Protocol version 4 (IPv4) address on your computer cannot be routed across the public internet. On a typical IPv4 network, a gateway replaces that address with one that can be routed publicly before sending the packet onward.
+The private Internet Protocol version 4 (IPv4) address on your computer cannot be routed across the public internet. On a typical IPv4 network, a router, firewall, or software service replaces that address with one that can be routed publicly before sending the packet onward.
 
 That replacement is [network address translation (NAT)](/appendix/glossary/#network-address-translation-nat).
 
@@ -16,6 +16,17 @@ That replacement is [network address translation (NAT)](/appendix/glossary/#netw
 - Port forwarding
 - Double NAT and carrier-grade NAT
 
+## What Performs NAT?
+
+NAT is a networking function, not a particular type of device. It can be performed by:
+
+- A home or business router
+- A firewall
+- A cloud networking service
+- Virtualization or container software
+
+Some products and cloud services use the name **NAT gateway**. The term is not limited to cloud networking, but it can sound like the name of one specific product. This module uses **NAT device** for any device or software service performing the translation.
+
 ## One Outbound Request
 
 Imagine a laptop opening a website.
@@ -23,11 +34,11 @@ Imagine a laptop opening a website.
 | Device or interface | IPv4 address | Address type |
 | --- | --- | --- |
 | Laptop requesting the website | `10.0.20.15` | Private |
-| NAT gateway's inside interface, the laptop's default gateway | `10.0.20.1` | Private |
-| NAT gateway's outside, internet-facing interface | `198.51.100.20` | Public |
+| NAT device's inside interface, which is the laptop's default gateway | `10.0.20.1` | Private |
+| NAT device's outside, internet-facing interface | `198.51.100.20` | Public |
 | Web server hosting the website | `198.51.100.80` | Public |
 
-The NAT gateway connects the private network to the public internet. Its inside interface communicates with the laptop using private addresses. Its outside interface communicates with the web server using public addresses.
+In this example, a router is performing NAT. The router is also the laptop's default gateway and connects the private network to the public internet. Its inside interface uses a private address, while its outside interface uses a public address.
 
 The laptop creates a packet with these IPv4 addresses:
 
@@ -36,33 +47,29 @@ Source IPv4 address (laptop):          10.0.20.15
 Destination IPv4 address (web server): 198.51.100.80
 ```
 
-Because the server is outside the local subnet, the laptop sends the packet to its default gateway at `10.0.20.1`. Before forwarding it to the internet, the gateway replaces the laptop's private source address with the public address of its outside interface, `198.51.100.20`.
+Because the server is outside the local subnet, the laptop sends the packet to its default gateway at `10.0.20.1`. Before forwarding it to the internet, the router performing NAT replaces the laptop's private source address with the public address of its outside interface, `198.51.100.20`.
 
 | IPv4 packet field | Before NAT | After NAT |
 | --- | --- | --- |
-| Source IPv4 address | `10.0.20.15` (laptop) | `198.51.100.20` (NAT gateway's outside interface) |
+| Source IPv4 address | `10.0.20.15` (laptop) | `198.51.100.20` (NAT device's outside interface) |
 | Destination IPv4 address | `198.51.100.80` (web server) | `198.51.100.80` (web server) |
 
 The source changed. The destination stayed the same.
 
-The web server now sees the request as coming from the NAT gateway's public address, `198.51.100.20`, and sends its reply there. It never sees the laptop's private address, `10.0.20.15`.
-
-:::note
-The public addresses in this example come from ranges reserved for documentation. They do not identify real systems.
-:::
+The web server now sees the request as coming from the NAT device's public address, `198.51.100.20`, and sends its reply there. It never sees the laptop's private address, `10.0.20.15`.
 
 ## How the Reply Gets Back
 
-The reply reaches the NAT gateway, not the laptop directly. The gateway must remember which private device started the request.
+The reply reaches the NAT device, not the laptop directly. The NAT device must remember which private device started the request.
 
-It records the translation when the outbound connection begins. When the reply arrives, the gateway changes the destination from its public address back to the laptop's private address and forwards the packet to the laptop.
+It stores a temporary record when the outbound connection begins. When the reply arrives, the NAT device uses that record to change the destination from its public address back to the laptop's private address and forwards the packet to the laptop.
 
 ```text
-Outbound packet: Laptop (10.0.20.15) -> NAT gateway -> Web server (198.51.100.80)
-Reply packet:    Web server (198.51.100.80) -> NAT gateway -> Laptop (10.0.20.15)
+Outbound packet: Laptop (10.0.20.15) -> NAT device -> Web server (198.51.100.80)
+Reply packet:    Web server (198.51.100.80) -> NAT device -> Laptop (10.0.20.15)
 ```
 
-This works easily for one device. A real gateway may have many devices making connections at the same time, so it needs another way to keep them separate.
+This works easily for one device. A NAT device may handle many connections at the same time, so it also uses port numbers to keep them separate.
 
 ## Sharing One Public Address
 
@@ -72,28 +79,30 @@ For the laptop's Hypertext Transfer Protocol Secure (HTTPS) connection, the comp
 
 HTTPS normally uses the Transmission Control Protocol (TCP).
 
-| Laptop's private source | Gateway's translated public source | Web server destination |
+| Laptop's private source | NAT device's translated public source | Web server destination |
 | --- | --- | --- |
 | `10.0.20.15:51514` | `198.51.100.20:40001` | `198.51.100.80:443` |
 
 - `10.0.20.15:51514` is the laptop's private IPv4 address and temporary source port.
-- `198.51.100.20:40001` is the NAT gateway's public IPv4 address and translated source port.
+- `198.51.100.20:40001` is the NAT device's public IPv4 address and translated source port.
 - `198.51.100.80:443` is the web server's public IPv4 address and HTTPS destination port.
 
-The gateway records these values in a translation table. A reply sent to the gateway at `198.51.100.20:40001` can then be translated and delivered to the laptop at `10.0.20.15:51514`.
+The NAT device keeps a temporary record connecting the private source with the translated public source. A reply sent to `198.51.100.20:40001` can then be translated and delivered to the laptop at `10.0.20.15:51514`.
 
-The gateway can give another client a different public port:
+These records are commonly grouped in a **translation table** or **NAT table**. Depending on the product, they may instead appear in a session table or connection-tracking table. The name and implementation vary, but the purpose is the same: retain enough information to translate returning traffic correctly.
 
-| Private client and source port | Gateway's public address and translated port |
+The NAT device can give another client a different public port:
+
+| Private client and source port | NAT device's public address and translated port |
 | --- | --- |
-| Laptop: `10.0.20.15:51514` | NAT gateway: `198.51.100.20:40001` |
-| Second client: `10.0.20.25:51514` | NAT gateway: `198.51.100.20:40002` |
+| Laptop: `10.0.20.15:51514` | NAT device: `198.51.100.20:40001` |
+| Second client: `10.0.20.25:51514` | NAT device: `198.51.100.20:40002` |
 
 Both clients share one public address, but the different public ports keep their replies separate.
 
 This address-and-port translation is formally called Network Address Port Translation (NAPT), and is also commonly called [Port Address Translation (PAT)](/appendix/glossary/#port-address-translation-pat). In everyday conversation, people usually call the entire process NAT.
 
-Translation entries are temporary. The gateway removes an entry after its connection ends or remains idle long enough.
+Translation entries are temporary. The NAT device removes an entry after its connection ends or remains idle long enough.
 
 ## Why Inbound Is Different
 
@@ -102,17 +111,17 @@ Outbound traffic creates a translation entry automatically. Unrequested inbound 
 Suppose a new connection arrives with this destination:
 
 ```text
-Destination IPv4 address (NAT gateway's public address): 198.51.100.20
-Destination TCP port (HTTPS):                            443
+Destination IPv4 address (NAT device's public address): 198.51.100.20
+Destination TCP port (HTTPS):                           443
 ```
 
-The gateway may represent dozens of private hosts. Without a rule, it cannot know whether to send the connection to the laptop at `10.0.20.15`, the second client at `10.0.20.25`, another private device, or a service on the gateway itself.
+The NAT device may represent dozens of private hosts. Without a rule, it cannot know whether to send the connection to the laptop at `10.0.20.15`, the second client at `10.0.20.25`, another private device, or a service on the NAT device itself.
 
 This is why inbound connections require an explicit mapping.
 
 ## NAT Is Not a Firewall
 
-NAT and firewalls are commonly built into the same gateway, but they perform different jobs.
+NAT and firewall filtering are commonly performed by the same router or firewall, but they are different functions.
 
 - NAT changes source or destination addresses and sometimes port numbers.
 - A firewall decides whether traffic is allowed to pass.
@@ -122,19 +131,19 @@ Traditional outbound NAT makes unsolicited inbound connections difficult because
 ## Common Places You Will See NAT
 
 - Home routers let many devices share one public IPv4 address.
-- Cloud NAT gateways give private virtual machines outbound access.
+- Cloud NAT services give private virtual machines outbound access.
 - Container platforms translate traffic between container and host networks.
 - Virtual private network (VPN) gateways may translate traffic when connected networks use overlapping addresses.
 
-NAT also affects logs. A public server normally records the NAT gateway's translated public source address, not the private address of the client that started the connection.
+NAT also affects logs. A public server normally records the translated public source address, not the private address of the client that started the connection.
 
 ## Double NAT and Carrier-Grade NAT
 
-**Double NAT** means traffic crosses two NAT gateways. A virtual machine behind a home router is a common example: the virtualization platform translates the VM's address first, and the home router translates it again before the packet reaches the internet.
+**Double NAT** means traffic is translated twice. A virtual machine behind a home router is a common example: the virtualization platform translates the virtual machine's address first, and the home router translates it again before the packet reaches the internet.
 
-Outbound traffic usually still works. Inbound access is harder because each NAT gateway may need its own port-forwarding rule.
+Outbound traffic usually still works. Inbound access is harder because each layer performing NAT may need its own port-forwarding rule.
 
-**[Carrier-grade network address translation (CGNAT)](/appendix/glossary/#carrier-grade-nat-cgnat)** is a NAT gateway operated by an internet provider. It lets many customers share public IPv4 addresses. Because the customer does not control the provider's gateway, ordinary inbound port forwarding may not be available.
+**[Carrier-grade network address translation (CGNAT)](/appendix/glossary/#carrier-grade-nat-cgnat)** is NAT performed by an internet provider. It lets many customers share public IPv4 addresses. Because the customer does not control the provider's NAT service, ordinary inbound port forwarding may not be available.
 
 When an inbound service fails despite a correct local port forward, check whether another router or CGNAT exists upstream.
 
@@ -188,15 +197,15 @@ The public address check sends a normal HTTPS request to ipify. Like any externa
 
 ## Port Forwarding
 
-A [port forward](/appendix/glossary/#port-forwarding) tells the gateway which private destination should receive a particular inbound connection.
+A [port forward](/appendix/glossary/#port-forwarding) tells the NAT device which private destination should receive a particular inbound connection.
 
 | Incoming public destination | Forwarded private destination |
 | --- | --- |
-| NAT gateway: `198.51.100.20:8443` | HTTPS service on laptop: `10.0.20.15:443` |
+| NAT device: `198.51.100.20:8443` | HTTPS service on laptop: `10.0.20.15:443` |
 
-For matching inbound packets, the gateway changes the destination address and port before forwarding them. This is destination NAT (DNAT).
+For matching inbound packets, the NAT device changes the destination address and port before forwarding them. This is destination NAT (DNAT).
 
-The private service can listen on a different port from the one exposed publicly. In this example, an outside client connects to TCP port 8443 on the NAT gateway. The gateway forwards that connection to the laptop's HTTPS service on TCP port 443.
+The private service can listen on a different port from the one exposed publicly. In this example, an outside client connects to TCP port 8443 on the NAT device. The NAT device forwards that connection to the laptop's HTTPS service on TCP port 443.
 
 This example explains what port forwarding does. It is not an instruction to configure a port forward on a home router, workplace firewall, cloud firewall, or other internet-facing device.
 
@@ -252,14 +261,10 @@ You can practice the idea with the `NETLAB` NAT Network in VirtualBox. The rule 
 - [RFC 5737: IPv4 Address Blocks for Documentation](https://www.rfc-editor.org/info/rfc5737/) defines the example addresses used in this module.
 - [ipify](https://www.ipify.org/) documents the free public-address application programming interface (API) used in the exercise.
 
-## Checklist Before Moving On
+## Main Takeaways
 
-- [ ] You can describe what changes during an outbound NAT translation
-- [ ] You know how ports let several private hosts share one public address
-- [ ] You can explain how the translation table directs a reply
-- [ ] You know why a new inbound connection needs a mapping
-- [ ] You can distinguish NAT from firewall filtering
-- [ ] You compared a private address with the public address seen externally
-- [ ] Optional: You created and removed a local-only VirtualBox port-forwarding rule
+- Network address translation (NAT) changes address information, and often port information, as traffic crosses a network boundary.
+- A NAT device or service keeps temporary translation records so replies return to the correct private device and connection.
+- NAT and firewall filtering are separate functions.
 
 Continue to Module 7 to see how TCP, User Datagram Protocol (UDP), ports, and sockets identify individual conversations.

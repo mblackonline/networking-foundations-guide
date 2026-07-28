@@ -83,7 +83,7 @@ Everything inside one broadcast domain can be reached by ARP, and therefore dire
 
 Broadcast domains also explain why networks get divided up at all. Every device in a domain processes every broadcast in it. A few hundred machines is fine. A few thousand wastes real time on every one of them, and one misbehaving device affects everybody.
 
-## VLANs, Briefly
+## VLANs
 
 A [virtual local area network (VLAN)](/appendix/glossary/#virtual-local-area-network-vlan) lets one physical switch carry several separate networks. Each port is assigned to a VLAN, and the switch does not forward traffic from one VLAN to ports in another.
 
@@ -132,13 +132,10 @@ Then compare the two entries in the cache. The gateway and LINUXBOX are both rea
 - [Cisco Packet Tracer](https://www.netacad.com/cisco-packet-tracer) lets you build switches, assign ports to VLANs, and configure trunk links in a simulator. It is free, though Cisco distributes it only through a no-cost Networking Academy account. The commands are Cisco-specific, but the behavior you observe is not.
 - [Virtual Local Area Networks (VLANs)](https://www.practicalnetworking.net/stand-alone/vlans/) by Ed Harmoush at Practical Networking covers access ports, trunk ports, tagging, and the native VLAN, and it maps the Cisco terms to the tagged and untagged terms other vendors use. Free to read and there is a video version at the bottom if you learn better that way.
 
-## Checklist Before Moving On
+## Main Takeaways
 
-- [ ] You can find your own MAC address and explain why it differs from your IP address
-- [ ] You can describe how a switch builds its address table
-- [ ] You can explain why an ARP request is broadcast but the reply is not
-- [ ] You viewed your ARP cache and watched an entry get created
-- [ ] You can state what defines the edge of a broadcast domain
-- [ ] You understand why a VLAN needs a router to reach another VLAN
+- Switches use Media Access Control (MAC) address tables to forward frames within a local network.
+- The Address Resolution Protocol (ARP) maps local IPv4 addresses to MAC addresses.
+- Routers forward packets between different IP networks, from nearby subnets to networks across the internet.
 
 Continue to Module 4, where addressing determines whether a destination is inside your broadcast domain at all.

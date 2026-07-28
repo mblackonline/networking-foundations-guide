@@ -277,14 +277,10 @@ These commands leave the NGINX package installed but stop and disable its servic
 - [Caddy reverse-proxy quick start](https://caddyserver.com/docs/quick-starts/reverse-proxy) covers an alternative web server and reverse proxy known for concise configuration and automatic HTTPS.
 - [Amazon Web Services Elastic Load Balancing documentation](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html) describes a managed cloud load-balancing service.
 
-## Checklist Before Moving On
+## Main Takeaways
 
-- [ ] You can distinguish a forward proxy from a reverse proxy
-- [ ] You can explain why a proxy creates two connections
-- [ ] You can distinguish layer 4 from layer 7 load balancing
-- [ ] You can explain TLS termination
-- [ ] You know how health checks affect backend selection
-- [ ] You know why a backend may log the proxy's IP address
-- [ ] Optional: You sent a NETLAB request through NGINX to a loopback-only backend
+- Forward proxies act on behalf of clients. Reverse proxies and load balancers act on behalf of services.
+- The client-to-proxy and proxy-to-backend connections are separate network paths.
+- Filtering, Transport Layer Security (TLS), health checks, and failures can differ on each side of the proxy.
 
 Continue to Module 13 to combine the guide's concepts into a repeatable troubleshooting method.

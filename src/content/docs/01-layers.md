@@ -3,9 +3,9 @@ title: "Module 1: How Networks Are Layered"
 description: How networking layers organize communication and carry data between applications.
 ---
 
-Networking can feel like a long list of terms and protocols with nothing giving them structure. Layering is what gives them structure, and much of what follows makes more sense once you understand it.
+Networking can feel like a long list of unrelated terms and protocols. Layering provides a structure for relating them to one another.
 
-Cables, addresses, ports, and names all belong to different layers, and each one solves a different part of getting data from one machine to another. Once you know which layer something lives at, you know what it can and cannot explain, and you know where to look when something breaks.
+Cables, addresses, ports, and names belong to different layers, and each one solves a different part of getting data from one machine to another. During troubleshooting, the layers help show what a symptom can explain and where a problem may be occurring.
 
 ## In This Module
 
@@ -22,7 +22,7 @@ Networks work the same way, and for the same reason. Each layer solves one probl
 
 The payoff is that layers can change independently. An organization can replace every switch in a building with faster models, and not one application has to be reconfigured, because the applications never dealt with cables or switches in the first place. Someone can invent a faster physical medium without anyone rewriting web servers.
 
-The other payoff is the one you will use daily. When something breaks, layers help you narrow down where to look.
+Another practical benefit appears during troubleshooting. When communication fails, layers help narrow down where to look.
 
 ## The TCP/IP Model
 
@@ -60,7 +60,7 @@ The [Open Systems Interconnection (OSI) model](/appendix/glossary/#open-systems-
 | 2 | Data Link | Link | Frames, MAC addresses, and switches on the local network |
 | 1 | Physical | Link | Transmission through cables, radios, and network interfaces |
 
-You will meet both models, and the reason is worth knowing. Systems use the TCP/IP model, but people often use OSI numbers when talking about networking. A load balancer described as "layer 7" works with application traffic. A "layer 3" problem involves IP addressing or routing.
+Both models appear in technical conversations. Systems use the TCP/IP model, but people often use OSI numbers when discussing networking. A load balancer described as "layer 7" works with application traffic. A "layer 3" problem involves IP addressing or routing.
 
 ## Encapsulation
 
@@ -84,15 +84,14 @@ That is why MAC addresses are used for delivery on the local network, while IP a
 
 These optional references go deeper than this module needs.
 
-- [Request for Comments (RFC) 1122: Requirements for Internet Hosts](https://www.rfc-editor.org/info/rfc1122/) is the specification that defines the internet layering model and what each layer is responsible for.
 - [What is the OSI Model?](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) walks all seven layers with an example message travelling down and back up the stack.
 - [What is the network layer?](https://www.cloudflare.com/learning/network-layer/what-is-the-network-layer/) explains headers, packets, and how the OSI and TCP/IP models compare.
 - If you prefer video, Ed Harmoush's [Networking Fundamentals YouTube series](https://www.youtube.com/playlist?list=PLIFyRwBY_4bRLmKfP1KnZA6rZbRHtxmXi) is one of my favorites and covers a wide range of topics.
 
-## Checklist Before Moving On
+## Main Takeaways
 
-- [ ] You can name the four TCP/IP layers and what each one does
-- [ ] You know what layers 2, 3, 4, and 7 refer to in conversation
-- [ ] You can explain why a router changes the Ethernet header but not the IP addresses
+- Networking layers separate communication into distinct responsibilities.
+- Encapsulation adds layer-specific information as data moves toward the network. The destination removes that information in reverse order.
+- Layers provide a way to relate protocols and narrow where a communication problem occurs.
 
 Continue to Module 2 to set up the tools used throughout the guide, and optionally build the lab.

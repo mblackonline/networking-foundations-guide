@@ -235,16 +235,10 @@ WINCLIENT may receive the same IPv4 address again. That is normal and does not m
 - [Microsoft DHCP relay documentation](https://learn.microsoft.com/en-us/windows-server/networking/technologies/dhcp/dhcp-deploy-relay-agent) explains the separate Windows Server relay role.
 - [Oracle VirtualBox networking documentation](https://docs.oracle.com/en/virtualization/virtualbox/7.2/user/networkingdetails.html) explains the DHCP service integrated into VirtualBox.
 
-## Checklist Before Moving On
+## Main Takeaways
 
-- [ ] You can list the core IPv4 settings supplied by DHCP
-- [ ] You can name several systems that can provide DHCP
-- [ ] You know that AD DS and the Windows DHCP Server role are separate services
-- [ ] You know that DHCPv4 servers use UDP port 67 and clients use UDP port 68
-- [ ] You can identify the Discover, Offer, Request, and Acknowledge steps
-- [ ] You can distinguish a DHCP server from a DHCP relay
-- [ ] You can distinguish a reservation from a static address
-- [ ] You know what a `169.254.x.x` address indicates
-- [ ] Optional: You released and renewed WINCLIENT's NETLAB lease
+- The Dynamic Host Configuration Protocol (DHCP) automatically supplies network settings through time-limited leases.
+- The initial DHCP exchange works before a client has a complete IP configuration.
+- DHCP relays allow a centralized server to provide settings to clients on other networks.
 
 Continue to Module 9 to see how DNS translates names into addresses.

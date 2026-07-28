@@ -261,15 +261,10 @@ This exercise uses the SSH server already installed on the Linux Mint virtual ma
 - [Microsoft netstat documentation](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netstat) explains the Windows command and its options.
 - [Linux `ss` manual page](https://man7.org/linux/man-pages/man8/ss.8.html) documents socket filters and output options.
 
-## Checklist Before Moving On
+## Main Takeaways
 
-- [ ] You can explain the different jobs performed by an IP address and a port number
-- [ ] You can identify the source and destination endpoints in an address-and-port pair
-- [ ] You know why a client normally uses a temporary source port
-- [ ] You can describe the SYN, SYN-ACK, and ACK handshake
-- [ ] You can explain the main difference between TCP and UDP
-- [ ] You can distinguish a listening socket from an established connection
-- [ ] You inspected the listening ports on your computer
-- [ ] Optional: You captured the TCP handshake between WINCLIENT and LINUXBOX
+- Internet Protocol (IP) addresses identify network interfaces, while port numbers identify application endpoints.
+- Transmission Control Protocol (TCP) provides an ordered, reliable connection. User Datagram Protocol (UDP) sends independent datagrams without those guarantees.
+- Socket information distinguishes listening services from active connections.
 
 Continue to Module 8 to see how DHCP automatically supplies a device with its IP configuration.

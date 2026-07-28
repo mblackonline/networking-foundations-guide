@@ -260,15 +260,10 @@ Return the adapter to automatic Dynamic Host Configuration Protocol (DHCP) after
 - [Internet Assigned Numbers Authority (IANA) IPv4 Special-Purpose Address Space](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml) lists private, loopback, link-local, and other special ranges.
 - The [Subnetting Practice appendix](/appendix/subnetting-practice/) has the complete CIDR reference, worked calculations, practice problems, and video and drill recommendations.
 
-## Checklist Before Moving On
+## Main Takeaways
 
-- [ ] You can explain what the prefix length tells a host
-- [ ] You can explain what the ones and zeros in a subnet mask represent
-- [ ] You can identify the network, broadcast, and host range of a subnet
-- [ ] You can find the network and host range for a `/24`
-- [ ] You understand the special purpose of `/31` and `/32`
-- [ ] You know the three private IPv4 ranges
-- [ ] You can explain why the IPv4 address space is divided into blocks
-- [ ] You can explain when a host sends traffic to its default gateway
+- A subnet mask separates the network portion of an IPv4 address from the host portion.
+- Classless Inter-Domain Routing (CIDR) notation is a shorter way to write a subnet mask. For example, `/24` means `255.255.255.0`.
+- A device uses its IPv4 address and subnet mask to determine whether traffic stays on the local network or goes through the default gateway.
 
 Continue to Module 5 to see how routers choose the next network in a path.

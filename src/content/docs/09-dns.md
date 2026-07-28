@@ -288,15 +288,10 @@ Record order and TTL values may differ because of caching. Both clients should s
 - [Microsoft `Resolve-DnsName` documentation](https://learn.microsoft.com/en-us/powershell/module/dnsclient/resolve-dnsname) documents record queries and command options.
 - [BIND 9 `dig` documentation](https://bind9.readthedocs.io/en/stable/manpages.html#dig-dns-lookup-utility) documents the Linux lookup tool used in this module.
 
-## Checklist Before Moving On
+## Main Takeaways
 
-- [ ] You can explain what DNS does before an application connects
-- [ ] You can distinguish a recursive resolver from an authoritative server
-- [ ] You can describe the root, top-level-domain, and authoritative steps
-- [ ] You recognize A, AAAA, CNAME, MX, NS, PTR, SRV, and TXT records
-- [ ] You know that traditional DNS uses both UDP and TCP port 53
-- [ ] You can explain how TTL affects cached answers
-- [ ] You queried an A record using a tool available on your operating system
-- [ ] Optional: You compared DNS answers on WINCLIENT and LINUXBOX
+- The Domain Name System (DNS) returns records associated with names, including the addresses applications use to connect.
+- Recursive resolvers locate answers from authoritative DNS servers.
+- Resolvers cache answers according to their time-to-live values.
 
 Continue to Module 10 to see how the Hypertext Transfer Protocol (HTTP) and Transport Layer Security (TLS) use the addresses returned by DNS.

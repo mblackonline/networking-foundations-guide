@@ -100,7 +100,7 @@ The first is your question, the second is the answer, and the matching number pa
 
 You will probably see more than two rows, which is normal. Module 9 explains what all of them mean.
 
-You just watched DNS turn a name into an address. For now the point is that the tool works and you know how to filter it, since an unfiltered capture is unreadable.
+This capture shows DNS turning a name into an address. The display filter narrows the results to the packets relevant to that exchange.
 
 ## About the Optional Lab
 
@@ -223,13 +223,10 @@ WINCLIENT should normally be able to ping LINUXBOX. A ping from LINUXBOX to WINC
 - [Linux Mint Installation Guide](https://linuxmint-installation-guide.readthedocs.io/en/latest/) provides additional installation and troubleshooting details.
 - [Oracle VirtualBox User Guide](https://docs.oracle.com/en/virtualization/virtualbox/7.2/user/) documents virtual machine settings, networking modes, and Guest Additions.
 
-## Checklist Before Moving On
+## Main Takeaways
 
-- [ ] `ipconfig /all`, `nslookup`, and `curl` all run on your own machine
-- [ ] Wireshark is installed and can capture on your active interface
-- [ ] You captured a DNS query using the `dns` display filter
-- [ ] Optional: the NETLAB NAT Network exists at 10.0.20.0/24
-- [ ] Optional: WINCLIENT and LINUXBOX both have addresses in that range
-- [ ] Optional: LINUXBOX can ping WINCLIENT, or you understand why it might not
+- Operating systems include tools for inspecting addresses, routes, name resolution, connections, and web responses.
+- Wireshark displays the packets traveling through a network interface.
+- Different tools reveal different parts of network communication, so troubleshooting often requires comparing their results.
 
 Continue to Module 3 to look at what happens inside your own network segment.

@@ -133,14 +133,14 @@ Two names are worth recognizing:
 
 You do not need to configure either protocol for this guide. They still produce routing-table entries that are selected using the same longest-prefix rule.
 
-## VPN Routes
+## How a VPN Changes Routing
 
-A virtual private network (VPN) adds a virtual interface and its own routes. Which traffic uses the VPN depends entirely on what those routes cover.
+When a device connects to a virtual private network (VPN), the VPN software adds a virtual network interface and routing-table entries.
 
-- **Full tunnel:** The VPN adds a default route, so most or all traffic goes through it.
-- **Split tunnel:** The VPN adds routes only for specific destination networks. Everything else follows the device's normal route.
+- **Split tunnel:** Only selected traffic, such as traffic for an organization's internal systems, goes through the VPN. Other traffic uses the device's normal network connection.
+- **Full tunnel:** The VPN becomes the default path for regular network traffic, including internet traffic.
 
-If an internal application works in the office but not over the VPN, check which route matches the destination and which DNS server the remote device is using.
+The routes added by the VPN determine which traffic uses the tunnel.
 
 ## Follow the Path With Traceroute
 
@@ -230,13 +230,10 @@ The route is not persistent, but delete it when finished rather than waiting for
 - [Linux `ip-route` manual page](https://man7.org/linux/man-pages/man8/ip-route.8.html) documents Linux route display and management.
 - [RFC 5737: IPv4 Address Blocks for Documentation](https://www.rfc-editor.org/info/rfc5737/) defines the example-only address used in the lab.
 
-## Checklist Before Moving On
+## Main Takeaways
 
-- [ ] You can identify the destination, next hop, interface, and metric in a route
-- [ ] You can explain why the longest matching prefix wins
-- [ ] You know what `0.0.0.0/0` means
-- [ ] You found the connected and default routes on your own computer
-- [ ] You understand how traceroute uses TTL and why a silent hop may still be working
-- [ ] Optional: you added, observed, and removed the temporary lab route
+- A routing table lists paths to destination networks through specific interfaces or next-hop routers.
+- The most specific matching route is selected. The default route is used when no more specific route matches.
+- Traceroute can reveal the routers along a path and where delays or failures may occur.
 
 Continue to Module 6 to see how network address translation (NAT) changes addresses as packets cross a network boundary.
