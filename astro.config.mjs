@@ -46,14 +46,9 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Working With It',
+          label: 'Troubleshooting and Reference',
           items: [
             { label: 'Module 13: Troubleshooting Method', slug: '13-troubleshooting' },
-          ],
-        },
-        {
-          label: 'Appendix',
-          items: [
             { label: 'Subnetting Practice', slug: 'appendix/subnetting-practice' },
             { label: 'Port and Protocol Reference', slug: 'appendix/port-reference' },
             { label: 'Reading a Packet Capture', slug: 'appendix/reading-a-capture' },
