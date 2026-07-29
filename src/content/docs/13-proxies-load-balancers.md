@@ -156,7 +156,7 @@ Health-check configuration can also cause failures. A wrong port, path, expected
 
 ## Session Persistence
 
-:::note[Optional: Explore Later]
+:::note[Application Design Consideration]
 Persistence matters mainly when an application keeps user state on one backend.
 :::
 

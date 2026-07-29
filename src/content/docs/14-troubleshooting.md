@@ -267,7 +267,7 @@ For example, do not disable an entire firewall, change DNS servers, and restart 
 
 ## When to Reach for a Packet Capture
 
-:::note[Optional: Explore Later]
+:::note[Optional Diagnostic Technique]
 Use this escalation step when simpler checks do not reveal where an exchange stops. The [Reading a Packet Capture](/appendix/reading-a-capture/) appendix provides the complete workflow.
 :::
 

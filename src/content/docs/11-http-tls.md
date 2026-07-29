@@ -151,7 +151,7 @@ TLS does not prove that a website is honest or free from malicious content. It a
 
 ## A Simplified TLS Handshake
 
-:::note[Optional: Explore Later]
+:::note[Protocol Detail]
 For core troubleshooting, remember that Transport Layer Security must succeed before the server can return a protected Hypertext Transfer Protocol response.
 :::
 

@@ -206,7 +206,7 @@ These prefixes are worth recognizing, but they do not change the ordinary subnet
 
 ## How a Host Applies the Mask
 
-:::note[Optional: Explore Later]
+:::note[Technical Detail]
 The block-size method is easier for people to calculate. This section shows the bit operation a host performs underneath it.
 :::
 

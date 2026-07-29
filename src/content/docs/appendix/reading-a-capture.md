@@ -3,7 +3,7 @@ title: Reading a Packet Capture
 description: Use Wireshark to understand protocol behavior, verify expected exchanges, and investigate network problems.
 ---
 
-:::note[Optional: Explore Later]
+:::note[Optional Packet Analysis Guide]
 Use this guide when you want to see the exchanges behind the concepts in the core modules or when a command-level test does not explain what happened. It is not required for the first reading of the core guide.
 :::
 

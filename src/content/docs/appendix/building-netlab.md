@@ -3,7 +3,7 @@ title: Building the Optional NETLAB
 description: Build the isolated VirtualBox network and the Windows and Linux virtual machines used by optional exercises.
 ---
 
-:::note[Optional: Explore Later]
+:::note[Optional Lab Environment]
 The conceptual guide does not require this lab. Build it if you want an isolated place to observe traffic and practice changing network settings.
 :::
 

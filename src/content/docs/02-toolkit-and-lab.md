@@ -65,7 +65,7 @@ If all three produce output rather than a "command not found" error, you are rea
 
 ## Install Wireshark
 
-:::note[Optional: Explore Later]
+:::note[Optional Tool]
 Wireshark makes network exchanges visible, but it is not required to continue through the conceptual guide.
 :::
 
