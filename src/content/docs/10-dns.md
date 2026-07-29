@@ -1,5 +1,5 @@
 ---
-title: "Module 9: Domain Name System (DNS)"
+title: "Module 10: Domain Name System (DNS)"
 description: How DNS turns names into useful records, where answers come from, and how to troubleshoot common failures.
 ---
 
@@ -39,7 +39,7 @@ DNS lookup returns an address -> Application connects to that address
 
 ## The DNS Server Your Client Uses
 
-Your computer is configured with one or more DNS server addresses. Those addresses often arrive through the Dynamic Host Configuration Protocol (DHCP), as described in Module 8.
+Your computer is configured with one or more DNS server addresses. Those addresses often arrive through the Dynamic Host Configuration Protocol (DHCP), as described in Module 9.
 
 The configured server might be:
 
@@ -301,4 +301,4 @@ Record order and TTL values may differ because of caching. Both clients should s
 - Recursive resolvers locate answers from authoritative DNS servers.
 - Resolvers cache answers according to their time-to-live values.
 
-Continue to Module 10 to see how the Hypertext Transfer Protocol (HTTP) and Transport Layer Security (TLS) use the addresses returned by DNS.
+Continue to [Module 11: HTTP and TLS](/11-http-tls/) to see how the Hypertext Transfer Protocol (HTTP) and Transport Layer Security (TLS) use the addresses returned by DNS.

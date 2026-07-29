@@ -1,5 +1,5 @@
 ---
-title: "Module 7: Transport, Ports, and Sockets"
+title: "Module 8: Transport, Ports, and Sockets"
 description: How ports identify network services, how TCP establishes reliable connections, and how UDP sends independent messages.
 ---
 
@@ -266,4 +266,4 @@ This exercise uses the SSH server already installed on the Linux Mint virtual ma
 - Transmission Control Protocol (TCP) provides an ordered, reliable connection. User Datagram Protocol (UDP) sends independent datagrams without those guarantees.
 - Socket information distinguishes listening services from active connections.
 
-Continue to Module 8 to see how DHCP automatically supplies a device with its IP configuration.
+Continue to [Module 9: Dynamic Host Configuration Protocol (DHCP)](/09-dhcp/) to see how DHCP automatically supplies a device with its IP configuration.

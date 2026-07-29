@@ -4,7 +4,7 @@ description: Build a local NGINX reverse proxy and loopback-only backend inside 
 ---
 
 :::note[Optional: Role-Specific]
-This lab is intended for systems administration, cloud, DevOps, and software-development practice. Complete [Module 12](/12-proxies-load-balancers/) first.
+This lab is intended for systems administration, cloud, DevOps, and software-development practice. Complete [Module 13](/13-proxies-load-balancers/) first.
 :::
 
 This exercise installs NGINX on LINUXBOX. The proxy listens only inside the isolated NETLAB network, and its backend listens only on LINUXBOX's loopback address.

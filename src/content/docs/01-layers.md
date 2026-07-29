@@ -82,7 +82,7 @@ Say your browser requests a web page.
 
 On the receiving machine the process runs in reverse. Each layer strips its own header, reads it, and hands the contents up.
 
-One detail here explains a great deal of later material. The source and destination IP addresses normally describe the end-to-end conversation, while the Ethernet header is rebuilt at every hop. Each router strips the frame it received, decides where the packet goes next, and builds a new frame for that next hop. Network Address Translation (NAT), covered in Module 6, is an important exception because it deliberately changes address information in transit.
+One detail here explains a great deal of later material. The source and destination IP addresses normally describe the end-to-end conversation, while the Ethernet header is rebuilt at every hop. Each router strips the frame it received, decides where the packet goes next, and builds a new frame for that next hop. Network Address Translation (NAT), covered in Module 7, is an important exception because it deliberately changes address information in transit.
 
 That is why MAC addresses are used for delivery on the local network, while IP addresses are used to deliver packets between networks.
 

@@ -1,18 +1,18 @@
 ---
-title: "Module 4: IPv4 Addressing and Subnetting"
-description: CIDR, subnet masks, network and broadcast addresses, private ranges, and the default gateway.
+title: "Module 4: IPv4 Addressing"
+description: IPv4 addresses, prefixes, subnet masks, private ranges, and the local-or-remote decision.
 ---
 
 An [Internet Protocol version 4 (IPv4) address](/appendix/glossary/#internet-protocol-version-4-ipv4) identifies a device, but the address alone is not enough. A [subnet mask](/appendix/glossary/#subnet-mask) tells the device which addresses are nearby and which ones must be reached through a router.
 
-That local-or-remote decision is the main idea in this module. The calculations help you describe the boundary.
+That local-or-remote decision is the main idea in this module. Module 5 builds on it by explaining how subnet boundaries and address ranges are calculated.
 
 ## In This Module
 
 - How an IPv4 address, prefix, and subnet mask describe a network
 - How Classless Inter-Domain Routing (CIDR) notation describes a subnet
 - How a host decides whether to use its default gateway
-- How to find a `/24` range and recognize private IPv4 addresses
+- How to recognize private IPv4 addresses and the effects of a wrong mask
 
 ## Four Octets, Thirty-Two Bits
 
@@ -84,53 +84,19 @@ Mask      11111111.11111111.11111111.00000000   255.255.255.0
 
 Counting the ones gives you the prefix length. Twenty-four ones is a `/24`.
 
-## Optional: Prefixes Beyond /24
+## A /24 as a Starting Point
 
-:::note[Optional: Explore Later]
-You do not need to calculate smaller subnets before continuing. The rest of the core guide requires only the local-versus-remote decision and an understanding that a longer prefix describes a more specific range.
-:::
-
-A subnet boundary does not have to fall between octets. Prefixes such as `/25`, `/26`, and `/27` divide the final octet into progressively smaller ranges. `/31` and `/32` also have special uses in routing.
-
-The [Subnetting Practice appendix](/appendix/subnetting-practice/) contains the complete prefix table, binary place-value pattern, worked calculations, and practice problems.
-
-## Network, Broadcast, and Hosts
-
-An ordinary IPv4 subnet contains:
-
-- A **[network address](/appendix/glossary/#network-address)**, which names the subnet
-- A **[broadcast address](/appendix/glossary/#broadcast-address)**, which reaches every IPv4 host on that subnet
-- The **usable host addresses** between them
-
-For `192.168.10.0/24`:
-
-| Purpose | Address |
-| --- | --- |
-| Network Address | `192.168.10.0` |
-| First usable host | `192.168.10.1` |
-| Last usable host | `192.168.10.254` |
-| Broadcast Address | `192.168.10.255` |
-
-The subnet contains 256 total addresses and 254 usable host addresses.
-
-## Finding the Range of a /24
-
-With a `/24`, the subnet mask is:
+With a `/24`, the first 24 bits—the first three octets—identify the network. The final octet identifies an address inside it.
 
 ```text
-255.255.255.0
+192.168.10.77/24
+| network  |host|
+192.168.10 . 77
 ```
 
-The first three octets identify the network. The last octet identifies an address inside it.
+This makes `/24` a useful introductory boundary. It describes the 256 addresses whose first three octets are `192.168.10`, from `192.168.10.0` through `192.168.10.255`.
 
-For the host `192.168.10.77/24`:
-
-1. Keep the first three octets: `192.168.10`.
-2. Set the last octet to `0` for the network address: `192.168.10.0`.
-3. Set the last octet to `255` for the broadcast address: `192.168.10.255`.
-4. The usable host addresses are `192.168.10.1` through `192.168.10.254`.
-
-This octet-aligned boundary is why `/24` is a good place to begin. Smaller subnets such as `/25` and `/26` divide the final octet into multiple ranges. The appendix covers those calculations, along with the older classful conventions that some certification questions still assume, when you are ready for them.
+[Module 5](/05-subnetting/) explains the special roles within that range and how longer prefixes such as `/25` and `/26` divide it into smaller networks.
 
 ## [Private IPv4 Addresses](/appendix/glossary/#private-ipv4-address)
 
@@ -144,7 +110,7 @@ Three address blocks are reserved for private networks:
 
 These addresses can be reused in homes, businesses, labs, and cloud networks because they are not routed across the public internet.
 
-Private does not mean secure. It describes how an address is allocated and routed, not who is allowed to reach it. Module 6 covers the network address translation (NAT) commonly used when private hosts access public services.
+Private does not mean secure. It describes how an address is allocated and routed, not who is allowed to reach it. Module 7 covers the network address translation (NAT) commonly used when private hosts access public services.
 
 ## Why Addresses Come in Ranges
 
@@ -161,10 +127,10 @@ A wrong mask changes which destinations the host considers local.
 
 When two nearby hosts cannot communicate, compare their IP addresses and subnet masks before investigating the application.
 
-## Try It Yourself
+## Inspect Your IPv4 Configuration
 
-:::note[Optional Practice]
-This exercise reinforces the `/24` range used throughout the guide. It is not required to continue.
+:::note[Optional Observation]
+This read-only inspection connects the terms in this module to the active interface on your computer.
 :::
 
 Find the IPv4 address, subnet mask, and default gateway on your active interface.
@@ -189,28 +155,19 @@ ifconfig
 route -n get default
 ```
 
-Use the address and mask to find:
+Record the active interface's:
 
-- The network address
-- The broadcast address
-- The first and last usable host addresses
+- IPv4 address
+- Prefix length or subnet mask
+- Default gateway
+- Domain Name System (DNS) server addresses
 
-Then compare your default gateway with that range. The gateway should be reachable on the local subnet.
-
-:::tip[Optional Lab]
-On WINCLIENT, record the current address, mask, gateway, and Domain Name System (DNS) settings. Temporarily configure the same values with a broader `/16` mask.
-
-Capture with the Wireshark filter `arp`, clear the ARP cache with `arp -d *`, and ping `10.0.30.1`. WINCLIENT should send an unanswered ARP request because the wrong `/16` makes that address appear local.
-
-Return the adapter to automatic Dynamic Host Configuration Protocol (DHCP) afterward, run `ipconfig /renew`, and confirm the original `/24` mask returns.
-:::
+Do not assume the first displayed adapter is active. Virtualization and virtual private network software can add several interfaces.
 
 ## Further Learning
 
 - [Request for Comments (RFC) 1918: Address Allocation for Private Internets](https://www.rfc-editor.org/info/rfc1918/) defines the private IPv4 ranges.
-- [RFC 3021: Using 31-Bit Prefixes on IPv4 Point-to-Point Links](https://www.rfc-editor.org/info/rfc3021/) explains the `/31` exception.
 - [Internet Assigned Numbers Authority (IANA) IPv4 Special-Purpose Address Space](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml) lists private, loopback, link-local, and other special ranges.
-- The [Subnetting Practice appendix](/appendix/subnetting-practice/) has the complete CIDR reference, worked calculations, practice problems, and video and drill recommendations.
 
 ## Main Takeaways
 
@@ -218,4 +175,4 @@ Return the adapter to automatic Dynamic Host Configuration Protocol (DHCP) after
 - Classless Inter-Domain Routing (CIDR) notation is a shorter way to write a subnet mask. For example, `/24` means `255.255.255.0`.
 - A device uses its IPv4 address and subnet mask to determine whether traffic stays on the local network or goes through the default gateway.
 
-Continue to Module 5 to see how routers choose the next network in a path.
+Continue to [Module 5: Understanding IPv4 Subnetting](/05-subnetting/) to see how prefixes divide address space into network, broadcast, and usable host ranges.

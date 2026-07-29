@@ -38,7 +38,7 @@ These x64 virtual machines require an Intel or AMD host. The steps are not writt
 VirtualBox calls this a NAT Network. Both VMs can reach each other and the internet through it. Systems on the physical home or workplace network cannot initiate connections to the VMs unless you deliberately add another adapter or forwarding rule.
 
 :::note
-DHCP remains enabled so the VMs receive their network settings without running another server. [Module 8](/08-dhcp/) explains what the service supplies.
+DHCP remains enabled so the VMs receive their network settings without running another server. [Module 9](/09-dhcp/) explains what the service supplies.
 
 If you also built a lab from an Active Directory guide, keep this network's distinct name and address range so the two labs do not collide.
 :::
@@ -125,7 +125,7 @@ Test-NetConnection <LINUXBOX-IP> -Port 22
 
 The ping and Transmission Control Protocol (TCP) port test should normally succeed. If the ping fails but the TCP test succeeds, do not treat the lab as broken; a firewall can permit one protocol while blocking another.
 
-A ping from LINUXBOX to WINCLIENT may fail because Windows Firewall blocks incoming ping by default. Leave that setting unchanged. [Module 11](/11-filtering/) explains the behavior and contains an optional, temporary firewall exercise.
+A ping from LINUXBOX to WINCLIENT may fail because Windows Firewall blocks incoming ping by default. Leave that setting unchanged. [Module 12](/12-filtering/) explains the behavior and contains an optional, temporary firewall exercise.
 
 ## Lab Safety and Cleanup
 

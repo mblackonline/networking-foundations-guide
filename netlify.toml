@@ -1,3 +1,53 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+[[redirects]]
+  from = "/05-routing/*"
+  to = "/06-routing/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/06-nat/*"
+  to = "/07-nat/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/07-transport/*"
+  to = "/08-transport/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/08-dhcp/*"
+  to = "/09-dhcp/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/09-dns/*"
+  to = "/10-dns/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/10-http-tls/*"
+  to = "/11-http-tls/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/11-filtering/*"
+  to = "/12-filtering/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/12-proxies-load-balancers/*"
+  to = "/13-proxies-load-balancers/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/13-troubleshooting/*"
+  to = "/14-troubleshooting/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/appendix/subnetting-practice/*"
+  to = "/05-subnetting/:splat"
+  status = 301

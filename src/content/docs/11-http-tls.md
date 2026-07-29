@@ -1,5 +1,5 @@
 ---
-title: "Module 10: HTTP and TLS"
+title: "Module 11: HTTP and TLS"
 description: Understand web requests, responses, status codes, protected connections, and certificate trust.
 ---
 
@@ -255,4 +255,4 @@ The exact TLS and HTTP versions may differ between the two systems. Verbose outp
 - Hypertext Transfer Protocol Secure (HTTPS) uses Transport Layer Security (TLS) to protect data in transit and authenticate the server.
 - DNS, connection, TLS, and HTTP failures occur at separate stages of the exchange.
 
-Continue to Module 11 to see how firewalls decide which traffic is permitted or blocked.
+Continue to [Module 12: Firewalls and Filtering](/12-filtering/) to see how firewalls decide which traffic is permitted or blocked.

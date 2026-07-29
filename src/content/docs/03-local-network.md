@@ -47,7 +47,7 @@ When a frame needs forwarding, the switch looks up the destination MAC address i
 
 This simplified learning process explains a useful diagnostic fact. A switch normally does not send one device unicast traffic intended for another device. A packet capture therefore usually shows your own traffic, broadcasts, and some multicast or unknown-destination traffic rather than every conversation on the network.
 
-Some switches, called layer 3 switches, can also route traffic between IP networks. They still use MAC-address learning when switching local traffic. Module 5 covers routing.
+Some switches, called layer 3 switches, can also route traffic between IP networks. They still use MAC-address learning when switching local traffic. Module 6 covers routing.
 
 ## ARP
 
@@ -78,7 +78,7 @@ ARP works by broadcasting, and broadcasts have a limit. The set of devices that 
 
 Switches forward broadcasts. Routers do not. That single difference defines the boundary.
 
-Everything inside one broadcast domain can be reached by ARP, and therefore directly by MAC address. Anything outside it cannot be, no matter how correct the IP address is. To reach it, your machine has to hand the frame to a router instead, which is exactly the subject of Module 5.
+Everything inside one broadcast domain can be reached by ARP, and therefore directly by MAC address. Anything outside it cannot be, no matter how correct the IP address is. To reach it, your machine has to hand the frame to a router instead, which is exactly the subject of Module 6.
 
 Broadcast domains also explain why networks get divided. Every device in a domain processes its broadcast traffic, and one misbehaving device can affect the entire domain. An appropriate size depends on the traffic, devices, failure boundaries, and operational design rather than one universal device count.
 

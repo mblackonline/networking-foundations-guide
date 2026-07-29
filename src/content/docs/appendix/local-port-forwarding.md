@@ -87,7 +87,7 @@ Removing the rule returns NETLAB to its previous configuration.
 
 ## Further Learning
 
-- [Module 6: Network Address Translation](/06-nat/) explains the outbound translation and return-state model.
-- [Module 11: Firewalls and Filtering](/11-filtering/) explains why a translation rule and a filtering rule are separate controls.
+- [Module 7: Network Address Translation](/07-nat/) explains the outbound translation and return-state model.
+- [Module 12: Firewalls and Filtering](/12-filtering/) explains why a translation rule and a filtering rule are separate controls.
 - [Oracle VirtualBox networking documentation](https://docs.oracle.com/en/virtualization/virtualbox/7.2/user/networkingdetails.html) documents NAT Network port-forwarding rules.
 - [Request for Comments (RFC) 3022: Traditional IP Network Address Translator](https://www.rfc-editor.org/info/rfc3022/) describes basic NAT, port translation, and translation state.

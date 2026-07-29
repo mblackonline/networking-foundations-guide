@@ -2,6 +2,8 @@
 
 Status: Approved and implemented on July 28, 2026. This file remains as the decision record for the revision.
 
+> **Later revision:** On July 29, 2026, the subnetting material was promoted from an appendix into Module 5. The former Modules 5–13 became Modules 6–14, and packet-capture material received its own **Packet Analysis** navigation section. The recommendations below describe the earlier audit and are retained as historical context.
+
 Scope reviewed:
 
 - `src/content/docs/index.md`

@@ -1,5 +1,5 @@
 ---
-title: "Module 13: Troubleshooting Method"
+title: "Module 14: Troubleshooting Method"
 description: Use a repeatable process to identify where a network connection is failing.
 ---
 
@@ -366,7 +366,7 @@ You now have a repeatable method for combining the concepts and tools from the e
 Choose the next topic that matches the work you want to do:
 
 - For IT Support or system administration, continue with wireless networking, virtual local area network (VLAN) configuration, and deeper Windows or Linux troubleshooting.
-- For DevOps, cloud, or application operations, read the optional [Proxies and Load Balancers module](/12-proxies-load-balancers/), build a small private network in one cloud platform, then study container networking.
+- For DevOps, cloud, or application operations, read the optional [Proxies and Load Balancers module](/13-proxies-load-balancers/), build a small private network in one cloud platform, then study container networking.
 - For software development, explore HTTP diagnostics, certificates, application timeouts, and connection pooling.
 - For cybersecurity, continue with network segmentation, firewall management, secure remote access, and packet analysis.
 - For every path, add Internet Protocol version 6 (IPv6) addressing and routing to the IPv4 foundation in this guide.

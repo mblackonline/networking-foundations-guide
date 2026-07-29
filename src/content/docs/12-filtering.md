@@ -1,5 +1,5 @@
 ---
-title: "Module 11: Firewalls and Filtering"
+title: "Module 12: Firewalls and Filtering"
 description: Understand firewall rules, stateful filtering, traffic direction, and common failure symptoms.
 ---
 
@@ -234,4 +234,4 @@ The final ping behavior returns to whatever WINCLIENT's original firewall policy
 - Direction is measured from the system or boundary where a rule is applied, and stateful filtering can recognize return traffic.
 - Every independent host, network, or cloud filtering layer must permit the connection.
 
-Continue on the core path to [Module 13: Troubleshooting Method](/13-troubleshooting/). If your work involves application delivery or cloud services, optionally read [Module 12: Proxies and Load Balancers](/12-proxies-load-balancers/) first.
+Continue to [Module 13: Proxies and Load Balancers](/13-proxies-load-balancers/) if your work involves application delivery or cloud services. It is optional; otherwise, go directly to [Module 14: Troubleshooting Method](/14-troubleshooting/).

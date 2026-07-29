@@ -1,5 +1,5 @@
 ---
-title: "Module 6: Network Address Translation (NAT)"
+title: "Module 7: Network Address Translation (NAT)"
 description: Network address translation, port forwarding, and why inbound is the hard direction.
 ---
 
@@ -71,7 +71,7 @@ This works easily for one device. A NAT device may handle many connections at th
 
 ## Sharing One Public Address
 
-Port numbers identify individual network conversations. Module 7 covers them in detail. For now, read `10.0.20.15:51514` as Internet Protocol (IP) address `10.0.20.15` using port `51514`.
+Port numbers identify individual network conversations. Module 8 covers them in detail. For now, read `10.0.20.15:51514` as Internet Protocol (IP) address `10.0.20.15` using port `51514`.
 
 For the laptop's Hypertext Transfer Protocol Secure (HTTPS) connection, the complete address-and-port translation might be:
 
@@ -124,7 +124,7 @@ NAT and firewall filtering are commonly performed by the same router or firewall
 - NAT changes source or destination addresses and sometimes port numbers.
 - A firewall decides whether traffic is allowed to pass.
 
-Traditional outbound NAT makes unsolicited inbound connections difficult because they have no translation entry. That is useful behavior, but it does not inspect whether an allowed connection is safe. Module 11 covers filtering directly.
+Traditional outbound NAT makes unsolicited inbound connections difficult because they have no translation entry. That is useful behavior, but it does not inspect whether an allowed connection is safe. Module 12 covers filtering directly.
 
 ## Common Places You Will See NAT
 
@@ -223,4 +223,4 @@ The optional [Port Forwarding and a Local-Only Lab](/appendix/local-port-forward
 - A NAT device or service keeps temporary translation records so replies return to the correct private device and connection.
 - NAT and firewall filtering are separate functions.
 
-Continue to Module 7 to see how TCP, User Datagram Protocol (UDP), ports, and sockets identify individual conversations.
+Continue to [Module 8: Transport, Ports, and Sockets](/08-transport/) to see how TCP, User Datagram Protocol (UDP), ports, and sockets identify individual conversations.

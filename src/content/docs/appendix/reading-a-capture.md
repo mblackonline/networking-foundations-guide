@@ -1,13 +1,13 @@
 ---
 title: Reading a Packet Capture
-description: Use Wireshark to answer common networking questions without learning every feature.
+description: Use Wireshark to understand protocol behavior, verify expected exchanges, and investigate network problems.
 ---
 
 :::note[Optional: Explore Later]
-Use this appendix when a command-level test does not show where an exchange stops. It is not required for the first reading of the core guide.
+Use this guide when you want to see the exchanges behind the concepts in the core modules or when a command-level test does not explain what happened. It is not required for the first reading of the core guide.
 :::
 
-A packet capture records network traffic seen by one interface. Wireshark displays that traffic one packet at a time.
+A packet capture records network traffic seen by one interface. Wireshark displays that traffic one packet at a time. Captures are useful for learning how protocols behave, confirming that an exchange matches a design, and investigating where a failure occurs.
 
 You do not need to understand every packet. Start with one question:
 

@@ -1,5 +1,5 @@
 ---
-title: "Module 8: Dynamic Host Configuration Protocol (DHCP)"
+title: "Module 9: Dynamic Host Configuration Protocol (DHCP)"
 description: How devices receive IPv4 settings automatically, what can provide DHCP, and what common failures look like.
 ---
 
@@ -240,4 +240,4 @@ WINCLIENT may receive the same IPv4 address again. That is normal and does not m
 - The initial DHCP exchange works before a client has a complete IP configuration.
 - A `169.254.x.x` address is a clue that the interface did not obtain its expected IPv4 configuration.
 
-Continue to Module 9 to see how DNS translates names into addresses.
+Continue to [Module 10: Domain Name System (DNS)](/10-dns/) to see how DNS translates names into addresses.

@@ -35,7 +35,7 @@ This guide shows Windows commands first, with the others alongside, because most
 
 A few notes before you start.
 
-`dig` is not included with Windows. Use `nslookup`, or `Resolve-DnsName` in PowerShell, which produces more readable output. Module 9 shows both.
+`dig` is not included with Windows. Use `nslookup`, or `Resolve-DnsName` in PowerShell, which produces more readable output. Module 10 shows both.
 
 `dig` is not always installed on Linux either. On Linux Mint and Ubuntu it comes from the `dnsutils` package, which you can install with `sudo apt install dnsutils`.
 
@@ -109,7 +109,7 @@ Standard query response 0x8f3a A www.example.com A 192.0.2.10
 
 The first is your question, the second is the answer, and the matching number pairs them. Their **Source** and **Destination** columns swap, because your machine asked your Domain Name System (DNS) server and the server replied.
 
-You will probably see more than two rows, which is normal. Module 9 explains what all of them mean.
+You will probably see more than two rows, which is normal. Module 10 explains what all of them mean.
 
 This capture shows DNS turning a name into an address. The display filter narrows the results to the packets relevant to that exchange.
 

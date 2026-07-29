@@ -24,36 +24,32 @@ export default defineConfig({
           label: 'Foundations',
           items: [
             { label: 'Module 3: The Local Network', slug: '03-local-network' },
-            { label: 'Module 4: IPv4 Addressing and Subnetting', slug: '04-addressing-subnetting' },
-            { label: 'Module 5: Routing', slug: '05-routing' },
-            { label: 'Module 6: Network Address Translation (NAT)', slug: '06-nat' },
+            { label: 'Module 4: IPv4 Addressing', slug: '04-addressing-subnetting' },
+            { label: 'Module 5: Understanding IPv4 Subnetting', slug: '05-subnetting' },
+            { label: 'Module 6: Routing', slug: '06-routing' },
+            { label: 'Module 7: Network Address Translation (NAT)', slug: '07-nat' },
           ],
         },
         {
           label: 'Getting to a Service',
           items: [
-            { label: 'Module 7: Transport, Ports, and Sockets', slug: '07-transport' },
-            { label: 'Module 8: Dynamic Host Configuration Protocol (DHCP)', slug: '08-dhcp' },
-            { label: 'Module 9: Domain Name System (DNS)', slug: '09-dns' },
+            { label: 'Module 8: Transport, Ports, and Sockets', slug: '08-transport' },
+            { label: 'Module 9: Dynamic Host Configuration Protocol (DHCP)', slug: '09-dhcp' },
+            { label: 'Module 10: Domain Name System (DNS)', slug: '10-dns' },
           ],
         },
         {
           label: 'Application and Security',
           items: [
-            { label: 'Module 10: HTTP and TLS', slug: '10-http-tls' },
-            { label: 'Module 11: Firewalls and Filtering', slug: '11-filtering' },
+            { label: 'Module 11: HTTP and TLS', slug: '11-http-tls' },
+            { label: 'Module 12: Firewalls and Filtering', slug: '12-filtering' },
+            { label: 'Module 13 (Optional): Proxies and Load Balancers', slug: '13-proxies-load-balancers' },
           ],
         },
         {
           label: 'Troubleshooting',
           items: [
-            { label: 'Module 13: Troubleshooting Method', slug: '13-troubleshooting' },
-          ],
-        },
-        {
-          label: 'Optional: Role-Specific',
-          items: [
-            { label: 'Module 12: Proxies and Load Balancers', slug: '12-proxies-load-balancers' },
+            { label: 'Module 14: Troubleshooting Method', slug: '14-troubleshooting' },
           ],
         },
         {
@@ -65,11 +61,15 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Reference and Explore Later',
+          label: 'Packet Analysis',
           items: [
-            { label: 'Subnetting Practice', slug: 'appendix/subnetting-practice' },
-            { label: 'Port and Protocol Reference', slug: 'appendix/port-reference' },
             { label: 'Reading a Packet Capture', slug: 'appendix/reading-a-capture' },
+          ],
+        },
+        {
+          label: 'Reference',
+          items: [
+            { label: 'Port and Protocol Reference', slug: 'appendix/port-reference' },
             { label: 'Glossary', slug: 'appendix/glossary' },
           ],
         },

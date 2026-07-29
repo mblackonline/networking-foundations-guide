@@ -1,9 +1,9 @@
 ---
-title: "Module 5: Routing"
+title: "Module 6: Routing"
 description: Reading a routing table, longest prefix match, next hop, and the default route.
 ---
 
-Module 4 explained how a host decides whether a destination is local. Routing begins when the destination is not.
+Modules 4 and 5 explained how addressing and subnet boundaries determine whether a destination is local. Routing begins when the destination is not.
 
 Every host and router has a [routing table](/appendix/glossary/#routing-table). It is a list of instructions that answers one question: where should this packet go next?
 
@@ -246,4 +246,4 @@ The route is not persistent, but delete it when finished rather than waiting for
 - The most specific matching route is selected. The default route is used when no more specific route matches.
 - Traceroute can reveal the routers along a path and where delays or failures may occur.
 
-Continue to Module 6 to see how network address translation (NAT) changes addresses as packets cross a network boundary.
+Continue to [Module 7: Network Address Translation (NAT)](/07-nat/) to see how translation changes addresses as packets cross a network boundary.

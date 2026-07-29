@@ -28,17 +28,17 @@ The guide is intended for people exploring IT support, system administration, De
 
 ## Core Learning Path
 
-The core path explains the concepts needed to follow and troubleshoot a typical connection. Read Modules 1 through 11 in order, then complete Module 13.
+The core path explains the concepts needed to follow and troubleshoot a typical connection. Read Modules 1 through 12 in order, then complete Module 14.
 
 | Stage | Modules | First-reading focus |
 | --- | --- | --- |
 | Organize the network | [1: Layers](/01-layers/), [2: Toolkit](/02-toolkit-and-lab/) | Relate protocols to layers and recognize the purpose of common tools |
-| Move between devices and networks | [3: Local Network](/03-local-network/), [4: IPv4 Addressing](/04-addressing-subnetting/), [5: Routing](/05-routing/), [6: NAT](/06-nat/) | Local delivery, local-versus-remote decisions, routes, gateways, and translation |
-| Reach the correct service | [7: Transport](/07-transport/), [8: DHCP](/08-dhcp/), [9: DNS](/09-dns/) | Ports, connections, automatic configuration, and name resolution |
-| Interpret application and security results | [10: HTTP and TLS](/10-http-tls/), [11: Firewalls](/11-filtering/) | Web responses, certificate checks, and filtering behavior |
-| Apply the method | [13: Troubleshooting](/13-troubleshooting/) | Test one stage at a time and record what each result proves |
+| Move between devices and networks | [3: Local Network](/03-local-network/), [4: IPv4 Addressing](/04-addressing-subnetting/), [5: IPv4 Subnetting](/05-subnetting/), [6: Routing](/06-routing/), [7: NAT](/07-nat/) | Local delivery, address boundaries, local-versus-remote decisions, routes, gateways, and translation |
+| Reach the correct service | [8: Transport](/08-transport/), [9: DHCP](/09-dhcp/), [10: DNS](/10-dns/) | Ports, connections, automatic configuration, and name resolution |
+| Interpret application and security results | [11: HTTP and TLS](/11-http-tls/), [12: Firewalls](/12-filtering/) | Web responses, certificate checks, and filtering behavior |
+| Apply the method | [14: Troubleshooting](/14-troubleshooting/) | Test one stage at a time and record what each result proves |
 
-Each page labels material that can be skipped during a first reading. [Module 12: Proxies and Load Balancers](/12-proxies-load-balancers/) is an optional, role-specific extension for systems administration, cloud, DevOps, and software work.
+Each page labels material that can be skipped during a first reading. [Module 13: Proxies and Load Balancers](/13-proxies-load-balancers/) is an optional, role-specific extension for systems administration, cloud, DevOps, and software work.
 
 ## What This Guide Covers
 

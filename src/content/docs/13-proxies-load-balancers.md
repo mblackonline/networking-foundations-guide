@@ -1,10 +1,10 @@
 ---
-title: "Module 12 (Optional): Proxies and Load Balancers"
+title: "Module 13 (Optional): Proxies and Load Balancers"
 description: Understand forward proxies, reverse proxies, load balancing, health checks, and client addressing.
 ---
 
 :::note[Optional: Role-Specific]
-This module is primarily useful for systems administration, cloud, DevOps, and software-development work. You can skip it on a first reading and continue to [Module 13: Troubleshooting Method](/13-troubleshooting/).
+This module is primarily useful for systems administration, cloud, DevOps, and software-development work. You can skip it on a first reading and continue to [Module 14: Troubleshooting Method](/14-troubleshooting/).
 :::
 
 A client can connect directly to a server:
@@ -222,4 +222,4 @@ The [Reverse Proxy Lab](/appendix/reverse-proxy-lab/) installs NGINX on LINUXBOX
 - A terminating proxy creates separate client-side and backend connections; a pass-through load balancer can preserve one connection.
 - Filtering, Transport Layer Security (TLS), health checks, and failures depend on the component's connection design.
 
-Continue to Module 13 to combine the guide's concepts into a repeatable troubleshooting method.
+Continue to [Module 14: Troubleshooting Method](/14-troubleshooting/) to combine the guide's concepts into a repeatable troubleshooting method.
