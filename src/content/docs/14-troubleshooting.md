@@ -7,14 +7,14 @@ When a user says, "The network is down," many different problems could be hiding
 
 The computer may have no network connection. A name may resolve to the wrong address. A firewall may block the required port. The server may be reachable while its application is stopped.
 
-Troubleshooting means narrowing those possibilities with evidence. Start with the simplest checks, test one part of the connection at a time, and stop when you find the first failure.
+Troubleshooting means narrowing those possibilities with evidence. Start with the simplest checks and test one part of the connection at a time. Treat the first unexpected result as a boundary to investigate, but confirm it with another appropriate test before deciding what caused it.
 
 ## In This Module
 
 - Turn a vague report into a specific problem
-- Test a connection in a repeatable order, starting with the physical or wireless connection
+- Work outward from the local computer when the location of a failure is unknown
 - Understand what each test proves and does not prove
-- Record evidence and make one narrow change at a time
+- Make one narrow change at a time, verify the result, and record the evidence
 
 ## Define the Problem First
 
@@ -43,22 +43,24 @@ The specific report identifies a client, destination, symptom, scope, and possib
 
 ## Follow the Connection
 
-Work from the client toward the application:
+When you do not yet know which part of a connection failed, work outward from the client:
 
 ```text
 1. Physical or wireless connection
 2. Network interface and local settings
-3. Destination name and address
-4. Route toward the destination
-5. Destination port
-6. Application response
+3. Local TCP/IP stack and assigned address
+4. Local network and default gateway
+5. Remote address and route
+6. Name resolution
+7. Destination port
+8. Application response
 ```
 
-This sequence is guided by the Transmission Control Protocol/Internet Protocol (TCP/IP) layers, but it is not a strict trip from the bottom layer to the top. The physical connection, the network interface, and the local network involve the Link layer. Internet Protocol (IP) addressing and routing involve the Internet layer. The destination port involves the Transport layer. Domain Name System (DNS) resolution and the service response involve the Application layer. DNS is checked early because the client needs a destination address before it can test the route or service.
+This is a starting sequence, not a ritual. If an application reports that a name does not exist, begin with Domain Name System (DNS). If it returns an HTTP `500` response, the physical connection, routing, and destination port already worked well enough to reach an HTTP server, so begin closer to the application.
 
-Layers do not identify the cause by themselves. They organize the checks and help you understand what each result does and does not rule out.
+The sequence is guided by the Transmission Control Protocol/Internet Protocol (TCP/IP) layers. The physical connection, the network interface, and the local network involve the Link layer. Internet Protocol (IP) addressing and routing involve the Internet layer. The destination port involves the Transport layer. DNS resolution and the service response involve the Application layer.
 
-This order prevents an application error from being mistaken for a disconnected cable, or a DNS problem from being mistaken for a failed server.
+Layers do not identify the cause by themselves. They organize the checks and help you understand what each result does and does not rule out. The first five steps can also be performed with numeric addresses, which keeps DNS out of the test until basic IP connectivity has been checked.
 
 ### 1. Check the Physical or Wireless Connection
 
@@ -116,29 +118,77 @@ netstat -rn
 
 An address by itself does not prove that the settings are correct. Compare the results with a working device or the network's documented configuration.
 
-### 3. Check Name Resolution
+Look for a few high-value warning signs:
 
-If the user connects by name, confirm which address that name returns.
+- If DHCP was expected, a `169.254.x.x` address usually means the client configured an IPv4 link-local address because it did not receive a lease.
+- A missing default gateway normally limits the client to directly connected networks.
+- A wrong subnet mask changes which destinations the client treats as local.
+- An unexpected DNS server can produce missing, incorrect, or internal-only answers.
+- A virtual private network (VPN), virtual machine platform, or security product may add interfaces, DNS settings, and routes. Confirm that you are reading the interface that actually carries the connection.
 
-On Windows:
+### 3. Test the Local TCP/IP Stack and Address
+
+Start with the IPv4 [loopback](/appendix/glossary/#loopback) address:
 
 ```text
-Resolve-DnsName portal.example.com
+ping 127.0.0.1
 ```
 
-On Linux or macOS:
+If you are checking IPv6 as well:
 
 ```text
-dig portal.example.com
+ping ::1
 ```
 
-If name resolution fails, investigate DNS. If the name returns an address, confirm that it is the address you expected. A successful lookup can still return an old or incorrect address.
+Loopback traffic stays inside the computer. A reply confirms that the local IP stack can process that loopback traffic. It does not test the network adapter, cable, Wi-Fi connection, switch, or router.
 
-Testing the expected IP address separately can help distinguish a DNS problem from a connection problem. It is a diagnostic step, not a permanent substitute for fixing DNS.
+Next, ping the address assigned to the active interface:
 
-### 4. Check the Route and Basic Reachability
+```text
+ping <client-address>
+```
 
-The routing table shows where the client intends to send traffic.
+A reply confirms that the operating system recognizes the assigned address. This test can also be satisfied entirely inside the computer, so it still does not prove that frames can cross the physical or wireless network.
+
+An unexpected failure at either local test points toward the local operating system, its network configuration, or software that interacts with the network stack. Record the exact error before resetting anything.
+
+### 4. Test the Local Network and Default Gateway
+
+The default gateway is normally on the same local subnet as the client. Test the address shown in the client's active configuration:
+
+```text
+ping <default-gateway-address>
+```
+
+A reply shows that Internet Control Message Protocol (ICMP) echo traffic reached the router's local interface and returned. It does not prove that the router can forward traffic to other networks.
+
+A failed ping is not conclusive because the gateway may ignore ICMP. After attempting the connection, inspect the client's IPv4 neighbor information.
+
+Windows:
+
+```text
+arp -a
+```
+
+Linux:
+
+```text
+ip neigh
+```
+
+macOS:
+
+```text
+arp -a
+```
+
+An entry that maps the gateway's IP address to a Media Access Control (MAC) address shows that local address resolution succeeded recently. A missing or incomplete entry after a test suggests investigating the client address and mask, Wi-Fi association, virtual local area network (VLAN), cable, switch port, or gateway configuration.
+
+When permitted, testing a second known device on the same subnet can help distinguish a gateway-specific problem from a broader local-network problem.
+
+### 5. Test a Remote Address and the Route
+
+The routing table shows where the client intends to send remote traffic.
 
 On Windows:
 
@@ -158,21 +208,59 @@ On macOS:
 netstat -rn
 ```
 
-You can also test whether a destination replies to an Internet Control Message Protocol (ICMP) echo request:
+Then test a known, permitted address outside the local subnet:
 
 ```text
-ping <destination-address>
+ping <known-remote-address>
 ```
 
-:::note
-A successful `ping` proves that ICMP echo traffic made a round trip. It does not prove that a website or another service is working.
+On a home or isolated lab network, `8.8.8.8` is sometimes used as an example:
 
-A failed `ping` does not prove that the destination is offline. A host or firewall may block ICMP while allowing the required service.
-:::
+```text
+ping 8.8.8.8
+```
 
-If the destination is beyond the local network, `tracert` on Windows or `traceroute` on Linux and macOS can show some of the routers along the path. Missing replies from one router do not necessarily indicate a failure because routers may limit or ignore these probes.
+`8.8.8.8` is a Google Public DNS address. Reaching it proves that ICMP completed a round trip to that one destination. It does not prove that every internet destination, DNS service, or application works. An organization may also intentionally restrict traffic to public DNS services, so use a target appropriate for the network you are testing.
 
-### 5. Test the Required Port
+If the gateway replies but a known remote address does not, inspect the selected route, upstream routing, Network Address Translation (NAT), and filtering. A numeric target keeps DNS out of this test.
+
+To examine the path without adding hostname lookups, use:
+
+Windows:
+
+```text
+tracert -d <known-remote-address>
+```
+
+Linux or macOS:
+
+```text
+traceroute -n <known-remote-address>
+```
+
+Missing replies from one router do not necessarily indicate a failure because routers may limit or ignore these probes. Look for a consistent boundary and compare it with a working client when possible.
+
+### 6. Check Name Resolution
+
+After testing with numeric addresses, test the actual name the user or application needs.
+
+On Windows:
+
+```text
+Resolve-DnsName portal.example.com
+```
+
+On Linux or macOS:
+
+```text
+dig portal.example.com
+```
+
+If name resolution fails, investigate the configured DNS servers and the path to them. If the name returns one or more addresses, confirm that they are expected. A successful lookup can still return an old or incorrect address.
+
+`ping google.com` is a convenient combined test, but it mixes name resolution with ICMP reachability. A DNS query followed by a separate address or port test provides clearer evidence.
+
+### 7. Test the Required Port
 
 Test the port used by the actual service. For example, a web server may respond on Transmission Control Protocol (TCP) port 443 even when it does not answer `ping`.
 
@@ -183,6 +271,14 @@ Test-NetConnection -ComputerName portal.example.com -Port 443
 ```
 
 `TcpTestSucceeded: True` confirms that Windows established a TCP connection to that address and port. It does not confirm that the application returned correct content.
+
+On Linux or macOS, if Netcat is installed:
+
+```text
+nc -vz portal.example.com 443
+```
+
+A port test that uses a name still depends on DNS. When you need to separate the two, test the expected numeric address first and then repeat with the name. Use the hostname again for the real application test because protocols such as HTTPS depend on the requested name.
 
 On the server, confirm that a process is listening on the expected address and port.
 
@@ -200,7 +296,7 @@ ss -lntup
 
 A listening process confirms that the service opened the port locally. It does not prove that firewalls, routing, or cloud controls allow a remote client to reach it.
 
-### 6. Test the Application
+### 8. Test the Application
 
 Use a tool that speaks the application's protocol. For Hypertext Transfer Protocol (HTTP) and Hypertext Transfer Protocol Secure (HTTPS), `curl` can show the response.
 
@@ -224,6 +320,10 @@ If the application responds with an HTTP status code, the request reached an HTT
 
 | Result | What it suggests |
 | --- | --- |
+| Loopback ping fails | The local IP stack did not complete the test; investigate the operating system, local configuration, or security software |
+| The gateway is absent or incomplete in the neighbor table | The client did not complete local IPv4 address resolution for the gateway |
+| The gateway replies but a known remote address does not | The local path to the gateway works; investigate the selected route, upstream path, translation, or filtering |
+| A known remote address works but a DNS query fails | Basic connectivity to that remote target works; investigate the DNS configuration, resolver, or path to the resolver |
 | Name not found or name resolution failed | The client could not obtain an address through DNS |
 | Connection timed out | No usable response arrived before the timeout; routing, filtering, or an unavailable service are possibilities |
 | Connection refused | The destination was reached, but the port was closed or the connection was actively rejected |
@@ -240,6 +340,10 @@ Avoid conclusions that go beyond the evidence:
 
 | Test result | Do not assume |
 | --- | --- |
+| Loopback responds | The network adapter or local network is working |
+| The assigned local address responds | Traffic can cross the physical or wireless interface |
+| The default gateway responds | The gateway can forward traffic to other networks |
+| One remote address responds | Every remote network or internet service is reachable |
 | The client has an IP address | The address, mask, gateway, and DNS settings are all correct |
 | DNS returns an address | The returned address is current or correct |
 | `ping` succeeds | Every TCP or User Datagram Protocol (UDP) service is reachable |
@@ -264,6 +368,62 @@ Changing several settings at once makes the result difficult to interpret. Inste
 5. Keep the change only if the evidence supports it.
 
 For example, do not disable an entire firewall, change DNS servers, and restart the application together. A temporary rule for one required port is a safer and more useful test than disabling all filtering.
+
+## Confirm the Fix
+
+A successful diagnostic command is not the same as a resolved user problem.
+
+After making a fix:
+
+1. Repeat the exact action that originally failed.
+2. Confirm the expected result from the affected client.
+3. Test one closely related function to make sure the change did not create another problem.
+4. Remove temporary rules, address overrides, captures, or other test-only changes.
+5. Record the cause, permanent fix, and any follow-up that could prevent the problem from returning.
+
+If the problem was intermittent, observe it long enough to distinguish a real fix from a temporary recovery.
+
+## When the Problem Is Slow or Intermittent
+
+A single successful reply shows only that one exchange worked. Use a bounded series of tests and compare the local and remote paths.
+
+Windows:
+
+```text
+ping -n 20 <default-gateway-address>
+ping -n 20 <known-remote-address>
+```
+
+Linux or macOS:
+
+```text
+ping -c 20 <default-gateway-address>
+ping -c 20 <known-remote-address>
+```
+
+Loss or large response-time changes to the gateway suggest looking closely at the local link, Wi-Fi conditions, switching, or gateway load. A stable gateway test with poor remote results suggests looking beyond the local network. ICMP may be handled differently from application traffic, so confirm important findings with the affected application or a port-specific test.
+
+Interface counters can reveal errors or dropped traffic that increase while the problem is reproduced.
+
+Windows PowerShell:
+
+```text
+Get-NetAdapterStatistics
+```
+
+Linux:
+
+```text
+ip -s link
+```
+
+macOS:
+
+```text
+netstat -ib
+```
+
+Compare counters before and after a short, controlled test. A large lifetime total without a baseline does not show when the errors occurred.
 
 ## When to Reach for a Packet Capture
 
@@ -299,6 +459,7 @@ A useful troubleshooting note includes:
 - Tests that succeeded as well as tests that failed
 - Changes made and whether they were reversed
 - The cause and final fix, if known
+- How the original user action and related functions were verified afterward
 
 Good notes let another person continue the investigation without repeating every test.
 
@@ -348,8 +509,11 @@ The client test located the failure at the destination port. The server test the
 
 ## Further Learning
 
+- [Microsoft TCP/IP communication troubleshooting guidance](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/troubleshoot-tcp-ip-communication-guidance) provides a detailed example of testing local configuration, the default gateway, remote systems, and application ports.
 - [Microsoft `Test-NetConnection` documentation](https://learn.microsoft.com/en-us/powershell/module/nettcpip/test-netconnection) explains its ping, TCP port, route tracing, and route-selection tests.
 - [Microsoft `ping` documentation](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ping) documents Windows ICMP echo tests and their options.
+- [RFC 1122: Requirements for Internet Hosts](https://www.rfc-editor.org/info/rfc1122) defines the IPv4 loopback range and other host behavior.
+- [Google Public DNS documentation](https://developers.google.com/speed/public-dns) identifies the service behind `8.8.8.8`.
 - [Everything curl: verbose output](https://everything.curl.dev/usingcurl/verbose/) explains how `curl -v` exposes connection details for troubleshooting.
 - [Wireshark User's Guide: display filters](https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html) explains how to limit a capture view to relevant packets.
 
@@ -358,8 +522,9 @@ You now have a repeatable method for combining the concepts and tools from the e
 ## Main Takeaways
 
 - Define the client, destination, expected result, actual result, scope, and timing before changing anything.
-- Test the connection in stages and stop at the first confirmed failure.
-- Record what each result proves, change one thing at a time, and keep changes only when the evidence supports them.
+- When the location of a failure is unknown, work outward from the local stack to the gateway, remote address, DNS, destination port, and application.
+- Treat an unexpected result as a boundary to investigate, confirm it with an appropriate second test, and avoid conclusions that exceed the evidence.
+- Change one thing at a time, verify the original user action after the fix, remove temporary changes, and record the outcome.
 
 ## Where to Go Next
 
