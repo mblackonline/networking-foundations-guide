@@ -17,7 +17,7 @@ export default defineConfig({
           items: [
             { label: 'Welcome', slug: '' },
             { label: 'Module 1: How Networks Are Layered', slug: '01-layers' },
-            { label: 'Module 2: Your Toolkit and Optional Lab', slug: '02-toolkit-and-lab' },
+            { label: 'Module 2: Your Networking Toolkit', slug: '02-toolkit-and-lab' },
           ],
         },
         {
@@ -42,13 +42,31 @@ export default defineConfig({
           items: [
             { label: 'Module 10: HTTP and TLS', slug: '10-http-tls' },
             { label: 'Module 11: Firewalls and Filtering', slug: '11-filtering' },
+          ],
+        },
+        {
+          label: 'Troubleshooting',
+          items: [
+            { label: 'Module 13: Troubleshooting Method', slug: '13-troubleshooting' },
+          ],
+        },
+        {
+          label: 'Optional: Role-Specific',
+          items: [
             { label: 'Module 12: Proxies and Load Balancers', slug: '12-proxies-load-balancers' },
           ],
         },
         {
-          label: 'Troubleshooting and Reference',
+          label: 'Optional Hands-On Labs',
           items: [
-            { label: 'Module 13: Troubleshooting Method', slug: '13-troubleshooting' },
+            { label: 'Build NETLAB', slug: 'appendix/building-netlab' },
+            { label: 'Local Port Forwarding', slug: 'appendix/local-port-forwarding' },
+            { label: 'Reverse Proxy Lab', slug: 'appendix/reverse-proxy-lab' },
+          ],
+        },
+        {
+          label: 'Reference and Explore Later',
+          items: [
             { label: 'Subnetting Practice', slug: 'appendix/subnetting-practice' },
             { label: 'Port and Protocol Reference', slug: 'appendix/port-reference' },
             { label: 'Reading a Packet Capture', slug: 'appendix/reading-a-capture' },

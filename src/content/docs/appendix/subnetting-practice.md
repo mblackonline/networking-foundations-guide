@@ -3,6 +3,10 @@ title: Subnetting Practice
 description: A complete CIDR reference, calculation shortcuts, and practice problems with answers.
 ---
 
+:::note[Optional: Explore Later]
+Use this appendix when you need non-`/24` calculations, network-design practice, or a complete prefix reference.
+:::
+
 Use this appendix after Module 4 when you want more subnetting practice or a complete reference. You do not need to memorize the tables before continuing through the guide.
 
 This appendix uses Internet Protocol version 4 (IPv4) and Classless Inter-Domain Routing (CIDR) notation.
@@ -120,6 +124,10 @@ Now verify the hosts:
 A `/26` satisfies both requirements.
 
 ## Legacy Classful Questions
+
+:::note[Role-Specific: Legacy and Certification Context]
+Modern networks use explicit prefixes. This section exists only for older material and questions that still assume historical address classes.
+:::
 
 Older certification questions sometimes infer a parent prefix from the first octet:
 

@@ -9,11 +9,9 @@ Every host and router has a [routing table](/appendix/glossary/#routing-table). 
 
 ## In This Module
 
-- What a routing table contains
-- Connected routes, next hops, and interfaces
+- How a routing table describes connected and next-hop paths
 - Longest prefix match
 - The default route
-- Static and dynamic routes
 - Following a path with traceroute
 
 ## The Routing Table
@@ -122,6 +120,10 @@ Your routing table may contain virtual private network (VPN) routes, virtual mac
 
 ## Static and Dynamic Routes
 
+:::note[Optional: Role-Specific]
+On a first reading, remember only that routes can be configured directly or learned from other routers. You do not need to study routing protocols here.
+:::
+
 A **static route** is added manually. It stays the same until an administrator or automation changes it. Static routes are useful when the path is simple and predictable.
 
 A **dynamic route** is learned from another router through a routing protocol. Dynamic routing lets routers adapt when networks or paths change.
@@ -134,6 +136,10 @@ Two names are worth recognizing:
 You do not need to configure either protocol for this guide. They still produce routing-table entries that are selected using the same longest-prefix rule.
 
 ## How a VPN Changes Routing
+
+:::note[Optional: Useful Context]
+Virtual private network routing is a common troubleshooting case but is not required for the core route-selection model.
+:::
 
 When a device connects to a virtual private network (VPN), the VPN software adds a virtual network interface and routing-table entries.
 
@@ -173,6 +179,10 @@ An asterisk does not prove that hop is broken. Some routers forward traffic norm
 Traceroute also shows the forward path seen by its probes, not necessarily the path replies take back.
 
 ## Try It Yourself
+
+:::note[Optional Practice]
+These read-only checks reinforce the connected route, default route, and path concepts.
+:::
 
 Display your routing table and identify:
 

@@ -24,9 +24,21 @@ As I gain experience working in information technology (IT), I continue to see h
 
 Artificial intelligence (AI) tools assisted with research, drafting, editing, and review. I reviewed and revised the material, but errors or oversimplifications may remain. The Further Learning sections link to official documentation and other public resources for deeper study. Corrections and suggestions are welcome through [GitHub Issues](https://github.com/mblackonline/networking-foundations-guide/issues).
 
-## Purpose and Audience
+The guide is intended for people exploring IT support, system administration, DevOps, software development, cybersecurity, and related technical roles. It assumes only basic familiarity with using a computer and installing software.
 
-This guide is intended for anyone interested in networking, including people exploring IT support, system administration, DevOps, software development, cybersecurity, and other technical roles. Basic familiarity with using a computer and installing software is helpful.
+## Core Learning Path
+
+The core path explains the concepts needed to follow and troubleshoot a typical connection. Read Modules 1 through 11 in order, then complete Module 13.
+
+| Stage | Modules | First-reading focus |
+| --- | --- | --- |
+| Organize the network | [1: Layers](/01-layers/), [2: Toolkit](/02-toolkit-and-lab/) | Relate protocols to layers and recognize the purpose of common tools |
+| Move between devices and networks | [3: Local Network](/03-local-network/), [4: IPv4 Addressing](/04-addressing-subnetting/), [5: Routing](/05-routing/), [6: NAT](/06-nat/) | Local delivery, local-versus-remote decisions, routes, gateways, and translation |
+| Reach the correct service | [7: Transport](/07-transport/), [8: DHCP](/08-dhcp/), [9: DNS](/09-dns/) | Ports, connections, automatic configuration, and name resolution |
+| Interpret application and security results | [10: HTTP and TLS](/10-http-tls/), [11: Firewalls](/11-filtering/) | Web responses, certificate checks, and filtering behavior |
+| Apply the method | [13: Troubleshooting](/13-troubleshooting/) | Test one stage at a time and record what each result proves |
+
+Each page labels material that can be skipped during a first reading. [Module 12: Proxies and Load Balancers](/12-proxies-load-balancers/) is an optional, role-specific extension for systems administration, cloud, DevOps, and software work.
 
 ## What This Guide Covers
 
@@ -36,7 +48,9 @@ This guide is intended for anyone interested in networking, including people exp
 
 ## How the Hands-On Parts Work
 
-Commands are generally shown for Windows, with Linux or macOS equivalents included when practical. The exercises use an optional lab with Windows and Linux virtual machines. Building the lab is recommended for readers who want to observe network behavior, practice using the tools, and troubleshoot problems in an isolated environment. Module 2 covers the setup.
+Commands are generally shown for Windows, with Linux or macOS equivalents included when practical. Exercises marked **Optional Lab** use a Windows Virtual Machine (WINCLIENT) and a Linux Virtual Machine (LINUXBOX) on the isolated VirtualBox network `NETLAB`.
+
+You can complete the conceptual path without the lab. When you want hands-on practice, follow [Building the Optional NETLAB](/appendix/building-netlab/).
 
 ## Source and Reuse
 

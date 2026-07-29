@@ -1,29 +1,35 @@
 ---
-title: "Module 12: Proxies and Load Balancers"
+title: "Module 12 (Optional): Proxies and Load Balancers"
 description: Understand forward proxies, reverse proxies, load balancing, health checks, and client addressing.
 ---
 
-A client normally connects directly to a server:
+:::note[Optional: Role-Specific]
+This module is primarily useful for systems administration, cloud, DevOps, and software-development work. You can skip it on a first reading and continue to [Module 13: Troubleshooting Method](/13-troubleshooting/).
+:::
+
+A client can connect directly to a server:
 
 ```text
 Client -> Server
 ```
 
-A [proxy](/appendix/glossary/#proxy) stands between them:
+A connection-terminating [proxy](/appendix/glossary/#proxy) stands between them:
 
 ```text
 Client -> Proxy -> Server
 ```
 
-The proxy accepts one connection and creates another connection toward the destination. This distinction explains why the server may see the proxy's Internet Protocol (IP) address instead of the client's address.
+The proxy accepts the client connection and creates a separate connection toward the destination. This distinction explains why the server may see the proxy's Internet Protocol (IP) address instead of the client's address.
+
+Not every load balancer works this way. Some layer 4 load balancers forward packets to a selected backend without terminating and recreating the client connection. This module identifies which model an explanation assumes.
 
 ## In This Module
 
 - The difference between a forward proxy and a reverse proxy
-- Why a proxy always creates two separate connections
+- Why a connection-terminating proxy creates two separate connections
 - What a load balancer does and how it selects a backend
-- Layer 4 and layer 7 load balancing
-- TLS termination, health checks, and session persistence
+- Pass-through and connection-terminating load balancing
+- Transport Layer Security (TLS) termination, health checks, and session persistence
 - Why a backend may log the proxy's address instead of the client's
 
 ## Forward and Reverse Proxies
@@ -69,7 +75,7 @@ An internal destination behind a proxy is commonly called a **[backend](/appendi
 
 ## One Public Service with Two Backends
 
-Suppose a company publishes `portal.example.com`:
+Suppose a company publishes `portal.example.com` through a connection-terminating reverse proxy:
 
 | Component | Address and port | Role |
 | --- | --- | --- |
@@ -116,6 +122,8 @@ The layer determines which information the load balancer can use.
 
 A layer 4 load balancer can pass encrypted traffic without reading the protected HTTP request. A layer 7 load balancer must understand the application protocol and commonly terminates TLS before inspecting HTTP information.
 
+Layer 4 describes the information used for the decision, not one mandatory connection design. A layer 4 load balancer may pass traffic through while preserving the client connection, or it may terminate one connection and create another. Confirm the product and listener behavior before using the two-connection model during troubleshooting.
+
 Layer 4 is not automatically better or worse than layer 7. The correct choice depends on what the service needs the load balancer to see and control.
 
 ## TLS Termination
@@ -148,13 +156,17 @@ Health-check configuration can also cause failures. A wrong port, path, expected
 
 ## Session Persistence
 
+:::note[Optional: Explore Later]
+Persistence matters mainly when an application keeps user state on one backend.
+:::
+
 Some applications store a user's session on one backend. A load balancer may use **[session persistence](/appendix/glossary/#session-persistence)**, also called a **sticky session**, to keep that user on the same backend.
 
 Persistence can be based on a cookie or another client characteristic. It may be necessary for older applications, but it can distribute traffic unevenly and complicate recovery when a backend fails. Applications that share session state do not depend as heavily on persistence.
 
 ## Preserving the Client Address
 
-The backend's network connection comes from the proxy, so its logs may show the proxy's IP address for every request.
+With a connection-terminating proxy, the backend's network connection comes from the proxy, so its logs may show the proxy's IP address for every request. A pass-through load balancer may preserve the client address in the packet instead.
 
 For HTTP traffic, a trusted proxy can add the standardized `Forwarded` header or the widely used `X-Forwarded-For` header to carry the original client address.
 
@@ -179,6 +191,8 @@ Status-code meanings can vary with the product and configuration. Check both the
 
 ## A Short Troubleshooting Order
 
+For a connection-terminating proxy:
+
 1. Confirm that DNS sends the client to the proxy.
 2. Test the client-to-proxy connection and public TLS certificate.
 3. Confirm that the proxy selected a backend.
@@ -186,87 +200,11 @@ Status-code meanings can vary with the product and configuration. Check both the
 5. Check backend health and health-check results.
 6. Compare proxy and backend logs for the same request.
 
-Treat the client-to-proxy and proxy-to-backend connections as separate network paths.
+Treat the client-to-proxy and proxy-to-backend connections as separate network paths. For a pass-through design, trace the single client connection through the load balancer to the selected backend instead.
 
-:::tip[Optional Lab: A Reverse Proxy in NETLAB]
-This exercise installs NGINX on LINUXBOX. The proxy listens only inside the isolated NETLAB network, and its backend listens only on LINUXBOX's loopback address.
+## Optional Hands-On Lab
 
-1. On LINUXBOX, install NGINX and create a small backend page:
-
-   ```text
-   sudo -i
-   apt update
-   apt install nginx
-   mkdir /var/www/netguide-backend
-   echo "Response from the backend service" > /var/www/netguide-backend/index.html
-   ```
-
-   The `sudo -i` command opens an administrative shell. Leave this terminal open for the rest of the exercise. The final `exit` command closes the administrative shell.
-
-2. Open a new configuration file:
-
-   ```text
-   nano /etc/nginx/sites-available/netguide
-   ```
-
-3. Enter this configuration, then save and close the file:
-
-   ```text
-   server {
-       listen 127.0.0.1:8000;
-       server_name _;
-       root /var/www/netguide-backend;
-   }
-
-   server {
-       listen 8080;
-       server_name _;
-
-       location / {
-           proxy_pass http://127.0.0.1:8000;
-           proxy_set_header Host $host;
-           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-       }
-   }
-   ```
-
-4. Enable the configuration and reload NGINX:
-
-   ```text
-   ln -s /etc/nginx/sites-available/netguide /etc/nginx/sites-enabled/netguide
-   nginx -t
-   systemctl reload nginx
-   ip -4 addr
-   ```
-
-5. On WINCLIENT, replace `<LINUXBOX-IP>` with LINUXBOX's NETLAB address:
-
-   ```text
-   curl.exe http://<LINUXBOX-IP>:8080
-   ```
-
-   The response should say:
-
-   ```text
-   Response from the backend service
-   ```
-
-WINCLIENT connects to NGINX on TCP port 8080. NGINX creates a second connection to the backend on loopback TCP port 8000.
-
-To remove the lab configuration on LINUXBOX:
-
-```text
-rm /etc/nginx/sites-enabled/netguide
-rm /etc/nginx/sites-available/netguide
-rm /var/www/netguide-backend/index.html
-rmdir /var/www/netguide-backend
-systemctl reload nginx
-systemctl disable --now nginx
-exit
-```
-
-These commands leave the NGINX package installed but stop and disable its service.
-:::
+The [Reverse Proxy Lab](/appendix/reverse-proxy-lab/) installs NGINX on LINUXBOX and creates a loopback-only backend. It demonstrates the two connections used by a terminating reverse proxy and includes complete cleanup steps.
 
 ## Further Learning
 
@@ -275,12 +213,13 @@ These commands leave the NGINX package installed but stop and disable its servic
 - [NGINX HTTP load-balancing documentation](https://nginx.org/en/docs/http/load_balancing.html) explains backend groups and selection methods.
 - [Traefik Proxy documentation](https://doc.traefik.io/traefik/) covers an alternative reverse proxy and load balancer designed for dynamic environments such as Docker and Kubernetes.
 - [Caddy reverse-proxy quick start](https://caddyserver.com/docs/quick-starts/reverse-proxy) covers an alternative web server and reverse proxy known for concise configuration and automatic HTTPS.
+- [Microsoft's load-balancing options overview](https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/load-balancing-overview) distinguishes pass-through load balancers from connection-terminating proxies.
 - [Amazon Web Services Elastic Load Balancing documentation](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html) describes a managed cloud load-balancing service.
 
 ## Main Takeaways
 
 - Forward proxies act on behalf of clients. Reverse proxies and load balancers act on behalf of services.
-- The client-to-proxy and proxy-to-backend connections are separate network paths.
-- Filtering, Transport Layer Security (TLS), health checks, and failures can differ on each side of the proxy.
+- A terminating proxy creates separate client-side and backend connections; a pass-through load balancer can preserve one connection.
+- Filtering, Transport Layer Security (TLS), health checks, and failures depend on the component's connection design.
 
 Continue to Module 13 to combine the guide's concepts into a repeatable troubleshooting method.

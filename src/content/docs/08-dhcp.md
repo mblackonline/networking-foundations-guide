@@ -10,10 +10,8 @@ The [Dynamic Host Configuration Protocol (DHCP)](/appendix/glossary/#dynamic-hos
 ## In This Module
 
 - What DHCP gives a client
-- What kinds of devices and systems can provide DHCP
 - How a new client requests an IPv4 configuration
 - How leases and reservations work
-- What a DHCP relay does
 - What a `169.254.x.x` address means
 
 ## What DHCP Does
@@ -41,15 +39,12 @@ DHCP is a service or role, not one particular type of physical device. Many diff
 | DHCP provider | Where you might see it |
 | --- | --- |
 | Home router or Wi-Fi gateway | Supplies settings to phones, computers, televisions, and other home devices |
-| Firewall, router, or layer 3 switch | Supplies settings to one or more business networks |
-| Windows Server with the DHCP Server role | Common in Windows and Active Directory environments |
-| Linux or another Unix-like server running DHCP software | Used in labs, businesses, service-provider networks, and custom environments |
-| Virtualization platform | Supplies settings to virtual machines on a virtual network |
-| Cloud provider's network service | Supplies settings to virtual machines and other cloud resources |
+| Network device or server | Supplies settings to one or more business networks |
+| Virtualization or cloud network service | Supplies settings to virtual machines and other virtual resources |
 
 In this guide's lab, Oracle VirtualBox provides DHCP for the VirtualBox network address translation (NAT) Network named NETLAB. The Windows 11 virtual machine named WINCLIENT and the Linux Mint virtual machine named LINUXBOX are both DHCP clients.
 
-:::note[DHCP and Active Directory]
+:::note[Role-Specific: DHCP and Active Directory]
 Active Directory Domain Services (AD DS) does not assign IP addresses by itself. A Windows Server can provide addresses after the separate **DHCP Server** role is installed and configured.
 
 In an Active Directory domain, the DHCP server must also be authorized in AD DS. The DHCP role can run on a domain controller or on another Windows Server, but it remains a separate service from AD DS.
@@ -122,6 +117,10 @@ A reservation tells the DHCP server to give a particular client the same address
 A static address does not come from DHCP. Manually assigned addresses should be outside the dynamic pool or excluded from it. Otherwise, the server could lease that address to another device and create an address conflict.
 
 ## What a DHCP Relay Does
+
+:::note[Optional: Role-Specific]
+A relay is mainly relevant when one central server supplies several routed networks. You can skip this section on a first reading.
+:::
 
 The client's initial broadcast stays on its local subnet. Routers do not normally forward broadcasts, so a DHCP server on another subnet would not receive it directly.
 
@@ -239,6 +238,6 @@ WINCLIENT may receive the same IPv4 address again. That is normal and does not m
 
 - The Dynamic Host Configuration Protocol (DHCP) automatically supplies network settings through time-limited leases.
 - The initial DHCP exchange works before a client has a complete IP configuration.
-- DHCP relays allow a centralized server to provide settings to clients on other networks.
+- A `169.254.x.x` address is a clue that the interface did not obtain its expected IPv4 configuration.
 
 Continue to Module 9 to see how DNS translates names into addresses.

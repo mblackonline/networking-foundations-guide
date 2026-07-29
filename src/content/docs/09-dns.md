@@ -13,12 +13,10 @@ The domain name and Internet Protocol version 4 (IPv4) address used here are res
 
 ## In This Module
 
-- What DNS does—and what it does not do
-- The difference between a recursive resolver and an authoritative server
+- What DNS does and how resolver and authoritative roles differ
 - How a lookup moves through the DNS hierarchy
-- The record types worth recognizing
-- How caching and time to live affect changes
-- How to test DNS from Windows and Linux
+- The core address and alias records, caching, and time to live
+- How to test DNS and interpret common failures
 
 ## DNS in One Sentence
 
@@ -61,7 +59,7 @@ An **[authoritative DNS server](/appendix/glossary/#authoritative-dns-server)** 
 | Recursive resolver | Finds the answer and caches it |
 | Authoritative server | Holds the official records for its zone |
 
-:::note[DNS and Active Directory]
+:::note[Role-Specific: DNS and Active Directory]
 Active Directory Domain Services relies on DNS. Domain-joined Windows clients use DNS records to locate domain controllers and services.
 
 Those clients should use the organization's Active Directory-aware DNS servers, not a public resolver directly. The internal DNS servers can resolve internal names and forward public questions when necessary.
@@ -122,18 +120,13 @@ This full path does not occur for every lookup. Recursive resolvers answer many 
 
 ## Common DNS Record Types
 
-DNS stores information in **[resource records](/appendix/glossary/#resource-record)**. You do not need to memorize every record type, but these appear frequently:
+DNS stores information in **[resource records](/appendix/glossary/#resource-record)**. Begin with three types:
 
 | Record | What it identifies |
 | --- | --- |
 | A (Address) | An IPv4 address for a name |
 | AAAA | An Internet Protocol version 6 (IPv6) address for a name |
 | CNAME (Canonical Name) | Another DNS name used as an alias |
-| MX (Mail Exchange) | The mail servers that accept email for a domain |
-| NS (Name Server) | The authoritative DNS servers for a zone |
-| PTR (Pointer) | A name associated with an IP address in reverse DNS |
-| SRV (Service) | The host and port providing a particular service |
-| TXT (Text) | Text used for verification, email policies, and other published data |
 
 DNS supports both IP versions. An A record supplies an IPv4 address, while an AAAA record supplies an Internet Protocol version 6 (IPv6) address. A name can have one type or both. DNS is resolving the name to the requested record; it is not translating an IPv4 address into an IPv6 address.
 
@@ -153,7 +146,19 @@ The resolver must then find the address records for `webhost.example.net`.
 
 One name can have more than one A or AAAA record. Multiple answers may be used for redundancy or traffic distribution, so receiving several addresses is not automatically a problem.
 
+:::note[Optional: Role-Specific Record Types]
+These records appear frequently in email, directory, identity, and DNS administration:
+
+| Record | What it identifies |
+| --- | --- |
+| MX (Mail Exchange) | The mail servers that accept email for a domain |
+| NS (Name Server) | The authoritative DNS servers for a zone |
+| PTR (Pointer) | A name associated with an IP address in reverse DNS |
+| SRV (Service) | The host and port providing a particular service |
+| TXT (Text) | Text used for verification, email policies, and other published data |
+
 SRV records are especially important in Active Directory. Windows clients use them to find domain controllers and services such as the Lightweight Directory Access Protocol (LDAP) and Kerberos.
+:::
 
 ## DNS Uses User Datagram Protocol (UDP) and Transmission Control Protocol (TCP) Port 53
 
@@ -185,7 +190,9 @@ ipconfig /flushdns
 
 It does not clear a browser's private cache or the cache on a recursive resolver elsewhere on the network.
 
-## Query DNS on Windows
+## Query DNS
+
+### Windows
 
 PowerShell provides `Resolve-DnsName`:
 
@@ -210,7 +217,7 @@ nslookup example.com
 
 The output identifies the DNS server that answered and the records it returned. `Resolve-DnsName` normally provides more structured output, while `nslookup` remains common across many older support procedures.
 
-## Query DNS on Linux
+### Linux
 
 Use `dig`:
 

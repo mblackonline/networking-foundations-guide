@@ -28,6 +28,8 @@ Another practical benefit appears during troubleshooting. When communication fai
 
 This is the model the internet actually runs on. It takes its name from the [Transmission Control Protocol (TCP)](/appendix/glossary/#transmission-control-protocol-tcp) and the [Internet Protocol (IP)](/appendix/glossary/#internet-protocol-ip), and it has four layers.
 
+Protocol examples in the table include Hypertext Transfer Protocol (HTTP), Domain Name System (DNS), Secure Shell (SSH), Simple Mail Transfer Protocol (SMTP), User Datagram Protocol (UDP), Internet Control Message Protocol (ICMP), and Address Resolution Protocol (ARP).
+
 | Layer | Its job | Examples |
 | --- | --- | --- |
 | Application | Provide network services used by applications | HTTP, DNS, SSH, SMTP |
@@ -47,6 +49,10 @@ Read the table from the bottom up and it tells a story.
 - The Application layer provides network services that software can use.
 
 ## The OSI Model
+
+:::note[Useful Context]
+On a first reading, focus on recognizing layer 2, layer 3, layer 4, and layer 7 in technical conversations. You do not need to memorize all seven layers.
+:::
 
 The [Open Systems Interconnection (OSI) model](/appendix/glossary/#open-systems-interconnection-osi-model) is older, has seven layers, and describes roughly the same thing in more detail.
 
@@ -76,7 +82,7 @@ Say your browser requests a web page.
 
 On the receiving machine the process runs in reverse. Each layer strips its own header, reads it, and hands the contents up.
 
-One detail here explains a great deal of later material. The IP addresses stay the same for the whole journey, but the Ethernet header is rebuilt at every hop. Each router strips the frame it received, decides where the packet goes next, and builds a new frame for that next hop. The envelope changes repeatedly. The letter inside does not.
+One detail here explains a great deal of later material. The source and destination IP addresses normally describe the end-to-end conversation, while the Ethernet header is rebuilt at every hop. Each router strips the frame it received, decides where the packet goes next, and builds a new frame for that next hop. Network Address Translation (NAT), covered in Module 6, is an important exception because it deliberately changes address information in transit.
 
 That is why MAC addresses are used for delivery on the local network, while IP addresses are used to deliver packets between networks.
 

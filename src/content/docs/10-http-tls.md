@@ -17,12 +17,10 @@ This module focuses on the last three steps.
 
 ## In This Module
 
-- How to read the parts of a web address
-- How HTTP requests and responses are structured
-- The common HTTP methods and what the status-code groups mean
+- How a web address becomes an HTTP request and response
+- What common methods and status-code groups mean
 - What TLS protects, and what it does not
 - What a server certificate proves
-- Why one IP address can host many websites
 
 ## Reading a Web Address
 
@@ -65,6 +63,10 @@ The fields are:
 A request can also contain a **body** after the headers. A blank line separates the headers from that body. For example, a form submission may place entered data in the request body.
 
 ### Common HTTP Methods
+
+:::note[Useful Context]
+For a first reading, recognize `GET` and `POST`. The other methods use the same request-and-response model.
+:::
 
 | Method | Common purpose |
 | --- | --- |
@@ -149,6 +151,10 @@ TLS does not prove that a website is honest or free from malicious content. It a
 
 ## A Simplified TLS Handshake
 
+:::note[Optional: Explore Later]
+For core troubleshooting, remember that Transport Layer Security must succeed before the server can return a protected Hypertext Transfer Protocol response.
+:::
+
 Before sending protected HTTP data, the client and server establish TLS:
 
 1. The client offers supported TLS options and usually identifies the requested hostname.
@@ -183,6 +189,10 @@ Do not treat `curl --insecure` or a browser's certificate-warning bypass as a pe
 
 ## Why One IP Address Can Host Many Websites
 
+:::note[Optional: Role-Specific]
+This detail is most useful when administering web servers, proxies, certificates, or cloud application endpoints.
+:::
+
 Multiple websites can share one server IP address. The hostname in the HTTP request tells the web server which site the client wants.
 
 For HTTPS, the server usually needs that name earlier so it can select the correct certificate. The client supplies it during the TLS handshake using **[Server Name Indication (SNI)](/appendix/glossary/#server-name-indication-sni)**.
@@ -202,6 +212,10 @@ If a client connects by IP address or supplies the wrong hostname, the server ma
 Work from the lowest failing layer upward. Changing certificates will not fix a DNS failure, and changing DNS will not fix a `403 Forbidden` response.
 
 ## Inspect an HTTPS Exchange with curl
+
+:::note[Optional Practice]
+This read-only exercise exposes the separate connection, Transport Layer Security, and Hypertext Transfer Protocol stages.
+:::
 
 This read-only exercise requests the public documentation site `example.com` and discards the page body.
 

@@ -9,11 +9,10 @@ This module describes wired and Wi-Fi networks. A phone on cellular data connect
 
 ## In This Module
 
-- What a media access control (MAC) address identifies, and how it differs from an IP address
-- How a switch learns where devices are
-- How the Address Resolution Protocol (ARP) begins a local IP conversation
-- Broadcast domains, and the boundary that makes routing necessary
-- A conceptual look at virtual local area networks (VLANs)
+- How media access control (MAC) addresses and switches deliver local frames
+- How the Address Resolution Protocol (ARP) begins a local Internet Protocol (IP) conversation
+- How a broadcast domain creates the boundary that makes routing necessary
+- Optional context about virtual local area networks (VLANs)
 
 ## Frames and MAC Addresses
 
@@ -81,9 +80,13 @@ Switches forward broadcasts. Routers do not. That single difference defines the 
 
 Everything inside one broadcast domain can be reached by ARP, and therefore directly by MAC address. Anything outside it cannot be, no matter how correct the IP address is. To reach it, your machine has to hand the frame to a router instead, which is exactly the subject of Module 5.
 
-Broadcast domains also explain why networks get divided up at all. Every device in a domain processes every broadcast in it. A few hundred machines is fine. A few thousand wastes real time on every one of them, and one misbehaving device affects everybody.
+Broadcast domains also explain why networks get divided. Every device in a domain processes its broadcast traffic, and one misbehaving device can affect the entire domain. An appropriate size depends on the traffic, devices, failure boundaries, and operational design rather than one universal device count.
 
 ## VLANs
+
+:::note[Optional: Role-Specific]
+Virtual local area networks are common in systems and network administration, but their configuration is not required for the core path.
+:::
 
 A [virtual local area network (VLAN)](/appendix/glossary/#virtual-local-area-network-vlan) lets one physical switch carry several separate networks. Each port is assigned to a VLAN, and the switch does not forward traffic from one VLAN to ports in another.
 
@@ -94,6 +97,10 @@ The link between two switches is the one place a single port carries more than o
 Configuring VLANs is vendor-specific, so this guide stops at the concept. The underlying standard is IEEE 802.1Q, and the Further Learning section below points to a fuller explanation and to a free simulator where you can configure VLANs yourself.
 
 ## Try It Yourself
+
+:::note[Optional Practice]
+This exercise makes the Address Resolution Protocol exchange visible but is not required to continue.
+:::
 
 Watch ARP happen on your own machine.
 

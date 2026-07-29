@@ -9,12 +9,10 @@ Transport protocols and port numbers provide that next level of identification.
 
 ## In This Module
 
-- How IP addresses and port numbers perform different jobs
-- How one server handles many connections on the same port
-- What a socket is
-- How the Transmission Control Protocol (TCP) starts, maintains, and closes a connection
-- How the User Datagram Protocol (UDP) differs from TCP
-- How to view listening ports and current connections
+- How Internet Protocol (IP) addresses, ports, and sockets identify endpoints
+- How one server port supports many distinct connections
+- How the Transmission Control Protocol (TCP) differs from the User Datagram Protocol (UDP)
+- How to distinguish listening ports from active connections
 
 ## IP Addresses and Ports Do Different Jobs
 
@@ -48,6 +46,10 @@ LINUXBOX: 10.0.20.25:22 -> WINCLIENT: 10.0.20.15:51514
 
 A [port number](/appendix/glossary/#port) is a 16-bit value from `0` through `65535`. TCP and UDP maintain separate port-number spaces. TCP port 53 and UDP port 53 are therefore different endpoints, even though both are commonly used by the Domain Name System (DNS).
 
+:::note[First Reading]
+Focus on the difference between a temporary client source port and a service destination port. Use the [Port and Protocol Reference](/appendix/port-reference/) when you need a larger service list.
+:::
+
 The Internet Assigned Numbers Authority (IANA) divides port numbers into three ranges:
 
 | Port range | IANA name | Common description |
@@ -58,28 +60,21 @@ The Internet Assigned Numbers Authority (IANA) divides port numbers into three r
 
 Operating systems select temporary, or **[ephemeral](/appendix/glossary/#ephemeral-port)**, client ports automatically. The exact range used by an operating system can differ from the IANA Dynamic or Private range.
 
-Some port numbers are worth recognizing:
+These examples are enough for the core path:
 
 | Service | Common port | Transport |
 | --- | --- | --- |
-| File Transfer Protocol (FTP) and explicit File Transfer Protocol Secure (FTPS) control connection | 21 | TCP |
-| SSH remote access, SSH File Transfer Protocol (SFTP), and Secure Copy Protocol (SCP) | 22 | TCP |
+| Secure Shell (SSH) remote access | 22 | TCP |
 | DNS name resolution | 53 | UDP and TCP |
 | Dynamic Host Configuration Protocol version 4 (DHCPv4) address assignment | 67 for servers and 68 for clients | UDP |
 | Hypertext Transfer Protocol (HTTP) web traffic | 80 | TCP |
-| Network Time Protocol (NTP) time synchronization | 123 | UDP |
 | Hypertext Transfer Protocol Secure (HTTPS) web traffic | 443 | Usually TCP; HTTP/3 uses QUIC over UDP |
-| Server Message Block (SMB) Windows file sharing | 445 | TCP |
-| Remote Desktop Protocol (RDP) Windows remote desktop | 3389 | TCP and UDP |
 
 These numbers are conventions, not restrictions. An administrator can configure an SSH server to listen on TCP port 2222, for example. A port number is a useful clue about the expected service, but it does not prove which application is running or whether the traffic is safe.
 
 Both DHCPv4 port numbers matter. A client sends DHCP messages to UDP port 67 on the server. The server sends messages to UDP port 68 on the client.
 
-Do not confuse similarly named file-transfer protocols:
-
-- **SFTP** is the SSH File Transfer Protocol. It normally runs through SSH on TCP port 22.
-- **FTPS** is FTP protected with Transport Layer Security (TLS). Explicit FTPS begins on the normal FTP control port, TCP 21.
+The [Port and Protocol Reference](/appendix/port-reference/) covers remote access, file transfer, email, directory services, monitoring, and database defaults, including the difference between SFTP and FTPS.
 
 ## Sockets and Connection Identity
 
@@ -205,6 +200,10 @@ ss -tn
 UDP has no handshake and therefore does not have TCP states such as SYN_SENT or ESTABLISHED.
 
 ## Try It Yourself
+
+:::note[Optional Practice]
+This read-only inspection reinforces listening and connected socket states.
+:::
 
 Run the command for your operating system and choose one listening entry.
 

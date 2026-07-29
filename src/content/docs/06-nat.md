@@ -10,11 +10,9 @@ That replacement is [network address translation (NAT)](/appendix/glossary/#netw
 ## In This Module
 
 - What NAT changes in a packet
-- How many private hosts share one public address
-- How replies are translated back
+- How translation state lets private hosts share an address and receive replies
 - Why inbound connections require configuration
-- Port forwarding
-- Double NAT and carrier-grade NAT
+- Why NAT and firewall filtering are different
 
 ## What Performs NAT?
 
@@ -139,6 +137,10 @@ NAT also affects logs. A public server normally records the translated public so
 
 ## Double NAT and Carrier-Grade NAT
 
+:::note[Optional: Useful Troubleshooting Context]
+These cases matter when an inbound connection crosses more than one translation boundary. They are safe to skip on a first reading.
+:::
+
 **Double NAT** means traffic is translated twice. A virtual machine behind a home router is a common example: the virtualization platform translates the virtual machine's address first, and the home router translates it again before the packet reaches the internet.
 
 Outbound traffic usually still works. Inbound access is harder because each layer performing NAT may need its own port-forwarding rule.
@@ -152,6 +154,10 @@ This module describes IPv4 NAT. IPv6 provides a much larger address space and do
 :::
 
 ## Try It Yourself
+
+:::note[Optional Practice]
+This read-only comparison contacts a public service, which can see the public address from which the request arrives.
+:::
 
 Compare the IPv4 address assigned to your computer with the public source address seen by an external service.
 
@@ -195,66 +201,16 @@ Compare the active network interface's IPv4 address from the first command with 
 
 The public address check sends a normal HTTPS request to ipify. Like any external service you contact, ipify can see the public address from which the request arrived.
 
-## Port Forwarding
+## Optional: Port Forwarding
 
-A [port forward](/appendix/glossary/#port-forwarding) tells the NAT device which private destination should receive a particular inbound connection.
+A [port forward](/appendix/glossary/#port-forwarding) is an explicit inbound mapping from an address and port on a NAT device to an address and port on a private system. It supplies the destination that unsolicited inbound traffic otherwise lacks.
 
-| Incoming public destination | Forwarded private destination |
-| --- | --- |
-| NAT device: `198.51.100.20:8443` | HTTPS service on laptop: `10.0.20.15:443` |
+Creating the translation is only one part of publishing a service. Routing, firewall rules, listening state, authentication, patching, and upstream NAT can all affect whether the service is reachable and safe.
 
-For matching inbound packets, the NAT device changes the destination address and port before forwarding them. This is destination NAT (DNAT).
-
-The private service can listen on a different port from the one exposed publicly. In this example, an outside client connects to TCP port 8443 on the NAT device. The NAT device forwards that connection to the laptop's HTTPS service on TCP port 443.
-
-This example explains what port forwarding does. It is not an instruction to configure a port forward on a home router, workplace firewall, cloud firewall, or other internet-facing device.
-
-:::note[Publishing a Container Port]
-Publishing a container port maps an address and port on the container host to a port inside the container. It is the same destination NAT idea applied on a single machine.
-
-```text
-Host address and port -> Container address and port
-```
-
-Depending on the address it binds to and the host's firewall, publishing a port can make the service reachable from beyond the container host. Treat it as an access-control decision, not merely an application setting.
-:::
-
-:::tip[Optional Lab: A Local-Only VirtualBox Port Forward]
-You can practice the idea with the `NETLAB` NAT Network in VirtualBox. The rule below listens only on `127.0.0.1`, the Windows host's loopback address. It does not open a port on your physical network interface or make the service available from the internet.
-
-1. On LINUXBOX, find the IPv4 address assigned to its NETLAB interface:
-
-   ```text
-   ip -4 addr
-   ```
-
-2. In VirtualBox Manager, open **File → Tools → Network Manager**. Select **NAT Networks**, select `NETLAB`, and open **Port Forwarding**.
-3. Add this rule, replacing `<LINUXBOX-IP>` with the address from step 1:
-
-   | Setting | Value |
-   | --- | --- |
-   | Name | `natlab-ssh` |
-   | Protocol | `TCP` |
-   | Host IP | `127.0.0.1` |
-   | Host Port | `18022` |
-   | Guest IP | `<LINUXBOX-IP>` |
-   | Guest Port | `22` |
-
-   Do not leave **Host IP** blank. The explicit `127.0.0.1` value keeps the listening address local to the Windows host.
-
-4. On the Windows host—not inside either VM—open PowerShell and test the forwarded port:
-
-   ```text
-   Test-NetConnection 127.0.0.1 -Port 18022
-   ```
-
-5. Find `TcpTestSucceeded : True` in the result. The test contacted Transmission Control Protocol (TCP) port 18022 on the Windows host, and VirtualBox forwarded the connection to the Secure Shell (SSH) service on TCP port 22 on LINUXBOX.
-6. When finished, delete the `natlab-ssh` rule in VirtualBox. Removing it returns NETLAB to its previous configuration.
-:::
+The optional [Port Forwarding and a Local-Only Lab](/appendix/local-port-forwarding/) appendix explains destination translation, container port publishing, and a VirtualBox exercise bound only to the Windows host's loopback address.
 
 ## Further Learning
 
-- [Oracle VirtualBox networking documentation](https://docs.oracle.com/en/virtualization/virtualbox/7.2/user/networkingdetails.html) explains NAT Network port-forwarding rules and how to remove them.
 - [Request for Comments (RFC) 3022: Traditional IP Network Address Translator](https://www.rfc-editor.org/info/rfc3022/) describes basic NAT, port translation, and translation state.
 - [RFC 2663: NAT Terminology and Considerations](https://www.rfc-editor.org/info/rfc2663/) defines common NAT terms and behaviors.
 - [RFC 6888: Common Requirements for Carrier-Grade NATs](https://www.rfc-editor.org/info/rfc6888/) explains provider-operated address sharing.

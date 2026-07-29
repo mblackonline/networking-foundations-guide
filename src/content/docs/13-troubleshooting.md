@@ -13,10 +13,8 @@ Troubleshooting means narrowing those possibilities with evidence. Start with th
 
 - Turn a vague report into a specific problem
 - Test a connection in a repeatable order, starting with the physical or wireless connection
-- Use network layers to organize troubleshooting tests
-- Understand what common tools prove
-- Interpret common failure messages
-- Record evidence and make one change at a time
+- Understand what each test proves and does not prove
+- Record evidence and make one narrow change at a time
 
 ## Define the Problem First
 
@@ -56,11 +54,11 @@ Work from the client toward the application:
 6. Application response
 ```
 
-This sequence is guided by the TCP/IP layers, but it is not a strict trip from the bottom layer to the top. The physical connection, the network interface, and the local network involve the Link layer. IP addressing and routing involve the Internet layer. The destination port involves the Transport layer. DNS and the service response involve the Application layer. DNS is checked early because the client needs a destination address before it can test the route or service.
+This sequence is guided by the Transmission Control Protocol/Internet Protocol (TCP/IP) layers, but it is not a strict trip from the bottom layer to the top. The physical connection, the network interface, and the local network involve the Link layer. Internet Protocol (IP) addressing and routing involve the Internet layer. The destination port involves the Transport layer. Domain Name System (DNS) resolution and the service response involve the Application layer. DNS is checked early because the client needs a destination address before it can test the route or service.
 
 Layers do not identify the cause by themselves. They organize the checks and help you understand what each result does and does not rule out.
 
-This order prevents an application error from being mistaken for a disconnected cable, or a Domain Name System (DNS) problem from being mistaken for a failed server.
+This order prevents an application error from being mistaken for a disconnected cable, or a DNS problem from being mistaken for a failed server.
 
 ### 1. Check the Physical or Wireless Connection
 
@@ -94,7 +92,7 @@ A connected interface does not prove the device is on the right network. Confirm
 
 ### 2. Check the Client's Network Settings
 
-Confirm that the network interface is connected and has the expected Internet Protocol (IP) address, subnet mask or prefix, default gateway, and DNS server.
+Confirm that the network interface is connected and has the expected IP address, subnet mask or prefix, default gateway, and DNS server.
 
 On Windows:
 
@@ -249,7 +247,7 @@ Avoid conclusions that go beyond the evidence:
 | A port is listening on the server | A remote client can pass every firewall and route to it |
 | A TCP port test succeeds | The application is healthy |
 
-:::note[When the Network Is Not the Problem, Look at Startup Order]
+:::note[Role-Specific: When the Network Is Not the Problem, Look at Startup Order]
 A test that passes now does not prove the dependency was reachable when the application started. Many applications try their dependencies once at startup and do not retry, so an application can stay broken long after the path recovers.
 
 Suspect startup order when the dependency is reachable, the application still reports a connection error, and restarting the application fixes it with no other change. A listening port is also not the same as a ready service, since a database may accept connections while it is still starting and unable to answer queries.
@@ -268,6 +266,10 @@ Changing several settings at once makes the result difficult to interpret. Inste
 For example, do not disable an entire firewall, change DNS servers, and restart the application together. A temporary rule for one required port is a safer and more useful test than disabling all filtering.
 
 ## When to Reach for a Packet Capture
+
+:::note[Optional: Explore Later]
+Use this escalation step when simpler checks do not reveal where an exchange stops. The [Reading a Packet Capture](/appendix/reading-a-capture/) appendix provides the complete workflow.
+:::
 
 Use Wireshark when the earlier checks do not show where the exchange stops. Decide what you need to learn before starting the capture.
 
@@ -353,12 +355,18 @@ The client test located the failure at the destination port. The server test the
 
 You now have a repeatable method for combining the concepts and tools from the entire guide.
 
+## Main Takeaways
+
+- Define the client, destination, expected result, actual result, scope, and timing before changing anything.
+- Test the connection in stages and stop at the first confirmed failure.
+- Record what each result proves, change one thing at a time, and keep changes only when the evidence supports them.
+
 ## Where to Go Next
 
 Choose the next topic that matches the work you want to do:
 
 - For IT Support or system administration, continue with wireless networking, virtual local area network (VLAN) configuration, and deeper Windows or Linux troubleshooting.
-- For DevOps or cloud work, build a small private network in one cloud platform, then study container networking.
+- For DevOps, cloud, or application operations, read the optional [Proxies and Load Balancers module](/12-proxies-load-balancers/), build a small private network in one cloud platform, then study container networking.
 - For software development, explore HTTP diagnostics, certificates, application timeouts, and connection pooling.
 - For cybersecurity, continue with network segmentation, firewall management, secure remote access, and packet analysis.
 - For every path, add Internet Protocol version 6 (IPv6) addressing and routing to the IPv4 foundation in this guide.

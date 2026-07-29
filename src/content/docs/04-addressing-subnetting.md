@@ -9,12 +9,10 @@ That local-or-remote decision is the main idea in this module. The calculations 
 
 ## In This Module
 
-- Why an IPv4 address is 32 bits, and why each octet stops at 255
-- What an IPv4 address and subnet mask each do
+- How an IPv4 address, prefix, and subnet mask describe a network
 - How Classless Inter-Domain Routing (CIDR) notation describes a subnet
 - How a host decides whether to use its default gateway
-- How to find the network, broadcast, and usable host range
-- The private IPv4 ranges, and why the address space is handed out in blocks
+- How to find a `/24` range and recognize private IPv4 addresses
 
 ## Four Octets, Thirty-Two Bits
 
@@ -86,57 +84,15 @@ Mask      11111111.11111111.11111111.00000000   255.255.255.0
 
 Counting the ones gives you the prefix length. Twenty-four ones is a `/24`.
 
-## Moving the Boundary
+## Optional: Prefixes Beyond /24
 
-The ones in a mask always begin at the left and run without a gap. Turning on one more bit moves the boundary one position to the right, which grows the network side and shrinks the host side.
+:::note[Optional: Explore Later]
+You do not need to calculate smaller subnets before continuing. The rest of the core guide requires only the local-versus-remote decision and an understanding that a longer prefix describes a more specific range.
+:::
 
-```text
-/24   11111111.11111111.11111111.00000000   255.255.255.0
-/25   11111111.11111111.11111111.10000000   255.255.255.128
-/26   11111111.11111111.11111111.11000000   255.255.255.192
-/27   11111111.11111111.11111111.11100000   255.255.255.224
-```
+A subnet boundary does not have to fall between octets. Prefixes such as `/25`, `/26`, and `/27` divide the final octet into progressively smaller ranges. `/31` and `/32` also have special uses in routing.
 
-Every bit moved from the host side to the network side cuts the number of addresses in the subnet in half, which is why the counts in the table below halve at each step.
-
-The decimal values come from the place value of each bit position:
-
-```text
-128  64  32  16  8  4  2  1
-```
-
-Adding from the left produces the mask numbers. One bit is 128. Two bits are 128 plus 64, or 192. Three bits are 128 plus 64 plus 32, or 224. That pattern produces every value in the table below, so the masks are not arbitrary numbers to memorize.
-
-The [Subnetting Practice appendix](/appendix/subnetting-practice/) uses these same place values as a calculation shortcut. Once the pattern makes sense, you rarely need to work in binary to answer a subnetting question.
-
-## Common Prefixes
-
-Start with the common prefixes below. The complete `/8` through `/32` table is in the [Subnetting Practice appendix](/appendix/subnetting-practice/).
-
-| Prefix | Subnet mask | Total addresses | Usually usable by hosts |
-| --- | --- | ---: | ---: |
-| `/16` | `255.255.0.0` | 65,536 | 65,534 |
-| `/24` | `255.255.255.0` | 256 | 254 |
-| `/25` | `255.255.255.128` | 128 | 126 |
-| `/26` | `255.255.255.192` | 64 | 62 |
-| `/27` | `255.255.255.224` | 32 | 30 |
-| `/28` | `255.255.255.240` | 16 | 14 |
-| `/29` | `255.255.255.248` | 8 | 6 |
-| `/30` | `255.255.255.252` | 4 | 2 |
-| `/31` | `255.255.255.254` | 2 | 2 on a point-to-point link |
-| `/32` | `255.255.255.255` | 1 | 1 exact address |
-
-The basic calculation is:
-
-```text
-Host bits = 32 - prefix length
-Total addresses = 2^(host bits)
-Usable hosts = total addresses - 2
-```
-
-The subtraction reserves one address for the network and one for the broadcast.
-
-There are two useful exceptions. A `/31` can use both addresses on a point-to-point link. A `/32` identifies one exact address and often appears in host routes and firewall rules.
+The [Subnetting Practice appendix](/appendix/subnetting-practice/) contains the complete prefix table, binary place-value pattern, worked calculations, and practice problems.
 
 ## Network, Broadcast, and Hosts
 
@@ -192,17 +148,9 @@ Private does not mean secure. It describes how an address is allocated and route
 
 ## Why Addresses Come in Ranges
 
-Thirty-two bits produce a fixed number of addresses.
+IPv4 contains a fixed set of 32-bit addresses. Prefix lengths let registries, providers, and organizations allocate that space in blocks instead of handing out unrelated individual addresses.
 
-```text
-2^32 = 4,294,967,296
-```
-
-That is the whole IPv4 address space. It begins at `0.0.0.0` and ends at `255.255.255.255`, and no IPv4 address exists outside that range.
-
-A supply that size has to be handed out in pieces, and the pieces have to be sized to what an organization actually needs. An office that needs 200 addresses should not receive 16 million. The prefix length is what makes that possible, because it can describe a block of almost any size, and whoever receives a block can divide it further for their own networks.
-
-The private ranges above are one slice of that pool. Loopback and the other special-purpose blocks in the IANA registry linked at the end of this module are more of them. Subnetting is the same idea applied inside your own network, taking the block you were given and dividing it to fit the networks you need.
+The private ranges above are reserved blocks. Loopback, link-local, documentation, and other special-purpose ranges are additional blocks. Subnetting applies the same idea inside a network by dividing an assigned range into smaller ranges.
 
 ## What a Wrong Mask Does
 
@@ -214,6 +162,10 @@ A wrong mask changes which destinations the host considers local.
 When two nearby hosts cannot communicate, compare their IP addresses and subnet masks before investigating the application.
 
 ## Try It Yourself
+
+:::note[Optional Practice]
+This exercise reinforces the `/24` range used throughout the guide. It is not required to continue.
+:::
 
 Find the IPv4 address, subnet mask, and default gateway on your active interface.
 

@@ -11,12 +11,10 @@ A firewall does not replace passwords, software updates, or application security
 
 ## In This Module
 
-- The values a filtering rule examines
-- Why traffic direction depends on whose perspective you take
-- Stateful filtering, and how it differs from a stateless filter
-- Rule actions, rule order, and default behavior
-- The host, network, and cloud layers where filtering can happen
-- What a firewall failure looks like from the client
+- How rule fields and direction describe matching traffic
+- How connection state, rule order, and default behavior affect a decision
+- Where independent filtering layers can exist
+- How to interpret and troubleshoot common failure symptoms
 
 ## What a Firewall Examines
 
@@ -150,6 +148,10 @@ If one layer allows a connection and another blocks it, the connection still fai
 
 ## Cloud Names for Similar Controls
 
+:::note[Optional: Role-Specific]
+These product mappings are useful for cloud work. The generic rule fields, direction, state, and placement concepts apply even if you skip this section.
+:::
+
 Cloud platforms apply the same basic ideas, but their rule behavior differs:
 
 | Cloud control | Scope and behavior |
@@ -229,7 +231,7 @@ The final ping behavior returns to whatever WINCLIENT's original firewall policy
 ## Main Takeaways
 
 - Firewalls compare traffic with rules based on values such as addresses, ports, protocols, direction, and connection state.
-- Rule order and default behavior affect how traffic is handled.
-- Firewalls can allow traffic, silently drop it, or reject it with a response.
+- Direction is measured from the system or boundary where a rule is applied, and stateful filtering can recognize return traffic.
+- Every independent host, network, or cloud filtering layer must permit the connection.
 
-Continue to Module 12 to see how proxies and load balancers handle connections on behalf of other systems.
+Continue on the core path to [Module 13: Troubleshooting Method](/13-troubleshooting/). If your work involves application delivery or cloud services, optionally read [Module 12: Proxies and Load Balancers](/12-proxies-load-balancers/) first.
