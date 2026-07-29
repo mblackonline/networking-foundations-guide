@@ -189,6 +189,12 @@ The backend must trust these headers only when they come from a known proxy. An 
 
 Status-code meanings can vary with the product and configuration. Check both the proxy logs and backend logs.
 
+### When a Dependency Recovers but the Application Does Not
+
+A dependency that works now may have been unavailable when an application started. Some applications do not retry a failed startup connection, so they can remain unhealthy after the network path or backend recovers.
+
+Consider startup behavior when the dependency is reachable, the application still reports a connection error, and restarting only the application restores service. A listening port is also not the same as a ready service: a backend may accept a connection while it is still unable to answer requests.
+
 ## A Short Troubleshooting Order
 
 For a connection-terminating proxy:

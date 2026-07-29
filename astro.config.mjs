@@ -50,12 +50,14 @@ export default defineConfig({
           label: 'Troubleshooting',
           items: [
             { label: 'Module 14: Troubleshooting Method', slug: '14-troubleshooting' },
+            { label: 'Slow or Intermittent Connections', slug: 'appendix/performance-troubleshooting' },
           ],
         },
         {
           label: 'Optional Hands-On Labs',
           items: [
             { label: 'Build NETLAB', slug: 'appendix/building-netlab' },
+            { label: 'Stopped Service Troubleshooting', slug: 'appendix/stopped-service-lab' },
             { label: 'Local Port Forwarding', slug: 'appendix/local-port-forwarding' },
             { label: 'Reverse Proxy Lab', slug: 'appendix/reverse-proxy-lab' },
           ],
