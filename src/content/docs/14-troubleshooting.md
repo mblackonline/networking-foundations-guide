@@ -217,7 +217,6 @@ The following resources extend the core method with focused troubleshooting guid
 
 - See the [Slow or Intermittent Connections troubleshooting guide](/appendix/performance-troubleshooting/) when a connection works sometimes but suffers from delay, loss, or inconsistent behavior.
 - Refer to the [Reading a Packet Capture guide](/appendix/reading-a-capture/) when simpler tests do not show where an exchange stops.
-- Try the [Stopped Service Troubleshooting lab](/appendix/stopped-service-lab/) to practice distinguishing a reachable host from an unavailable service.
 
 Packet captures and diagnostic output can contain names, addresses, credentials, cookies, tokens, and application data. Collect only what you are authorized to inspect, protect saved files, and review output before sharing it.
 
