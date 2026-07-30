@@ -48,30 +48,6 @@ Compare the results:
 
 These patterns narrow the investigation but do not prove the cause. Internet Control Message Protocol (ICMP) traffic may be handled differently from application traffic.
 
-## Check Interface Counters
-
-Interface counters can reveal errors or dropped traffic that increase while the problem occurs.
-
-Windows PowerShell:
-
-```text
-Get-NetAdapterStatistics
-```
-
-Linux:
-
-```text
-ip -s link
-```
-
-macOS:
-
-```text
-netstat -ib
-```
-
-Record the counters, reproduce the problem for a short period, and check them again. A large lifetime total without a before-and-after comparison does not show when the errors occurred.
-
 ## Compare Wi-Fi and Ethernet
 
 If practical, compare the same client and application over Ethernet and Wi-Fi.
@@ -108,11 +84,10 @@ If the earlier comparisons do not locate the delay:
 ## Further Learning
 
 - [Microsoft `ping` documentation](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ping) describes Windows packet-count and timeout options.
-- [Microsoft `Get-NetAdapterStatistics` documentation](https://learn.microsoft.com/en-us/powershell/module/netadapter/get-netadapterstatistics?view=windowsserver2025-ps) describes Windows network-adapter statistics.
 - [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/) covers packet capture and analysis in more depth.
 
 ## Main Takeaways
 
 - Intermittent problems require repeated, timestamped observations rather than one successful test.
 - Comparing the gateway, a remote destination, and the actual application helps locate where performance changes begin.
-- Use before-and-after counters and a working comparison instead of drawing conclusions from isolated totals.
+- Compare an affected client with a working client instead of drawing conclusions from one isolated result.
