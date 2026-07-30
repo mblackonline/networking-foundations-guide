@@ -60,15 +60,21 @@ Do not make several wireless changes at once. Record the original configuration 
 
 ## Test the Actual Application
 
-Ping does not measure application health. Repeat the exact operation that users report as slow, and compare it with a simpler protocol-specific test.
+Ping does not measure application health. Repeat the exact operation that users report as slow, and compare it with a simple test for that application.
 
-For a website:
+For a quick website test on Windows:
 
 ```text
-curl -v https://portal.example.com
+curl.exe -I https://example.com
 ```
 
-Verbose output can show whether time was spent resolving the name, opening the connection, negotiating TLS, or waiting for an HTTP response. Review the output before sharing it because headers and other details may be sensitive.
+On Linux or macOS:
+
+```text
+curl -I https://example.com
+```
+
+A response confirms that the client resolved the name, connected to the server, negotiated TLS, and received an HTTP response. An error may instead identify a name-resolution, connection, or certificate problem. Replace the example address with the affected website when troubleshooting.
 
 If the application uses a different protocol, use a client or health check that speaks that protocol.
 
