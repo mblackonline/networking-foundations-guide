@@ -22,8 +22,6 @@ This guide is still a work in progress. I will continue reviewing and updating i
 
 As I gain experience working in information technology (IT), I continue to see how often networking fundamentals matter in day-to-day technical work. I created this guide to reinforce my own understanding and share what I have learned with others.
 
-Artificial intelligence (AI) tools assisted with research, drafting, editing, and review. I reviewed and revised the material, but errors or oversimplifications may remain. The Further Learning sections link to official documentation and other public resources for deeper study. Corrections and suggestions are welcome through [GitHub Issues](https://github.com/mblackonline/networking-foundations-guide/issues).
-
 The guide is intended for people exploring IT support, system administration, DevOps, software development, cybersecurity, and related technical roles. It assumes only basic familiarity with using a computer and installing software.
 
 ## Core Learning Path
@@ -52,6 +50,8 @@ Commands are generally shown for Windows, with Linux or macOS equivalents includ
 
 You can complete the conceptual path without the lab. When you want hands-on practice, follow [Building the Optional NETLAB](/appendix/building-netlab/).
 
-## Source and Reuse
+## Source, Reuse, and Feedback
 
-The source files for this guide are available on [GitHub](https://github.com/mblackonline/networking-foundations-guide) under the [MIT License](https://github.com/mblackonline/networking-foundations-guide/blob/main/LICENSE). You are welcome to fork the repository and adapt or expand it for your own use.
+This guide is an open, evolving project. The source files are available on [GitHub](https://github.com/mblackonline/networking-foundations-guide) under the [MIT License](https://github.com/mblackonline/networking-foundations-guide/blob/main/LICENSE), and you are welcome to fork, adapt, or expand them for your own use.
+
+Artificial intelligence (AI) tools assisted with research, drafting, editing, and review. Although I reviewed and revised the material, errors or oversimplifications may remain. The Further Learning sections provide links to official documentation and other public resources for deeper study. If you find an error or have a suggestion, please open a [GitHub Issue](https://github.com/mblackonline/networking-foundations-guide/issues).
