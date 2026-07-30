@@ -30,11 +30,11 @@ The core path builds the knowledge needed to understand and troubleshoot a typic
 
 | Stage | Modules | First-reading focus |
 | --- | --- | --- |
-| Learn the layers and tools | [1: Layers](/01-layers/), [2: Toolkit](/02-toolkit-and-lab/) | Relate protocols to layers and recognize the purpose of common tools |
-| Move between devices and networks | [3: Local Network](/03-local-network/), [4: IPv4 Addressing](/04-addressing-subnetting/), [5: IPv4 Subnetting](/05-subnetting/), [6: Routing](/06-routing/), [7: NAT](/07-nat/) | Local delivery, address boundaries, local-versus-remote decisions, routes, gateways, and translation |
-| Configure the client and reach services | [8: Transport](/08-transport/), [9: DHCP](/09-dhcp/), [10: DNS](/10-dns/) | Ports, connections, automatic configuration, and name resolution |
-| Interpret application and security results | [11: HTTP and TLS](/11-http-tls/), [12: Firewalls](/12-filtering/) | Web responses, certificate checks, and filtering behavior |
-| Apply the method | [14: Troubleshooting](/14-troubleshooting/) | Test one stage at a time and record what each result proves |
+| Learn the layers and tools | <span class="learning-path-module">[1: Layers](/01-layers/)</span> <span class="learning-path-module">[2: Toolkit](/02-toolkit-and-lab/)</span> | Relate protocols to layers and recognize the purpose of common tools |
+| Move between devices and networks | <span class="learning-path-module">[3: Local Network](/03-local-network/)</span> <span class="learning-path-module">[4: IPv4 Addressing](/04-addressing-subnetting/)</span> <span class="learning-path-module">[5: IPv4 Subnetting](/05-subnetting/)</span> <span class="learning-path-module">[6: Routing](/06-routing/)</span> <span class="learning-path-module">[7: NAT](/07-nat/)</span> | Local delivery, address boundaries, local-versus-remote decisions, routes, gateways, and translation |
+| Configure the client and reach services | <span class="learning-path-module">[8: Transport](/08-transport/)</span> <span class="learning-path-module">[9: DHCP](/09-dhcp/)</span> <span class="learning-path-module">[10: DNS](/10-dns/)</span> | Ports, connections, automatic configuration, and name resolution |
+| Interpret application and security results | <span class="learning-path-module">[11: HTTP and TLS](/11-http-tls/)</span> <span class="learning-path-module">[12: Firewalls](/12-filtering/)</span> | Web responses, certificate checks, and filtering behavior |
+| Apply the method | <span class="learning-path-module">[14: Troubleshooting](/14-troubleshooting/)</span> | Test one stage at a time and record what each result proves |
 
 Optional and role-specific material is labeled when applicable so you can skip it on a first reading. [Module 13: Proxies and Load Balancers](/13-proxies-load-balancers/) is an optional, role-specific extension for systems administration, cloud, DevOps, and software work.
 

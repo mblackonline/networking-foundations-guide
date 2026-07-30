@@ -66,3 +66,81 @@
 .sl-markdown-content a:hover {
   text-decoration-thickness: 2px;
 }
+
+/* Give every learning-path module its own line at all screen sizes. */
+
+.learning-path-module {
+  display: block;
+}
+
+.learning-path-module + .learning-path-module {
+  margin-top: 0.25rem;
+}
+
+.learning-path-module a {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Turn the three-column learning path into labeled rows on narrow screens. */
+
+@media (max-width: 40rem) {
+  .sl-markdown-content table:has(.learning-path-module),
+  .sl-markdown-content table:has(.learning-path-module) tbody,
+  .sl-markdown-content table:has(.learning-path-module) tr,
+  .sl-markdown-content table:has(.learning-path-module) td {
+    display: block;
+    width: 100%;
+  }
+
+  .sl-markdown-content table:has(.learning-path-module) thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .sl-markdown-content table:has(.learning-path-module) tbody tr {
+    padding: 1rem 0;
+    border-top: 1px solid var(--sl-color-gray-5);
+  }
+
+  .sl-markdown-content table:has(.learning-path-module) tbody tr:last-child {
+    border-bottom: 1px solid var(--sl-color-gray-5);
+  }
+
+  .sl-markdown-content table:has(.learning-path-module) td {
+    padding: 0;
+    border: 0;
+  }
+
+  .sl-markdown-content table:has(.learning-path-module) td:first-child {
+    font-weight: 700;
+  }
+
+  .sl-markdown-content table:has(.learning-path-module) td + td {
+    margin-top: 0.75rem;
+  }
+
+  .sl-markdown-content table:has(.learning-path-module) td:nth-child(2)::before,
+  .sl-markdown-content table:has(.learning-path-module) td:nth-child(3)::before {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--sl-color-gray-2);
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .sl-markdown-content table:has(.learning-path-module) td:nth-child(2)::before {
+    content: 'Modules';
+  }
+
+  .sl-markdown-content table:has(.learning-path-module) td:nth-child(3)::before {
+    content: 'First-reading focus';
+  }
+}
