@@ -1,6 +1,6 @@
 ---
 title: Networking Foundations
-description: A beginner-friendly, vendor-agnostic networking guide for information technology support, system administration, DevOps, software development, and cybersecurity.
+description: A free, vendor-agnostic guide to networking fundamentals, practical troubleshooting, and optional hands-on labs.
 template: splash
 hero:
   tagline: Learn the networking concepts behind common systems you may build, support, or troubleshoot. No vendor certifications or prior networking experience required.

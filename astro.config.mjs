@@ -9,7 +9,7 @@ export default defineConfig({
     starlight({
       title: 'Networking Foundations',
       description:
-        'A beginner-friendly, vendor-agnostic networking guide for information technology support, system administration, DevOps, software development, and cybersecurity.',
+        'A free, vendor-agnostic guide to networking fundamentals, practical troubleshooting, and optional hands-on labs.',
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         {
