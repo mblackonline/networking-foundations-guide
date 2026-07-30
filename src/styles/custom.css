@@ -127,8 +127,7 @@
     margin-top: 0.75rem;
   }
 
-  .sl-markdown-content table:has(.learning-path-module) td:nth-child(2)::before,
-  .sl-markdown-content table:has(.learning-path-module) td:nth-child(3)::before {
+  .sl-markdown-content table:has(.learning-path-module) td:nth-child(2)::before {
     display: block;
     margin-bottom: 0.25rem;
     color: var(--sl-color-gray-2);
@@ -138,9 +137,5 @@
 
   .sl-markdown-content table:has(.learning-path-module) td:nth-child(2)::before {
     content: 'Modules';
-  }
-
-  .sl-markdown-content table:has(.learning-path-module) td:nth-child(3)::before {
-    content: 'First-reading focus';
   }
 }
