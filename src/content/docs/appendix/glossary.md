@@ -23,7 +23,7 @@ This glossary provides brief definitions of terms used throughout the guide. Sel
 
 ## B
 
-- <span id="backend"></span>**[Backend](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#backend-pools):** A server behind a reverse proxy or load balancer that handles requests. It is also called an upstream server.
+- <span id="backend"></span>**[Backend](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#backend-pools):** The part of a system that runs behind the scenes, processing requests, applying business logic, and communicating with databases or other services. In proxy configurations, a backend may also be called an upstream.
 - <span id="binary"></span>**[Binary](https://en.wikipedia.org/wiki/Binary_number):** A way of writing numbers using only 0 and 1. Devices store and process addresses in binary, and the decimal form of an IPv4 address is a convenience for people reading it.
 - <span id="bit"></span>**[Bit](https://en.wikipedia.org/wiki/Bit):** A single 0 or 1, the smallest unit of data. An IPv4 address is 32 bits long.
 - <span id="border-gateway-protocol-bgp"></span>**[Border Gateway Protocol (BGP)](https://en.wikipedia.org/wiki/Border_Gateway_Protocol):** The routing protocol used to exchange reachability information between large networks, including networks that form the internet.
