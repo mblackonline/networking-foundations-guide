@@ -3,7 +3,7 @@ title: Networking Foundations
 description: A free, vendor-agnostic guide to networking fundamentals, practical troubleshooting, and optional hands-on labs.
 template: splash
 hero:
-  tagline: Learn the networking concepts behind common systems you may build, support, or troubleshoot. No vendor certifications or prior networking experience required.
+  tagline: Learn the networking fundamentals used to support systems and troubleshoot common connectivity problems. No vendor certifications or prior networking experience required.
   actions:
     - text: Start the Guide
       link: /01-layers/
@@ -22,7 +22,7 @@ This guide is still a work in progress. I will continue reviewing and updating i
 
 As I gain experience working in information technology (IT), I continue to see how often networking fundamentals matter in day-to-day technical work. I created this guide to reinforce my own understanding and share what I have learned with others.
 
-The guide is intended for people exploring IT support, system administration, DevOps, software development, cybersecurity, and related technical roles. It assumes only basic familiarity with using a computer and installing software.
+This guide is primarily intended for people building networking knowledge for IT support, systems administration, and infrastructure-related work. People interested in cloud, DevOps, cybersecurity, or software development may also find the foundations useful, but the guide does not cover networking for those roles in depth. It assumes only basic familiarity with using a computer and installing software.
 
 ## Core Learning Path
 
@@ -42,6 +42,7 @@ Optional and role-specific material is labeled when applicable so you can skip i
 
 - A high-level overview of common networking concepts rather than every topic or advanced detail
 - Vendor-agnostic concepts and standard protocols used across physical, virtual, and cloud environments
+- Troubleshooting focused on client-to-service connectivity and common network infrastructure; the current core scope does not include application-to-database connectivity, container networking, or cloud-platform-specific problems
 - Examples based on wired and Wi-Fi networks; mobile networks are outside the current scope
 
 ## How the Hands-On Parts Work
