@@ -122,7 +122,7 @@ It uses:
 | System | Role |
 | --- | --- |
 | Windows Virtual Machine (WINCLIENT) | Client used for Windows commands and tests |
-| Linux Virtual Machine (LINUXBOX) | Linux Mint Xfce server used as the other endpoint |
+| Linux Virtual Machine (LINUXBOX) | Linux Mint Xfce virtual desktop used as the other endpoint |
 | VirtualBox network `NETLAB` | Isolated NAT Network using `10.0.20.0/24` |
 
 Follow [Building the Optional NETLAB](/appendix/building-netlab/) when you want to add the hands-on path. Every exercise that needs these systems is labeled **Optional Lab**.
