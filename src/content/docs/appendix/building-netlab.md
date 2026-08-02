@@ -40,7 +40,7 @@ VirtualBox calls this a NAT Network. Both VMs can reach each other and the inter
 :::note
 DHCP remains enabled so the VMs receive their network settings without running another server. [Module 9](/09-dhcp/) explains what the service supplies.
 
-If you also built a lab from an Active Directory guide, keep this network's distinct name and address range so the two labs do not collide.
+If you also built the lab in the [Active Directory Home Lab Tutorial](https://ad-homelab-tutorial.netlify.app/), keep its `ADLab` NAT Network separate from the `NETLAB` NAT Network used here. Each guide intentionally uses a different network name, IPv4 range, and DHCP configuration.
 :::
 
 ## Build WINCLIENT
